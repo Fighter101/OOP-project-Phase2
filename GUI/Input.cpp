@@ -1,5 +1,4 @@
 #include "Output.h"
-#include"..\Components\Gate.h"
 Graph *Input::Interface = new Graph;
 Input::Input(window* pW)
 {
@@ -37,7 +36,11 @@ pair< ActionType, vector<GridItem*> > Input::GetUserAction() const
 	tmp = Interface->getAction(GraphicsInfo(x, y));
 	if (tmp == NULL)
 		return make_pair(DSN_AREA,ReturnedPointers);
-	else if (dynamic_cast<Gate*>(tmp));
+	else 
+	{
+		ReturnedPointers.push_back(tmp);
+		return make_pair(tmp->Leftpress(NULL), ReturnedPointers);
+	}
 
 }
 

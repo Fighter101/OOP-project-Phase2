@@ -6,33 +6,80 @@ e:\oop projec-bgd\project code framework\gui\output.cpp(1448): warning C4244: 'a
 e:\oop projec-bgd\project code framework\gui\output.cpp(1449): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
 e:\oop projec-bgd\project code framework\gui\output.cpp(1450): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
 e:\oop projec-bgd\project code framework\gui\output.cpp(1462): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  Input.cpp
   Generating Code...
-  Skipping... (no relevant changes detected)
+  Compiling...
   main.cpp
   ToolBar.cpp
-  Input.cpp
+e:\oop projec-bgd\project code framework\toolbar.cpp(32): warning C4018: '<': signed/unsigned mismatch
+e:\oop projec-bgd\project code framework\toolbar.cpp(39): warning C4018: '<': signed/unsigned mismatch
+e:\oop projec-bgd\project code framework\toolbar.cpp(44): warning C4018: '<': signed/unsigned mismatch
+e:\oop projec-bgd\project code framework\toolbar.cpp(52): warning C4018: '<': signed/unsigned mismatch
+e:\oop projec-bgd\project code framework\toolbar.cpp(60): warning C4018: '<': signed/unsigned mismatch
   XOR3.cpp
+e:\oop projec-bgd\project code framework\components\xor3.cpp(37): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\xor3.cpp(44): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   XOR2.cpp
+e:\oop projec-bgd\project code framework\components\xor2.cpp(37): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\xor2.cpp(44): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   XNOR3.cpp
+e:\oop projec-bgd\project code framework\components\xnor3.cpp(38): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\xnor3.cpp(45): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   XNOR2.cpp
+e:\oop projec-bgd\project code framework\components\xnor2.cpp(38): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\xnor2.cpp(45): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   SWITCH.cpp
+e:\oop projec-bgd\project code framework\components\switch.cpp(33): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\switch.cpp(40): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   OutputPin.cpp
   OR3.cpp
+e:\oop projec-bgd\project code framework\components\or3.cpp(36): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\or3.cpp(43): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   OR2.cpp
+e:\oop projec-bgd\project code framework\components\or2.cpp(37): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\or2.cpp(44): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   NOR3.cpp
+e:\oop projec-bgd\project code framework\components\nor3.cpp(38): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\nor3.cpp(45): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   NOR2.cpp
+e:\oop projec-bgd\project code framework\components\nor2.cpp(38): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\nor2.cpp(45): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   NAND3.cpp
+e:\oop projec-bgd\project code framework\components\nand3.cpp(38): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\nand3.cpp(45): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   NAND2.cpp
+e:\oop projec-bgd\project code framework\components\nand2.cpp(39): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\nand2.cpp(46): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   LED.cpp
+e:\oop projec-bgd\project code framework\components\led.cpp(34): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\led.cpp(41): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   INV.cpp
+e:\oop projec-bgd\project code framework\components\inv.cpp(32): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\inv.cpp(39): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   Gate.cpp
   Connection.cpp
+e:\oop projec-bgd\project code framework\components\connection.cpp(36): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\connection.cpp(42): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   Component.cpp
   Button.cpp
+  Generating Code...
+  Compiling...
   BUFF.cpp
+e:\oop projec-bgd\project code framework\components\buff.cpp(33): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\buff.cpp(40): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   AND3.cpp
+e:\oop projec-bgd\project code framework\components\and3.cpp(37): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\and3.cpp(44): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   AND2.cpp
+e:\oop projec-bgd\project code framework\components\and2.cpp(31): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\components\and2.cpp(38): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   ApplicationManager.cpp
+e:\oop projec-bgd\project code framework\applicationmanager.cpp(25): error C2440: 'return': cannot convert from 'std::pair<ActionType,std::vector<GridItem *,std::allocator<_Ty>>>' to 'ActionType'
+          with
+          [
+              _Ty=GridItem *
+          ]
+  e:\oop projec-bgd\project code framework\applicationmanager.cpp(25): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
   AddXORgate3.cpp
   AddXORgate2.cpp
   AddXNORgate3.cpp
@@ -48,4 +95,4 @@ e:\oop projec-bgd\project code framework\gui\output.cpp(1462): warning C4244: 'a
   AddBUFF.cpp
   AddANDgate3.cpp
   AddANDgate2.cpp
-  graphics_prj.vcxproj -> E:\OOP projec-BGD\Project Code Framework\.\Debug\graphics_prj.exe
+  Generating Code...
