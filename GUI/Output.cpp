@@ -37,7 +37,7 @@ void Output::CreateToolBars()
 	Toolbars[GATE].ButtonsToDraw(vec);
 	Toolbars[GATE].SetOrientation(Vertical);
 	Toolbars[GATE].SetDistance(UI.ToolItemWidth, UI.ToolBarHeight);
-	Toolbars[GATE].SetPosition(GraphicsInfo(290, 0));
+	Toolbars[GATE].SetPosition(GraphicsInfo(300, 0));
 	Toolbars[GATE].CreateButtons(this);
 	vec.clear();
 	for (int i = 20; i < 25; i++)

@@ -16,7 +16,7 @@ void AddINV::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	//Print Action Message
-	pOut->PrintMsg("Buffer : Click to add the gate");
+	pOut->PrintMsg("Adding an Inverter Gate; Click to add the gate");
 
 	//Wait for User Input
 	pIn->GetPointClicked(Cx, Cy);
@@ -44,6 +44,7 @@ void AddINV::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	INV *pA = new INV(GInfo);
 	pManager->AddComponent(pA);
+	pA->Draw(pManager->GetOutput());
 }
 
 void AddINV::Undo()

@@ -36,7 +36,8 @@ pair< ActionType, vector<GridItem*> > Input::GetUserAction() const
 	tmp = Interface->getAction(GraphicsInfo(x, y));
 	if (tmp == NULL)
 		return make_pair(DSN_AREA,ReturnedPointers);
-	else 
+	else
+
 	{
 		ReturnedPointers.push_back(tmp);
 		return make_pair(tmp->Leftpress(NULL), ReturnedPointers);
