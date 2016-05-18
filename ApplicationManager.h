@@ -6,25 +6,22 @@
 #include "GUI\Input.h"
 #include "Actions\Action.h"
 #include "Components\Component.h"
-
+#include<vector>
 
 //Main class that manages everything in the application.
 class ApplicationManager
 {
 
-	enum { MaxCompCount = 200 };	//Max no of Components	
+private:
+	vector<Component*> ComponentList;
+
+	Output* OutputInterface; //pointer to the Output Class Interface
+	Input* InputInterface; //pointer to the Input Class Interface
+
 
 private:
-	int CompCount;		//Actual number of Components
-	Component* CompList[MaxCompCount];	//List of all Components (Array of pointers)
-
-	Output* OutputInterface; //pointer to the Output Clase Interface
-	Input* InputInterface; //pointer to the Input Clase Interface
-
-
-public:
-
-
+	vector<Component*>temp;
+	Action* ActionCreator(ActionType);
 public:	
 	ApplicationManager(); //constructor
 

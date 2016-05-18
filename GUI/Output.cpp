@@ -138,7 +138,7 @@ void Output::ClearDrawingArea() const
 void Output::CreateDesignToolBar() 
 {
 	UI.AppMode = DESIGN;	//Design Mode
-	Toolbars[GATE].Draw(this);
+	Toolbars[DSGN].Draw(this);
 	////You can draw the tool bar icons in any way you want.
 
 	////First prepare List of images for each menu item
