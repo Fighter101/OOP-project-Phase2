@@ -4,7 +4,7 @@
 #include"..\Components\Gate.h"
 void Output::CreateToolBars()
 {
-	Toolbars = new ToolBar[4];
+	Toolbars = new ToolBar[5];
 	//////////////////////////////////////Design Tool Bar////////////////
 	Toolbars[DSGN].SetPosition(GraphicsInfo(230, 0));
 	vector<int>vec;
@@ -47,6 +47,17 @@ void Output::CreateToolBars()
 	Toolbars[RightClick].ButtonsToDraw(vec);
 	Toolbars[RightClick].SetOrientation(Vertical);
 	Toolbars[RightClick].SetDistance(UI.RightClickItemWidth, UI.RightClickItemHeight);
+	////////////////////////////////
+	vec.clear();
+	for (int i = 25; i < 32; i++)
+	{
+		vec.push_back(i);
+	}
+	Toolbars[ADDBAR].ButtonsToDraw(vec);
+	Toolbars[ADDBAR].SetDistance(UI.ToolBarHeight, UI.GateBarHeight);
+	Toolbars[ADDBAR].SetOrientation(Vertical);
+	Toolbars[ADDBAR].SetPosition(GraphicsInfo(1000 - UI.ToolItemWidth, 165));
+	Toolbars[ADDBAR].CreateButtons(this);
 }
 	Output::Output()
 {
@@ -68,6 +79,7 @@ void Output::CreateToolBars()
 	CreateToolBars();
 		//Create the desgin toolbar
 	Toolbars[DSGN].Draw(this);
+	//CreateAddToolBar();
 	//Toolbars[DSGN].Erase(this);
 	CreateStatusBar();		//Create Status bar
 
@@ -977,6 +989,41 @@ GraphicsInfo Output::DeleteString(GraphicsInfo r_GfxInfo, PressType State)
 	pWind->DrawString(r_GfxInfo.x1+ UI.Margain, r_GfxInfo.y1 + 1, "Delete");
 	return tmp;
 }
+GraphicsInfo Output::AndIcon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawAND2(GraphicsInfo(r_GfxInfo.x1 + UI.ToolItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, State);
+	return (GraphicsInfo(UI.ToolItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::ORIcon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawOR2(GraphicsInfo(r_GfxInfo.x1 + UI.ToolItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	return (GraphicsInfo(UI.ToolItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::XORIcon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawXOR2(GraphicsInfo(r_GfxInfo.x1 + UI.ToolItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	return (GraphicsInfo(UI.ToolItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::LEDIcon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawLED(GraphicsInfo(r_GfxInfo.x1 + UI.ToolItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	return (GraphicsInfo(UI.ToolItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::SwitchIcon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawSwitch(GraphicsInfo(r_GfxInfo.x1 + UI.ToolItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	return (GraphicsInfo(UI.ToolItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::BufferIcon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawAND2(GraphicsInfo(r_GfxInfo.x1 + UI.ToolItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	return (GraphicsInfo(UI.ToolItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::InverterIcon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawBuffer(GraphicsInfo(r_GfxInfo.x1 + UI.ToolItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	return (GraphicsInfo(UI.ToolItemWidth, UI.GateBarHeight));
+}
 GraphicsInfo Output::DrawButon(int index,GraphicsInfo r_GfxInfo, PressType State)
 {
 	return(this->*ButtonFunctions[index])(r_GfxInfo,State);
@@ -1083,6 +1130,10 @@ void Output::DrawAND3(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected)
 void Output::DrawNAND3(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected)
 {
 	DrawAND(r_GfxInfo,ptr, selected, true, true);
+}
+void Output::CreateAddToolBar()
+{
+	Toolbars[ADDBAR].Draw(this);
 }
 void Output::DrawAND2(Gate * ptr)
 {

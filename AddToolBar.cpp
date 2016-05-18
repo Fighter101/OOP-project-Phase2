@@ -17,7 +17,7 @@ void AddToolBar::ReadActionParameters()
 void AddToolBar::Execute()
 {
 	ReadActionParameters();
-	pManager->GetOutput()->CreateDesignToolBar();
+	pManager->GetOutput()->CreateAddToolBar();
 }
 
 void AddToolBar::Undo()

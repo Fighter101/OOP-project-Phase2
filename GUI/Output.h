@@ -37,9 +37,18 @@ private:
 	GraphicsInfo PasteString(GraphicsInfo r_GfxInfo, PressType State);
 	GraphicsInfo CopyString(GraphicsInfo r_GfxInfo, PressType State);
 	GraphicsInfo DeleteString(GraphicsInfo r_GfxInfo, PressType State);
+	//AddToolbarICons //Gates
+	GraphicsInfo AndIcon(GraphicsInfo r_GfxInfo,PressType State=Pressed);
+	GraphicsInfo ORIcon(GraphicsInfo r_GfxInfo, PressType State=Pressed);
+	GraphicsInfo XORIcon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	GraphicsInfo LEDIcon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	GraphicsInfo SwitchIcon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	GraphicsInfo BufferIcon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	GraphicsInfo InverterIcon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+
 	//Icon Array
-	GraphicsInfo (Output::*ButtonFunctions[25])(GraphicsInfo,  PressType State) = { &Output::MoveIcon,&Output::CopyIcon,&Output::PasteIcon,&Output::LabelIcon,&Output::EditIcon,&Output::DeleteIcon,&Output::AddIcon,&Output::ConnectIcon,&Output::SelectIcon,&Output::UndoIcon,&Output::RedoIcon,&Output::SaveIcon,&Output::LoadICon,&Output::BeginSimulationIcon,&Output::ExitIcon,&Output::TruthTabelIcon,&Output::ValidationIcon,&Output::SimulateIcon,&Output::ProbeIcon,&Output::ReturnDesign,&Output::MoveString,&Output::CutString,&Output::CopyString,&Output::PasteString,&Output::DeleteString };
-	ActionType ButtonActions[25] = { MOVE,COPY,PASTE,ADD_Label,EDIT_Label,DEL,ADD,ADD_CONNECTION,SELECT,UNDO,REDO,SAVE,SIM_MODE,EXIT,Create_TruthTable,VALIDATE,Change_Switch,PROBE,MOVE,CUT,COPY,PASTE,DEL };
+	GraphicsInfo (Output::*ButtonFunctions[32])(GraphicsInfo,  PressType State) = { &Output::MoveIcon,&Output::CopyIcon,&Output::PasteIcon,&Output::LabelIcon,&Output::EditIcon,&Output::DeleteIcon,&Output::AddIcon,&Output::ConnectIcon,&Output::SelectIcon,&Output::UndoIcon,&Output::RedoIcon,&Output::SaveIcon,&Output::LoadICon,&Output::BeginSimulationIcon,&Output::ExitIcon,&Output::TruthTabelIcon,&Output::ValidationIcon,&Output::SimulateIcon,&Output::ProbeIcon,&Output::ReturnDesign,&Output::MoveString,&Output::CutString,&Output::CopyString,&Output::PasteString,&Output::DeleteString,&Output::AndIcon,&Output::ORIcon,&Output::XORIcon,&Output::BufferIcon,&Output::InverterIcon,&Output::LEDIcon,&Output::SwitchIcon };
+	ActionType ButtonActions[32] = { MOVE,COPY,PASTE,ADD_Label,EDIT_Label,DEL,ActionType::ADD,ADD_CONNECTION,SELECT,UNDO,REDO,SAVE,SIM_MODE,EXIT,Create_TruthTable,VALIDATE,Change_Switch,PROBE,MOVE,CUT,COPY,PASTE,DEL,ADD_AND,ADD_OR,ADD_XOR,ADD_Buff,ADD_INV,ADD_LED,ADD_Switch };
 	ToolBar *Toolbars;
 	void CreateToolBars();
 	//Gates
@@ -100,7 +109,7 @@ public:
 	void EraseButton(GraphicsInfo r_GfxInfo);
 	//Gate Drawing Functions
 	//AndGate
-	
+	void CreateAddToolBar();
 	void DrawAND2(Gate * ptr);
 	void DrawNAND2(Gate * ptr);
 	void DrawAND3(Gate * ptr);

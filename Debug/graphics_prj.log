@@ -1,6 +1,12 @@
-﻿  ApplicationManager.cpp
-  AddBUFF.cpp
+﻿  Output.cpp
+c:\users\ahmad elsayed\source\repos\oop-project-phase22\gui\output.cpp(994): warning C4800: 'PressType': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\ahmad elsayed\source\repos\oop-project-phase22\gui\output.cpp(1486): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ahmad elsayed\source\repos\oop-project-phase22\gui\output.cpp(1487): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ahmad elsayed\source\repos\oop-project-phase22\gui\output.cpp(1488): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\ahmad elsayed\source\repos\oop-project-phase22\gui\output.cpp(1500): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+c:\users\ahmad elsayed\source\repos\oop-project-phase22\gui\output.cpp(1501): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+c:\users\ahmad elsayed\source\repos\oop-project-phase22\gui\output.cpp(1502): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+c:\users\ahmad elsayed\source\repos\oop-project-phase22\gui\output.cpp(1514): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  Input.cpp
   Generating Code...
-c:\users\ahmad elsayed\source\repos\oop-project-phase22\applicationmanager.cpp(88): warning C4715: 'ApplicationManager::ActionCreator': not all control paths return a value
-AddAND.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   graphics_prj.vcxproj -> C:\Users\Ahmad Elsayed\Source\Repos\OOP-project-Phase22\.\Debug\graphics_prj.exe
