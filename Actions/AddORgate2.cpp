@@ -46,6 +46,7 @@ void AddORgate2::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	OR2 *pA = new OR2(GInfo);
 	pManager->AddComponent(pA);
+	pA->Draw(pManager->GetOutput());
 }
 
 void AddORgate2::Undo()

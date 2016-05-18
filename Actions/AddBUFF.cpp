@@ -16,7 +16,7 @@ void AddBUFF::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	//Print Action Message
-	pOut->PrintMsg("Buffer : Click to add the gate");
+	pOut->PrintMsg("Adding a Buffer Gate; Click to add the gate");
 
 	//Wait for User Input
 	pIn->GetPointClicked(Cx, Cy);
@@ -44,11 +44,15 @@ void AddBUFF::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	BUFF *pA = new BUFF(GInfo);
 	pManager->AddComponent(pA);
+	pA->Draw(pManager->GetOutput());
 }
 
 void AddBUFF::Undo()
-{}
+{
+	
+}
 
 void AddBUFF::Redo()
-{}
+{
+}
 

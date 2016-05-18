@@ -46,6 +46,7 @@ void AddANDgate2::Execute()
 	GInfo.y2 = Cy + Wdth/2;
 	AND2 *pA=new AND2(GInfo); 
 	pManager->AddComponent(pA);
+	pA->Draw(pManager->GetOutput());
 }
 
 void AddANDgate2::Undo()

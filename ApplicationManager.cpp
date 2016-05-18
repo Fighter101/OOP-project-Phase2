@@ -1,6 +1,11 @@
 #include "ApplicationManager.h"
 #include"AddToolBar.h"
-
+#include"Actions\AddBUFF.h"
+#include"Actions\AddINV.h"
+#include"Actions\AddANDgate2.h"
+#include"Actions\AddORgate2.h"
+#include"Actions\AddNANDgate2.h"
+#include"Actions\AddNORgate2.h"
 Action * ApplicationManager::ActionCreator(ActionType x)
 {
 	switch (x)
@@ -9,16 +14,22 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return new AddToolBar(this);
 		break;
 	case ADD_Buff:
+		return new AddBUFF(this);
 		break;
 	case ADD_INV:
+		return new AddINV(this);
 		break;
 	case ADD_AND_GATE_2:
+		return new AddANDgate2(this);
 		break;
 	case ADD_OR_GATE_2:
+		return new AddORgate2(this);
 		break;
 	case ADD_NAND_GATE_2:
+		return new AddNANDgate2(this);
 		break;
 	case ADD_NOR_GATE_2:
+
 		break;
 	case ADD_XOR_GATE_2:
 		break;
