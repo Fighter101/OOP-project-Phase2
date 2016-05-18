@@ -15,6 +15,7 @@ void Output::CreateToolBars()
 	Toolbars[DSGN].ButtonsToDraw(vec);
 	Toolbars[DSGN].SetOrientation(Horizontal);
 	Toolbars[DSGN].SetDistance(UI.ToolItemWidth, UI.ToolBarHeight);
+	Toolbars[DSGN].CreateButtons(this);
 	///////////////////Simulation Tool Bar/////////////////////
 	Toolbars[SIMU].SetPosition(GraphicsInfo(290, 0));
 	Toolbars[SIMU].SetOrientation(Horizontal);
@@ -26,6 +27,7 @@ void Output::CreateToolBars()
 	vec.push_back(11);
 	Toolbars[SIMU].ButtonsToDraw(vec);
 	Toolbars[SIMU].SetDistance(UI.ToolItemWidth, UI.ToolBarHeight);
+	Toolbars[SIMU].CreateButtons(this);
 	//////////////////////////////////////////Gate Tool bar////////////////////////
 	vec.clear();
 	for (int i = 0; i < 6; i++)
@@ -35,6 +37,7 @@ void Output::CreateToolBars()
 	Toolbars[GATE].ButtonsToDraw(vec);
 	Toolbars[GATE].SetOrientation(Vertical);
 	Toolbars[GATE].SetDistance(UI.ToolItemWidth, UI.ToolBarHeight);
+	Toolbars[GATE].CreateButtons(this);
 	vec.clear();
 	for (int i = 20; i < 25; i++)
 	{
@@ -62,11 +65,8 @@ void Output::CreateToolBars()
 	ChangeTitle("Programming Techniques Project");
 
 	CreateToolBars();
-	Toolbars[DSGN].CreateButtons(this);	//Create the desgin toolbar
-	Toolbars[DSGN].Draw(this);
-	Toolbars[RightClick].SetPosition(GraphicsInfo(300, 200));
-	Toolbars[RightClick].CreateButtons(this);
-	Toolbars[RightClick].Draw(this);
+		//Create the desgin toolbar
+	
 	//Toolbars[DSGN].Erase(this);
 	CreateStatusBar();		//Create Status bar
 
@@ -135,28 +135,28 @@ void Output::ClearDrawingArea() const
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 //Draws the menu (toolbar) in the Design mode
-void Output::CreateDesignToolBar() const
+void Output::CreateDesignToolBar() 
 {
 	UI.AppMode = DESIGN;	//Design Mode
+	Toolbars[DSGN].Draw(this);
+	////You can draw the tool bar icons in any way you want.
 
-	//You can draw the tool bar icons in any way you want.
+	////First prepare List of images for each menu item
+	//string MenuItemImages[ITM_DSN_CNT];
+	//MenuItemImages[ITM_AND2] = "images\\Menu\\Menu_AND2.jpg";
+	//MenuItemImages[ITM_OR2]  = "images\\Menu\\Menu_OR2.jpg";
+	//MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
 
-	//First prepare List of images for each menu item
-	string MenuItemImages[ITM_DSN_CNT];
-	MenuItemImages[ITM_AND2] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_OR2]  = "images\\Menu\\Menu_OR2.jpg";
-	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
+	////TODO: Prepare image for each menu item and add it to the list
 
-	//TODO: Prepare image for each menu item and add it to the list
-
-	//Draw menu item one image at a time
-	for(int i=0; i<ITM_DSN_CNT; i++)
-		pWind->DrawImage(MenuItemImages[i],i*UI.ToolItemWidth,0,UI.ToolItemWidth, UI.ToolBarHeight);
+	////Draw menu item one image at a time
+	//for(int i=0; i<ITM_DSN_CNT; i++)
+	//	pWind->DrawImage(MenuItemImages[i],i*UI.ToolItemWidth,0,UI.ToolItemWidth, UI.ToolBarHeight);
 
 
-	//Draw a line under the toolbar
-	pWind->SetPen(RED,3);
-	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
+	////Draw a line under the toolbar
+	//pWind->SetPen(RED,3);
+	//pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -983,7 +983,7 @@ GraphicsInfo Output::DrawButon(int index,GraphicsInfo r_GfxInfo, PressType State
 }
 ActionType Output::GetReturnedAction(int index)
 {
-	return ButtonActions[index];;
+	return ButtonActions[index];
 }
 void Output::RegisterButton(GridItem * ptr)
 {

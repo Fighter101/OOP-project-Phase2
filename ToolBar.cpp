@@ -43,7 +43,7 @@ void ToolBar::CreateButtons(Output*pOut)
 	}
 	for (int i = 0; i < Indices.size(); i++)
 	{
-		Buttons[i].SetAction(pOut->GetReturnedAction(i));
+		Buttons[i].SetAction(pOut->GetReturnedAction(Indices[i]));
 	}
 }
 

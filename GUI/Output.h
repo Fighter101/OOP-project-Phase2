@@ -86,7 +86,7 @@ public:
 	Output(); // Performs the Window Initialization
 	Input* CreateInput() const; //creates a pointer to the Input object
 	void ChangeTitle(string Title) const;
-	void CreateDesignToolBar() const;	//Tool bar of the design mode
+	void CreateDesignToolBar();	//Tool bar of the design mode
 	void CreateSimulationToolBar() const;//Tool bar of the simulation mode
 	void CreateStatusBar() const;	//Create Status bar
 	void ClearStatusBar() const;		//Clears the status bar

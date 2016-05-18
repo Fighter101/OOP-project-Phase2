@@ -1,4 +1,3 @@
-//#include "Input.h"
 #include "Output.h"
 Graph *Input::Interface = new Graph;
 Input::Input(window* pW)
@@ -33,7 +32,10 @@ ActionType Input::GetUserAction() const
 	int x,y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 	GridItem*tmp = NULL;
-	return (Interface->getAction(GraphicsInfo(x, y)))->Leftpress(tmp);
+	tmp = Interface->getAction(GraphicsInfo(x, y));
+	if (tmp == NULL)
+		return DSN_AREA;
+	else return tmp->Leftpress(tmp);
 //	if(UI.AppMode == DESIGN )	//application is in design mode
 //	{
 //		//[1] If user clicks on the Toolbar
