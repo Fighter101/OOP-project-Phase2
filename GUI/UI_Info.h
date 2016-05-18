@@ -22,9 +22,10 @@ struct UI_Info	//User Interface Info.
 						ToolItemWidth = 60,//Width of each item in toolbar menu
 						Margain = 10,
 						GateBarHeight = 60,
-						PixelDenisty=5,
-						GridWidth = width / PixelDenisty,
-						GridHeight = height / PixelDenisty;
+						PixelDenisty = 5,
+						GridWidth = width / PixelDenisty + 1,
+						GridHeight = height / PixelDenisty + 1,
+						GateItemWidth = 80;
 
 	color DrawColor;		//Drawing color
 	color SelectColor;		//Highlighting color

@@ -1,7 +1,7 @@
 #include "Graph.h"
 Graph::Graph()
 {
-	Grid = new GridItem**[UI.width/5];
+	Grid = new GridItem**[UI.width/5+1];
 	for (int i = 0; i < UI.GridWidth; i++)
 	{
 		Grid[i] = new GridItem*[UI.height / 5];
