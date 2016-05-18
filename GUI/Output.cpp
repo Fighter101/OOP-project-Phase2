@@ -36,7 +36,7 @@ void Output::CreateToolBars()
 	}
 	Toolbars[GATE].ButtonsToDraw(vec);
 	Toolbars[GATE].SetOrientation(Vertical);
-	Toolbars[GATE].SetDistance(UI.ToolItemWidth, UI.ToolBarHeight);
+	Toolbars[GATE].SetDistance(UI.GateItemWidth, UI.ToolBarHeight);
 	Toolbars[GATE].SetPosition(GraphicsInfo(300, 0));
 	Toolbars[GATE].CreateButtons(this);
 	vec.clear();
@@ -56,7 +56,7 @@ void Output::CreateToolBars()
 	Toolbars[ADDBAR].ButtonsToDraw(vec);
 	Toolbars[ADDBAR].SetDistance(UI.ToolBarHeight, UI.GateBarHeight);
 	Toolbars[ADDBAR].SetOrientation(Vertical);
-	Toolbars[ADDBAR].SetPosition(GraphicsInfo(1000 - UI.ToolItemWidth, 165));
+	Toolbars[ADDBAR].SetPosition(GraphicsInfo(1000 - UI.GateItemWidth, 165));
 	Toolbars[ADDBAR].CreateButtons(this);
 }
 	Output::Output()
@@ -171,6 +171,10 @@ void Output::CreateDesignToolBar()
 	//pWind->SetPen(RED,3);
 	//pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 
+}
+void Output::EraseAddToolBar()
+{
+	Toolbars[ADDBAR].Erase(this);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 //Draws the menu (toolbar) in the simulation mode
@@ -991,37 +995,50 @@ GraphicsInfo Output::DeleteString(GraphicsInfo r_GfxInfo, PressType State)
 }
 GraphicsInfo Output::AndIcon(GraphicsInfo r_GfxInfo, PressType State)
 {
-	DrawAND2(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, State);
+	pWind->SetPen(BLACK, 3);
+	pWind->SetBrush(BLACK);
+	DrawAND2(GraphicsInfo(r_GfxInfo.x1 +UI.GateItemWidth/2-UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, State);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight,FRAME);
 	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
 }
 GraphicsInfo Output::ORIcon(GraphicsInfo r_GfxInfo, PressType State)
 {
-	DrawOR2(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	DrawOR2(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight,FRAME);
+
 	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
 }
 GraphicsInfo Output::XORIcon(GraphicsInfo r_GfxInfo, PressType State)
 {
-	DrawXOR2(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	DrawXOR2(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight,FRAME);
+
 	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
 }
 GraphicsInfo Output::LEDIcon(GraphicsInfo r_GfxInfo, PressType State)
 {
-	DrawLED(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	DrawLED(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 , r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight,FRAME);
+
 	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
 }
 GraphicsInfo Output::SwitchIcon(GraphicsInfo r_GfxInfo, PressType State)
 {
-	DrawSwitch(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	DrawSwitch(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight,FRAME);
+
 	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
 }
 GraphicsInfo Output::BufferIcon(GraphicsInfo r_GfxInfo, PressType State)
 {
-	DrawAND2(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	DrawBuffer(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false,false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight,FRAME);
 	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
 }
 GraphicsInfo Output::InverterIcon(GraphicsInfo r_GfxInfo, PressType State)
 {
-	DrawBuffer(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	DrawBuffer(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL,false, true);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight,FRAME);
 	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
 }
 GraphicsInfo Output::DrawButon(int index,GraphicsInfo r_GfxInfo, PressType State)
@@ -1038,11 +1055,13 @@ void Output::RegisterButton(GridItem * ptr)
 	Button*tmp = dynamic_cast<Button*> (ptr);
 	Interface->Register(GraphicsInfo(tmp->GetPosition().x1, tmp->GetPosition().y1, tmp->GetDimensions().x1 + tmp->GetPosition().x1, tmp->GetPosition().y1 + tmp->GetDimensions().x1), ptr);
 }
-void Output::EraseButton(GraphicsInfo r_GfxInfo)
+void Output::EraseButton(GridItem*ptr)
 {
 	pWind->SetPen(WHITE, 3);
 	pWind->SetBrush(WHITE);
-	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.ToolItemWidth, r_GfxInfo.y1 + UI.ToolBarHeight);
+	Button*tmp = dynamic_cast<Button*> (ptr);
+	pWind->DrawRectangle(tmp->GetPosition().x1, tmp->GetPosition().y1, tmp->GetDimensions().x1 + tmp->GetPosition().x1, tmp->GetPosition().y1 + tmp->GetDimensions().x1);
+	Interface->UNRegister(GraphicsInfo(tmp->GetPosition().x1, tmp->GetPosition().y1, tmp->GetDimensions().x1 + tmp->GetPosition().x1, tmp->GetPosition().y1 + tmp->GetDimensions().x1));
 }
 //======================================================================================//
 //								Gate Drawing Functions									//
@@ -1425,18 +1444,25 @@ void Output::DrawBuffer(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, boo
 		else
 			pWind->DrawCircle(r_GfxInfo.x2 + raduis - 2, r_GfxInfo.y2, raduis, FRAME);
 		pWind->DrawLine(r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y2, r_GfxInfo.x2 + raduis + UI.ConnectionDimensions + 1, r_GfxInfo.y2);
-		Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + raduis * 2, r_GfxInfo.y2 + UI.BufferDimensions / 2), ptr);
-		Interface->Register(GraphicsInfo(r_GfxInfo.x2 + raduis * 2, r_GfxInfo.y1, r_GfxInfo.x2 + raduis * 2 + UI.ConnectionDimensions, r_GfxInfo.y2 + UI.BufferDimensions / 2), &((Gate*)ptr)->GetOutputPin());
+		if (ptr != NULL)
+		{
+			Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + raduis * 2, r_GfxInfo.y2 + UI.BufferDimensions / 2), ptr);
+			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + raduis * 2, r_GfxInfo.y1, r_GfxInfo.x2 + raduis * 2 + UI.ConnectionDimensions, r_GfxInfo.y2 + UI.BufferDimensions / 2), &((Gate*)ptr)->GetOutputPin());
+		}
 	}
 	else
 	{
 		pWind->DrawLine(r_GfxInfo.x2 + -1, r_GfxInfo.y2, r_GfxInfo.x2 + UI.ConnectionDimensions - 1, r_GfxInfo.y2);
+		if (ptr != NULL)
 		Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + UI.ConnectionDimensions, r_GfxInfo.y1 + UI.BufferDimensions), &((Gate*)ptr)->GetOutputPin());
 	}
 
 	pWind->DrawLine(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y2, r_GfxInfo.x1, r_GfxInfo.y2);
-	Interface->Register(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2 + UI.BufferDimensions / 2), ptr);
-	Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2 + UI.BufferDimensions / 2), ((Gate*)ptr)->GetInputPins());
+	if (ptr != NULL)
+	{
+		Interface->Register(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2 + UI.BufferDimensions / 2), ptr);
+		Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2 + UI.BufferDimensions / 2), ((Gate*)ptr)->GetInputPins());
+	}
 }
 
 void Output::DrawBuffer(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected)
@@ -1488,8 +1514,11 @@ void Output::DrawSwitch(GraphicsInfo r_GfxInfo, GridItem*ptr, bool ON, bool sele
 	}
 	pWind->SetPen(BLACK, 3);
 	pWind->DrawLine(r_GfxInfo.x2, (r_GfxInfo.y2 + r_GfxInfo.y1) / 2, r_GfxInfo.x2 + UI.ConnectionDimensions, (r_GfxInfo.y2 + r_GfxInfo.y1) / 2);
-	Interface->Register(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2), ptr);
-	Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + UI.ConnectionDimensions, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());
+	if (ptr != NULL)
+	{
+		Interface->Register(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2), ptr);
+		Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + UI.ConnectionDimensions, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());
+	}
 }
 void Output::DrawSwitch(Gate * ptr)
 {
@@ -1531,8 +1560,11 @@ void Output::DrawLED(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool O
 		pWind->SetPen(BLACK, 3);
 	}
 	pWind->DrawRectangle(r_GfxInfo.x2 + 2, r_GfxInfo.y2 + 2, r_GfxInfo.x2 + 0.75*raduis, r_GfxInfo.y1 + 0.5*raduis - 1);
-	Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1 - raduis, r_GfxInfo.x2 + UI.LedDimensions, r_GfxInfo.y1 + raduis), ptr);
-	Interface->Register(GraphicsInfo(r_GfxInfo.x2 - UI.ConnectionDimensions, r_GfxInfo.y1 - raduis, r_GfxInfo.x2, r_GfxInfo.y1 + raduis), &((Gate*)ptr)->GetOutputPin());
+	if (ptr != NULL)
+	{
+		Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1 - raduis, r_GfxInfo.x2 + UI.LedDimensions, r_GfxInfo.y1 + raduis), ptr);
+		Interface->Register(GraphicsInfo(r_GfxInfo.x2 - UI.ConnectionDimensions, r_GfxInfo.y1 - raduis, r_GfxInfo.x2, r_GfxInfo.y1 + raduis), &((Gate*)ptr)->GetOutputPin());
+	}
 }
 
 void Output::DrawLED(Gate * ptr)

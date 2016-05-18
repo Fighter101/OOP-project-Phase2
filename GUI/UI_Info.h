@@ -25,7 +25,7 @@ struct UI_Info	//User Interface Info.
 						PixelDenisty = 5,
 						GridWidth = width / PixelDenisty + 1,
 						GridHeight = height / PixelDenisty + 1,
-						GateItemWidth = 80;
+						GateItemWidth = 100;
 
 	color DrawColor;		//Drawing color
 	color SelectColor;		//Highlighting color

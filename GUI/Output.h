@@ -48,7 +48,7 @@ private:
 
 	//Icon Array
 	GraphicsInfo (Output::*ButtonFunctions[32])(GraphicsInfo,  PressType State) = { &Output::MoveIcon,&Output::CopyIcon,&Output::PasteIcon,&Output::LabelIcon,&Output::EditIcon,&Output::DeleteIcon,&Output::AddIcon,&Output::ConnectIcon,&Output::SelectIcon,&Output::UndoIcon,&Output::RedoIcon,&Output::SaveIcon,&Output::LoadICon,&Output::BeginSimulationIcon,&Output::ExitIcon,&Output::TruthTabelIcon,&Output::ValidationIcon,&Output::SimulateIcon,&Output::ProbeIcon,&Output::ReturnDesign,&Output::MoveString,&Output::CutString,&Output::CopyString,&Output::PasteString,&Output::DeleteString,&Output::AndIcon,&Output::ORIcon,&Output::XORIcon,&Output::BufferIcon,&Output::InverterIcon,&Output::LEDIcon,&Output::SwitchIcon };
-	ActionType ButtonActions[32] = { MOVE,COPY,PASTE,ADD_Label,EDIT_Label,DEL,ActionType::ADD,ADD_CONNECTION,SELECT,UNDO,REDO,SAVE,SIM_MODE,EXIT,Create_TruthTable,VALIDATE,Change_Switch,PROBE,MOVE,CUT,COPY,PASTE,DEL,ADD_AND,ADD_OR,ADD_XOR,ADD_Buff,ADD_INV,ADD_LED,ADD_Switch };
+	ActionType ButtonActions[32] = { MOVE,COPY,PASTE,ADD_Label,EDIT_Label,DEL,ActionType::ADD,ADD_CONNECTION,SELECT,UNDO,REDO,SAVE,LOAD,SIM_MODE,EXIT,Create_TruthTable,VALIDATE,Change_Switch,PROBE,DSN_MODE,MOVE,CUT,COPY,PASTE,DEL,ADD_AND,ADD_OR,ADD_XOR,ADD_Buff,ADD_INV,ADD_LED,ADD_Switch };
 	ToolBar *Toolbars;
 	void CreateToolBars();
 	//Gates
@@ -96,6 +96,7 @@ public:
 	Input* CreateInput() const; //creates a pointer to the Input object
 	void ChangeTitle(string Title) const;
 	void CreateDesignToolBar();	//Tool bar of the design mode
+	
 	void CreateSimulationToolBar() const;//Tool bar of the simulation mode
 	void CreateStatusBar() const;	//Create Status bar
 	void ClearStatusBar() const;		//Clears the status bar
@@ -106,10 +107,14 @@ public:
 	GraphicsInfo DrawButon(int index, GraphicsInfo r_GfxInfo, PressType State);
 	ActionType GetReturnedAction(int index);
 	void RegisterButton( GridItem*ptr);
-	void EraseButton(GraphicsInfo r_GfxInfo);
+	void EraseButton(GridItem*ptr);
+	//////////////////////////////
+	//ToolBarDrawingFunctions
+	void CreateAddToolBar();
+	void EraseAddToolBar();
 	//Gate Drawing Functions
 	//AndGate
-	void CreateAddToolBar();
+
 	void DrawAND2(Gate * ptr);
 	void DrawNAND2(Gate * ptr);
 	void DrawAND3(Gate * ptr);

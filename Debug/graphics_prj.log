@@ -1,57 +1,10 @@
 ﻿  Output.cpp
-e:\oop projec-bgd\project code framework\gui\output.cpp(994): warning C4800: 'PressType': forcing value to bool 'true' or 'false' (performance warning)
-e:\oop projec-bgd\project code framework\gui\output.cpp(1505): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-e:\oop projec-bgd\project code framework\gui\output.cpp(1506): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-e:\oop projec-bgd\project code framework\gui\output.cpp(1507): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-e:\oop projec-bgd\project code framework\gui\output.cpp(1519): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-e:\oop projec-bgd\project code framework\gui\output.cpp(1520): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-e:\oop projec-bgd\project code framework\gui\output.cpp(1521): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-e:\oop projec-bgd\project code framework\gui\output.cpp(1533): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  ToolBar.cpp
-  GridItem.cpp
-  Graph.cpp
-  Input.cpp
-  XOR3.cpp
-  XOR2.cpp
-  XNOR3.cpp
-  XNOR2.cpp
-  SWITCH.cpp
-  Pin.cpp
-  OutputPin.cpp
-  OR3.cpp
-  OR2.cpp
-  NOR3.cpp
-  NOR2.cpp
-  NAND3.cpp
-  NAND2.cpp
-  LED.cpp
-  InputPin.cpp
-  INV.cpp
-  Gate.cpp
-  Connection.cpp
-  Component.cpp
-  Button.cpp
-  BUFF.cpp
-  AND3.cpp
-  AND2.cpp
-  ApplicationManager.cpp
-  AddToolBar.cpp
-  AddXORgate3.cpp
-  AddXORgate2.cpp
-  AddXNORgate3.cpp
-  AddXNORgate2.cpp
-  AddORgate3.cpp
-  AddORgate2.cpp
-  AddNORgate3.cpp
-  AddNORgate2.cpp
-  AddNANDgate3.cpp
-  AddNANDgate2.cpp
-  AddINV.cpp
-  AddCONNECTION.cpp
-  AddBUFF.cpp
-  AddANDgate3.cpp
-  AddANDgate2.cpp
-  graphics_prj.vcxproj -> E:\OOP projec-BGD\Project Code Framework\.\Debug\graphics_prj.exe
+g:\oop\project\oop-project-phase2\gui\output.cpp(1000): warning C4800: 'PressType': forcing value to bool 'true' or 'false' (performance warning)
+g:\oop\project\oop-project-phase2\gui\output.cpp(1534): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+g:\oop\project\oop-project-phase2\gui\output.cpp(1535): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+g:\oop\project\oop-project-phase2\gui\output.cpp(1536): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+g:\oop\project\oop-project-phase2\gui\output.cpp(1548): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+g:\oop\project\oop-project-phase2\gui\output.cpp(1549): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+g:\oop\project\oop-project-phase2\gui\output.cpp(1550): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+g:\oop\project\oop-project-phase2\gui\output.cpp(1562): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  graphics_prj.vcxproj -> G:\OOP\Project\OOP-project-Phase2\.\Debug\graphics_prj.exe

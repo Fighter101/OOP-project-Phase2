@@ -75,7 +75,7 @@ void Button::released()
 
 void Button::Erase(Output * pOut)
 {
-	pOut->EraseButton(r_GfxInfo);
+	pOut->EraseButton(this);
 }
 
 Button::~Button()

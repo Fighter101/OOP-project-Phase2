@@ -23,6 +23,10 @@ void Graph::Register(GraphicsInfo r_GfxInfo, GridItem * ptr)
 			Grid[ix + i][iy + j] = ptr;
 	}
 }
+void Graph::UNRegister(GraphicsInfo r_GfxInfo)
+{
+	Register(r_GfxInfo, NULL);
+}
 GridItem * Graph::getAction(GraphicsInfo Click)
 {
 	return Grid[Click.x1/5][Click.y1/5];
