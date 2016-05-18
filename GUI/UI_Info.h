@@ -21,7 +21,7 @@ struct UI_Info	//User Interface Info.
 						ToolBarHeight = 80,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
 						ToolItemWidth = 60,//Width of each item in toolbar menu
 						Margain = 10,
-						GateBarHeight = 90,
+						GateBarHeight = 60,
 						PixelDenisty=5,
 						GridWidth = width / PixelDenisty,
 						GridHeight = height / PixelDenisty;
@@ -45,7 +45,7 @@ struct UI_Info	//User Interface Info.
 						SwitchWidth = 40,
 						LedDimensions = 35;
 	static const int	RightClickItemHeight = 30,
-						RightClickItemWidth = 80;
+						RightClickItemWidth = 80;	
 }UI;	//create a single global object UI
 
 #endif

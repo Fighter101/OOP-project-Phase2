@@ -1,21 +1,17 @@
-﻿  Output.cpp
-e:\oop projec-bgd\project code framework\gui\output.cpp(1434): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-e:\oop projec-bgd\project code framework\gui\output.cpp(1435): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-e:\oop projec-bgd\project code framework\gui\output.cpp(1436): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-e:\oop projec-bgd\project code framework\gui\output.cpp(1448): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-e:\oop projec-bgd\project code framework\gui\output.cpp(1449): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-e:\oop projec-bgd\project code framework\gui\output.cpp(1450): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-e:\oop projec-bgd\project code framework\gui\output.cpp(1462): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-  Input.cpp
-  Generating Code...
-  Compiling...
-  main.cpp
+﻿  main.cpp
   ToolBar.cpp
 e:\oop projec-bgd\project code framework\toolbar.cpp(32): warning C4018: '<': signed/unsigned mismatch
 e:\oop projec-bgd\project code framework\toolbar.cpp(39): warning C4018: '<': signed/unsigned mismatch
 e:\oop projec-bgd\project code framework\toolbar.cpp(44): warning C4018: '<': signed/unsigned mismatch
 e:\oop projec-bgd\project code framework\toolbar.cpp(52): warning C4018: '<': signed/unsigned mismatch
 e:\oop projec-bgd\project code framework\toolbar.cpp(60): warning C4018: '<': signed/unsigned mismatch
+  GridItem.cpp
+  Graph.cpp
+e:\oop projec-bgd\project code framework\graph.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\oop projec-bgd\project code framework\graph.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Output.cpp
+e:\oop projec-bgd\project code framework\gui\output.cpp : fatal error C1083: Cannot open compiler generated file: '.\Debug\Output.sbr': Permission denied
+  Input.cpp
   XOR3.cpp
 e:\oop projec-bgd\project code framework\components\xor3.cpp(37): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
 e:\oop projec-bgd\project code framework\components\xor3.cpp(44): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
@@ -31,6 +27,7 @@ e:\oop projec-bgd\project code framework\components\xnor2.cpp(45): warning C4800
   SWITCH.cpp
 e:\oop projec-bgd\project code framework\components\switch.cpp(33): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
 e:\oop projec-bgd\project code framework\components\switch.cpp(40): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+  Pin.cpp
   OutputPin.cpp
   OR3.cpp
 e:\oop projec-bgd\project code framework\components\or3.cpp(36): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
@@ -53,6 +50,9 @@ e:\oop projec-bgd\project code framework\components\nand2.cpp(46): warning C4800
   LED.cpp
 e:\oop projec-bgd\project code framework\components\led.cpp(34): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
 e:\oop projec-bgd\project code framework\components\led.cpp(41): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
+  Generating Code...
+  Compiling...
+  InputPin.cpp
   INV.cpp
 e:\oop projec-bgd\project code framework\components\inv.cpp(32): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
 e:\oop projec-bgd\project code framework\components\inv.cpp(39): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
@@ -62,8 +62,6 @@ e:\oop projec-bgd\project code framework\components\connection.cpp(36): warning 
 e:\oop projec-bgd\project code framework\components\connection.cpp(42): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
   Component.cpp
   Button.cpp
-  Generating Code...
-  Compiling...
   BUFF.cpp
 e:\oop projec-bgd\project code framework\components\buff.cpp(33): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
 e:\oop projec-bgd\project code framework\components\buff.cpp(40): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
@@ -90,6 +88,8 @@ e:\oop projec-bgd\project code framework\applicationmanager.cpp(25): error C2440
   AddNORgate2.cpp
   AddNANDgate3.cpp
   AddNANDgate2.cpp
+  Generating Code...
+  Compiling...
   AddINV.cpp
   AddCONNECTION.cpp
   AddBUFF.cpp

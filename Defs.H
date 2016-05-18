@@ -9,6 +9,9 @@ enum ActionType
 	ADD,
 	ADD_Buff,			//Add 1-input Buffer gate
 	ADD_INV,			//Add 1-input Inverter gate
+	ADD_AND,
+	ADD_OR,
+	ADD_XOR,
 	ADD_AND_GATE_2,		//Add 2-input AND gate
 	ADD_OR_GATE_2,		//Add 2-input OR gate
 	ADD_NAND_GATE_2,	//Add 2-input NAND gate
@@ -141,7 +144,8 @@ enum TOOLBARS
 	DSGN,
 	GATE,
 	SIMU,
-	RightClick
+	RightClick,
+	ADDBAR
 };
 const STATUS operator&(const STATUS a, const STATUS b);
 const STATUS operator|(const STATUS a, const STATUS b);
