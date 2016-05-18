@@ -6,4 +6,46 @@ e:\oop projec-bgd\project code framework\gui\output.cpp(1448): warning C4244: 'a
 e:\oop projec-bgd\project code framework\gui\output.cpp(1449): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
 e:\oop projec-bgd\project code framework\gui\output.cpp(1450): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
 e:\oop projec-bgd\project code framework\gui\output.cpp(1462): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  ToolBar.cpp
+  Input.cpp
+  XOR3.cpp
+  XOR2.cpp
+  XNOR3.cpp
+  XNOR2.cpp
+  SWITCH.cpp
+  OutputPin.cpp
+  OR3.cpp
+  OR2.cpp
+  NOR3.cpp
+  NOR2.cpp
+  NAND3.cpp
+  NAND2.cpp
+  LED.cpp
+  INV.cpp
+  Gate.cpp
+  Connection.cpp
+  Component.cpp
+  Button.cpp
+  BUFF.cpp
+  AND3.cpp
+  AND2.cpp
+  ApplicationManager.cpp
+  AddXORgate3.cpp
+  AddXORgate2.cpp
+  AddXNORgate3.cpp
+  AddXNORgate2.cpp
+  AddORgate3.cpp
+  AddORgate2.cpp
+  AddNORgate3.cpp
+  AddNORgate2.cpp
+  AddNANDgate3.cpp
+  AddNANDgate2.cpp
+  AddINV.cpp
+  AddCONNECTION.cpp
+  AddBUFF.cpp
+  AddANDgate3.cpp
+  AddANDgate2.cpp
   graphics_prj.vcxproj -> E:\OOP projec-BGD\Project Code Framework\.\Debug\graphics_prj.exe

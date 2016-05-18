@@ -1,9 +1,6 @@
 #pragma once
-
-//#include "..\CMUgraphicsLib\CMUgraphics.h"
-//#include "UI_Info.h"
 #include"..\Graph.h"
-
+#include"..\Essentials.h"
 class Output;
 class Input		//The application manager should have a pointer to this class
 {
@@ -15,7 +12,7 @@ public:
 	void GetPointClicked(int &, int &);	//Get coordinate where user clicks
 	string GetSrting(Output*);		//Returns a string entered by the user
 	static Graph*GetGraph();
-	ActionType GetUserAction() const; //Reads the user click and maps it to an action
+	pair< ActionType,vector<GridItem*> > GetUserAction() const; //Reads the user click and maps it to an action
 
 	~Input();
 };

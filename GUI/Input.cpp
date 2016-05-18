@@ -1,4 +1,5 @@
 #include "Output.h"
+#include"..\Components\Gate.h"
 Graph *Input::Interface = new Graph;
 Input::Input(window* pW)
 {
@@ -27,50 +28,17 @@ Graph * Input::GetGraph()
 }
 
 //This function reads the position where the user clicks to determine the desired action
-ActionType Input::GetUserAction() const
+pair< ActionType, vector<GridItem*> > Input::GetUserAction() const
 {	
+	vector<GridItem*> ReturnedPointers;
 	int x,y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 	GridItem*tmp = NULL;
 	tmp = Interface->getAction(GraphicsInfo(x, y));
 	if (tmp == NULL)
-		return DSN_AREA;
-	else return tmp->Leftpress(tmp);
-//	if(UI.AppMode == DESIGN )	//application is in design mode
-//	{
-//		//[1] If user clicks on the Toolbar
-//		if ( y >= 0 && y < UI.ToolBarHeight)
-//		{	
-//			//Check whick Menu item was clicked
-//			//==> This assumes that menu items are lined up horizontally <==
-//			int ClickedItemOrder = (x / UI.ToolItemWidth);
-//			//Divide x coord of the point clicked by the menu item width (int division)
-//			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
-//
-//			switch (ClickedItemOrder)
-//			{
-//			case ITM_AND2: return ADD_AND_GATE_2;
-//			case ITM_OR2: return ADD_OR_GATE_2;
-//			case ITM_EXIT: return EXIT;	
-//			
-//			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
-//			}
-//		}
-//	
-//		//[2] User clicks on the drawing area
-//		if ( y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
-//		{
-//			return SELECT;	//user want to select/unselect a statement in the flowchart
-//		}
-//		
-//		//[3] User clicks on the status bar
-//		return STATUS_BAR;
-//	}
-//	else	//Application is in Simulation mode
-//	{
-//		return SIM_MODE;	//This should be changed after creating the compelete simulation bar 
-//	}
-//
+		return make_pair(DSN_AREA,ReturnedPointers);
+	else if (dynamic_cast<Gate*>(tmp));
+
 }
 
 
