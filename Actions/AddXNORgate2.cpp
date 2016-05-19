@@ -46,6 +46,7 @@ void AddXNORgate2::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	XNOR2 *pA = new XNOR2(GInfo);
 	pManager->AddComponent(pA);
+	pA->Draw(pManager->GetOutput());
 }
 
 void AddXNORgate2::Undo()

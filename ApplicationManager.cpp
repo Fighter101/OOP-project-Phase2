@@ -1,11 +1,45 @@
 #include "ApplicationManager.h"
 #include"AddToolBar.h"
-#include"Actions\AddBUFF.h"
-#include"Actions\AddINV.h"
-#include"Actions\AddANDgate2.h"
-#include"Actions\AddORgate2.h"
+#include"Actions\AddCONNECTION.h" 
 #include"Actions\AddNANDgate2.h"
+#include"Actions\AddORgate3.h"    
+#include"Actions\AddXORgate2.h"       
+#include"Actions\DEL.h"
+#include"Actions\EXIT.h"  
+#include"Actions\SELECT.h"
+#include"Actions\AddANDgate2.h"  
+#include"Actions\AddGATEBAR.h"     
+#include"Actions\AddNANDgate3.h"  
+#include"Actions\AddOR.h"
+#include"Actions\AddXORgate3.h"       
+#include"Actions\DrwngArea.h"   
+#include"Actions\LOAD.h"
+#include"Actions\SIMMODE.h"
+#include"Actions\AddANDgate3.h"
+#include"Actions\AddINV.h"
 #include"Actions\AddNORgate2.h"
+#include"Actions\AddSWITCH.h"
+#include"Actions\AddXOR.h"
+#include"Actions\DSNMODE.h"     
+#include"Actions\MOVE.h"  
+#include"Actions\STATUSBAR.h"
+#include"Actions\AddAND.h"
+#include"Actions\AddLabel.h"
+#include"Actions\AddNORgate3.h"
+#include"Actions\AddXNORgate2.h"
+#include"Actions\ChangeSwitch.h"
+#include"Actions\DSNTOOL.h"
+#include"Actions\REDO.h"
+#include"Actions\UNDO.h"
+#include"Actions\AddBUFF.h"      
+#include"Actions\AddLED.h"   
+#include"Actions\AddORgate2.h"
+#include"Actions\AddXNORgate3.h"
+#include"Actions\CreateTruthTable.h"
+#include"Actions\EditeLabel.h"
+#include"Actions\SAVE.h"
+
+
 Action * ApplicationManager::ActionCreator(ActionType x)
 {
 	switch (x)
@@ -29,67 +63,97 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return new AddNANDgate2(this);
 		break;
 	case ADD_NOR_GATE_2:
-
+		return new AddNORgate2(this);
 		break;
 	case ADD_XOR_GATE_2:
+		return new AddXORgate2(this);
 		break;
 	case ADD_XNOR_GATE_2:
+		return new AddXNORgate2(this);
 		break;
 	case ADD_AND_GATE_3:
+		return new AddANDgate3(this);
 		break;
 	case ADD_NOR_GATE_3:
+		return new AddNORgate3(this);
 		break;
 	case ADD_XOR_GATE_3:
+		return new AddXORgate3(this);
 		break;
 	case ADD_Switch:
+		return nullptr;
 		break;
 	case ADD_LED:
+		return nullptr;
 		break;
 	case ADD_CONNECTION:
+		return nullptr;
 		break;
 	case ADD_Label:
+		return nullptr;
 		break;
 	case EDIT_Label:
+		return nullptr;
 		break;
 	case Create_TruthTable:
+		return nullptr;
 		break;
 	case Change_Switch:
+		return nullptr;
 		break;
 	case SELECT:
+		return nullptr;
 		break;
 	case DEL:
+		return nullptr;
 		break;
 	case MOVE:
+		return nullptr;
 		break;
 	case COPY:
+		return nullptr;
 		break;
 	case CUT:
+		return nullptr;
 		break;
 	case PASTE:
+		return nullptr;
 		break;
 	case VALIDATE:
+		return nullptr;
 		break;
 	case SAVE:
+		return nullptr;
 		break;
 	case LOAD:
+		return nullptr;
 		break;
 	case PROBE:
+		return nullptr;
 		break;
 	case UNDO:
+		return nullptr;
 		break;
 	case REDO:
+		return nullptr;
 		break;
 	case DSN_MODE:
+		return nullptr;
 		break;
 	case SIM_MODE:
+		return nullptr;
 		break;
 	case EXIT:
+		return nullptr;
 		break;
 	case STATUS_BAR:
+		return nullptr;
 		break;
 	case DSN_TOOL:
+		return nullptr;
 		break;
 	case DSN_AREA:
+		return nullptr;
 		break;
 	default:
 		return nullptr;

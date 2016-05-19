@@ -46,6 +46,7 @@ void AddXORgate2::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	XOR2 *pA = new XOR2(GInfo);
 	pManager->AddComponent(pA);
+	pA->Draw(pManager->GetOutput());
 }
 
 void AddXORgate2::Undo()

@@ -46,6 +46,7 @@ void AddXORgate3::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	XOR3 *pA = new XOR3(GInfo);
 	pManager->AddComponent(pA);
+	pA->Draw(pManager->GetOutput());
 }
 
 void AddXORgate3::Undo()

@@ -46,6 +46,7 @@ void AddNORgate3::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	NOR3 *pA = new NOR3(GInfo);
 	pManager->AddComponent(pA);
+	pA->Draw(pManager->GetOutput());
 }
 
 void AddNORgate3::Undo()
