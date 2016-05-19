@@ -266,10 +266,6 @@ void Output::EraseAddToolBar()
 //								Components Drawing Functions							//
 //======================================================================================//
 
-void Output::DrawConnection(GraphicsInfo r_GfxInfo, bool selected) const
-{
-	//TODO: Add code to draw connection
-}
 GraphicsInfo Output::DetermineState(GraphicsInfo r_GfxInfo, PressType State)
 {
 	switch (State)
@@ -598,7 +594,7 @@ GraphicsInfo Output::ConnectIcon( GraphicsInfo r_GfxInfo, PressType State)
 	}
 	pWind->DrawCircle(r_GfxInfo.x1 + UI.Margain, r_GfxInfo.y1 + UI.Margain + 40, 6, FILLED);
 	pWind->DrawCircle(r_GfxInfo.x1 + 40 + UI.Margain, r_GfxInfo.y1 + UI.Margain, 6, FILLED);
-	//connect(GraphicsInfo(r_GfxInfo.x1 + UI.Margain, r_GfxInfo.y1 + UI.Margain + 40, r_GfxInfo.x1 + 40 + UI.Margain, r_GfxInfo.y1 + UI.Margain));
+	Connect(GraphicsInfo(r_GfxInfo.x1 + UI.Margain, r_GfxInfo.y1 + UI.Margain + 40, r_GfxInfo.x1 + 40 + UI.Margain, r_GfxInfo.y1 + UI.Margain));
 	pWind->SetFont(15, BOLD, BY_NAME, "Arial");
 	pWind->DrawString(r_GfxInfo.x1 + -2 + UI.Margain, r_GfxInfo.y1 + UI.ToolItemWidth, "Connect");
 	return (GraphicsInfo(UI.ToolItemWidth, UI.ToolBarHeight));
@@ -1188,6 +1184,14 @@ GraphicsInfo Output::XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State)
 	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
 	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
 }
+void Output::DrawConnection(vector<pair<int, int>> Points)
+{
+	pWind->SetPen(BLACK, 3);
+	for (size_t i = 0; i < Points.size() - 1; i++)
+	{
+		pWind->DrawLine(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second);
+	}
+}
 GraphicsInfo Output::DrawButon(int index,GraphicsInfo r_GfxInfo, PressType State)
 {
 	return(this->*ButtonFunctions[index])(r_GfxInfo,State);
@@ -1717,6 +1721,13 @@ void Output::DrawLED(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool O
 void Output::DrawLED(Gate * ptr)
 {
 	DrawLED(ptr->GetPosition(), ptr, ptr->GetState());
+}
+
+vector<pair<int,int> > Output::Connect(GraphicsInfo r_GfxInfo, bool selected) 
+{
+	vector<pair<int, int> >Points = Interface->Connect(r_GfxInfo);
+	DrawConnection(Points);
+	return Points;
 }
 
 //Destructor
