@@ -15,10 +15,10 @@ public:
 	Component(const GraphicsInfo &r_GfxInfo);
 	virtual void Operate() = 0;	//Calculates the output according to the inputs
 	virtual void Draw(Output* pOut) = 0;	//for each component to Draw itself
-	virtual ActionType Leftpress(GridItem*) = 0;
-	virtual ActionType RightPress(GridItem*) = 0;
-	virtual void hover() = 0;
-	virtual void released() = 0;
+	virtual ActionType Leftpress();
+	virtual ActionType RightPress();
+	virtual void hover();
+	virtual void released();
 	
 	virtual bool GetOutPinStatus()=0;	//returns status of outputpin if LED, return -1
 	virtual bool GetInputPinStatus(int n)=0;	//returns status of Inputpin # n if SWITCH, return -1

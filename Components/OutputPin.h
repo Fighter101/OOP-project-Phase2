@@ -14,8 +14,8 @@ class Connection;	//Forward class declartion
 class OutputPin: public Pin	//inherited from class Pin
 {
 private:
-	virtual ActionType Leftpress(GridItem*);
-	virtual ActionType RightPress(GridItem*);
+	virtual ActionType Leftpress();
+	virtual ActionType RightPress();
 	virtual void hover();
 	virtual void released();
 	//Array of connections (poniters) to be connected to that OutputPin

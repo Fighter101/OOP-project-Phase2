@@ -1,12 +1,12 @@
 #include "OutputPin.h"
 #include "Connection.h"
 
-ActionType OutputPin::Leftpress(GridItem *)
+ActionType OutputPin::Leftpress()
 {
 	return SELECT;
 }
 
-ActionType OutputPin::RightPress(GridItem *)
+ActionType OutputPin::RightPress()
 {
 	return SELECT;
 }

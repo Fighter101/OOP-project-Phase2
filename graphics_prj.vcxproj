@@ -159,8 +159,9 @@
     <ClCompile Include="Actions\EditeLabel.cpp" />
     <ClCompile Include="Actions\EXIT.cpp" />
     <ClCompile Include="Actions\LOAD.cpp" />
-    <ClCompile Include="Actions\MOVE.cpp" />
+    <ClCompile Include="Actions\CUT.cpp" />
     <ClCompile Include="Actions\ORToolBar.cpp" />
+    <ClCompile Include="Actions\Paste.cpp" />
     <ClCompile Include="Actions\REDO.cpp" />
     <ClCompile Include="Actions\SAVE.cpp" />
     <ClCompile Include="Actions\SELECT.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Actions\STATUSBAR.cpp" />
     <ClCompile Include="Actions\UNDO.cpp" />
     <ClCompile Include="Actions\XORToolBar.cpp" />
+    <ClCompile Include="Clipboard\Clipboard.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />
@@ -274,8 +276,9 @@
     <ClInclude Include="Actions\EditeLabel.h" />
     <ClInclude Include="Actions\EXIT.h" />
     <ClInclude Include="Actions\LOAD.h" />
-    <ClInclude Include="Actions\MOVE.h" />
+    <ClInclude Include="Actions\CUT.h" />
     <ClInclude Include="Actions\ORToolBar.h" />
+    <ClInclude Include="Actions\Paste.h" />
     <ClInclude Include="Actions\REDO.h" />
     <ClInclude Include="Actions\SAVE.h" />
     <ClInclude Include="Actions\SELECT.h" />
@@ -283,6 +286,7 @@
     <ClInclude Include="Actions\STATUSBAR.h" />
     <ClInclude Include="Actions\UNDO.h" />
     <ClInclude Include="Actions\XORToolBar.h" />
+    <ClInclude Include="Clipboard\Clipboard.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />

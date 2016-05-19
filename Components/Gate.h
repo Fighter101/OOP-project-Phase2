@@ -27,11 +27,7 @@ public:
 	virtual void SetState(bool r_selected);
 	virtual GraphicsInfo GetPosition();
 	virtual bool GetState();
-	virtual ActionType Leftpress(GridItem*);
-	virtual ActionType RightPress(GridItem*);
-	virtual void hover();
-	virtual void released();
-
+	
 };
 
 #endif

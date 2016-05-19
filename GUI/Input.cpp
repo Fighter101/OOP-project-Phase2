@@ -40,7 +40,7 @@ pair< ActionType, vector<GridItem*> > Input::GetUserAction() const
 
 	{
 		ReturnedPointers.push_back(tmp);
-		return make_pair(tmp->Leftpress(NULL), ReturnedPointers);
+		return make_pair(tmp->Leftpress(), ReturnedPointers);
 	}
 
 }
