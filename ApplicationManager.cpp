@@ -105,7 +105,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case ADD_CONNECTION:
-		return nullptr;
+		return new AddCONNECTION(this);
 		break;
 	case ADD_Label:
 		return nullptr;
@@ -180,6 +180,23 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	
 
 }
+
+void ApplicationManager::CheckPoint(int & Cx, int & Cy)
+{
+
+	bool success = true;
+	while (success)
+	{
+		InputInterface->GetPointClicked(Cx, Cy);
+		if (Cx == -1 || Cy == -1)
+			OutputInterface->PrintMsg("Out of Design Area, Please Click Inside the Drawing Area");
+		else if (Cx == -2 || Cy == -2)
+			OutputInterface->PrintMsg("You've Clicked on an Existing Component, Please Click Somewhere Free");
+		else
+			success = false;
+	}
+}
+
 vector<Component*> ApplicationManager::getMetaData()
 {
 	return MetaData;

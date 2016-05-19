@@ -22,7 +22,9 @@ private:
 	vector<Component*>MetaData;
 	Action* ActionCreator(ActionType);
 	Clipboard clip;
+
 public:	
+	void CheckPoint(int &Cx, int &Cy);
 	vector<Component*> getMetaData();
 	vector<Component*> getClipboard();
 	void setClipboard(vector<Component*>);

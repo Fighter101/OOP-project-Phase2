@@ -7,19 +7,20 @@ AddBUFF::AddBUFF(ApplicationManager *pApp) :Action(pApp)
 
 AddBUFF::~AddBUFF(void)
 {
+
 }
 
 void AddBUFF::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
-	Input* pIn = pManager->GetInput();
+	
 
 	//Print Action Message
 	pOut->PrintMsg("Adding a Buffer Gate; Click to add the gate");
 
 	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	pManager->CheckPoint(Cx, Cy);
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();
@@ -36,12 +37,9 @@ void AddBUFF::Execute()
 	int Wdth = UI.BufferDimensions;
 
 	
-	GraphicsInfo GInfo; //Gfx info to be used to construct the Buffer
+	GraphicsInfo GInfo(Cx, Cy); //Gfx info to be used to construct the Buffer
 
-	GInfo.x1 = Cx - Len / 2;
-	GInfo.x2 = Cx + Len / 2;
-	GInfo.y1 = Cy - Wdth / 2;
-	GInfo.y2 = Cy + Wdth / 2;
+
 	BUFF *pA = new BUFF(GInfo);
 	pManager->AddComponent(pA);
 	pA->Draw(pManager->GetOutput());

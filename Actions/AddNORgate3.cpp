@@ -13,13 +13,13 @@ void AddNORgate3::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
-	Input* pIn = pManager->GetInput();
+
 
 	//Print Action Message
 	pOut->PrintMsg("3-Input NOR Gate: Click to add the gate");
 
 	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	pManager->CheckPoint(Cx, Cy);
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();
@@ -38,12 +38,9 @@ void AddNORgate3::Execute()
 	//int Len =  UI.NOR3_Width;
 	//int Wdth = UI.NOR3_Height;
 
-	GraphicsInfo GInfo; //Gfx info to be used to construct the NOR3 gate
+	GraphicsInfo GInfo(Cx, Cy); //Gfx info to be used to construct the NOR3 gate
 
-	GInfo.x1 = Cx - Len / 2;
-	GInfo.x2 = Cx + Len / 2;
-	GInfo.y1 = Cy - Wdth / 2;
-	GInfo.y2 = Cy + Wdth / 2;
+	
 	NOR3 *pA = new NOR3(GInfo);
 	pManager->AddComponent(pA);
 	pA->Draw(pManager->GetOutput());

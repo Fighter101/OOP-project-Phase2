@@ -13,13 +13,13 @@ void AddORgate3::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
-	Input* pIn = pManager->GetInput();
+
 
 	//Print Action Message
 	pOut->PrintMsg("3-Input OR Gate: Click to add the gate");
 
 	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	pManager->CheckPoint(Cx, Cy);
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();
@@ -38,12 +38,9 @@ void AddORgate3::Execute()
 	//int Len =  UI.OR3_Width;
 	//int Wdth = UI.OR3_Height;
 
-	GraphicsInfo GInfo; //Gfx info to be used to construct the OR3 gate
+	GraphicsInfo GInfo(Cx, Cy); //Gfx info to be used to construct the OR3 gate
 
-	GInfo.x1 = Cx - Len / 2;
-	GInfo.x2 = Cx + Len / 2;
-	GInfo.y1 = Cy - Wdth / 2;
-	GInfo.y2 = Cy + Wdth / 2;
+
 	OR3 *pA = new OR3(GInfo);
 	pManager->AddComponent(pA);
 	pA->Draw(pManager->GetOutput());
