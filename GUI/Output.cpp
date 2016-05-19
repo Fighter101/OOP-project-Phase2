@@ -77,10 +77,6 @@ void Output::CreateToolBars()
 	ChangeTitle("Programming Techniques Project");
 
 	CreateToolBars();
-		//Create the desgin toolbar
-	Toolbars[DSGN].Draw(this);
-	//CreateAddToolBar();
-	//Toolbars[DSGN].Erase(this);
 	CreateStatusBar();		//Create Status bar
 
 }
@@ -151,7 +147,7 @@ void Output::ClearDrawingArea() const
 void Output::CreateDesignToolBar() 
 {
 	UI.AppMode = DESIGN;	//Design Mode
-	Toolbars[GATE].Draw(this);
+	Toolbars[DSGN].Draw(this);
 	////You can draw the tool bar icons in any way you want.
 
 	////First prepare List of images for each menu item
@@ -171,6 +167,10 @@ void Output::CreateDesignToolBar()
 	//pWind->SetPen(RED,3);
 	//pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 
+}
+void Output::EraseDesingToolBar()
+{
+	Toolbars[DSGN].Draw(this);
 }
 void Output::EraseAddToolBar()
 {
