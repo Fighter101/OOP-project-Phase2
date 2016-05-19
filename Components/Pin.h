@@ -8,8 +8,8 @@ class Pin :public GridItem
 protected:
 	STATUS m_Status;	//Status of the Pin
 public:
-	virtual ActionType Leftpress(GridItem*) = 0;
-	virtual ActionType RightPress(GridItem*) = 0;
+	virtual ActionType Leftpress() = 0;
+	virtual ActionType RightPress() = 0;
 	virtual void hover() = 0;
 	virtual void released() = 0;
 	Pin();

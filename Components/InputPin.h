@@ -8,8 +8,8 @@ class InputPin: public Pin	//inherited from class Pin
 {
 	Component* pComp; //Component at which this pin is associated
 public:
-	virtual ActionType Leftpress(GridItem*);
-	virtual ActionType RightPress(GridItem*);
+	virtual ActionType Leftpress();
+	virtual ActionType RightPress();
 	virtual void hover();
 	virtual void released();
 	InputPin();

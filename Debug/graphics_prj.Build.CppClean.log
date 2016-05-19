@@ -1,234 +1,246 @@
-g:\oop\project\oop-project-phase2\debug\graphics_prj.bsc
-g:\oop\project\oop-project-phase2\debug\vc140.pdb
-g:\oop\project\oop-project-phase2\debug\vc140.idb
-g:\oop\project\oop-project-phase2\debug\toolbar.sbr
-g:\oop\project\oop-project-phase2\debug\main.sbr
-g:\oop\project\oop-project-phase2\debug\output.sbr
-g:\oop\project\oop-project-phase2\debug\input.sbr
-g:\oop\project\oop-project-phase2\debug\griditem.sbr
-g:\oop\project\oop-project-phase2\debug\graph.sbr
-g:\oop\project\oop-project-phase2\debug\defs.sbr
-g:\oop\project\oop-project-phase2\debug\xor3.sbr
-g:\oop\project\oop-project-phase2\debug\xor2.sbr
-g:\oop\project\oop-project-phase2\debug\xor.sbr
-g:\oop\project\oop-project-phase2\debug\xnor3.sbr
-g:\oop\project\oop-project-phase2\debug\xnor2.sbr
-g:\oop\project\oop-project-phase2\debug\switch.sbr
-g:\oop\project\oop-project-phase2\debug\applicationmanager.sbr
-g:\oop\project\oop-project-phase2\debug\pin.sbr
-g:\oop\project\oop-project-phase2\debug\outputpin.sbr
-g:\oop\project\oop-project-phase2\debug\or3.sbr
-g:\oop\project\oop-project-phase2\debug\or2.sbr
-g:\oop\project\oop-project-phase2\debug\or.sbr
-g:\oop\project\oop-project-phase2\debug\nor3.sbr
-g:\oop\project\oop-project-phase2\debug\nor3.obj
-g:\oop\project\oop-project-phase2\debug\or.obj
-g:\oop\project\oop-project-phase2\debug\or2.obj
-g:\oop\project\oop-project-phase2\debug\or3.obj
-g:\oop\project\oop-project-phase2\debug\outputpin.obj
-g:\oop\project\oop-project-phase2\debug\pin.obj
-g:\oop\project\oop-project-phase2\debug\applicationmanager.obj
-g:\oop\project\oop-project-phase2\debug\switch.obj
-g:\oop\project\oop-project-phase2\debug\xnor2.obj
-g:\oop\project\oop-project-phase2\debug\xnor3.obj
-g:\oop\project\oop-project-phase2\debug\xor.obj
-g:\oop\project\oop-project-phase2\debug\xor2.obj
-g:\oop\project\oop-project-phase2\debug\xor3.obj
-g:\oop\project\oop-project-phase2\debug\defs.obj
-g:\oop\project\oop-project-phase2\debug\graph.obj
-g:\oop\project\oop-project-phase2\debug\griditem.obj
-g:\oop\project\oop-project-phase2\debug\input.obj
-g:\oop\project\oop-project-phase2\debug\output.obj
-g:\oop\project\oop-project-phase2\debug\main.obj
-g:\oop\project\oop-project-phase2\debug\toolbar.obj
-g:\oop\project\oop-project-phase2\debug\nor2.sbr
-g:\oop\project\oop-project-phase2\debug\nand3.sbr
-g:\oop\project\oop-project-phase2\debug\nand2.sbr
-g:\oop\project\oop-project-phase2\debug\led.sbr
-g:\oop\project\oop-project-phase2\debug\inv.sbr
-g:\oop\project\oop-project-phase2\debug\inputpin.sbr
-g:\oop\project\oop-project-phase2\debug\gatebar.sbr
-g:\oop\project\oop-project-phase2\debug\gate.sbr
-g:\oop\project\oop-project-phase2\debug\connection.sbr
-g:\oop\project\oop-project-phase2\debug\component.sbr
-g:\oop\project\oop-project-phase2\debug\button.sbr
-g:\oop\project\oop-project-phase2\debug\buff.sbr
-g:\oop\project\oop-project-phase2\debug\and3.sbr
-g:\oop\project\oop-project-phase2\debug\and2.sbr
-g:\oop\project\oop-project-phase2\debug\and.sbr
-g:\oop\project\oop-project-phase2\debug\windowinput.sbr
-g:\oop\project\oop-project-phase2\debug\mousequeue.sbr
-g:\oop\project\oop-project-phase2\debug\keyqueue.sbr
-g:\oop\project\oop-project-phase2\debug\image.sbr
-g:\oop\project\oop-project-phase2\debug\cmugraphics.sbr
-g:\oop\project\oop-project-phase2\debug\cmugraphics.obj
-g:\oop\project\oop-project-phase2\debug\image.obj
-g:\oop\project\oop-project-phase2\debug\keyqueue.obj
-g:\oop\project\oop-project-phase2\debug\mousequeue.obj
-g:\oop\project\oop-project-phase2\debug\windowinput.obj
-g:\oop\project\oop-project-phase2\debug\and.obj
-g:\oop\project\oop-project-phase2\debug\and2.obj
-g:\oop\project\oop-project-phase2\debug\and3.obj
-g:\oop\project\oop-project-phase2\debug\buff.obj
-g:\oop\project\oop-project-phase2\debug\button.obj
-g:\oop\project\oop-project-phase2\debug\component.obj
-g:\oop\project\oop-project-phase2\debug\connection.obj
-g:\oop\project\oop-project-phase2\debug\gate.obj
-g:\oop\project\oop-project-phase2\debug\gatebar.obj
-g:\oop\project\oop-project-phase2\debug\inputpin.obj
-g:\oop\project\oop-project-phase2\debug\inv.obj
-g:\oop\project\oop-project-phase2\debug\led.obj
-g:\oop\project\oop-project-phase2\debug\nand2.obj
-g:\oop\project\oop-project-phase2\debug\nand3.obj
-g:\oop\project\oop-project-phase2\debug\nor2.obj
-g:\oop\project\oop-project-phase2\debug\auxil.sbr
-g:\oop\project\oop-project-phase2\debug\addtoolbar.sbr
-g:\oop\project\oop-project-phase2\debug\undo.sbr
-g:\oop\project\oop-project-phase2\debug\statusbar.sbr
-g:\oop\project\oop-project-phase2\debug\simmode.sbr
-g:\oop\project\oop-project-phase2\debug\select.sbr
-g:\oop\project\oop-project-phase2\debug\save.sbr
-g:\oop\project\oop-project-phase2\debug\redo.sbr
-g:\oop\project\oop-project-phase2\debug\move.sbr
-g:\oop\project\oop-project-phase2\debug\load.sbr
-g:\oop\project\oop-project-phase2\debug\exit.sbr
-g:\oop\project\oop-project-phase2\debug\editelabel.sbr
-g:\oop\project\oop-project-phase2\debug\dsntool.sbr
-g:\oop\project\oop-project-phase2\debug\dsnmode.sbr
-g:\oop\project\oop-project-phase2\debug\drwngarea.sbr
-g:\oop\project\oop-project-phase2\debug\del.sbr
-g:\oop\project\oop-project-phase2\debug\createtruthtable.sbr
-g:\oop\project\oop-project-phase2\debug\changeswitch.sbr
-g:\oop\project\oop-project-phase2\debug\addxorgate3.sbr
-g:\oop\project\oop-project-phase2\debug\addxorgate2.sbr
-g:\oop\project\oop-project-phase2\debug\addxorgate2.obj
-g:\oop\project\oop-project-phase2\debug\addxorgate3.obj
-g:\oop\project\oop-project-phase2\debug\changeswitch.obj
-g:\oop\project\oop-project-phase2\debug\createtruthtable.obj
-g:\oop\project\oop-project-phase2\debug\del.obj
-g:\oop\project\oop-project-phase2\debug\drwngarea.obj
-g:\oop\project\oop-project-phase2\debug\dsnmode.obj
-g:\oop\project\oop-project-phase2\debug\dsntool.obj
-g:\oop\project\oop-project-phase2\debug\editelabel.obj
-g:\oop\project\oop-project-phase2\debug\exit.obj
-g:\oop\project\oop-project-phase2\debug\load.obj
-g:\oop\project\oop-project-phase2\debug\move.obj
-g:\oop\project\oop-project-phase2\debug\redo.obj
-g:\oop\project\oop-project-phase2\debug\save.obj
-g:\oop\project\oop-project-phase2\debug\select.obj
-g:\oop\project\oop-project-phase2\debug\simmode.obj
-g:\oop\project\oop-project-phase2\debug\statusbar.obj
-g:\oop\project\oop-project-phase2\debug\undo.obj
-g:\oop\project\oop-project-phase2\debug\addtoolbar.obj
-g:\oop\project\oop-project-phase2\debug\auxil.obj
-g:\oop\project\oop-project-phase2\debug\addxor.sbr
-g:\oop\project\oop-project-phase2\debug\addxnorgate3.sbr
-g:\oop\project\oop-project-phase2\debug\addxnorgate2.sbr
-g:\oop\project\oop-project-phase2\debug\addswitch.sbr
-g:\oop\project\oop-project-phase2\debug\addorgate3.sbr
-g:\oop\project\oop-project-phase2\debug\addorgate2.sbr
-g:\oop\project\oop-project-phase2\debug\addor.sbr
-g:\oop\project\oop-project-phase2\debug\addnorgate3.sbr
-g:\oop\project\oop-project-phase2\debug\addnorgate2.sbr
-g:\oop\project\oop-project-phase2\debug\addnandgate3.sbr
-g:\oop\project\oop-project-phase2\debug\addnandgate2.sbr
-g:\oop\project\oop-project-phase2\debug\addled.sbr
-g:\oop\project\oop-project-phase2\debug\addlabel.sbr
-g:\oop\project\oop-project-phase2\debug\addinv.sbr
-g:\oop\project\oop-project-phase2\debug\addgatebar.sbr
-g:\oop\project\oop-project-phase2\debug\addconnection.sbr
-g:\oop\project\oop-project-phase2\debug\addbuff.sbr
-g:\oop\project\oop-project-phase2\debug\addandgate3.sbr
-g:\oop\project\oop-project-phase2\debug\addandgate2.sbr
-g:\oop\project\oop-project-phase2\debug\addand.sbr
-g:\oop\project\oop-project-phase2\debug\addand.obj
-g:\oop\project\oop-project-phase2\debug\addandgate2.obj
-g:\oop\project\oop-project-phase2\debug\addandgate3.obj
-g:\oop\project\oop-project-phase2\debug\addbuff.obj
-g:\oop\project\oop-project-phase2\debug\addconnection.obj
-g:\oop\project\oop-project-phase2\debug\addgatebar.obj
-g:\oop\project\oop-project-phase2\debug\addinv.obj
-g:\oop\project\oop-project-phase2\debug\addlabel.obj
-g:\oop\project\oop-project-phase2\debug\addled.obj
-g:\oop\project\oop-project-phase2\debug\addnandgate2.obj
-g:\oop\project\oop-project-phase2\debug\addnandgate3.obj
-g:\oop\project\oop-project-phase2\debug\addnorgate2.obj
-g:\oop\project\oop-project-phase2\debug\addnorgate3.obj
-g:\oop\project\oop-project-phase2\debug\addor.obj
-g:\oop\project\oop-project-phase2\debug\addorgate2.obj
-g:\oop\project\oop-project-phase2\debug\addorgate3.obj
-g:\oop\project\oop-project-phase2\debug\addswitch.obj
-g:\oop\project\oop-project-phase2\debug\addxnorgate2.obj
-g:\oop\project\oop-project-phase2\debug\addxnorgate3.obj
-g:\oop\project\oop-project-phase2\debug\addxor.obj
-g:\oop\project\oop-project-phase2\debug\jutils.sbr
-g:\oop\project\oop-project-phase2\debug\jquant2.sbr
-g:\oop\project\oop-project-phase2\debug\jquant1.sbr
-g:\oop\project\oop-project-phase2\debug\jmemnobs.sbr
-g:\oop\project\oop-project-phase2\debug\jmemmgr.sbr
-g:\oop\project\oop-project-phase2\debug\jidctred.sbr
-g:\oop\project\oop-project-phase2\debug\jidctint.sbr
-g:\oop\project\oop-project-phase2\debug\jidctfst.sbr
-g:\oop\project\oop-project-phase2\debug\jidctflt.sbr
-g:\oop\project\oop-project-phase2\debug\jerror.sbr
-g:\oop\project\oop-project-phase2\debug\jdtrans.sbr
-g:\oop\project\oop-project-phase2\debug\jdsample.sbr
-g:\oop\project\oop-project-phase2\debug\jdpostct.sbr
-g:\oop\project\oop-project-phase2\debug\jdphuff.sbr
-g:\oop\project\oop-project-phase2\debug\jdmerge.sbr
-g:\oop\project\oop-project-phase2\debug\jdmaster.sbr
-g:\oop\project\oop-project-phase2\debug\jdmarker.sbr
-g:\oop\project\oop-project-phase2\debug\jdmainct.sbr
-g:\oop\project\oop-project-phase2\debug\jdinput.sbr
-g:\oop\project\oop-project-phase2\debug\jdhuff.sbr
-g:\oop\project\oop-project-phase2\debug\jdhuff.obj
-g:\oop\project\oop-project-phase2\debug\jdinput.obj
-g:\oop\project\oop-project-phase2\debug\jdmainct.obj
-g:\oop\project\oop-project-phase2\debug\jdmarker.obj
-g:\oop\project\oop-project-phase2\debug\jdmaster.obj
-g:\oop\project\oop-project-phase2\debug\jdmerge.obj
-g:\oop\project\oop-project-phase2\debug\jdphuff.obj
-g:\oop\project\oop-project-phase2\debug\jdpostct.obj
-g:\oop\project\oop-project-phase2\debug\jdsample.obj
-g:\oop\project\oop-project-phase2\debug\jdtrans.obj
-g:\oop\project\oop-project-phase2\debug\jerror.obj
-g:\oop\project\oop-project-phase2\debug\jidctflt.obj
-g:\oop\project\oop-project-phase2\debug\jidctfst.obj
-g:\oop\project\oop-project-phase2\debug\jidctint.obj
-g:\oop\project\oop-project-phase2\debug\jidctred.obj
-g:\oop\project\oop-project-phase2\debug\jmemmgr.obj
-g:\oop\project\oop-project-phase2\debug\jmemnobs.obj
-g:\oop\project\oop-project-phase2\debug\jquant1.obj
-g:\oop\project\oop-project-phase2\debug\jquant2.obj
-g:\oop\project\oop-project-phase2\debug\jutils.obj
-g:\oop\project\oop-project-phase2\debug\jddctmgr.sbr
-g:\oop\project\oop-project-phase2\debug\jdcolor.sbr
-g:\oop\project\oop-project-phase2\debug\jdcoefct.sbr
-g:\oop\project\oop-project-phase2\debug\jdatasrc.sbr
-g:\oop\project\oop-project-phase2\debug\jdapistd.sbr
-g:\oop\project\oop-project-phase2\debug\jdapimin.sbr
-g:\oop\project\oop-project-phase2\debug\jcparam.sbr
-g:\oop\project\oop-project-phase2\debug\jcomapi.sbr
-g:\oop\project\oop-project-phase2\debug\jpegload.sbr
-g:\oop\project\oop-project-phase2\debug\jpegload.obj
-g:\oop\project\oop-project-phase2\debug\jcomapi.obj
-g:\oop\project\oop-project-phase2\debug\jcparam.obj
-g:\oop\project\oop-project-phase2\debug\jdapimin.obj
-g:\oop\project\oop-project-phase2\debug\jdapistd.obj
-g:\oop\project\oop-project-phase2\debug\jdatasrc.obj
-g:\oop\project\oop-project-phase2\debug\jdcoefct.obj
-g:\oop\project\oop-project-phase2\debug\jdcolor.obj
-g:\oop\project\oop-project-phase2\debug\jddctmgr.obj
-g:\oop\project\oop-project-phase2\debug\graphics_prj.ilk
-g:\oop\project\oop-project-phase2\debug\graphics_prj.exe
-g:\oop\project\oop-project-phase2\debug\graphics_prj.pdb
-g:\oop\project\oop-project-phase2\.\debug\graphics_prj.exe
-g:\oop\project\oop-project-phase2\debug\graphics_prj.tlog\bscmake.command.1.tlog
-g:\oop\project\oop-project-phase2\debug\graphics_prj.tlog\bscmake.read.1.tlog
-g:\oop\project\oop-project-phase2\debug\graphics_prj.tlog\bscmake.write.1.tlog
-g:\oop\project\oop-project-phase2\debug\graphics_prj.tlog\cl.command.1.tlog
-g:\oop\project\oop-project-phase2\debug\graphics_prj.tlog\cl.read.1.tlog
-g:\oop\project\oop-project-phase2\debug\graphics_prj.tlog\cl.write.1.tlog
-g:\oop\project\oop-project-phase2\debug\graphics_prj.tlog\link.command.1.tlog
-g:\oop\project\oop-project-phase2\debug\graphics_prj.tlog\link.read.1.tlog
-g:\oop\project\oop-project-phase2\debug\graphics_prj.tlog\link.write.1.tlog
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graphics_prj.bsc
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\vc140.pdb
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\vc140.idb
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\toolbar.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\main.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\output.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\input.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\griditem.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graph.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\defs.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\xor3.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\xor2.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\xor.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\xnor3.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\xnor2.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\switch.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\applicationmanager.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\pin.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\outputpin.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\or3.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\or2.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\or.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\nor3.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\nor3.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\or.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\or2.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\or3.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\outputpin.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\pin.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\applicationmanager.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\switch.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\xnor2.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\xnor3.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\xor.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\xor2.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\xor3.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\defs.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graph.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\griditem.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\input.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\output.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\main.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\toolbar.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\nor2.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\nand3.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\nand2.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\led.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\inv.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\inputpin.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\gatebar.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\gate.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\connection.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\component.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\button.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\buff.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\and3.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\and2.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\and.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\windowinput.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\mousequeue.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\keyqueue.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\image.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\cmugraphics.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\cmugraphics.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\image.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\keyqueue.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\mousequeue.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\windowinput.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\and.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\and2.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\and3.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\buff.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\button.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\component.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\connection.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\gate.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\gatebar.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\inputpin.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\inv.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\led.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\nand2.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\nand3.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\nor2.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\auxil.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addtoolbar.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\undo.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\statusbar.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\simmode.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\select.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\save.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\redo.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\move.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\load.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\exit.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\editelabel.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\dsntool.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\dsnmode.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\drwngarea.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\del.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\createtruthtable.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\changeswitch.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addxorgate3.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addxorgate2.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addxorgate2.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addxorgate3.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\changeswitch.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\createtruthtable.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\del.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\drwngarea.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\dsnmode.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\dsntool.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\editelabel.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\exit.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\load.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\move.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\redo.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\save.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\select.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\simmode.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\statusbar.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\undo.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addtoolbar.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\auxil.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addxor.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addxnorgate3.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addxnorgate2.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addswitch.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addorgate3.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addorgate2.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addor.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addnorgate3.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addnorgate2.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addnandgate3.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addnandgate2.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addled.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addlabel.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addinv.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addgatebar.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addconnection.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addbuff.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addandgate3.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addandgate2.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addand.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addand.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addandgate2.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addandgate3.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addbuff.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addconnection.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addgatebar.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addinv.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addlabel.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addled.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addnandgate2.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addnandgate3.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addnorgate2.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addnorgate3.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addor.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addorgate2.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addorgate3.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addswitch.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addxnorgate2.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addxnorgate3.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\addxor.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jutils.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jquant2.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jquant1.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jmemnobs.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jmemmgr.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jidctred.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jidctint.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jidctfst.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jidctflt.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jerror.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdtrans.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdsample.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdpostct.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdphuff.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdmerge.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdmaster.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdmarker.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdmainct.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdinput.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdhuff.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdhuff.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdinput.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdmainct.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdmarker.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdmaster.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdmerge.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdphuff.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdpostct.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdsample.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdtrans.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jerror.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jidctflt.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jidctfst.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jidctint.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jidctred.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jmemmgr.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jmemnobs.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jquant1.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jquant2.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jutils.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jddctmgr.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdcolor.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdcoefct.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdatasrc.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdapistd.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdapimin.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jcparam.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jcomapi.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jpegload.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jpegload.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jcomapi.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jcparam.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdapimin.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdapistd.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdatasrc.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdcoefct.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jdcolor.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\jddctmgr.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\andtoolbar.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\andtoolbar.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\xortoolbar.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\ortoolbar.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\ortoolbar.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\xortoolbar.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\clipboard.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\paste.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\cut.sbr
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\paste.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\clipboard.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\cut.obj
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graphics_prj.ilk
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graphics_prj.exe
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graphics_prj.pdb
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\.\debug\graphics_prj.exe
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graphics_prj.tlog\bscmake.command.1.tlog
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graphics_prj.tlog\bscmake.read.1.tlog
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graphics_prj.tlog\bscmake.write.1.tlog
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graphics_prj.tlog\cl.command.1.tlog
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graphics_prj.tlog\cl.read.1.tlog
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graphics_prj.tlog\cl.write.1.tlog
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graphics_prj.tlog\link.command.1.tlog
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graphics_prj.tlog\link.read.1.tlog
+c:\users\ahmad elsayed\source\repos\oop-project-phase2\debug\graphics_prj.tlog\link.write.1.tlog

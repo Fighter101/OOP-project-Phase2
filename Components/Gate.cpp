@@ -40,20 +40,3 @@ bool Gate::GetState()
 	return Selected;
 }
 
-ActionType Gate::Leftpress(GridItem *)
-{
-	return ActionType();
-}
-
-ActionType Gate::RightPress(GridItem *)
-{
-	return ActionType();
-}
-
-void Gate::hover()
-{
-}
-
-void Gate::released()
-{
-}

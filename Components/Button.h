@@ -21,8 +21,8 @@ public:
 	GraphicsInfo GetPosition();
 	void Erase(Output* pOut);
 	void Draw(Output*pOut);
-	virtual ActionType Leftpress(GridItem*);
-	virtual ActionType RightPress(GridItem*);
+	virtual ActionType Leftpress();
+	virtual ActionType RightPress();
 	virtual void hover();
 	virtual void released();
 	~Button();

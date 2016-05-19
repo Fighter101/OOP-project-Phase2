@@ -1,11 +1,11 @@
 #include "InputPin.h"
 
-ActionType InputPin::Leftpress(GridItem *)
+ActionType InputPin::Leftpress()
 {
 	return SELECT;
 }
 
-ActionType InputPin::RightPress(GridItem *)
+ActionType InputPin::RightPress()
 {
 	return SELECT;
 }

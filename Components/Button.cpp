@@ -55,12 +55,12 @@ void Button::Draw(Output * pOut)
 	pOut->RegisterButton(this);
 }
 
-ActionType Button::Leftpress(GridItem *)
+ActionType Button::Leftpress()
 {
 	return ReturnedAction;
 }
 
-ActionType Button::RightPress(GridItem *)
+ActionType Button::RightPress()
 {
 	return ReturnedAction;
 }
