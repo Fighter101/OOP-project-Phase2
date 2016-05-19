@@ -1292,7 +1292,7 @@ void Output::DrawAND2(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected)
 
 void Output::DrawNAND2(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected)
 {
-	DrawAND(r_GfxInfo,ptr, selected);
+	DrawAND(r_GfxInfo,ptr, selected,true);
 }
 
 void Output::DrawAND3(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected)
@@ -1723,4 +1723,5 @@ void Output::DrawLED(Gate * ptr)
 Output::~Output()
 {
 	delete pWind;
+	delete[] Toolbars;
 }
