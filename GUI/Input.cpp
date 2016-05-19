@@ -8,6 +8,17 @@ Input::Input(window* pW)
 void Input::GetPointClicked(int &x, int &y)
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
+	if (x<UI.GateItemWidth || x>UI.width-UI.GateItemWidth || y<UI.ToolBarHeight || y>UI.height-UI.StatusBarHeight)
+	{
+		x = -1;
+		y = -1;
+	}
+	GridItem*tmp=Interface->getAction(GraphicsInfo(x, y));
+	if (tmp != NULL)
+	{
+		x = -2;
+		y = -2;
+	}
 }
 
 string Input::GetSrting(Output *pOut)
