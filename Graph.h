@@ -13,6 +13,7 @@ private:
 	
 public:
 	Graph();
+	GridItem* Available(GraphicsInfo r_GfxInfo);
 	void Register(GraphicsInfo r_GfxInfo, GridItem * ptr);
 	void UNRegister(GraphicsInfo r_GfxInfo);
 	GridItem * getAction(GraphicsInfo Click);

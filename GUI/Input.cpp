@@ -5,7 +5,7 @@ Input::Input(window* pW)
 	pWind = pW; //point to the passed window
 }
 
-void Input::GetPointClicked(int &x, int &y)
+GridItem* Input::GetPointClicked(int &x, int &y,Comps Comp)
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 	if (x<UI.GateItemWidth || x>UI.width-UI.GateItemWidth || y<UI.ToolBarHeight || y>UI.height-UI.StatusBarHeight)
@@ -18,6 +18,19 @@ void Input::GetPointClicked(int &x, int &y)
 	{
 		x = -2;
 		y = -2;
+	}
+	switch (Comp)	
+	{
+	case _GATE_:
+		return Interface->Available(GraphicsInfo(x - UI.AllGateDimensions/2-5, y -UI.AllGateDimensions/2-5, x-UI.AllGateDimensions/2+UI.InverterDimensions+UI.ConnectionDimensions, y + UI.AllGateDimensions/2));
+		break;
+	case _BUFFER_:
+		return Interface->Available(GraphicsInfo(x - UI.BufferDimensions / 2 - UI.ConnectionDimensions, y - UI.BufferDimensions, x + UI.BufferDimensions / 2 + UI.ConnectionDimensions, y + UI.BufferDimensions / 2));
+	case _SWITCH_:
+		return Interface->Available(GraphicsInfo(x - UI.SwitchWidth / 2 - UI.ConnectionDimensions - 5, y - UI.SwitchHeight / 2, x + UI.SwitchWidth / 2 + UI.ConnectionDimensions + 5, y + UI.SwitchHeight / 2));
+		break;
+	default:
+		break;
 	}
 }
 

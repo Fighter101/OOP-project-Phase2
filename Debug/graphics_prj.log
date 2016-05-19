@@ -1,2 +1,6 @@
-﻿  Input.cpp
+﻿  Graph.cpp
+e:\oop projec-bgd\project code framework\graph.cpp(75): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\oop projec-bgd\project code framework\graph.cpp(76): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\oop projec-bgd\project code framework\graph.cpp(89): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\oop projec-bgd\project code framework\graph.cpp(90): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   graphics_prj.vcxproj -> E:\OOP projec-BGD\Project Code Framework\.\Debug\graphics_prj.exe

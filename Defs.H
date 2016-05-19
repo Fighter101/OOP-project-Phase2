@@ -159,7 +159,12 @@ const STATUS operator&(const STATUS a, const STATUS b);
 const STATUS operator|(const STATUS a, const STATUS b);
 const STATUS operator^(const STATUS a, const STATUS b);
 const STATUS operator~(const STATUS a);
-
+enum Comps
+{
+	_GATE_,
+	_BUFFER_,
+	_SWITCH_,
+};
 
 #ifndef NULL
 #define NULL 0
