@@ -46,6 +46,7 @@ void AddNANDgate3::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	NAND3 *pA = new NAND3(GInfo);
 	pManager->AddComponent(pA);
+	pA->Draw(pManager->GetOutput());
 }
 
 void AddNANDgate3::Undo()

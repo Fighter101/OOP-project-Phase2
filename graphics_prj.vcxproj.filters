@@ -317,7 +317,16 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Defs.cpp" />
-    <ClCompile Include="AddToolBar.cpp">
+    <ClCompile Include="Actions\ANDToolBar.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\AddToolBar.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ORToolBar.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\XORToolBar.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -601,7 +610,16 @@
     <ClInclude Include="Actions\UNDO.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="AddToolBar.h">
+    <ClInclude Include="Actions\ANDToolBar.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddToolBar.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ORToolBar.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\XORToolBar.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

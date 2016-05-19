@@ -1,10 +1,2 @@
-﻿  Output.cpp
-g:\oop\project\oop-project-phase2\gui\output.cpp(1075): warning C4800: 'PressType': forcing value to bool 'true' or 'false' (performance warning)
-g:\oop\project\oop-project-phase2\gui\output.cpp(1681): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-g:\oop\project\oop-project-phase2\gui\output.cpp(1682): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-g:\oop\project\oop-project-phase2\gui\output.cpp(1683): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-g:\oop\project\oop-project-phase2\gui\output.cpp(1695): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-g:\oop\project\oop-project-phase2\gui\output.cpp(1696): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-g:\oop\project\oop-project-phase2\gui\output.cpp(1697): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-g:\oop\project\oop-project-phase2\gui\output.cpp(1709): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-  graphics_prj.vcxproj -> G:\OOP\Project\OOP-project-Phase2\.\Debug\graphics_prj.exe
+﻿  ApplicationManager.cpp
+  graphics_prj.vcxproj -> C:\Users\Ahmad Elsayed\Source\Repos\OOP-project-Phase2\.\Debug\graphics_prj.exe

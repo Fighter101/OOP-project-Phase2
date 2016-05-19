@@ -1,5 +1,5 @@
 #include "ApplicationManager.h"
-#include"AddToolBar.h"
+#include"Actions\AddToolBar.h"
 #include"Actions\AddCONNECTION.h" 
 #include"Actions\AddNANDgate2.h"
 #include"Actions\AddORgate3.h"    
@@ -38,14 +38,24 @@
 #include"Actions\CreateTruthTable.h"
 #include"Actions\EditeLabel.h"
 #include"Actions\SAVE.h"
-
-
+#include"Actions\ANDToolBar.h"
+#include"Actions\ORToolBar.h"
+#include"Actions\XORToolBar.h"
 Action * ApplicationManager::ActionCreator(ActionType x)
 {
 	switch (x)
 	{
 	case ADD:
 		return new AddToolBar(this);
+		break;
+	case ADD_AND:
+		return new ANDToolBar(this);
+		break;
+	case ADD_OR:
+		return new ORToolBar(this);
+		break;
+	case ADD_XOR:
+		return new XORToolBar(this);
 		break;
 	case ADD_Buff:
 		return new AddBUFF(this);
@@ -74,11 +84,17 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	case ADD_AND_GATE_3:
 		return new AddANDgate3(this);
 		break;
+	case ADD_NAND_GATE_3:
+		return new AddNANDgate3(this);
+		break;
 	case ADD_NOR_GATE_3:
 		return new AddNORgate3(this);
 		break;
 	case ADD_XOR_GATE_3:
 		return new AddXORgate3(this);
+		break;
+	case ADD_XNOR_GATE_3:
+		return new AddXNORgate3(this);
 		break;
 	case ADD_Switch:
 		return nullptr;
@@ -159,8 +175,9 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	}
-}
+	
 
+}
 ApplicationManager::ApplicationManager()
 {
 	//Creates the Input / Output Objects & Initialize the GUI
