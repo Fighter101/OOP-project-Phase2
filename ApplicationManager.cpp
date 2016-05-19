@@ -21,7 +21,7 @@
 #include"Actions\AddSWITCH.h"
 #include"Actions\AddXOR.h"
 #include"Actions\DSNMODE.h"     
-#include"Actions\MOVE.h"  
+#include"Actions\CUT.h"  
 #include"Actions\STATUSBAR.h"
 #include"Actions\AddAND.h"
 #include"Actions\AddLabel.h"
@@ -96,6 +96,8 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	case ADD_XNOR_GATE_3:
 		return new AddXNORgate3(this);
 		break;
+	case ADD_OR_GATE_3:
+		return new AddORgate3(this);
 	case ADD_Switch:
 		return nullptr;
 		break;
@@ -178,6 +180,35 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	
 
 }
+vector<Component*> ApplicationManager::getMetaData()
+{
+	return MetaData;
+}
+vector<Component*> ApplicationManager::getClipboard()
+{
+	return	clip.pull();
+}
+void ApplicationManager::setClipboard(vector<Component*>x)
+{
+	clip.push(x);
+}
+void ApplicationManager::DeleteThis(vector<Component*>x)
+{
+	for (size_t i = 0; i < x.size(); i++)
+	{
+		for (size_t j = 0; j < ComponentList.size(); j++)
+		{
+			if (x[i] == ComponentList[j])
+			{
+				delete x[i];
+				x.erase(x.begin() + j);
+				ComponentList.erase(ComponentList.begin() + j);
+				//Erase Interface
+				break;
+			}
+		}
+	}
+}
 ApplicationManager::ApplicationManager()
 {
 	//Creates the Input / Output Objects & Initialize the GUI
@@ -197,7 +228,7 @@ ActionType ApplicationManager::GetUserAction()
 	pair<ActionType, vector<GridItem*>> x= InputInterface->GetUserAction(); 
 	for (size_t i = 0; i < x.second.size(); i++)
 	{
-		temp.push_back((Component*) x.second[i]);
+		MetaData.push_back((Component*) x.second[i]);
 	}
 	return x.first;
 
@@ -242,10 +273,7 @@ ApplicationManager::~ApplicationManager()
 	{
 		delete ComponentList[i];
 	}
-	for (size_t i = 0; i < temp.size(); i++)
-	{
-		delete temp[i];
-	}
+	
 	delete OutputInterface;
 	delete InputInterface;
 	

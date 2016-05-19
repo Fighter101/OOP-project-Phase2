@@ -295,9 +295,6 @@
     <ClCompile Include="Actions\LOAD.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\MOVE.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\REDO.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -327,6 +324,15 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\XORToolBar.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Clipboard\Clipboard.cpp">
+      <Filter>Clipboard</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\CUT.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Paste.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -589,9 +595,6 @@
     <ClInclude Include="Actions\LOAD.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\MOVE.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
     <ClInclude Include="Actions\REDO.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -622,6 +625,15 @@
     <ClInclude Include="Actions\XORToolBar.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Clipboard\Clipboard.h">
+      <Filter>Clipboard</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\CUT.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Paste.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Actions">
@@ -641,6 +653,9 @@
     </Filter>
     <Filter Include="GUI">
       <UniqueIdentifier>{e9b7c77c-4258-4c7f-a59e-a041dec06954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Clipboard">
+      <UniqueIdentifier>{223e3306-d1ec-4325-a1ca-0529d5e33de2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

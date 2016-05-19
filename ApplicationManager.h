@@ -6,8 +6,7 @@
 #include "GUI\Input.h"
 #include "Actions\Action.h"
 #include "Components\Component.h"
-#include<vector>
-
+#include"Clipboard\Clipboard.h"
 //Main class that manages everything in the application.
 class ApplicationManager
 {
@@ -20,9 +19,15 @@ private:
 
 
 private:
-	vector<Component*>temp;
+	vector<Component*>MetaData;
 	Action* ActionCreator(ActionType);
+	Clipboard clip;
 public:	
+	vector<Component*> getMetaData();
+	vector<Component*> getClipboard();
+	void setClipboard(vector<Component*>);
+	void DeleteThis(vector<Component*>);
+
 	ApplicationManager(); //constructor
 
 	//Reads the required action from the user and returns the corresponding action type
