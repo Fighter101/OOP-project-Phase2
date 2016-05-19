@@ -4,7 +4,7 @@
 #include"..\Components\Gate.h"
 void Output::CreateToolBars()
 {
-	Toolbars = new ToolBar[5];
+	Toolbars = new ToolBar[TOOLBARCNT];
 	//////////////////////////////////////Design Tool Bar////////////////
 	Toolbars[DSGN].SetPosition(GraphicsInfo(230, 0));
 	vector<int>vec;
@@ -35,10 +35,11 @@ void Output::CreateToolBars()
 		vec.push_back(i);
 	}
 	Toolbars[GATE].ButtonsToDraw(vec);
-	Toolbars[GATE].SetOrientation(Vertical);
+	Toolbars[GATE].SetOrientation(Horizontal);
 	Toolbars[GATE].SetDistance(UI.GateItemWidth, UI.ToolBarHeight);
-	Toolbars[GATE].SetPosition(GraphicsInfo(300, 0));
+	Toolbars[GATE].SetPosition(GraphicsInfo(350, 0));
 	Toolbars[GATE].CreateButtons(this);
+	////////////////////////////////////
 	vec.clear();
 	for (int i = 20; i < 25; i++)
 	{
@@ -58,6 +59,39 @@ void Output::CreateToolBars()
 	Toolbars[ADDBAR].SetOrientation(Vertical);
 	Toolbars[ADDBAR].SetPosition(GraphicsInfo(1000 - UI.GateItemWidth, 165));
 	Toolbars[ADDBAR].CreateButtons(this);
+	///////////////////////////////////////////////
+	vec.clear();
+	for (int i = 32; i < 36; i++)
+	{
+		vec.push_back(i);
+	}
+	Toolbars[ADDANDBAR].ButtonsToDraw(vec);
+	Toolbars[ADDANDBAR].SetDistance(UI.GateItemWidth, UI.GateBarHeight);
+	Toolbars[ADDANDBAR].SetOrientation(Vertical);
+	Toolbars[ADDANDBAR].SetPosition(GraphicsInfo(0, 255));
+	Toolbars[ADDANDBAR].CreateButtons(this);
+	//////////////////////////////////////////////
+	vec.clear();
+	for (int i = 36; i < 40; i++)
+	{
+		vec.push_back(i);
+	}
+	Toolbars[ADDORBAR].ButtonsToDraw(vec);
+	Toolbars[ADDORBAR].SetDistance(UI.GateItemWidth, UI.GateBarHeight);
+	Toolbars[ADDORBAR].SetOrientation(Vertical);
+	Toolbars[ADDORBAR].SetPosition(GraphicsInfo(0, 255));
+	Toolbars[ADDORBAR].CreateButtons(this);
+	//////////////////////////////////
+	vec.clear();
+	for (int i = 40; i < 44; i++)
+	{
+		vec.push_back(i);
+	}
+	Toolbars[ADDXORBAR].ButtonsToDraw(vec);
+	Toolbars[ADDXORBAR].SetDistance(UI.GateItemWidth, UI.GateBarHeight);
+	Toolbars[ADDXORBAR].SetOrientation(Vertical);
+	Toolbars[ADDXORBAR].SetPosition(GraphicsInfo(0, 255));
+	Toolbars[ADDXORBAR].CreateButtons(this);
 }
 	Output::Output()
 {
@@ -69,7 +103,7 @@ void Output::CreateToolBars()
 	UI.DrawColor = BLACK;
 	UI.SelectColor = BLUE;
 	UI.ConnColor = RED;
-	UI.MsgColor = BLUE;
+	UI.MsgColor = WHITE;
 	UI.BkGrndColor = WHITE;
 	this->Interface = Input::GetGraph();
 	//Create the drawing window
@@ -77,6 +111,7 @@ void Output::CreateToolBars()
 	ChangeTitle("Programming Techniques Project");
 
 	CreateToolBars();
+	CreateDesignToolBar();
 	CreateStatusBar();		//Create Status bar
 
 }
@@ -105,8 +140,9 @@ void Output::ChangeTitle(string Title) const
 //////////////////////////////////////////////////////////////////////////////////
 void Output::CreateStatusBar() const
 {
-	pWind->SetPen(RED,3);
-	pWind->DrawLine(0, UI.height-UI.StatusBarHeight, UI.width, UI.height-UI.StatusBarHeight);
+	pWind->SetPen(BLACK,3);
+	pWind->SetBrush(BLACK);
+	pWind->DrawRectangle(UI.SatusBarStart, UI.height, 100+UI.StatusBarWidth, UI.height-UI.StatusBarHeight,FILLED,5,5);
 }
 //////////////////////////////////////////////////////////////////////////////////
 void Output::PrintMsg(string msg) const
@@ -119,7 +155,7 @@ void Output::PrintMsg(string msg) const
 	// Print the Message
     pWind->SetFont(20, BOLD | ITALICIZED, BY_NAME, "Arial"); 
 	pWind->SetPen(UI.MsgColor); 
-	pWind->DrawString(MsgX, UI.height - MsgY, msg);
+	pWind->DrawString(UI.SatusBarStart+MsgX, UI.height - MsgY, msg);
 }
 //////////////////////////////////////////////////////////////////////////////////
 void Output::ClearStatusBar()const
@@ -129,9 +165,7 @@ void Output::ClearStatusBar()const
 	int MsgY = UI.StatusBarHeight - 10;
 
 	//Overwrite using bachground color to erase the message
-	pWind->SetPen(UI.BkGrndColor);
-	pWind->SetBrush(UI.BkGrndColor);
-	pWind->DrawRectangle(MsgX, UI.height - MsgY, UI.width, UI.height);
+	CreateStatusBar();
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 //Clears the drawing (degin) area
@@ -168,24 +202,65 @@ void Output::CreateDesignToolBar()
 	//pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 
 }
-void Output::EraseDesingToolBar()
+void Output::EraseDesignToolBar()
 {
 	Toolbars[DSGN].Draw(this);
+}
+void Output::CreateGatesToolBar()
+{
+	Toolbars[GATE].Draw(this);
+}
+void Output::EraseGatesToolBar()
+{
+	Toolbars[GATE].Erase(this);
+}
+void Output::CreateSimulationToolBar()
+{
+	Toolbars[SIMU].Draw(this);
+}
+void Output::EraseSimulationToolBar()
+{
+	Toolbars[SIMU].Erase(this);
+}
+void Output::CreateRightClickToolBar(GraphicsInfo r_GfxInfo)
+{
+	Toolbars[RightClick].SetPosition(r_GfxInfo);
+	Toolbars[RightClick].CreateButtons(this);
+	Toolbars[RightClick].Draw(this);
+}
+void Output::EraseRightClickToolBar()
+{
+	Toolbars[RightClick].Erase(this);
+}
+void Output::CreateAndToolBar()
+{
+	Toolbars[ADDANDBAR].Draw(this);
+}
+void Output::EraseAndToolBar()
+{
+	Toolbars[ADDANDBAR].Erase(this);
+}
+void Output::CreateORToolBar()
+{
+	Toolbars[ADDORBAR].Draw(this);
+}
+void Output::EraseORToolBar()
+{
+	Toolbars[ADDORBAR].Erase(this);
+}
+void Output::CreateXORToolBar()
+{
+	Toolbars[ADDXORBAR].Draw(this);
+}
+void Output::EraseXORToolBar()
+{
+	Toolbars[ADDXORBAR].Erase(this);
 }
 void Output::EraseAddToolBar()
 {
 	Toolbars[ADDBAR].Erase(this);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-//Draws the menu (toolbar) in the simulation mode
-void Output::CreateSimulationToolBar() const
-{
-	UI.AppMode = SIMULATION;	//Simulation Mode
-
-	//TODO: Write code to draw the simualtion toolbar (similar to that of design toolbar drawing)
-
-
-}
 
 //======================================================================================//
 //								Components Drawing Functions							//
@@ -997,7 +1072,7 @@ GraphicsInfo Output::AndIcon(GraphicsInfo r_GfxInfo, PressType State)
 {
 	pWind->SetPen(BLACK, 3);
 	pWind->SetBrush(BLACK);
-	DrawAND2(GraphicsInfo(r_GfxInfo.x1 +UI.GateItemWidth/2-UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, State);
+	DrawAND2(GraphicsInfo(r_GfxInfo.x1 +UI.GateItemWidth/2-UI.Margain, r_GfxInfo.y1+UI.GateBarHeight/2), NULL, State);
 	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight,FRAME);
 	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
 }
@@ -1039,6 +1114,78 @@ GraphicsInfo Output::InverterIcon(GraphicsInfo r_GfxInfo, PressType State)
 {
 	DrawBuffer(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL,false, true);
 	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight,FRAME);
+	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::And2Icon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawAND2(GraphicsInfo(r_GfxInfo.x1+UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight/2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
+	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::Nand2Icon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawNAND2(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight/2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
+	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::And3Icon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawAND3(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight/2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
+	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::Nand3Icon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawNAND3(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight/2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
+	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::OR2Icon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawOR2(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
+	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::NOR2Icon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawNOR2(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
+	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::OR3Icon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawOR3(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
+	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::NOR3Icon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawNOR3(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
+	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::XOR2Icon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawXOR2(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
+	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::XNOR2Icon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawXNOR2(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
+	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::XOR3Icon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawXOR3(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
+	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
+}
+GraphicsInfo Output::XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State)
+{
+	DrawXNOR3(GraphicsInfo(r_GfxInfo.x1 + UI.GateItemWidth / 2 - UI.Margain, r_GfxInfo.y1 + UI.GateBarHeight / 2), NULL, false);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
 	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
 }
 GraphicsInfo Output::DrawButon(int index,GraphicsInfo r_GfxInfo, PressType State)

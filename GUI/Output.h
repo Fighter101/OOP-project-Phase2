@@ -46,8 +46,25 @@ private:
 	GraphicsInfo BufferIcon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
 	GraphicsInfo InverterIcon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
 
+	////Adding Gates ICons
+	///And Gates
+	GraphicsInfo And2Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	GraphicsInfo Nand2Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	GraphicsInfo And3Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	GraphicsInfo Nand3Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	////////OR Gates
+	GraphicsInfo OR2Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	GraphicsInfo NOR2Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	GraphicsInfo OR3Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	GraphicsInfo NOR3Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	////////////////////////////////////
+	///////XorGates
+	GraphicsInfo XOR2Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	GraphicsInfo XNOR2Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	GraphicsInfo XOR3Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
+	GraphicsInfo XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
 	//Icon Array
-	GraphicsInfo (Output::*ButtonFunctions[32])(GraphicsInfo,  PressType State) =
+	GraphicsInfo (Output::*ButtonFunctions[44])(GraphicsInfo,  PressType State) =
 	{ 
 		&Output::MoveIcon,
 		&Output::CopyIcon,
@@ -80,9 +97,21 @@ private:
 		&Output::BufferIcon,
 		&Output::InverterIcon,
 		&Output::LEDIcon,
-		&Output::SwitchIcon
+		&Output::SwitchIcon,
+		&Output::And2Icon,
+		&Output::And3Icon,
+		&Output::Nand2Icon,
+		&Output::Nand3Icon,
+		&Output::OR2Icon,
+		&Output::OR3Icon,
+		&Output::NOR2Icon,
+		&Output::NOR3Icon,
+		&Output::XOR2Icon,
+		&Output::XOR3Icon,
+		&Output::XNOR2Icon,
+		&Output::XNOR3Icon,
 	};
-	ActionType ButtonActions[32] = 
+	ActionType ButtonActions[44] = 
 	{ 
 		MOVE,
 		COPY,
@@ -115,8 +144,21 @@ private:
 		ADD_Buff,
 		ADD_INV,
 		ADD_LED,
-		ADD_Switch
+		ADD_Switch,
+		ADD_AND_GATE_2,
+		ADD_AND_GATE_3,
+		ADD_NAND_GATE_2,
+		ADD_NAND_GATE_3,
+		ADD_OR_GATE_2,
+		ADD_OR_GATE_3,
+		ADD_NOR_GATE_2,
+		ADD_NOR_GATE_3,
+		ADD_XOR_GATE_2,
+		ADD_XOR_GATE_3,
+		ADD_XNOR_GATE_2,
+		ADD_XNOR_GATE_3
 	};
+		
 	ToolBar *Toolbars;
 	void CreateToolBars();
 	//Gates
@@ -163,9 +205,6 @@ public:
 	Output(); // Performs the Window Initialization
 	Input* CreateInput() const; //creates a pointer to the Input object
 	void ChangeTitle(string Title) const;
-		//Tool bar of the design mode
-	
-	void CreateSimulationToolBar() const;//Tool bar of the simulation mode
 	void CreateStatusBar() const;	//Create Status bar
 	void ClearStatusBar() const;		//Clears the status bar
 	void ClearDrawingArea() const;	//Clears the drawing area
@@ -181,7 +220,19 @@ public:
 	void CreateAddToolBar();
 	void EraseAddToolBar();
 	void CreateDesignToolBar();
-	void EraseDesingToolBar();
+	void EraseDesignToolBar();
+	void CreateGatesToolBar();
+	void EraseGatesToolBar();
+	void CreateSimulationToolBar();
+	void EraseSimulationToolBar();
+	void CreateRightClickToolBar(GraphicsInfo r_GfxInfo);
+	void EraseRightClickToolBar();
+	void CreateAndToolBar();
+	void EraseAndToolBar();
+	void CreateORToolBar();
+	void EraseORToolBar();
+	void CreateXORToolBar();
+	void EraseXORToolBar();
 	//Gate Drawing Functions
 	//AndGate
 
