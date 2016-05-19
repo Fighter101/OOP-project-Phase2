@@ -242,10 +242,6 @@ ApplicationManager::~ApplicationManager()
 	{
 		delete ComponentList[i];
 	}
-	for (size_t i = 0; i < temp.size(); i++)
-	{
-		delete temp[i];
-	}
 	delete OutputInterface;
 	delete InputInterface;
 	

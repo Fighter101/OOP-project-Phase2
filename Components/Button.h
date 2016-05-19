@@ -1,5 +1,6 @@
 #pragma once
 #include "Component.h"
+#include"..\Essentials.h"
 class Button :
 	public GridItem
 {
