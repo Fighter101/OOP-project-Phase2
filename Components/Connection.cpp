@@ -28,7 +28,7 @@ void Connection::Operate()
 
 void Connection::Draw(Output* pOut)
 {
-	pOut->Connect(m_GfxInfo);
+	pOut->Connect(m_GfxInfo,this);
 }
 
 bool Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1
