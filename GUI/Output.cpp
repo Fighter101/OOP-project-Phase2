@@ -1731,6 +1731,22 @@ vector<pair<int,int> > Output::Connect(GraphicsInfo r_GfxInfo,  GridItem*ptr, bo
 	return Points;
 }
 
+void Output::CreateTruthTable()
+{
+	int x, y;
+	TruthTable=new window (UI.TruthTableWidth, UI.TruthTableHeight, UI.wx, UI.wy);
+	TruthTable->SetPen(BLACK, 3);
+	TruthTable->SetBrush(WHITE);
+	TruthTable->ChangeTitle("TruthTable");
+	for (int i = 0; i < 12; i++)
+	{
+		TruthTable->DrawLine(i*UI.TruthTableCellDimension, 0, i*UI.TruthTableCellDimension, UI.TruthTableHeight - 1);
+		TruthTable->DrawLine(0, i*UI.TruthTableCellDimension, UI.TruthTableWidth - 1, i*UI.TruthTableCellDimension);
+	}
+	TruthTable->WaitMouseClick(x, y);
+	TruthTable->~window();
+}
+
 //Destructor
 Output::~Output()
 {
