@@ -1,27 +1,4 @@
-﻿  ApplicationManager.cpp
-  AddXORgate3.cpp
-  AddXORgate2.cpp
-  AddXNORgate3.cpp
-  AddXNORgate2.cpp
-  AddORgate3.cpp
-  AddORgate2.cpp
-  AddNORgate3.cpp
-  AddNORgate2.cpp
-  AddNANDgate3.cpp
+﻿  AddXNORgate2.cpp
   AddNANDgate2.cpp
-  AddINV.cpp
-  AddCONNECTION.cpp
-  AddBUFF.cpp
-  AddANDgate3.cpp
-  AddANDgate2.cpp
   Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  XORToolBar.cpp
-  Paste.cpp
-  ORToolBar.cpp
-  CUT.cpp
-  AddToolBar.cpp
-  ANDToolBar.cpp
-AddAND.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   graphics_prj.vcxproj -> C:\Users\Ahmad Elsayed\Source\Repos\OOP-project-Phase2\.\Debug\graphics_prj.exe
