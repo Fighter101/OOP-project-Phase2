@@ -22,7 +22,10 @@ private:
 	vector<Component*>MetaData;
 	Action* ActionCreator(ActionType);
 	Clipboard clip;
-
+	///<summary>
+	///(0 Add) - (1 And) - (2 Or) - (3 XOR) - (4 DSGN) - (5 Sim)
+	///</summary>
+	int ToolbarsON;
 public:	
 	void CheckPoint(int &Cx, int &Cy);
 	vector<Component*> getMetaData();

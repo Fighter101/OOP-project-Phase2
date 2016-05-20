@@ -1901,6 +1901,32 @@ void Output::CreateTruthTable()
 	TruthTable->~window();
 }
 
+void Output::ClearToolbars(int Toolbars)
+{
+	switch (Toolbars)
+	{
+	case -1:
+		break;
+	case 1:
+		EraseAndToolBar();
+		break;
+	case 2:
+		EraseORToolBar();
+		break;
+	case 3:
+		EraseXORToolBar();
+		break;
+	case 4:
+		EraseDesignToolBar();
+		break;
+	case 5:
+		EraseSimulationToolBar();
+		break;
+	default:
+		break;
+	}
+}
+
 //Destructor
 Output::~Output()
 {

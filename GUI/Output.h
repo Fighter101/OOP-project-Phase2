@@ -276,8 +276,10 @@ public:
 	vector<pair<int, int> > Connect(GraphicsInfo r_GfxInfo, GridItem*ptr ,bool selected = false);
 	//Truth Table
 	void CreateTruthTable();
-
 	
+	//Same7 Functions Add by same7 for Application Manager
+	void ClearToolbars(int Toolbars);
+
 	~Output();
 };
 

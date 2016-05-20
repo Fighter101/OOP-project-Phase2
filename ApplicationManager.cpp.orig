@@ -46,16 +46,32 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	switch (x)
 	{
 	case ADD:
+	{
+		OutputInterface->ClearToolbars(ToolbarsON);
+		ToolbarsON = 0;
 		return new AddToolBar(this);
-		break;
+	}
+		break; 
 	case ADD_AND:
+	{
+		OutputInterface->ClearToolbars(ToolbarsON);
+		ToolbarsON = 1;
 		return new ANDToolBar(this);
+	}
 		break;
 	case ADD_OR:
+	{
+		OutputInterface->ClearToolbars(ToolbarsON);
+		ToolbarsON = 2;
 		return new ORToolBar(this);
+	}
 		break;
 	case ADD_XOR:
+	{
+		OutputInterface->ClearToolbars(ToolbarsON);
+		ToolbarsON = 3;
 		return new XORToolBar(this);
+	}
 		break;
 	case ADD_Buff:
 		return new AddBUFF(this);
@@ -99,13 +115,13 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	case ADD_OR_GATE_3:
 		return new AddORgate3(this);
 	case ADD_Switch:
-		return nullptr;
+		return new AddSwitch(this);
 		break;
 	case ADD_LED:
-		return nullptr;
+		return new AddLED(this);
 		break;
 	case ADD_CONNECTION:
-		return nullptr;
+		return new AddCONNECTION(this);
 		break;
 	case ADD_Label:
 		return nullptr;
@@ -171,6 +187,14 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case DSN_AREA:
+	{
+		OutputInterface->ClearToolbars(ToolbarsON);
+		if (ToolbarsON == 0 || ToolbarsON == 1 || ToolbarsON == 2 || ToolbarsON == 3)
+		{
+			ToolbarsON = -1;
+			OutputInterface->EraseAddToolBar();
+		}
+	}
 		return nullptr;
 		break;
 	default:
@@ -180,6 +204,23 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	
 
 }
+
+void ApplicationManager::CheckPoint(int & Cx, int & Cy)
+{
+
+	bool success = true;
+	while (success)
+	{
+		InputInterface->GetPointClicked(Cx, Cy);
+		if (Cx == -1 || Cy == -1)
+			OutputInterface->PrintMsg("Out of Design Area, Please Click Inside the Drawing Area");
+		else if (Cx == -2 || Cy == -2)
+			OutputInterface->PrintMsg("You've Clicked on an Existing Component, Please Click Somewhere Free");
+		else
+			success = false;
+	}
+}
+
 vector<Component*> ApplicationManager::getMetaData()
 {
 	return MetaData;
@@ -214,6 +255,11 @@ ApplicationManager::ApplicationManager()
 	//Creates the Input / Output Objects & Initialize the GUI
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
+<<<<<<< HEAD
+=======
+	OutputInterface->CreateTruthTable();
+	ToolbarsON = -1;
+>>>>>>> e8e748523850811729950007d811e7c20dc8e165
 }
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
@@ -249,7 +295,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
-		//null
 
 }
 
@@ -273,10 +318,7 @@ ApplicationManager::~ApplicationManager()
 	{
 		delete ComponentList[i];
 	}
-<<<<<<< HEAD
 	
-=======
->>>>>>> e5f1fbab41241ef99925eb9c0f95b57c4111ab13
 	delete OutputInterface;
 	delete InputInterface;
 	

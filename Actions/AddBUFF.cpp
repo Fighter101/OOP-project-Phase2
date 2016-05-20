@@ -32,9 +32,7 @@ void AddBUFF::Execute()
 	//Get Center point of the Gate
 	ReadActionParameters();
 
-	//Calculate the rectangle Corners
-	int Len = UI.BufferDimensions;
-	int Wdth = UI.BufferDimensions;
+
 
 	
 	GraphicsInfo GInfo(Cx, Cy); //Gfx info to be used to construct the Buffer

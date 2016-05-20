@@ -11,7 +11,7 @@ INV::INV(const GraphicsInfo &r_GfxInfo) :Gate(1)
 
 void INV::Operate()
 {
-	//caclulate the output status as the INVering of the the input pin
+	//calculate the output status as the Inverting of the input pin
 
 	m_OutputPin.setStatus(~ m_InputPins[1].getStatus());
 
@@ -23,23 +23,23 @@ void INV::Operate()
 void INV::Draw(Output* pOut)
 {
 	//Call output class and pass gate drawing info to it.
-	pOut->DrawBuffer(this);
+	pOut->DrawInverter(this);
 }
 
-//returns status of outputpin
+//returns status of output-pin
 bool  INV::GetOutPinStatus()
 {
 	return m_OutputPin.getStatus();
 }
 
 
-//returns status of Inputpin #n
+//returns status of Input-pin #n
 bool  INV::GetInputPinStatus(int n)
 {
-	return m_InputPins[n - 1].getStatus();	//n starts from 1 but array index starts from 0.
+	return (bool) m_InputPins[n - 1].getStatus();	//n starts from 1 but array index starts from 0.
 }
 
-//Set status of an input pin ot HIGH or LOW
+//Set status of an input pin to HIGH or LOW
 void INV::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);

@@ -46,16 +46,32 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	switch (x)
 	{
 	case ADD:
+	{
+		OutputInterface->ClearToolbars(ToolbarsON);
+		ToolbarsON = 0;
 		return new AddToolBar(this);
-		break;
+	}
+		break; 
 	case ADD_AND:
+	{
+		OutputInterface->ClearToolbars(ToolbarsON);
+		ToolbarsON = 1;
 		return new ANDToolBar(this);
+	}
 		break;
 	case ADD_OR:
+	{
+		OutputInterface->ClearToolbars(ToolbarsON);
+		ToolbarsON = 2;
 		return new ORToolBar(this);
+	}
 		break;
 	case ADD_XOR:
+	{
+		OutputInterface->ClearToolbars(ToolbarsON);
+		ToolbarsON = 3;
 		return new XORToolBar(this);
+	}
 		break;
 	case ADD_Buff:
 		return new AddBUFF(this);
@@ -99,10 +115,10 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	case ADD_OR_GATE_3:
 		return new AddORgate3(this);
 	case ADD_Switch:
-		return nullptr;
+		return new AddSwitch(this);
 		break;
 	case ADD_LED:
-		return nullptr;
+		return new AddLED(this);
 		break;
 	case ADD_CONNECTION:
 		return new AddCONNECTION(this);
@@ -171,6 +187,14 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case DSN_AREA:
+	{
+		OutputInterface->ClearToolbars(ToolbarsON);
+		if (ToolbarsON == 0 || ToolbarsON == 1 || ToolbarsON == 2 || ToolbarsON == 3)
+		{
+			ToolbarsON = -1;
+			OutputInterface->EraseAddToolBar();
+		}
+	}
 		return nullptr;
 		break;
 	default:
@@ -231,6 +255,7 @@ ApplicationManager::ApplicationManager()
 	//Creates the Input / Output Objects & Initialize the GUI
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
+
 }
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
@@ -266,7 +291,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
-		//null
 
 }
 
