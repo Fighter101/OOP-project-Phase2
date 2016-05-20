@@ -9,7 +9,7 @@ Gate::Gate(int r_Inputs)
 	//Allocate number of input pins (equals r_Inputs)
 	m_InputPins = new InputPin[r_Inputs];
 	m_Inputs = r_Inputs;	//set no. of inputs of that gate
-	
+	Selected = false;
 	//Associate all input pins to this gate
 	for(int i=0; i<m_Inputs; i++)
 		m_InputPins[i].setComponent(this);
