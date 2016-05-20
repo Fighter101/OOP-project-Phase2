@@ -7,6 +7,7 @@ class Output	//The application manager should have a pointer to this class
 {
 private:
 	window* pWind;	//Pointer to the Graphics Window
+	window*TruthTable;
 	Graph *Interface;
 	
 	//ICons For Buttons
@@ -257,6 +258,8 @@ public:
 	void DrawLED(Gate * ptr);
 	//Connection
 	vector<pair<int, int> > Connect(GraphicsInfo r_GfxInfo, GridItem*ptr ,bool selected = false);
+	//Truth Table
+	void CreateTruthTable();
 
 	
 	~Output();

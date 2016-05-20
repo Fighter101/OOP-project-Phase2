@@ -18,7 +18,7 @@ struct UI_Info	//User Interface Info.
 						wx = 15, wy = 15,			//Window starting coordinates
 						StatusBarHeight = 50,	//Status Bar Height
 						StatusBarWidth = 800,
-						SatusBarStart=100,
+						SatusBarStart = 100,
 						ToolBarHeight = 80,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
 						ToolItemWidth = 60,//Width of each item in toolbar menu
 						Margain = 10,
@@ -26,7 +26,10 @@ struct UI_Info	//User Interface Info.
 						PixelDenisty = 5,
 						GridWidth = width / PixelDenisty + 1,
 						GridHeight = height / PixelDenisty + 1,
-						GateItemWidth = 100;
+						GateItemWidth = 100,
+						TruthTableCellDimension = 60,
+						TruthTableHeight = 660,
+						TruthTableWidth = 720;
 
 	color DrawColor;		//Drawing color
 	color SelectColor;		//Highlighting color

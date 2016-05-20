@@ -231,6 +231,7 @@ ApplicationManager::ApplicationManager()
 	//Creates the Input / Output Objects & Initialize the GUI
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
+	OutputInterface->CreateTruthTable();
 }
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
