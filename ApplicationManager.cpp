@@ -102,7 +102,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case ADD_LED:
-		return nullptr;
+		return new AddLED(this);
 		break;
 	case ADD_CONNECTION:
 		return new AddCONNECTION(this);
@@ -266,7 +266,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
-		//null
 
 }
 
