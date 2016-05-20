@@ -7,31 +7,36 @@ Input::Input(window* pW)
 
 GridItem* Input::GetPointClicked(int &x, int &y,Comps Comp)
 {
+	GridItem*Returned;
+	
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
-	if (x<UI.GateItemWidth || x>UI.width-UI.GateItemWidth || y<UI.ToolBarHeight || y>UI.height-UI.StatusBarHeight)
+	if (x<UI.GateItemWidth || x>UI.width - UI.GateItemWidth || y<UI.ToolBarHeight || y>UI.height - UI.StatusBarHeight)
 	{
 		x = -1;
 		y = -1;
+		return NULL;
 	}
+	switch (Comp)
+	{
+	case _GATE_:
+		Returned = Interface->Available(GraphicsInfo(x - UI.AllGateDimensions / 2 - 5, y - UI.AllGateDimensions / 2 - 5, x - UI.AllGateDimensions / 2 + UI.InverterDimensions + UI.ConnectionDimensions, y + UI.AllGateDimensions / 2));
+		break;
+	case _BUFFER_:
+		Returned = Interface->Available(GraphicsInfo(x - UI.BufferDimensions / 2 - UI.ConnectionDimensions, y - UI.BufferDimensions, x + UI.BufferDimensions / 2 + UI.ConnectionDimensions, y + UI.BufferDimensions / 2));
+	case _SWITCH_:
+		Returned = Interface->Available(GraphicsInfo(x - UI.SwitchWidth / 2 - UI.ConnectionDimensions - 5, y - UI.SwitchHeight / 2, x + UI.SwitchWidth / 2 + UI.ConnectionDimensions + 5, y + UI.SwitchHeight / 2));
+		break;
+	default:
+		break;
+	}
+
 	GridItem*tmp=Interface->getAction(GraphicsInfo(x, y));
 	if (tmp != NULL)
 	{
 		x = -2;
 		y = -2;
 	}
-	switch (Comp)	
-	{
-	case _GATE_:
-		return Interface->Available(GraphicsInfo(x - UI.AllGateDimensions/2-5, y -UI.AllGateDimensions/2-5, x-UI.AllGateDimensions/2+UI.InverterDimensions+UI.ConnectionDimensions, y + UI.AllGateDimensions/2));
-		break;
-	case _BUFFER_:
-		return Interface->Available(GraphicsInfo(x - UI.BufferDimensions / 2 - UI.ConnectionDimensions, y - UI.BufferDimensions, x + UI.BufferDimensions / 2 + UI.ConnectionDimensions, y + UI.BufferDimensions / 2));
-	case _SWITCH_:
-		return Interface->Available(GraphicsInfo(x - UI.SwitchWidth / 2 - UI.ConnectionDimensions - 5, y - UI.SwitchHeight / 2, x + UI.SwitchWidth / 2 + UI.ConnectionDimensions + 5, y + UI.SwitchHeight / 2));
-		break;
-	default:
-		break;
-	}
+	return Returned;
 }
 
 string Input::GetSrting(Output *pOut)

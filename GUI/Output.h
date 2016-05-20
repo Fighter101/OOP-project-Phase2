@@ -65,7 +65,7 @@ private:
 	GraphicsInfo XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
 	//////////////
 	//Drawing the connection
-	void DrawConnection(vector <pair<int,int> >Points);
+	void DrawConnection(vector <pair<int,int> >Points,GridItem*ptr);
 	//Icon Array
 	GraphicsInfo (Output::*ButtonFunctions[44])(GraphicsInfo,  PressType State) =
 	{ 
@@ -256,7 +256,7 @@ public:
 	void DrawSwitch(Gate * ptr);
 	void DrawLED(Gate * ptr);
 	//Connection
-	vector<pair<int, int> > Connect(GraphicsInfo r_GfxInfo, bool selected = false);
+	vector<pair<int, int> > Connect(GraphicsInfo r_GfxInfo, GridItem*ptr ,bool selected = false);
 
 	
 	~Output();
