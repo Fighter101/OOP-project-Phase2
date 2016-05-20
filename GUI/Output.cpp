@@ -1222,7 +1222,7 @@ void Output::EraseButton(GridItem*ptr)
 /*
 ////////////////////////////////////////And Gate//////////////////////////////////////////
 */
-void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool invert, bool connections) const
+void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool invert, bool connections,color BorderColor,color FillColor) const
 {
 	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.AllGateDimensions / 4;
 	r_GfxInfo.y2 = r_GfxInfo.y1 + UI.AllGateDimensions / 2;
@@ -1230,23 +1230,24 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 	r_GfxInfo.y1 -= UI.AllGateDimensions / 2;
 	int raduis = (r_GfxInfo.y2 - r_GfxInfo.y1) / 2;
 	raduis += 9;
-	pWind->SetPen(BLACK, 3);
-	pWind->SetBrush(SKYBLUE);
+	pWind->SetPen(BorderColor, 3);
+	pWind->SetBrush(FillColor);
 	pWind->DrawLine(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y1);
 	pWind->DrawLine(r_GfxInfo.x1, r_GfxInfo.y2, r_GfxInfo.x2, r_GfxInfo.y2);
 	pWind->DrawLine(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2);
 	pWind->DrawArc(r_GfxInfo.x2 - raduis + 3, r_GfxInfo.y1 - 2, r_GfxInfo.x2 + raduis - 6, r_GfxInfo.y2 + 2, 270, 90);
 	if (selected) {
 		pWind->DrawArc(r_GfxInfo.x2 - raduis + 3, r_GfxInfo.y1 - 2, r_GfxInfo.x2 + raduis - 6, r_GfxInfo.y2 + 2, 270, 90, FILLED);
-		pWind->SetPen(SKYBLUE);
+		pWind->SetPen(FillColor);
 		pWind->DrawRectangle(r_GfxInfo.x1 + 2, r_GfxInfo.y1 + 2, r_GfxInfo.x2, r_GfxInfo.y2 - 1, FILLED);
 	}
 	if (!invert)
 	{
-		pWind->SetPen(BLACK, 3);
+		pWind->SetPen(BorderColor, 3);
 		pWind->DrawLine(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1 + raduis - 9, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y1 + raduis - 9);
 		if (ptr != NULL)
 		Interface->Register(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());//Connection
+		else Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y2));
 	}
 	if (invert)
 	{
@@ -1263,6 +1264,11 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 			Interface->Register(GraphicsInfo(x_Center - 1 + Raduis, r_GfxInfo.y1, x_Center + Raduis + 9, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());//Connection
 			Interface->Register(GraphicsInfo(r_GfxInfo.x1 + UI.AllGateDimensions, r_GfxInfo.y1, x_Center - 1 + Raduis, r_GfxInfo.y2), ptr);//Gate
 		}
+		else
+		{
+			Interface->UNRegister(GraphicsInfo(x_Center - 1 + Raduis, r_GfxInfo.y1, x_Center + Raduis + 9, r_GfxInfo.y2));
+			Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 + UI.AllGateDimensions, r_GfxInfo.y1, x_Center - 1 + Raduis, r_GfxInfo.y2));
+		}
 	}
 	pWind->SetPen(BLACK, 3);
 	if (connections)
@@ -1271,8 +1277,10 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 		for (size_t i = 1; i <= 3; i++)
 		{
 			pWind->DrawLine(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i* dist);
-
-
+			if (ptr != NULL)
+				Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i* dist), ((Gate*)ptr)->GetInputPins());
+			else
+				Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i* dist));
 		}
 	}
 	else
@@ -1281,13 +1289,18 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 		for (size_t i = 1; i <= 2; i++)
 		{
 			pWind->DrawLine(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i*dist);
+			if (ptr != NULL)
+				Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i* dist), ((Gate*)ptr)->GetInputPins());
+			else
+				Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i* dist));
 		}
 	}
 	if (ptr != NULL)
 	{
-		Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2), ((Gate*)ptr)->GetInputPins());//Connection
 		Interface->Register(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.AllGateDimensions, r_GfxInfo.y2), ptr);//Gate
 	}
+	else
+		Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.AllGateDimensions, r_GfxInfo.y2));
 }
 
 void Output::DrawAND2(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected)
@@ -1309,6 +1322,22 @@ void Output::DrawNAND3(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected)
 {
 	DrawAND(r_GfxInfo,ptr, selected, true, true);
 }
+void Output::EraseAND2(GraphicsInfo r_GfxInfo)
+{
+	DrawAND(r_GfxInfo, NULL, true, false, false, UI.BkGrndColor, UI.BkGrndColor);
+}
+void Output::EraseAND3(GraphicsInfo r_GfxInfo)
+{
+	DrawAND(r_GfxInfo, NULL, true, false, true, UI.BkGrndColor, UI.BkGrndColor);
+}
+void Output::EraseNAND2(GraphicsInfo r_GfxInfo)
+{
+	DrawAND(r_GfxInfo, NULL, true, true, false, UI.BkGrndColor, UI.BkGrndColor);
+}
+void Output::EraseNAND3(GraphicsInfo r_GfxInfo)
+{
+	DrawAND(r_GfxInfo, NULL, true, true, true, WHITE, WHITE);
+}
 void Output::CreateAddToolBar()
 {
 	Toolbars[ADDBAR].Draw(this);
@@ -1329,12 +1358,28 @@ void Output::DrawNAND3(Gate * ptr)
 {
 	DrawNAND3(ptr->GetPosition(), ptr, ptr->GetState());
 }
+void Output::EraseAND2(Gate * ptr)
+{
+	EraseAND2(ptr->GetPosition());
+}
+void Output::EraseAND3(Gate * ptr)
+{
+	EraseAND3(ptr->GetPosition());
+}
+void Output::EraseNAND2(Gate * ptr)
+{
+	EraseNAND2(ptr->GetPosition());
+}
+void Output::EraseNAND3(Gate * ptr)
+{
+	EraseNAND3(ptr->GetPosition());
+}
 /*
 ////////////////////////OR Gate////////////////////////////////
 */
-void Output::DrawOr(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool invert, bool connections) const
+void Output::DrawOr(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool invert, bool connections,color BorderColor,color FillColor) const
 {
-	pWind->SetPen(BLACK, 3);
+	pWind->SetPen(BorderColor, 3);
 	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.AllGateDimensions / 4;
 	r_GfxInfo.y2 = r_GfxInfo.y1 + UI.AllGateDimensions / 2;
 	r_GfxInfo.x1 -= UI.AllGateDimensions / 4;
@@ -1346,15 +1391,17 @@ void Output::DrawOr(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool in
 	{
 		pWind->DrawLine(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1 + Midpoint, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y1 + Midpoint);
 		if (ptr != NULL)
-		Interface->Register(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());
+			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());
+		else
+			Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y2));
 	}
 	if (selected)
 	{
-		pWind->SetPen(SKYBLUE, 3);
-		pWind->SetBrush(SKYBLUE);
+		pWind->SetPen(FillColor, 3);
+		pWind->SetBrush(FillColor);
 		pWind->DrawRectangle(r_GfxInfo.x1 + ArcHeight, r_GfxInfo.y1 + 2, r_GfxInfo.x2 + 1, r_GfxInfo.y2 - 1, FILLED, 0, 0);
-		pWind->SetPen(SKYBLUE, 3);
-		pWind->SetBrush(SKYBLUE);
+		pWind->SetPen(FillColor, 3);
+		pWind->SetBrush(FillColor);
 		pWind->DrawArc(r_GfxInfo.x1, r_GfxInfo.y1 + 1, r_GfxInfo.x2 + iHeight - 2, r_GfxInfo.y2 - 1, 270, 90, FILLED);
 		pWind->SetPen(SKYBLUE, 1);
 		for (int i = 0;i <= ArcHeight; i++)
@@ -1364,7 +1411,7 @@ void Output::DrawOr(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool in
 	}
 	if (invert)
 	{
-		pWind->SetPen(BLACK, 3);
+		pWind->SetPen(BorderColor, 3);
 		int y_Center = r_GfxInfo.y2 - Midpoint;
 		int x_Center = r_GfxInfo.x2 + iHeight + 3;
 		int Raduis = UI.InverterDimensions;
@@ -1380,33 +1427,42 @@ void Output::DrawOr(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool in
 	}
 	if (connections)
 	{
-		pWind->SetPen(BLACK, 3);
+		pWind->SetPen(BorderColor, 3);
 		int dist = (r_GfxInfo.y2 - r_GfxInfo.y1) / 4;
 		for (size_t i = 1; i <= 3; i++)
 		{
 			pWind->DrawLine(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1 + (i*dist), r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y1 + i*dist);
-
+			if (ptr != NULL)
+				Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1 + (i*dist), r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y1 + i*dist), ((Gate*)ptr)->GetInputPins());
+			else
+				Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1 + (i*dist), r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y1 + i*dist));
 		}
 	}
 	else
 	{
-		pWind->SetPen(BLACK, 3);
+		pWind->SetPen(BorderColor, 3);
 		int dist = (r_GfxInfo.y2 - r_GfxInfo.y1) / 3;
 		for (size_t i = 1; i < 3; i++)
 		{
 			pWind->DrawLine(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1 + (i*dist), r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y1 + i*dist);
+			if (ptr != NULL)
+				Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1 + (i*dist), r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y1 + i*dist), ((Gate*)ptr)->GetInputPins());
+			else
+				Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1 + (i*dist), r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y1 + i*dist));
 		}
 	}
-	if (ptr != NULL)
-	Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2), ((Gate*)ptr)->GetInputPins());
-	pWind->SetPen(BLACK, 3);
-	pWind->SetBrush(SKYBLUE);
+	
+	
+	pWind->SetPen(BorderColor, 3);
+	pWind->SetBrush(FillColor);
 	pWind->DrawLine(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y1);
 	pWind->DrawLine(r_GfxInfo.x1, r_GfxInfo.y2, r_GfxInfo.x2, r_GfxInfo.y2);
 	pWind->DrawArc(r_GfxInfo.x1 - ArcHeight, r_GfxInfo.y1, r_GfxInfo.x1 + ArcHeight, r_GfxInfo.y2, 270, 90);
 	pWind->DrawArc(r_GfxInfo.x1, r_GfxInfo.y1 - 2, r_GfxInfo.x2 + iHeight, r_GfxInfo.y2 + 2, 270, 90);
 	if (ptr != NULL)
-	Interface->Register(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight, r_GfxInfo.y2), ptr);
+		Interface->Register(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight, r_GfxInfo.y2), ptr);
+	else
+		Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight, r_GfxInfo.y2));
 
 }
 
@@ -1430,6 +1486,26 @@ void Output::DrawNOR3(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected)
 	DrawOr(r_GfxInfo, ptr, selected, true, true);
 }
 
+void Output::EraseOR2(GraphicsInfo r_GfxInfo)
+{
+	DrawOr(r_GfxInfo, NULL, true, false, false, UI.BkGrndColor, UI.BkGrndColor);
+}
+
+void Output::EraseOR3(GraphicsInfo r_GfxInfo)
+{
+	DrawOr(r_GfxInfo, NULL, true, false, true, UI.BkGrndColor, UI.BkGrndColor);
+}
+
+void Output::EraseNOR2(GraphicsInfo r_GfxInfo)
+{
+	DrawOr(r_GfxInfo, NULL, true, true,false, UI.BkGrndColor, UI.BkGrndColor);
+}
+
+void Output::EraseNOR3(GraphicsInfo r_GfxInfo)
+{
+	DrawOr(r_GfxInfo, NULL, true, true, true, UI.BkGrndColor, UI.BkGrndColor);
+}
+
 void Output::DrawOR2(Gate * ptr )
 {
 	DrawOR2(ptr->GetPosition(), ptr, ptr->GetState());
@@ -1450,10 +1526,30 @@ void Output::DrawNOR3(Gate * ptr)
 	DrawNOR3(ptr->GetPosition(), ptr, ptr->GetState());
 }
 
+void Output::EraseOR2(Gate * ptr)
+{
+	EraseOR2(ptr->GetPosition());
+}
+
+void Output::EraseOR3(Gate * ptr)
+{
+	EraseOR3(ptr->GetPosition());
+}
+
+void Output::EraseNOR2(Gate * ptr)
+{
+	EraseNOR2(ptr->GetPosition());
+}
+
+void Output::EraseNOR3(Gate * ptr)
+{
+	EraseNOR3(ptr->GetPosition());
+}
+
 /*
 ////////////////////////////////////////XorGate///////////////////////////
 */
-void Output::DrawXOR(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool invert, bool connections) const
+void Output::DrawXOR(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool invert, bool connections,color BorderColor,color FillColor) const
 {
 	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.AllGateDimensions / 4;
 	r_GfxInfo.y2 = r_GfxInfo.y1 + UI.AllGateDimensions / 2;
@@ -1462,22 +1558,24 @@ void Output::DrawXOR(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 	int ArcHeight = (r_GfxInfo.x2 - r_GfxInfo.x1) / 2;
 	int Midpoint = (r_GfxInfo.y2 - r_GfxInfo.y1) / 2;
 	int iHeight = (r_GfxInfo.x2 - r_GfxInfo.x1);
-	pWind->SetPen(BLACK, 3);
+	pWind->SetPen(BorderColor, 3);
 	if (!invert)
 	{
 		pWind->DrawLine(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1 + Midpoint, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y1 + Midpoint);
 		if (ptr != NULL)
-		Interface->Register(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y2), ((Gate*)ptr)->GetInputPins());
+			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());
+		else
+			Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y2));
 	}
 	if (selected)
 	{
-		pWind->SetPen(SKYBLUE, 3);
-		pWind->SetBrush(SKYBLUE);
+		pWind->SetPen(FillColor, 3);
+		pWind->SetBrush(FillColor);
 		pWind->DrawRectangle(r_GfxInfo.x1 + ArcHeight, r_GfxInfo.y1 + 2, r_GfxInfo.x2 + 1, r_GfxInfo.y2 - 1, FILLED, 0, 0);
-		pWind->SetPen(SKYBLUE, 3);
-		pWind->SetBrush(SKYBLUE);
+		pWind->SetPen(FillColor, 3);
+		pWind->SetBrush(FillColor);
 		pWind->DrawArc(r_GfxInfo.x1, r_GfxInfo.y1 + 1, r_GfxInfo.x2 + iHeight - 2, r_GfxInfo.y2 - 1, 270, 90, FILLED);
-		pWind->SetPen(SKYBLUE, 1);
+		pWind->SetPen(FillColor, 1);
 		for (int i = 0;i <= ArcHeight; i++)
 		{
 			pWind->DrawArc(r_GfxInfo.x1 - ArcHeight + i, r_GfxInfo.y1, r_GfxInfo.x1 + ArcHeight + i, r_GfxInfo.y2, 270, 90);
@@ -1485,7 +1583,7 @@ void Output::DrawXOR(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 	}
 	if (invert)
 	{
-		pWind->SetPen(BLACK, 3);
+		pWind->SetPen(BorderColor, 3);
 		int y_Center = r_GfxInfo.y2 - Midpoint;
 		int x_Center = r_GfxInfo.x2 + iHeight + 3;
 		int Raduis = UI.InverterDimensions;
@@ -1495,43 +1593,54 @@ void Output::DrawXOR(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 		pWind->DrawLine(x_Center - 1 + Raduis, y_Center, x_Center + Raduis + 10, y_Center);
 		if (ptr != NULL)
 		{
-			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y1, x_Center + Raduis + 10, r_GfxInfo.y2), ((Gate*)ptr)->GetInputPins());
+			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y1, x_Center + Raduis + 10, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());
 			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y2), ptr);
+		}
+		else
+		{
+			Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y1, x_Center + Raduis + 10, r_GfxInfo.y2));
+			Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y2));
 		}
 	}
 	if (connections)
 	{
-		pWind->SetPen(BLACK, 3);
+		pWind->SetPen(BorderColor, 3);
 		int dist = (r_GfxInfo.y2 - r_GfxInfo.y1) / 4;
 		for (size_t i = 1; i <= 3; i++)
 		{
 			pWind->DrawLine(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1 + (i*dist), r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y1 + i*dist);
-
+			if (ptr != NULL)
+				Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1 + (i*dist), r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y1 + i*dist), ((Gate*)ptr)->GetInputPins());
+			else
+				Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1 + (i*dist), r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y1 + i*dist));
 		}
 	}
 	else
 	{
-		pWind->SetPen(BLACK, 3);
+		pWind->SetPen(BorderColor, 3);
 		int dist = (r_GfxInfo.y2 - r_GfxInfo.y1) / 3;
 		for (size_t i = 1; i < 3; i++)
 		{
 			pWind->DrawLine(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1 + (i*dist), r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y1 + i*dist);
+			if (ptr != NULL)
+				Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1 + (i*dist), r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y1 + i*dist), ((Gate*)ptr)->GetInputPins());
+			else
+				Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1 + (i*dist), r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y1 + i*dist));
 		}
 	}
-	if (ptr != NULL)
-	Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());
+	
 	int Taildistance = (r_GfxInfo.x2 - r_GfxInfo.x1) / 3;
-	pWind->SetPen(BLACK, 3);
-	pWind->SetBrush(SKYBLUE);
+	pWind->SetPen(BorderColor, 3);
+	pWind->SetBrush(FillColor);
 	pWind->DrawLine(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y1);
 	pWind->DrawLine(r_GfxInfo.x1, r_GfxInfo.y2, r_GfxInfo.x2, r_GfxInfo.y2);
 	pWind->DrawArc(r_GfxInfo.x1 - ArcHeight, r_GfxInfo.y1, r_GfxInfo.x1 + ArcHeight, r_GfxInfo.y2, 270, 90);
 	pWind->DrawArc(r_GfxInfo.x1, r_GfxInfo.y1 - 2, r_GfxInfo.x2 + iHeight, r_GfxInfo.y2 + 2, 270, 90);
 	pWind->DrawArc(r_GfxInfo.x1 - 2 * Taildistance, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2, 270, 90);
 	if (ptr != NULL)
-	Interface->Register(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight, r_GfxInfo.y2), ptr);
-
-
+		Interface->Register(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight, r_GfxInfo.y2), ptr);
+	else
+		Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight, r_GfxInfo.y2));
 }
 
 void Output::DrawXOR2(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected)
@@ -1554,6 +1663,26 @@ void Output::DrawXNOR3(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected)
 	DrawXOR(r_GfxInfo, ptr, selected, true, true);
 }
 
+void Output::EraseXOR2(GraphicsInfo r_GfxInfo)
+{
+	DrawXOR(r_GfxInfo, NULL, true, false, false, WHITE, WHITE);
+}
+
+void Output::EraseXNOR2(GraphicsInfo r_GfxInfo)
+{
+	DrawXOR(r_GfxInfo, NULL, true, false, true, WHITE, WHITE);
+}
+
+void Output::EraseXOR3(GraphicsInfo r_GfxInfo)
+{
+	DrawXOR(r_GfxInfo, NULL, true, true, false, WHITE, WHITE);
+}
+
+void Output::EraseXNOR3(GraphicsInfo r_GfxInfo)
+{
+	DrawXOR(r_GfxInfo, NULL, true, true, true, WHITE, WHITE);
+}
+
 void Output::DrawXOR2(Gate * ptr)
 {
 	DrawXOR2(ptr->GetPosition(), ptr, ptr->GetState());
@@ -1572,6 +1701,26 @@ void Output::DrawXOR3(Gate * ptr)
 void Output::DrawXNOR3(Gate * ptr)
 {
 	DrawXNOR3(ptr->GetPosition(), ptr, ptr->GetState());
+}
+
+void Output::EraseXOR2(Gate * ptr)
+{
+	EraseXOR2(ptr->GetPosition());
+}
+
+void Output::EraseXOR3(Gate * ptr)
+{
+	EraseXOR3(ptr->GetPosition());
+}
+
+void Output::EraseXNOR2(Gate * ptr)
+{
+	EraseXNOR2(ptr->GetPosition());
+}
+
+void Output::EraseXNOR3(Gate * ptr)
+{
+	EraseXNOR3(ptr->GetPosition());
 }
 
 /*
@@ -1670,6 +1819,11 @@ void Output::DrawSwitch(GraphicsInfo r_GfxInfo, GridItem*ptr, bool ON, bool sele
 	{
 		Interface->Register(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2), ptr);
 		Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + UI.ConnectionDimensions, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());
+	}
+	else
+	{
+		Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2));
+		Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + UI.ConnectionDimensions, r_GfxInfo.y2));
 	}
 }
 void Output::DrawSwitch(Gate * ptr)

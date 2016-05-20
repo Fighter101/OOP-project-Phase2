@@ -167,33 +167,37 @@ private:
 	void CreateToolBars();
 	//Gates
 	//And Gate
-	void DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected = false, bool invert = false, bool connections = false) const;
-
+	void DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected = false, bool invert = false, bool connections = false,color=BLACK,color=SKYBLUE) const;
 	void DrawAND2(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected);
-
 	void DrawNAND2(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected);
-
 	void DrawAND3(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected);
-
 	void DrawNAND3(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected);
+	void EraseAND2(GraphicsInfo r_GfxInfo);
+	void EraseAND3(GraphicsInfo r_GfxInfo);
+	void EraseNAND2(GraphicsInfo r_GfxInfo);
+	void EraseNAND3(GraphicsInfo r_GfxInfo);
 	/////////////////////////////////
 	//OR Gate
-	void DrawOr(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected, bool invert = false, bool connections = false) const;
-
+	void DrawOr(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected, bool invert = false, bool connections = false,color=BLACK,color=SKYBLUE) const;
 	void DrawOR2(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected);
-
 	void DrawOR3(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected);
-
 	void DrawNOR2(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected);
-
 	void DrawNOR3(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected);
+	void EraseOR2(GraphicsInfo r_GfxInfo);
+	void EraseOR3(GraphicsInfo r_GfxInfo);
+	void EraseNOR2(GraphicsInfo r_GfxInfo);
+	void EraseNOR3(GraphicsInfo r_GfxInfo);
 	//////////////////////////////
 	//Xor Gate
-	void DrawXOR(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected, bool invert = false, bool connections = false) const;
+	void DrawXOR(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected, bool invert = false, bool connections = false, color = BLACK, color = SKYBLUE) const;
 	void DrawXOR2(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected);
 	void DrawXNOR2(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected);
 	void DrawXOR3(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected);
 	void DrawXNOR3(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected);
+	void EraseXOR2(GraphicsInfo r_GfxInfo);
+	void EraseXNOR2(GraphicsInfo r_GfxInfo);
+	void EraseXOR3(GraphicsInfo r_GfxInfo);
+	void EraseXNOR3(GraphicsInfo r_GfxInfo);
 	////////////////////////////////////////////////
 	//Switch
 	void DrawSwitch(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected, bool ON = false);
@@ -244,14 +248,26 @@ public:
 	void DrawNAND2(Gate * ptr);
 	void DrawAND3(Gate * ptr);
 	void DrawNAND3(Gate * ptr);
+	void EraseAND2(Gate * ptr);
+	void EraseAND3(Gate * ptr);
+	void EraseNAND2(Gate * ptr);
+	void EraseNAND3(Gate * ptr);
 	void DrawOR2( Gate * ptr);
 	void DrawOR3( Gate * ptr);
 	void DrawNOR2( Gate * ptr);
 	void DrawNOR3( Gate * ptr);
+	void EraseOR2(Gate * ptr);
+	void EraseOR3(Gate * ptr);
+	void EraseNOR2(Gate * ptr);
+	void EraseNOR3(Gate * ptr);
 	void DrawXOR2( Gate * ptr);
 	void DrawXNOR2( Gate * ptr);
 	void DrawXOR3( Gate * ptr);
 	void DrawXNOR3( Gate * ptr);
+	void EraseXOR2(Gate * ptr);
+	void EraseXOR3(Gate * ptr);
+	void EraseXNOR2(Gate * ptr);
+	void EraseXNOR3(Gate * ptr);
 	void DrawInverter( Gate * ptr);
 	void DrawBuffer( Gate * ptr);
 	void DrawSwitch(Gate * ptr);
