@@ -1,0 +1,11 @@
+﻿  Output.cpp
+e:\oop projec-bgd\project code framework\gui\output.cpp(1071): warning C4800: 'PressType': forcing value to bool 'true' or 'false' (performance warning)
+e:\oop projec-bgd\project code framework\gui\output.cpp(1190): warning C4018: '<': signed/unsigned mismatch
+e:\oop projec-bgd\project code framework\gui\output.cpp(1840): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\oop projec-bgd\project code framework\gui\output.cpp(1841): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\oop projec-bgd\project code framework\gui\output.cpp(1842): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\oop projec-bgd\project code framework\gui\output.cpp(1854): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+e:\oop projec-bgd\project code framework\gui\output.cpp(1855): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+e:\oop projec-bgd\project code framework\gui\output.cpp(1856): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+e:\oop projec-bgd\project code framework\gui\output.cpp(1868): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  graphics_prj.vcxproj -> E:\OOP projec-BGD\Project Code Framework\.\Debug\graphics_prj.exe

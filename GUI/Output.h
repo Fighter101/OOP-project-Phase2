@@ -200,15 +200,18 @@ private:
 	void EraseXNOR3(GraphicsInfo r_GfxInfo);
 	////////////////////////////////////////////////
 	//Switch
-	void DrawSwitch(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected, bool ON = false);
+	void DrawSwitch(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected, bool ON = false,bool=false);
 	////////////////////////////
 	//Inverter&buffer
-	void DrawBuffer(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected = false, bool invert = false) const;
+	void DrawBuffer(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected = false, bool invert = false,color=BLACK,color=SKYBLUE) const;
 	void DrawBuffer(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected);
 	void DrawInverter(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected);
+	void EraseBuffer(GraphicsInfo r_GfxInfo);
+	void EraseInverter(GraphicsInfo r_GfxInfo);
 	//////////////////////////////
 	//LED
-	void DrawLED(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected, bool ON = false) const;
+	void DrawLED(GraphicsInfo r_GfxInfo, GridItem * ptr, bool selected, bool ON = false,bool=false) const;
+	
 public:
 	Output(); // Performs the Window Initialization
 	Input* CreateInput() const; //creates a pointer to the Input object
@@ -271,7 +274,11 @@ public:
 	void DrawInverter( Gate * ptr);
 	void DrawBuffer( Gate * ptr);
 	void DrawSwitch(Gate * ptr);
+	void EraseBuffer(Gate * ptr);
+	void EraseInverter(Gate * ptr);
+	void EraseSwitch(Gate*ptr);
 	void DrawLED(Gate * ptr);
+	void EraseLED(Gate*ptr);
 	//Connection
 	vector<pair<int, int> > Connect(GraphicsInfo r_GfxInfo, GridItem*ptr ,bool selected = false);
 	//Truth Table
