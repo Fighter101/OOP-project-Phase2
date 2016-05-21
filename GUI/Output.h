@@ -115,6 +115,7 @@ private:
 		&Output::XNOR2Icon,
 		&Output::XNOR3Icon,
 	};
+
 	ActionType ButtonActions[44] = 
 	{ 
 		MOVE,

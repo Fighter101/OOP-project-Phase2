@@ -3,12 +3,12 @@
 
 ActionType OutputPin::Leftpress()
 {
-	return SELECT;
+	return ADD_CONNECTION;
 }
 
 ActionType OutputPin::RightPress()
 {
-	return SELECT;
+	return ADD_CONNECTION;
 }
 
 void OutputPin::hover()
