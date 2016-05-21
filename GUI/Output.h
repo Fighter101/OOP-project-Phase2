@@ -113,7 +113,7 @@ private:
 		&Output::XOR2Icon,
 		&Output::XOR3Icon,
 		&Output::XNOR2Icon,
-		&Output::XNOR3Icon,
+		&Output::XNOR3Icon
 	};
 	ActionType ButtonActions[44] = 
 	{ 
@@ -246,7 +246,6 @@ public:
 	void EraseXORToolBar();
 	//Gate Drawing Functions
 	//AndGate
-
 	void DrawAND2(Gate * ptr);
 	void DrawNAND2(Gate * ptr);
 	void DrawAND3(Gate * ptr);
@@ -255,6 +254,7 @@ public:
 	void EraseAND3(Gate * ptr);
 	void EraseNAND2(Gate * ptr);
 	void EraseNAND3(Gate * ptr);
+	//OR gate
 	void DrawOR2( Gate * ptr);
 	void DrawOR3( Gate * ptr);
 	void DrawNOR2( Gate * ptr);
@@ -263,6 +263,7 @@ public:
 	void EraseOR3(Gate * ptr);
 	void EraseNOR2(Gate * ptr);
 	void EraseNOR3(Gate * ptr);
+	//XOR gate
 	void DrawXOR2( Gate * ptr);
 	void DrawXNOR2( Gate * ptr);
 	void DrawXOR3( Gate * ptr);
@@ -271,12 +272,15 @@ public:
 	void EraseXOR3(Gate * ptr);
 	void EraseXNOR2(Gate * ptr);
 	void EraseXNOR3(Gate * ptr);
+	//Inverter&buffer
 	void DrawInverter( Gate * ptr);
 	void DrawBuffer( Gate * ptr);
-	void DrawSwitch(Gate * ptr);
 	void EraseBuffer(Gate * ptr);
 	void EraseInverter(Gate * ptr);
+	//Switch
+	void DrawSwitch(Gate * ptr);
 	void EraseSwitch(Gate*ptr);
+	//LED
 	void DrawLED(Gate * ptr);
 	void EraseLED(Gate*ptr);
 	//Connection

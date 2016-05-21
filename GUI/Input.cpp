@@ -19,7 +19,7 @@ GridItem* Input::GetPointClicked(int &x, int &y,Comps Comp)
 	switch (Comp)
 	{
 	case _GATE_:
-		Returned = Interface->Available(GraphicsInfo(x - UI.AllGateDimensions / 2 - 5, y - UI.AllGateDimensions / 2 - 5, x - UI.AllGateDimensions / 2 + UI.InverterDimensions + UI.ConnectionDimensions, y + UI.AllGateDimensions / 2));
+		Returned = Interface->Available(GraphicsInfo(x - UI.AllGateDimensions / 2 - 5, y - UI.AllGateDimensions / 2 - 5, x + UI.AllGateDimensions / 2 + UI.InverterDimensions + UI.ConnectionDimensions, y + UI.AllGateDimensions / 2));
 		break;
 	case _BUFFER_:
 		Returned = Interface->Available(GraphicsInfo(x - UI.BufferDimensions / 2 - UI.ConnectionDimensions, y - UI.BufferDimensions, x + UI.BufferDimensions / 2 + UI.ConnectionDimensions, y + UI.BufferDimensions / 2));
