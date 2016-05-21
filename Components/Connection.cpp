@@ -6,6 +6,27 @@ Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPi
 	SrcPin = pSrcPin;
 	DstPin = pDstPin;
 }
+
+ActionType Connection::Leftpress()
+{
+	return CONNECT_TWO_PINS;
+}
+
+ActionType Connection::RightPress()
+{
+	return CONNECT_TWO_PINS;
+}
+
+void Connection::hover()
+{
+}
+
+void Connection::released()
+{
+}
+
+
+
 void Connection::setSourcePin(OutputPin *pSrcPin)
 {	SrcPin = pSrcPin;	}
 
@@ -19,6 +40,11 @@ void Connection::setDestPin(InputPin *pDstPin)
 InputPin* Connection::getDestPin()
 {	return DstPin;	}
 
+InputPin * Connection::GetPin(int)
+{
+	return DstPin;
+}
+
 
 void Connection::Operate()
 {
@@ -28,7 +54,7 @@ void Connection::Operate()
 
 void Connection::Draw(Output* pOut)
 {
-	pOut->Connect(m_GfxInfo,this);
+	pOut->Connect(this);
 }
 
 bool Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1

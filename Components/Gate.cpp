@@ -15,6 +15,11 @@ Gate::Gate(int r_Inputs)
 		m_InputPins[i].setComponent(this);
 }
 
+
+
+
+
+
 InputPin * Gate::GetInputPins()
 {
 	return m_InputPins;
@@ -38,5 +43,23 @@ GraphicsInfo Gate::GetPosition()
 bool Gate::GetState()
 {
 	return Selected;
+}
+
+ActionType Gate::Leftpress()
+{
+	return SELECT;
+}
+
+ActionType Gate::RightPress()
+{
+	return SELECT;
+}
+
+void Gate::hover()
+{
+}
+
+void Gate::released()
+{
 }
 

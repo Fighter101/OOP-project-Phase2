@@ -7,6 +7,7 @@ class Pin :public GridItem
 {
 protected:
 	STATUS m_Status;	//Status of the Pin
+	GraphicsInfo Position;
 public:
 	virtual ActionType Leftpress() = 0;
 	virtual ActionType RightPress() = 0;
@@ -15,6 +16,8 @@ public:
 	Pin();
 	void setStatus(STATUS r_Status);
 	STATUS getStatus();
+	virtual GraphicsInfo GetPosition();
+	virtual void SetPosition(GraphicsInfo r_GfxInfo);
 };
 
 #endif

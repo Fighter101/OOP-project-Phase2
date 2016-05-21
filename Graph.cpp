@@ -1,4 +1,5 @@
-#include "Graph.h"
+#include "..\OOP-project-Phase2\Graph.h"
+#include"..\OOP-project-Phase2\Components\Pin.h"
 bool Graph::Valid(int x, int y)
 {
 	return (x >= 0) && (y >= 0) && (x < UI.GridWidth) && (y < UI.GridHeight) && (Grid[x][y] == NULL) && (parent[x][y].first == -1);
@@ -44,7 +45,7 @@ vector<pair<int, int>> Graph::Connect(GraphicsInfo r_GfxInfo)
 			parent[i][j] = pair<int, int>(-1, -1);
 		}
 	}
-	if ((Grid[r_GfxInfo.x1 / 5][r_GfxInfo.y1 / 5] != NULL)/* || (Components[r_GfxInfo.y2 / 5][r_GfxInfo.x2 / 5] != Empty)*/)
+	if ((Grid[r_GfxInfo.x1 / 5][r_GfxInfo.y1 / 5] != NULL) || dynamic_cast<Pin*>(Grid[r_GfxInfo.y2 / 5][r_GfxInfo.x2 / 5]) !=NULL )
 		return Points;
 	BFS(GraphicsInfo(r_GfxInfo.x1 / UI.PixelDenisty, r_GfxInfo.y1 / UI.PixelDenisty, r_GfxInfo.x2 / UI.PixelDenisty, r_GfxInfo.y2 / UI.PixelDenisty));
 	if (parent[r_GfxInfo.x2 / 5][r_GfxInfo.y2 / 5] == pair<int, int>(-1, -1))
@@ -82,6 +83,21 @@ GridItem * Graph::Available(GraphicsInfo r_GfxInfo)
 				return Grid[ix + i][iy + j];
 	}
 	return NULL;
+}
+set<GridItem*> Graph::Check(GraphicsInfo r_GfxInfo)
+{
+	set<GridItem*>tmp;
+	int ix = r_GfxInfo.x1 / UI.PixelDenisty;
+	int iy = r_GfxInfo.y1 / UI.PixelDenisty;
+	int fx = ceil(r_GfxInfo.x2 / (double)UI.PixelDenisty);
+	int fy = ceil(r_GfxInfo.y2 / (double)UI.PixelDenisty);
+	for (int i = 0; i <= fx - ix; i++)
+	{
+		for (int j = 0;j <= fy - iy;j++)
+			if (Grid[ix + i][iy + j] != NULL)
+				tmp.insert(Grid[ix + i][iy + j]);
+	}
+	return tmp;
 }
 void Graph::Register(GraphicsInfo r_GfxInfo, GridItem * ptr)
 {

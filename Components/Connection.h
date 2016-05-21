@@ -16,13 +16,18 @@ public:
 
 	virtual void Operate() ;	//Calculates the output according to the inputs
 	virtual void Draw(Output* pOut);	//for each component to Draw itself
+	virtual ActionType Leftpress();
+	virtual ActionType RightPress();
+
+	virtual void hover();
+	virtual void released();
 
 	
 	void setSourcePin(OutputPin *pSrcPin);
 	void setDestPin(InputPin *pDstPin);
 	OutputPin* getSourcePin();
 	InputPin* getDestPin();
-
+	InputPin* GetPin(int);
 
 	virtual bool GetOutPinStatus();	//returns status of outputpin if LED, return -1
 	virtual bool GetInputPinStatus(int n);	//returns status of Inputpin # n if SWITCH, return -1
