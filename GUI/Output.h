@@ -254,6 +254,9 @@ public:
 	void EraseAND3(Gate * ptr);
 	void EraseNAND2(Gate * ptr);
 	void EraseNAND3(Gate * ptr);
+	//This returns set if the set.size==0 then you can safely add any thing here other wise it will override sth,which is pointed to by the pointers in the set
+	set<GridItem*>CheckAnd(GraphicsInfo r_GfxInfo);
+	set<GridItem*>CheckNand(GraphicsInfo r_GfxInfo);
 	//OR gate
 	void DrawOR2( Gate * ptr);
 	void DrawOR3( Gate * ptr);
@@ -263,6 +266,8 @@ public:
 	void EraseOR3(Gate * ptr);
 	void EraseNOR2(Gate * ptr);
 	void EraseNOR3(Gate * ptr);
+	set<GridItem*>CheckOR(GraphicsInfo r_GfxInfo);
+	set<GridItem*>CheckNOR(GraphicsInfo r_GfxInfo);
 	//XOR gate
 	void DrawXOR2( Gate * ptr);
 	void DrawXNOR2( Gate * ptr);
@@ -272,17 +277,23 @@ public:
 	void EraseXOR3(Gate * ptr);
 	void EraseXNOR2(Gate * ptr);
 	void EraseXNOR3(Gate * ptr);
+	set<GridItem*>CheckXOR(GraphicsInfo r_GfxInfo);
+	set<GridItem*>CheckXNOR(GraphicsInfo r_GfxInfo);
 	//Inverter&buffer
 	void DrawInverter( Gate * ptr);
 	void DrawBuffer( Gate * ptr);
 	void EraseBuffer(Gate * ptr);
 	void EraseInverter(Gate * ptr);
+	set<GridItem*>CheckBuffer(GraphicsInfo r_GfxInfo);
+	set<GridItem*>CheckInverter(GraphicsInfo r_GfxInfo);
 	//Switch
 	void DrawSwitch(Gate * ptr);
 	void EraseSwitch(Gate*ptr);
+	set<GridItem*> CheckSwitch(GraphicsInfo r_GfxInfo);
 	//LED
 	void DrawLED(Gate * ptr);
 	void EraseLED(Gate*ptr);
+	set<GridItem*>CheckLED(GraphicsInfo r_GfxInfo);
 	//Connection
 	vector<pair<int, int> > Connect(GraphicsInfo r_GfxInfo, GridItem*ptr ,bool selected = false);
 	//Truth Table

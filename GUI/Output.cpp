@@ -1187,7 +1187,7 @@ GraphicsInfo Output::XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State)
 void Output::DrawConnection(vector<pair<int, int>> Points,GridItem*ptr)
 {
 	pWind->SetPen(BLACK, 3);
-	for (int i = 0; i < Points.size() - 1; i++)
+	for (int i = 0; i < (Points.size() - 1); i++)
 	{
 		pWind->DrawLine(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second);
 		Interface->Register(GraphicsInfo(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second), ptr);
@@ -1278,7 +1278,7 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 		{
 			pWind->DrawLine(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i* dist);
 			if (ptr != NULL)
-				Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i* dist), ((Gate*)ptr)->GetInputPins());
+				Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i* dist), &((Gate*)ptr)->GetInputPins()[i]);
 			else
 				Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i* dist));
 		}
@@ -1290,7 +1290,7 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 		{
 			pWind->DrawLine(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i*dist);
 			if (ptr != NULL)
-				Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i* dist), ((Gate*)ptr)->GetInputPins());
+				Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i* dist), &((Gate*)ptr)->GetInputPins()[i]);
 			else
 				Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, (r_GfxInfo.y1 + i* dist), r_GfxInfo.x1, (r_GfxInfo.y1) + i* dist));
 		}
@@ -1373,6 +1373,55 @@ void Output::EraseNAND2(Gate * ptr)
 void Output::EraseNAND3(Gate * ptr)
 {
 	EraseNAND3(ptr->GetPosition());
+}
+set<GridItem*> Output::CheckAnd(GraphicsInfo r_GfxInfo)
+{
+	set<GridItem*>tmp;
+	set<GridItem*>Returned;
+	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.AllGateDimensions / 4;
+	r_GfxInfo.y2 = r_GfxInfo.y1 + UI.AllGateDimensions / 2;
+	r_GfxInfo.x1 -= UI.AllGateDimensions / 4;
+	r_GfxInfo.y1 -= UI.AllGateDimensions / 2;
+	int raduis = (r_GfxInfo.y2 - r_GfxInfo.y1) / 2;
+	raduis += 9;
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y2));//Outputpin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.AllGateDimensions, r_GfxInfo.y2));//Gate
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2));//InpputPin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	return Returned;
+}
+set<GridItem*> Output::CheckNand(GraphicsInfo r_GfxInfo)
+{
+	set<GridItem*>Returned;
+	set<GridItem*>tmp;
+	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.AllGateDimensions / 4;
+	r_GfxInfo.y2 = r_GfxInfo.y1 + UI.AllGateDimensions / 2;
+	r_GfxInfo.x1 -= UI.AllGateDimensions / 4;
+	r_GfxInfo.y1 -= UI.AllGateDimensions / 2;
+	int raduis = (r_GfxInfo.y2 - r_GfxInfo.y1) / 2;
+	raduis += 9;
+	int y_Center = r_GfxInfo.y1 + raduis - 9;
+	int x_Center = r_GfxInfo.x2 + raduis - 1;
+	int Raduis = UI.InverterDimensions;
+	tmp=Interface->Check(GraphicsInfo(x_Center - 1 + Raduis, r_GfxInfo.y1, x_Center + Raduis + 9, r_GfxInfo.y2));//Connection
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x1 + UI.AllGateDimensions, r_GfxInfo.y1, x_Center - 1 + Raduis, r_GfxInfo.y2));//Gate
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp = Interface->Check(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.AllGateDimensions, r_GfxInfo.y2));//Gate
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp = Interface->Check(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2));//InputPin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	return Returned;
+
 }
 /*
 ////////////////////////OR Gate////////////////////////////////
@@ -1544,6 +1593,58 @@ void Output::EraseNOR2(Gate * ptr)
 void Output::EraseNOR3(Gate * ptr)
 {
 	EraseNOR3(ptr->GetPosition());
+}
+
+set<GridItem*> Output::CheckOR(GraphicsInfo r_GfxInfo)
+{
+	set<GridItem*>tmp;
+	set<GridItem*>Returned;
+	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.AllGateDimensions / 4;
+	r_GfxInfo.y2 = r_GfxInfo.y1 + UI.AllGateDimensions / 2;
+	r_GfxInfo.x1 -= UI.AllGateDimensions / 4;
+	r_GfxInfo.y1 -= UI.AllGateDimensions / 2;
+	int ArcHeight = (r_GfxInfo.x2 - r_GfxInfo.x1) / 2;
+	int Midpoint = (r_GfxInfo.y2 - r_GfxInfo.y1) / 2;
+	int iHeight = (r_GfxInfo.x2 - r_GfxInfo.x1);
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y2));//OutputPin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight, r_GfxInfo.y2));//Gate
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y2));//InputPins
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	return Returned;
+}
+
+set<GridItem*> Output::CheckNOR(GraphicsInfo r_GfxInfo)
+{
+	set<GridItem*>tmp;
+	set<GridItem*>Returned;
+	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.AllGateDimensions / 4;
+	r_GfxInfo.y2 = r_GfxInfo.y1 + UI.AllGateDimensions / 2;
+	r_GfxInfo.x1 -= UI.AllGateDimensions / 4;
+	r_GfxInfo.y1 -= UI.AllGateDimensions / 2;
+	int ArcHeight = (r_GfxInfo.x2 - r_GfxInfo.x1) / 2;
+	int Midpoint = (r_GfxInfo.y2 - r_GfxInfo.y1) / 2;
+	int iHeight = (r_GfxInfo.x2 - r_GfxInfo.x1);
+	int y_Center = r_GfxInfo.y2 - Midpoint;
+	int x_Center = r_GfxInfo.x2 + iHeight + 3;
+	int Raduis = UI.InverterDimensions;
+	tmp = Interface->Check(GraphicsInfo(r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y1, x_Center + Raduis + 10, r_GfxInfo.y2));//OutputPin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp = Interface->Check(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight, r_GfxInfo.y2));//Gate
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp = Interface->Check(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y2));//InputPins
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y2));//Gate
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	return Returned;
 }
 
 /*
@@ -1723,6 +1824,58 @@ void Output::EraseXNOR3(Gate * ptr)
 	EraseXNOR3(ptr->GetPosition());
 }
 
+set<GridItem*> Output::CheckXOR(GraphicsInfo r_GfxInfo)
+{
+	set<GridItem*>tmp;
+	set<GridItem*>Returned;
+	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.AllGateDimensions / 4;
+	r_GfxInfo.y2 = r_GfxInfo.y1 + UI.AllGateDimensions / 2;
+	r_GfxInfo.x1 -= UI.AllGateDimensions / 4;
+	r_GfxInfo.y1 -= UI.AllGateDimensions / 2;
+	int ArcHeight = (r_GfxInfo.x2 - r_GfxInfo.x1) / 2;
+	int Midpoint = (r_GfxInfo.y2 - r_GfxInfo.y1) / 2;
+	int iHeight = (r_GfxInfo.x2 - r_GfxInfo.x1);
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y2));//OutputPin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y2));//Input pin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight, r_GfxInfo.y2));
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	return Returned;
+}
+
+set<GridItem*> Output::CheckXNOR(GraphicsInfo r_GfxInfo)
+{
+	set<GridItem*>tmp;
+	set<GridItem*>Returned;
+	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.AllGateDimensions / 4;
+	r_GfxInfo.y2 = r_GfxInfo.y1 + UI.AllGateDimensions / 2;
+	r_GfxInfo.x1 -= UI.AllGateDimensions / 4;
+	r_GfxInfo.y1 -= UI.AllGateDimensions / 2;
+	int ArcHeight = (r_GfxInfo.x2 - r_GfxInfo.x1) / 2;
+	int Midpoint = (r_GfxInfo.y2 - r_GfxInfo.y1) / 2;
+	int iHeight = (r_GfxInfo.x2 - r_GfxInfo.x1);
+	int y_Center = r_GfxInfo.y2 - Midpoint;
+	int x_Center = r_GfxInfo.x2 + iHeight + 3;
+	int Raduis = UI.InverterDimensions;
+	tmp = Interface->Check(GraphicsInfo(r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y1, x_Center + Raduis + 10, r_GfxInfo.y2));//OutputPin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp = Interface->Check(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1 + ArcHeight - 1, r_GfxInfo.y2));//Input pin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp = Interface->Check(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight, r_GfxInfo.y2));//Gate
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y2));//Gate
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	return Returned;
+}
+
 /*
 ////////////////////////////////////////Buffer///////////////////////////
 */
@@ -1870,9 +2023,65 @@ void Output::EraseInverter(Gate * ptr)
 {
 	EraseInverter(ptr->GetPosition());
 }
+set<GridItem*> Output::CheckBuffer(GraphicsInfo r_GfxInfo)
+{
+	set<GridItem*>tmp, Returned;
+	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.BufferDimensions / 2;
+	r_GfxInfo.x1 -= UI.BufferDimensions / 2;
+	r_GfxInfo.y2 = r_GfxInfo.y1;
+	r_GfxInfo.y1 -= UI.BufferDimensions / 2;
+	int raduis = UI.InverterDimensions;
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x2 + raduis * 2, r_GfxInfo.y1, r_GfxInfo.x2 + raduis * 2 + UI.ConnectionDimensions, r_GfxInfo.y2 + UI.BufferDimensions / 2));//Output Pin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2 + UI.BufferDimensions / 2));//Gate
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2 + UI.BufferDimensions / 2));//InputPin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + raduis * 2, r_GfxInfo.y2 + UI.BufferDimensions / 2));//Gate
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	return Returned;
+}
+set<GridItem*> Output::CheckInverter(GraphicsInfo r_GfxInfo)
+{
+	set<GridItem*>tmp, Returned;
+	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.BufferDimensions / 2;
+	r_GfxInfo.x1 -= UI.BufferDimensions / 2;
+	r_GfxInfo.y2 = r_GfxInfo.y1;
+	r_GfxInfo.y1 -= UI.BufferDimensions / 2;
+	int raduis = UI.InverterDimensions;
+	tmp = Interface->Check(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + UI.ConnectionDimensions, r_GfxInfo.y1 + UI.BufferDimensions));//Output Pin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp = Interface->Check(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2 + UI.BufferDimensions / 2));//Gate
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp = Interface->Check(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2 + UI.BufferDimensions / 2));//InputPin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	return Returned;
+}
 void Output::EraseSwitch(Gate * ptr)
 {
 	DrawSwitch(ptr->GetPosition(), NULL, false, false, true);
+}
+set<GridItem*> Output::CheckSwitch(GraphicsInfo r_GfxInfo)
+{
+	set<GridItem*>tmp, Returned;
+	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.SwitchWidth / 2;
+	r_GfxInfo.x1 -= UI.SwitchWidth / 2;
+	r_GfxInfo.y2 = r_GfxInfo.y1 + UI.SwitchHeight / 2;
+	r_GfxInfo.y1 -= UI.SwitchHeight / 2;
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2));//Gate
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + UI.ConnectionDimensions, r_GfxInfo.y2));//Output pin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	return Returned;
 }
 /*
 ////////////////////////////////////////Switch///////////////////////////
@@ -1930,7 +2139,7 @@ void Output::DrawLED(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool O
 	if (ptr != NULL)
 	{
 		Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1 - raduis, r_GfxInfo.x2 + UI.LedDimensions, r_GfxInfo.y1 + raduis), ptr);
-		Interface->Register(GraphicsInfo(r_GfxInfo.x2 - UI.ConnectionDimensions, r_GfxInfo.y1 - raduis, r_GfxInfo.x2, r_GfxInfo.y1 + raduis), &((Gate*)ptr)->GetOutputPin());
+		Interface->Register(GraphicsInfo(r_GfxInfo.x2 - UI.ConnectionDimensions, r_GfxInfo.y1 - raduis, r_GfxInfo.x2, r_GfxInfo.y1 + raduis),((Gate*)ptr)->GetInputPins());
 	}
 	else
 	{
@@ -1947,6 +2156,22 @@ void Output::DrawLED(Gate * ptr)
 void Output::EraseLED(Gate * ptr)
 {
 	DrawLED(ptr->GetPosition(), NULL, true, true, true);
+}
+
+set<GridItem*> Output::CheckLED(GraphicsInfo r_GfxInfo)
+{
+	set<GridItem*>tmp, Returned;
+	int raduis = UI.LedDimensions * 4 / 7;
+	r_GfxInfo.x2 = r_GfxInfo.x1 - 1.75*raduis + 3;
+	r_GfxInfo.y2 = r_GfxInfo.y1 - 0.5*raduis;
+	int dist = 10 * tan(22.5);
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1 - raduis, r_GfxInfo.x2 + UI.LedDimensions, r_GfxInfo.y1 + raduis));//Gate
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	tmp=Interface->Check(GraphicsInfo(r_GfxInfo.x2 - UI.ConnectionDimensions, r_GfxInfo.y1 - raduis, r_GfxInfo.x2, r_GfxInfo.y1 + raduis));//InputPin
+	Returned.insert(tmp.begin(), tmp.end());
+	tmp.clear();
+	return Returned;
 }
 
 vector<pair<int,int> > Output::Connect(GraphicsInfo r_GfxInfo,  GridItem*ptr, bool selected)

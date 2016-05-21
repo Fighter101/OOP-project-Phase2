@@ -83,6 +83,21 @@ GridItem * Graph::Available(GraphicsInfo r_GfxInfo)
 	}
 	return NULL;
 }
+set<GridItem*> Graph::Check(GraphicsInfo r_GfxInfo)
+{
+	set<GridItem*>tmp;
+	int ix = r_GfxInfo.x1 / UI.PixelDenisty;
+	int iy = r_GfxInfo.y1 / UI.PixelDenisty;
+	int fx = ceil(r_GfxInfo.x2 / (double)UI.PixelDenisty);
+	int fy = ceil(r_GfxInfo.y2 / (double)UI.PixelDenisty);
+	for (int i = 0; i <= fx - ix; i++)
+	{
+		for (int j = 0;j <= fy - iy;j++)
+			if (Grid[ix + i][iy + j] != NULL)
+				tmp.insert(Grid[ix + i][iy + j]);
+	}
+	return tmp;
+}
 void Graph::Register(GraphicsInfo r_GfxInfo, GridItem * ptr)
 {
 	int ix = r_GfxInfo.x1 / UI.PixelDenisty;
