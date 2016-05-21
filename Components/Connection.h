@@ -16,7 +16,11 @@ public:
 
 	virtual void Operate() ;	//Calculates the output according to the inputs
 	virtual void Draw(Output* pOut);	//for each component to Draw itself
-	
+	virtual ActionType Leftpress();
+	virtual ActionType RightPress();
+
+	virtual void hover();
+	virtual void released();
 
 	
 	void setSourcePin(OutputPin *pSrcPin);

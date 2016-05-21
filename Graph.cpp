@@ -1,4 +1,5 @@
-#include "Graph.h"
+#include "..\OOP-project-Phase2\Graph.h"
+#include"..\OOP-project-Phase2\Components\Pin.h"
 bool Graph::Valid(int x, int y)
 {
 	return (x >= 0) && (y >= 0) && (x < UI.GridWidth) && (y < UI.GridHeight) && (Grid[x][y] == NULL) && (parent[x][y].first == -1);
@@ -44,7 +45,7 @@ vector<pair<int, int>> Graph::Connect(GraphicsInfo r_GfxInfo)
 			parent[i][j] = pair<int, int>(-1, -1);
 		}
 	}
-	if ((Grid[r_GfxInfo.x1 / 5][r_GfxInfo.y1 / 5] != NULL)/* || (Components[r_GfxInfo.y2 / 5][r_GfxInfo.x2 / 5] != Empty)*/)
+	if ((Grid[r_GfxInfo.x1 / 5][r_GfxInfo.y1 / 5] != NULL) || dynamic_cast<Pin*>(Grid[r_GfxInfo.y2 / 5][r_GfxInfo.x2 / 5]) !=NULL )
 		return Points;
 	BFS(GraphicsInfo(r_GfxInfo.x1 / UI.PixelDenisty, r_GfxInfo.y1 / UI.PixelDenisty, r_GfxInfo.x2 / UI.PixelDenisty, r_GfxInfo.y2 / UI.PixelDenisty));
 	if (parent[r_GfxInfo.x2 / 5][r_GfxInfo.y2 / 5] == pair<int, int>(-1, -1))

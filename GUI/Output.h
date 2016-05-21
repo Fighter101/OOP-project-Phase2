@@ -3,6 +3,7 @@
 #include "Input.h"
 class Gate;
 class ToolBar;
+class Connection;
 class Output	//The application manager should have a pointer to this class
 {
 private:
@@ -297,6 +298,7 @@ public:
 	set<GridItem*>CheckLED(GraphicsInfo r_GfxInfo);
 	//Connection
 	vector<pair<int, int> > Connect(GraphicsInfo r_GfxInfo, GridItem*ptr ,bool selected = false);
+	vector<pair<int, int> >Connect(Connection*r_Connection);
 	//Truth Table
 	void CreateTruthTable();
 	

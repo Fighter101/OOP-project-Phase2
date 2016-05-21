@@ -27,6 +27,10 @@ public:
 	virtual void SetState(bool r_selected);
 	virtual GraphicsInfo GetPosition();
 	virtual bool GetState();
+	virtual ActionType Leftpress();
+	virtual ActionType RightPress();
+	virtual void hover();
+	virtual void released();
 
 
 

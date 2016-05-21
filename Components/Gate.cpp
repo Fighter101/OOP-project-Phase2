@@ -45,3 +45,21 @@ bool Gate::GetState()
 	return Selected;
 }
 
+ActionType Gate::Leftpress()
+{
+	return SELECT;
+}
+
+ActionType Gate::RightPress()
+{
+	return SELECT;
+}
+
+void Gate::hover()
+{
+}
+
+void Gate::released()
+{
+}
+

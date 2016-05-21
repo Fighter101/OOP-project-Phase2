@@ -205,20 +205,21 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 
 }
 
-void ApplicationManager::CheckPoint(int & Cx, int & Cy)
+GridItem* ApplicationManager::CheckPoint(int & Cx, int & Cy)
 {
 
 	bool success = true;
+	GridItem*tmp;
 	while (success)
 	{
-		InputInterface->GetPointClicked(Cx, Cy);
+		tmp=InputInterface->GetPointClicked(Cx, Cy);
 		if (Cx == -1 || Cy == -1)
 			OutputInterface->PrintMsg("Out of Design Area, Please Click Inside the Drawing Area");
-		else if (Cx == -2 || Cy == -2)
+		else if (Cx == -2 || Cy == -2 && (dynamic_cast<Pin*>(tmp)) == NULL)
 			OutputInterface->PrintMsg("You've Clicked on an Existing Component, Please Click Somewhere Free");
-		else
 			success = false;
 	}
+	return tmp;
 }
 
 vector<Component*> ApplicationManager::getMetaData()

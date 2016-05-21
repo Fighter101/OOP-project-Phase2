@@ -16,7 +16,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -233,6 +233,7 @@
     <ClCompile Include="Components\XOR.cpp" />
     <ClCompile Include="Components\XOR2.cpp" />
     <ClCompile Include="Components\XOR3.cpp" />
+    <ClCompile Include="ConnectTwoPins.cpp" />
     <ClCompile Include="Defs.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GridItem.cpp" />
@@ -335,6 +336,7 @@
     <ClInclude Include="Components\XOR.h" />
     <ClInclude Include="Components\XOR2.h" />
     <ClInclude Include="Components\XOR3.h" />
+    <ClInclude Include="ConnectTwoPins.h" />
     <ClInclude Include="Defs.H" />
     <ClInclude Include="Essentials.h" />
     <ClInclude Include="Graph.h" />
