@@ -113,7 +113,7 @@ private:
 		&Output::XOR2Icon,
 		&Output::XOR3Icon,
 		&Output::XNOR2Icon,
-		&Output::XNOR3Icon,
+		&Output::XNOR3Icon
 	};
 
 	ActionType ButtonActions[44] = 

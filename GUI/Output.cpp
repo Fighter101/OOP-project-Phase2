@@ -1726,15 +1726,15 @@ void Output::EraseXNOR3(Gate * ptr)
 /*
 ////////////////////////////////////////Buffer///////////////////////////
 */
-void Output::DrawBuffer(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool invert) const
+void Output::DrawBuffer(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool invert,color BorderColor,color FillColor) const
 {
 	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.BufferDimensions / 2;
 	r_GfxInfo.x1 -= UI.BufferDimensions / 2;
 	r_GfxInfo.y2 = r_GfxInfo.y1;
 	r_GfxInfo.y1 -= UI.BufferDimensions / 2;
 	int raduis = UI.InverterDimensions;
-	pWind->SetPen(BLACK, 3);
-	pWind->SetBrush(SKYBLUE);
+	pWind->SetPen(BorderColor, 3);
+	pWind->SetBrush(FillColor);
 	if (selected)
 		pWind->DrawTriangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2 + UI.BufferDimensions / 2, r_GfxInfo.x2, r_GfxInfo.y2, FILLED);
 	else pWind->DrawTriangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2 + UI.BufferDimensions / 2, r_GfxInfo.x2, r_GfxInfo.y2, FRAME);
@@ -1750,12 +1750,21 @@ void Output::DrawBuffer(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, boo
 			Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + raduis * 2, r_GfxInfo.y2 + UI.BufferDimensions / 2), ptr);
 			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + raduis * 2, r_GfxInfo.y1, r_GfxInfo.x2 + raduis * 2 + UI.ConnectionDimensions, r_GfxInfo.y2 + UI.BufferDimensions / 2), &((Gate*)ptr)->GetOutputPin());
 		}
+		else
+		{
+			Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + raduis * 2, r_GfxInfo.y2 + UI.BufferDimensions / 2));
+			Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2 + raduis * 2, r_GfxInfo.y1, r_GfxInfo.x2 + raduis * 2 + UI.ConnectionDimensions, r_GfxInfo.y2 + UI.BufferDimensions / 2));
+		}
 	}
 	else
 	{
 		pWind->DrawLine(r_GfxInfo.x2 + -1, r_GfxInfo.y2, r_GfxInfo.x2 + UI.ConnectionDimensions - 1, r_GfxInfo.y2);
 		if (ptr != NULL)
 		Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + UI.ConnectionDimensions, r_GfxInfo.y1 + UI.BufferDimensions), &((Gate*)ptr)->GetOutputPin());
+		else
+		{
+			Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + UI.ConnectionDimensions, r_GfxInfo.y1 + UI.BufferDimensions));
+		}
 	}
 
 	pWind->DrawLine(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y2, r_GfxInfo.x1, r_GfxInfo.y2);
@@ -1763,6 +1772,11 @@ void Output::DrawBuffer(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, boo
 	{
 		Interface->Register(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2 + UI.BufferDimensions / 2), ptr);
 		Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2 + UI.BufferDimensions / 2), ((Gate*)ptr)->GetInputPins());
+	}
+	else
+	{
+		Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2 + UI.BufferDimensions / 2));
+		Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2 + UI.BufferDimensions / 2));
 	}
 }
 
@@ -1778,6 +1792,14 @@ void Output::DrawInverter(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected)
 {
 	DrawBuffer(r_GfxInfo, ptr, selected, true);
 }
+void Output::EraseBuffer(GraphicsInfo r_GfxInfo)
+{
+	DrawBuffer(r_GfxInfo, NULL, true, false, WHITE, WHITE);
+}
+void Output::EraseInverter(GraphicsInfo r_GfxInfo)
+{
+	DrawBuffer(r_GfxInfo, NULL, true, true, WHITE, WHITE);
+}
 void Output::DrawInverter(Gate * ptr)
 {
 	DrawInverter(ptr->GetPosition(), ptr, ptr->GetState());
@@ -1785,35 +1807,45 @@ void Output::DrawInverter(Gate * ptr)
 /*
 ////////////////////////////////////////Switch///////////////////////////
 */
-void Output::DrawSwitch(GraphicsInfo r_GfxInfo, GridItem*ptr, bool ON, bool selected)
+void Output::DrawSwitch(GraphicsInfo r_GfxInfo, GridItem*ptr, bool ON, bool selected,bool Erased)
 {
 	r_GfxInfo.x2 = r_GfxInfo.x1 + UI.SwitchWidth / 2;
 	r_GfxInfo.x1 -= UI.SwitchWidth / 2;
 	r_GfxInfo.y2 = r_GfxInfo.y1 + UI.SwitchHeight / 2;
 	r_GfxInfo.y1 -= UI.SwitchHeight / 2;
-	pWind->SetPen(BLACK, 3);
-	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2, FRAME);
-	pWind->DrawLine(r_GfxInfo.x1 + 10, r_GfxInfo.y1 + 1, r_GfxInfo.x1 + 10, r_GfxInfo.y2 - 2);
-	pWind->SetBrush(GREY);
-	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + 3 + UI.SwitchWidth / 4, r_GfxInfo.y2);
-	if (selected)
+	if (!Erased)
 	{
-		pWind->SetBrush(SKYBLUE);
-		pWind->SetPen(SKYBLUE, 3);
-		pWind->DrawRectangle(r_GfxInfo.x1 + 3 + UI.SwitchWidth / 4, r_GfxInfo.y1 + 3, r_GfxInfo.x2 - 3, r_GfxInfo.y2 - 3);
-	}
-	if (ON)
-	{
-		pWind->SetBrush(ROYALBLUE);
-		pWind->SetPen(ROYALBLUE, 3);
-		pWind->DrawRectangle(r_GfxInfo.x1 + 3, r_GfxInfo.y1 + 3, r_GfxInfo.x2 - 3, r_GfxInfo.y2 - 3, FILLED);
-		pWind->SetPen(STEELBLUE, 3);
-		pWind->SetBrush(STEELBLUE);
-		pWind->DrawRectangle(r_GfxInfo.x2 - UI.SwitchWidth / 4, r_GfxInfo.y1 + 3, r_GfxInfo.x2 - 3, r_GfxInfo.y2 - 3, FILLED);
 		pWind->SetPen(BLACK, 3);
-		pWind->DrawLine(r_GfxInfo.x2 - UI.SwitchWidth / 4, r_GfxInfo.y1 + 1, r_GfxInfo.x2 - UI.SwitchWidth / 4, r_GfxInfo.y2 - 2);
+		pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2, FRAME);
+		pWind->DrawLine(r_GfxInfo.x1 + 10, r_GfxInfo.y1 + 1, r_GfxInfo.x1 + 10, r_GfxInfo.y2 - 2);
+		pWind->SetBrush(GREY);
+		pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + 3 + UI.SwitchWidth / 4, r_GfxInfo.y2);
+		if (selected)
+		{
+			pWind->SetBrush(SKYBLUE);
+			pWind->SetPen(SKYBLUE, 3);
+			pWind->DrawRectangle(r_GfxInfo.x1 + 3 + UI.SwitchWidth / 4, r_GfxInfo.y1 + 3, r_GfxInfo.x2 - 3, r_GfxInfo.y2 - 3);
+		}
+		if (ON)
+		{
+			pWind->SetBrush(ROYALBLUE);
+			pWind->SetPen(ROYALBLUE, 3);
+			pWind->DrawRectangle(r_GfxInfo.x1 + 3, r_GfxInfo.y1 + 3, r_GfxInfo.x2 - 3, r_GfxInfo.y2 - 3, FILLED);
+			pWind->SetPen(STEELBLUE, 3);
+			pWind->SetBrush(STEELBLUE);
+			pWind->DrawRectangle(r_GfxInfo.x2 - UI.SwitchWidth / 4, r_GfxInfo.y1 + 3, r_GfxInfo.x2 - 3, r_GfxInfo.y2 - 3, FILLED);
+			pWind->SetPen(BLACK, 3);
+			pWind->DrawLine(r_GfxInfo.x2 - UI.SwitchWidth / 4, r_GfxInfo.y1 + 1, r_GfxInfo.x2 - UI.SwitchWidth / 4, r_GfxInfo.y2 - 2);
+		}
+
+		pWind->SetPen(BLACK, 3);
 	}
-	pWind->SetPen(BLACK, 3);
+	else
+	{
+		pWind->SetPen(WHITE, 3);
+		pWind->SetBrush(WHITE);
+		pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2);
+	}
 	pWind->DrawLine(r_GfxInfo.x2, (r_GfxInfo.y2 + r_GfxInfo.y1) / 2, r_GfxInfo.x2 + UI.ConnectionDimensions, (r_GfxInfo.y2 + r_GfxInfo.y1) / 2);
 	if (ptr != NULL)
 	{
@@ -1830,24 +1862,45 @@ void Output::DrawSwitch(Gate * ptr)
 {
 	DrawSwitch(ptr->GetPosition(), ptr, ptr->GetState());
 }
+void Output::EraseBuffer(Gate * ptr)
+{
+	EraseBuffer(ptr->GetPosition());
+}
+void Output::EraseInverter(Gate * ptr)
+{
+	EraseInverter(ptr->GetPosition());
+}
+void Output::EraseSwitch(Gate * ptr)
+{
+	DrawSwitch(ptr->GetPosition(), NULL, false, false, true);
+}
 /*
 ////////////////////////////////////////Switch///////////////////////////
 */
-void Output::DrawLED(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool ON) const
+void Output::DrawLED(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool ON,bool Erased) const
 {
 	pWind->SetPen(BLACK, 3);
 	int raduis = UI.LedDimensions * 4 / 7;
 	r_GfxInfo.x2 = r_GfxInfo.x1 - 1.75*raduis + 3;
 	r_GfxInfo.y2 = r_GfxInfo.y1 - 0.5*raduis;
 	int dist = 10 * tan(22.5);
-	if (ON)
+	if (!Erased)
 	{
-		pWind->SetBrush(LIGHTGOLDENRODYELLOW);
-		pWind->DrawCircle(r_GfxInfo.x1 - dist + 2, r_GfxInfo.y1, raduis, FILLED);
+		if (ON)
+		{
+			pWind->SetBrush(LIGHTGOLDENRODYELLOW);
+			pWind->DrawCircle(r_GfxInfo.x1 - dist + 2, r_GfxInfo.y1, raduis, FILLED);
+		}
+		else if (selected)
+		{
+			pWind->SetBrush(SKYBLUE);
+			pWind->DrawCircle(r_GfxInfo.x1 - dist + 2, r_GfxInfo.y1, raduis, FILLED);
+		}
 	}
-	else if (selected)
+	else
 	{
-		pWind->SetBrush(SKYBLUE);
+		pWind->SetBrush(WHITE);
+		pWind->SetPen(WHITE, 3);
 		pWind->DrawCircle(r_GfxInfo.x1 - dist + 2, r_GfxInfo.y1, raduis, FILLED);
 	}
 	pWind->DrawCircle(r_GfxInfo.x1 - dist + 2, r_GfxInfo.y1, raduis, FRAME);
@@ -1855,15 +1908,23 @@ void Output::DrawLED(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool O
 	pWind->DrawLine(r_GfxInfo.x2, r_GfxInfo.y2, r_GfxInfo.x2 + 0.75*raduis, r_GfxInfo.y2);
 	pWind->DrawLine(r_GfxInfo.x2, r_GfxInfo.y1 + 0.5*raduis, r_GfxInfo.x2 + 0.75*raduis, r_GfxInfo.y1 + 0.5*raduis);
 	pWind->DrawLine(r_GfxInfo.x2 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y1);
-	if (selected && !ON)
+	if (!Erased)
 	{
-		pWind->SetBrush(SKYBLUE);
-		pWind->SetPen(SKYBLUE, 3);
+		if (selected && !ON)
+		{
+			pWind->SetBrush(SKYBLUE);
+			pWind->SetPen(SKYBLUE, 3);
+		}
+		else
+		{
+			pWind->SetBrush(BLACK);
+			pWind->SetPen(BLACK, 3);
+		}
 	}
 	else
 	{
-		pWind->SetBrush(BLACK);
-		pWind->SetPen(BLACK, 3);
+		pWind->SetBrush(WHITE);
+		pWind->SetPen(WHITE, 3);
 	}
 	pWind->DrawRectangle(r_GfxInfo.x2 + 2, r_GfxInfo.y2 + 2, r_GfxInfo.x2 + 0.75*raduis, r_GfxInfo.y1 + 0.5*raduis - 1);
 	if (ptr != NULL)
@@ -1871,11 +1932,21 @@ void Output::DrawLED(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool O
 		Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1 - raduis, r_GfxInfo.x2 + UI.LedDimensions, r_GfxInfo.y1 + raduis), ptr);
 		Interface->Register(GraphicsInfo(r_GfxInfo.x2 - UI.ConnectionDimensions, r_GfxInfo.y1 - raduis, r_GfxInfo.x2, r_GfxInfo.y1 + raduis), &((Gate*)ptr)->GetOutputPin());
 	}
+	else
+	{
+		Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1 - raduis, r_GfxInfo.x2 + UI.LedDimensions, r_GfxInfo.y1 + raduis));
+		Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2 - UI.ConnectionDimensions, r_GfxInfo.y1 - raduis, r_GfxInfo.x2, r_GfxInfo.y1 + raduis));
+	}
 }
 
 void Output::DrawLED(Gate * ptr)
 {
 	DrawLED(ptr->GetPosition(), ptr, ptr->GetState());
+}
+
+void Output::EraseLED(Gate * ptr)
+{
+	DrawLED(ptr->GetPosition(), NULL, true, true, true);
 }
 
 vector<pair<int,int> > Output::Connect(GraphicsInfo r_GfxInfo,  GridItem*ptr, bool selected)
