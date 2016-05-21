@@ -27,7 +27,9 @@ public:
 	virtual void SetState(bool r_selected);
 	virtual GraphicsInfo GetPosition();
 	virtual bool GetState();
-	
+
+
+
 };
 
 #endif

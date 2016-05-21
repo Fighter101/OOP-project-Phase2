@@ -15,8 +15,10 @@ public:
 	Component(const GraphicsInfo &r_GfxInfo);
 	virtual void Operate() = 0;	//Calculates the output according to the inputs
 	virtual void Draw(Output* pOut) = 0;	//for each component to Draw itself
+	
 	virtual ActionType Leftpress();
 	virtual ActionType RightPress();
+
 	virtual void hover();
 	virtual void released();
 	

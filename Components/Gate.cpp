@@ -15,6 +15,11 @@ Gate::Gate(int r_Inputs)
 		m_InputPins[i].setComponent(this);
 }
 
+
+
+
+
+
 InputPin * Gate::GetInputPins()
 {
 	return m_InputPins;

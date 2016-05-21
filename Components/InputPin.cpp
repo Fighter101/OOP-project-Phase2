@@ -2,12 +2,12 @@
 
 ActionType InputPin::Leftpress()
 {
-	return SELECT;
+	return ADD_CONNECTION;
 }
 
 ActionType InputPin::RightPress()
 {
-	return SELECT;
+	return ADD_CONNECTION;
 }
 
 void InputPin::hover()
