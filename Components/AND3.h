@@ -8,7 +8,7 @@ represent the 3-input AND gate
 */
 
 #include "Gate.h"
-
+class Connection;
 class AND3 :public Gate
 {
 public:

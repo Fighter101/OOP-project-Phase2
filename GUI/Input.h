@@ -12,7 +12,7 @@ public:
 	//-1,-1 out of design area
 	//-2,-2 clicked on something
 	GridItem* GetPointClicked(int &, int &,Comps Component= _GATE_);	//Get coordinate where user clicks
-	string GetSrting(Output*);		//Returns a string entered by the user
+	string GetString(Output*);		//Returns a string entered by the user
 	static Graph*GetGraph();
 	pair< ActionType,vector<GridItem*> > GetUserAction() const; //Reads the user click and maps it to an action
 

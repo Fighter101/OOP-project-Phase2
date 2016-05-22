@@ -5,6 +5,7 @@ Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPi
 {
 	SrcPin = pSrcPin;
 	DstPin = pDstPin;
+	DstPin->setConnection(this);	//MDawod
 }
 
 ActionType Connection::Leftpress()
@@ -35,21 +36,32 @@ OutputPin* Connection::getSourcePin()
 
 
 void Connection::setDestPin(InputPin *pDstPin)
-{	DstPin = pDstPin;	}
+{	
+	DstPin = pDstPin;	
+}
 
 InputPin* Connection::getDestPin()
-{	return DstPin;	}
-
-InputPin * Connection::GetPin(int)
-{
-	return DstPin;
+{	
+	return DstPin;	
 }
+
+
+
+
+
+
+
+
+
 
 
 void Connection::Operate()
 {
 	//Status of connection destination pin = status of connection source pin
+
+	SrcPin->getComponent()->Operate();
 	DstPin->setStatus((STATUS)SrcPin->getStatus());
+
 }
 
 void Connection::Draw(Output* pOut)

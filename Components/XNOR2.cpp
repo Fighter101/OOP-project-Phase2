@@ -1,5 +1,5 @@
 #include "XNOR2.h"
-
+#include"Connection.h"
 XNOR2::XNOR2(const GraphicsInfo &r_GfxInfo) :Gate(2)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -13,12 +13,18 @@ void XNOR2::Operate()
 {
 	//caclulate the output status as the XNORing of the two input pins
 
+	m_InputPins[1].getConnection()->Operate();
+	m_InputPins[2].getConnection()->Operate();
+
+
+
 	m_OutputPin.setStatus(LOW);
 	for (int i = 1; i <= 2; i++)
 	{
 		m_OutputPin.setStatus(m_OutputPin.getStatus() ^ m_InputPins[i].getStatus());
 	}
 	m_OutputPin.setStatus(~(m_OutputPin.getStatus()));
+
 
 
 }

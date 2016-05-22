@@ -1,5 +1,5 @@
 #include "AND2.h"
-
+#include"Connection.h"
 AND2::AND2(const GraphicsInfo &r_GfxInfo):Gate(2)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -14,6 +14,20 @@ void AND2::Operate()
 	//caclulate the output status as the ANDing of the two input pins
 
 	//Add you code here
+
+	m_InputPins[1].getConnection()->Operate();
+	m_InputPins[2].getConnection()->Operate();
+
+
+
+	m_OutputPin.setStatus(HIGH);
+	for (int i = 1; i <= 2; i++)
+	{
+		m_OutputPin.setStatus((STATUS)m_OutputPin.getStatus() & (STATUS)m_InputPins[i].getStatus());
+	}
+
+
+
 }
 
 

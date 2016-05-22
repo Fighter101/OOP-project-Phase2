@@ -41,7 +41,7 @@ GridItem* Input::GetPointClicked(int &x, int &y,Comps Comp)
 	return Returned;
 }
 
-string Input::GetSrting(Output *pOut)
+string Input::GetString(Output *pOut)
 {
 	keytype ktInput;
 

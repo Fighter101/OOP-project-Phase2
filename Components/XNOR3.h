@@ -8,7 +8,7 @@ represent the 3-input XNOR gate
 */
 
 #include "Gate.h"
-
+class Connection;
 class XNOR3 :public Gate
 {
 public:
