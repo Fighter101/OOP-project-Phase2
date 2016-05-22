@@ -153,7 +153,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case SAVE:
-		return nullptr;
+		return new Save(this);
 		break;
 	case LOAD:
 		return nullptr;
@@ -195,7 +195,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	
 
 }
-
+//////////////////////////////////////////////////////////////////////////////
 GridItem* ApplicationManager::CheckPoint(int & Cx, int & Cy)
 {
 
@@ -212,7 +212,7 @@ GridItem* ApplicationManager::CheckPoint(int & Cx, int & Cy)
 	}
 	return tmp;
 }
-
+/////////////////////////////////////////////////////////////////////////////////////
 vector<Component*> ApplicationManager::getMetaData()
 {
 	return MetaData;
@@ -220,6 +220,10 @@ vector<Component*> ApplicationManager::getMetaData()
 vector<Component*> ApplicationManager::getClipboard()
 {
 	return	clip.pull();
+}
+vector<Component*> ApplicationManager::getComponents()
+{
+	return ComponentList;
 }
 void ApplicationManager::setClipboard(vector<Component*>x)
 {

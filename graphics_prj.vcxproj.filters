@@ -339,6 +339,9 @@
     <ClCompile Include="Pin\Pin.cpp">
       <Filter>Pins</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\Validate.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\Action.h">
@@ -650,6 +653,9 @@
     </ClInclude>
     <ClInclude Include="Pin\Pin.h">
       <Filter>Pins</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Validate.h">
+      <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
