@@ -35,10 +35,14 @@ OutputPin* Connection::getSourcePin()
 
 
 void Connection::setDestPin(InputPin *pDstPin)
-{	DstPin = pDstPin;	}
+{	
+	DstPin = pDstPin;	
+}
 
 InputPin* Connection::getDestPin()
-{	return DstPin;	}
+{	
+	return DstPin;	
+}
 
 InputPin * Connection::GetPin(int)
 {

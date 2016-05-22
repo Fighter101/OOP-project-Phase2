@@ -1,8 +1,9 @@
 #pragma once
 #include"Action.h"
+#include<string>
 class Save : public Action
 {
-
+	
 	public:
 
 	Save(ApplicationManager*);

@@ -1,5 +1,5 @@
 #include "InputPin.h"
-#include "Connection.h"
+#include "..\Components\Connection.h"
 ActionType InputPin::Leftpress()
 {
 	return ADD_CONNECTION;
