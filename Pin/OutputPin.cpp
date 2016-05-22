@@ -1,10 +1,8 @@
 #include "OutputPin.h"
-<<<<<<< HEAD:Components/OutputPin.cpp
-#include "Connection.h"
-#include "Component.h"
-=======
+
+#include "..\Components\Component.h"
 #include "..\Components\Connection.h"
->>>>>>> 942d643003f8efe01264ebfdb122406bb35feaff:Pin/OutputPin.cpp
+
 
 ActionType OutputPin::Leftpress()
 {

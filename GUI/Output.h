@@ -39,6 +39,8 @@ private:
 	GraphicsInfo PasteString(GraphicsInfo r_GfxInfo, PressType State);
 	GraphicsInfo CopyString(GraphicsInfo r_GfxInfo, PressType State);
 	GraphicsInfo DeleteString(GraphicsInfo r_GfxInfo, PressType State);
+	GraphicsInfo ToggleString(GraphicsInfo r_GfxInfo, PressType State);
+	GraphicsInfo TruthTableString(GraphicsInfo r_GfxInfo, PressType State);
 	//AddToolbarICons //Gates
 	GraphicsInfo AndIcon(GraphicsInfo r_GfxInfo,PressType State=Pressed);
 	GraphicsInfo ORIcon(GraphicsInfo r_GfxInfo, PressType State=Pressed);
@@ -69,8 +71,8 @@ private:
 	//Drawing the connection
 	void DrawConnection(vector <pair<int,int> >Points,GridItem*ptr);
 	//Icon Array
-	GraphicsInfo (Output::*ButtonFunctions[44])(GraphicsInfo,  PressType State) =
-	{ 
+	GraphicsInfo(Output::*ButtonFunctions[46])(GraphicsInfo, PressType State) =
+	{
 		&Output::MoveIcon,
 		&Output::CopyIcon,
 		&Output::PasteIcon,
@@ -114,10 +116,12 @@ private:
 		&Output::XOR2Icon,
 		&Output::XOR3Icon,
 		&Output::XNOR2Icon,
-		&Output::XNOR3Icon
+		&Output::XNOR3Icon,
+		&Output::ToggleString,
+		&Output::TruthTableString
 	};
 
-	ActionType ButtonActions[44] = 
+	ActionType ButtonActions[46] = 
 	{ 
 		MOVE,
 		COPY,
@@ -162,7 +166,9 @@ private:
 		ADD_XOR_GATE_2,
 		ADD_XOR_GATE_3,
 		ADD_XNOR_GATE_2,
-		ADD_XNOR_GATE_3
+		ADD_XNOR_GATE_3,
+		Change_Switch,
+		Create_TruthTable
 	};
 		
 	ToolBar *Toolbars;
@@ -239,7 +245,11 @@ public:
 	void CreateSimulationToolBar();
 	void EraseSimulationToolBar();
 	void CreateRightClickToolBar(GraphicsInfo r_GfxInfo);
-	void EraseRightClickToolBar();
+	set<GridItem*> EraseRightClickToolBar();
+	void CreateLEDToolBar(GraphicsInfo r_GfxInfo);
+	set<GridItem*> EraseLEDClickToolBar();
+	void CreateSwitchToolBar(GraphicsInfo r_GfxInfo);
+	set<GridItem*> EraseSwitchtClickToolBar();
 	void CreateAndToolBar();
 	void EraseAndToolBar();
 	void CreateORToolBar();

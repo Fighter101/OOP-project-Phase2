@@ -22,19 +22,19 @@ bool Gate::CheckPins()
 	SWITCH* sptr = dynamic_cast<SWITCH*>(this);
 	LED* lptr = dynamic_cast<LED*>(this);
 	if (sptr)
-		return m_OutputPin.CheckPins();
+		return m_OutputPin.CheckPin/*s*/();
 	if (lptr)
-		return	m_InputPins[0].CheckPins();
+		return	m_InputPins[0].CheckPin/*s*/();
 
 	//for any gate otherwise
 
 	for (int i = 0; i < m_Inputs; i++)
 	{
-		if (!m_InputPins[i].CheckPins())
+		if (!m_InputPins[i].CheckPin/*s*/())
 			return false;
 	}
 
-	return m_OutputPin.CheckPins();
+	return m_OutputPin.CheckPin/*s*/();
 }
 
 

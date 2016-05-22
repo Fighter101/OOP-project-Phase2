@@ -20,6 +20,6 @@ public:
 	/*Must be called only after setting position and orientation and giving the tool bar the list of buttons */
 	void CreateButtons(Output*pOut);
 	void Draw(Output *pOut);
-	void Erase(Output*pOut);
+	GraphicsInfo Erase(Output*pOut);
 	~ToolBar();
 };
