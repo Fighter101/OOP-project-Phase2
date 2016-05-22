@@ -8,7 +8,7 @@ represent the BUFF
 */
 
 #include "Gate.h"
-
+class Connection;
 class BUFF :public Gate
 {
 public:

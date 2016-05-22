@@ -1,5 +1,5 @@
 #include "OR2.h"
-
+#include"Connection.h"
 OR2::OR2(const GraphicsInfo &r_GfxInfo) :Gate(2)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -12,6 +12,11 @@ OR2::OR2(const GraphicsInfo &r_GfxInfo) :Gate(2)
 void OR2::Operate()
 {
 	//caclulate the output status as the ORing of the two input pins
+
+
+	m_InputPins[1].getConnection()->Operate();
+	m_InputPins[2].getConnection()->Operate();
+
 
 	m_OutputPin.setStatus(LOW);
 	for (int i = 1; i <= 2; i++)

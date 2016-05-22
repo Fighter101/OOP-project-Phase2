@@ -1,5 +1,5 @@
 #include "LED.h"
-
+#include"Connection.h"
 LED::LED(const GraphicsInfo &r_GfxInfo) :Gate(1)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -15,6 +15,12 @@ void LED::Operate()
 
 	//Add you code here
 	
+
+	m_InputPins[1].getConnection()->Operate();
+
+
+
+	//DRAW IT HIGH IF NEEDED ! MDawod
 
 
 }

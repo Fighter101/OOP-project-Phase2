@@ -1,5 +1,5 @@
 #include "INV.h"
-
+#include"Connection.h"
 INV::INV(const GraphicsInfo &r_GfxInfo) :Gate(1)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -12,8 +12,9 @@ INV::INV(const GraphicsInfo &r_GfxInfo) :Gate(1)
 void INV::Operate()
 {
 	//calculate the output status as the Inverting of the input pin
+	m_InputPins[1].getConnection()->Operate();
 
-	m_OutputPin.setStatus(~ m_InputPins[1].getStatus());
+	m_OutputPin.setStatus(~m_InputPins[1].getStatus());
 
 }
 

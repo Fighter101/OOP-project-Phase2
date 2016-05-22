@@ -8,7 +8,7 @@ represent the 3-input NOR gate
 */
 
 #include "Gate.h"
-
+class Connection;
 class NOR3 :public Gate
 {
 public:

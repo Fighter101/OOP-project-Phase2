@@ -1,7 +1,8 @@
 #include "SWITCH.h"
-
+#include"Connection.h"
 SWITCH::SWITCH(const GraphicsInfo &r_GfxInfo) :Gate(2)
 {
+	ONOFF = false; //MDawod
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;
 	m_GfxInfo.x2 = r_GfxInfo.x2;
@@ -14,6 +15,7 @@ void SWITCH::Operate()
 	//caclulate the output status as the ANDing of the two input pins
 
 	//Add you code here
+	ONOFF ? m_OutputPin.setStatus(HIGH) : m_OutputPin.setStatus(LOW);
 
 
 }

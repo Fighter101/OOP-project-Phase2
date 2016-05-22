@@ -8,7 +8,7 @@ represent the 2-input OR gate
 */
 
 #include "Gate.h"
-
+class Connection;
 class OR2 :public Gate
 {
 public:

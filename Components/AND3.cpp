@@ -1,5 +1,5 @@
 #include "AND3.h"
-
+#include"Connection.h"
 AND3::AND3(const GraphicsInfo &r_GfxInfo) :Gate(3)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -14,11 +14,14 @@ void AND3::Operate()
 	//caclulate the output status as the ANDing of the three input pins
 
 	//Add you code here
+	m_InputPins[1].getConnection()->Operate();
+
 	m_OutputPin = HIGH;
 	for (int i = 1; i <= 3; i++)
 	{
 		m_OutputPin = m_OutputPin.getStatus() & m_InputPins[i].getStatus();
 	}
+
 
 }
 

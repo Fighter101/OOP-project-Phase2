@@ -8,7 +8,7 @@ represent the 3-input NAND gate
 */
 
 #include "Gate.h"
-
+class Connection;
 class NAND3 :public Gate
 {
 public:
