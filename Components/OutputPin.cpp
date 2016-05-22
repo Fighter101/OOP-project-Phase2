@@ -1,6 +1,7 @@
 #include "OutputPin.h"
 #include "Connection.h"
 #include "Component.h"
+
 ActionType OutputPin::Leftpress()
 {
 	return ADD_CONNECTION;
@@ -21,6 +22,7 @@ void OutputPin::released()
 
 OutputPin::OutputPin(int r_FanOut)
 {
+	
 	m_Conn = 0;		//initially Pin is not connected to anything.
 	m_FanOut = r_FanOut > MAX_CONNS ? MAX_CONNS: r_FanOut;	//set the fan out of the pin.
 }
@@ -28,6 +30,16 @@ OutputPin::OutputPin(int r_FanOut)
 //Functionn ConnectTo:
 //Connects the ouput pin the the passed connection if the fan out permits
 //if the no. of connections is already equals to the fan out, no more connections can be created.
+
+bool OutputPin::CheckPin()
+{
+	return m_Conn;
+}
+
+
+
+
+
 bool OutputPin::ConnectTo(Connection *r_Conn)
 {
 	if(m_Conn < m_FanOut)

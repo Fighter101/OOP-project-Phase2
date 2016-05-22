@@ -9,6 +9,10 @@ class InputPin: public Pin	//inherited from class Pin
 	Component* pComp; //Component at which this pin is associated
 	Connection* pConn; //MDawod
 public:
+
+
+	void EraseConnection();
+	bool CheckPin();
 	virtual ActionType Leftpress();
 	virtual ActionType RightPress();
 	virtual void hover();

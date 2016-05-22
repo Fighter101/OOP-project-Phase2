@@ -19,7 +19,15 @@ void InputPin::released()
 }
 
 InputPin::InputPin()
-{}
+{
+	pConn = NULL;
+}
+
+bool InputPin::CheckPin()
+{
+	return pConn == NULL ? false : true;
+}
+
 
 void InputPin::setComponent(Component *pCmp)
 {
@@ -41,3 +49,8 @@ Connection* InputPin::getConnection()
 	return pConn;
 }
 
+
+void InputPin::EraseConnection()
+{
+	pConn = NULL;
+}
