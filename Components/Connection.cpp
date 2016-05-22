@@ -54,7 +54,7 @@ void Connection::Operate()
 
 void Connection::Draw(Output* pOut)
 {
-	pOut->Connect(this);
+	pOut->Connectx(this);
 }
 
 bool Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1

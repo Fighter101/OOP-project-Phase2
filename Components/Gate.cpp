@@ -25,7 +25,7 @@ InputPin * Gate::GetInputPins()
 	return m_InputPins;
 }
 
-OutputPin  Gate::GetOutputPin()
+OutputPin&  Gate::GetOutputPin()
 {
 	return m_OutputPin;
 }

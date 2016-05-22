@@ -23,7 +23,7 @@ protected:
 public:
 	Gate(int r_Inputs);
 	InputPin*GetInputPins();
-	OutputPin GetOutputPin();
+	OutputPin & GetOutputPin();
 	virtual void SetState(bool r_selected);
 	virtual GraphicsInfo GetPosition();
 	virtual bool GetState();

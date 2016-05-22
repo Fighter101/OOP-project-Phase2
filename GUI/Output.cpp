@@ -1248,10 +1248,10 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 		pWind->DrawLine(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1 + raduis - 9, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y1 + raduis - 9);
 		if (ptr != NULL)
 		{
-			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());//Connection
-			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y2));
+			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1 + raduis - 9, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y1 + raduis - 9), &(((Gate*)ptr)->GetOutputPin()));//Connection
+			(&(((Gate*)ptr)->GetOutputPin()))->SetPosition(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1 + raduis - 9, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y1 + raduis - 9));
 		}
-		else Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y2));
+		else Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1 + raduis - 9, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y1 + raduis - 9));
 	}
 	if (invert)
 	{
@@ -1265,13 +1265,13 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 		pWind->DrawLine(x_Center - 1 + Raduis, y_Center, x_Center + Raduis + 9, y_Center);
 		if (ptr != NULL)
 		{
-			Interface->Register(GraphicsInfo(x_Center - 1 + Raduis, r_GfxInfo.y1, x_Center + Raduis + 9, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());//Connection
-			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(x_Center - 1 + Raduis, r_GfxInfo.y1, x_Center + Raduis + 9, r_GfxInfo.y2));
+			Interface->Register(GraphicsInfo(x_Center - 1 + Raduis, y_Center, x_Center + Raduis + 9, y_Center), &((Gate*)ptr)->GetOutputPin());//Connection
+			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(x_Center - 1 + Raduis, y_Center, x_Center + Raduis + 9, y_Center));
 			Interface->Register(GraphicsInfo(r_GfxInfo.x1 + UI.AllGateDimensions, r_GfxInfo.y1, x_Center - 1 + Raduis, r_GfxInfo.y2), ptr);//Gate
 		}
 		else
 		{
-			Interface->UNRegister(GraphicsInfo(x_Center - 1 + Raduis, r_GfxInfo.y1, x_Center + Raduis + 9, r_GfxInfo.y2));
+			Interface->UNRegister(GraphicsInfo(x_Center - 1 + Raduis, y_Center, x_Center + Raduis + 9, y_Center));
 			Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 + UI.AllGateDimensions, r_GfxInfo.y1, x_Center - 1 + Raduis, r_GfxInfo.y2));
 		}
 	}
@@ -2224,7 +2224,7 @@ vector<pair<int,int> > Output::Connect(GraphicsInfo r_GfxInfo,  GridItem*ptr, bo
 	return Points;
 }
 
-vector<pair<int, int>> Output::Connect(Connection *r_Connection)
+vector<pair<int, int>> Output::Connectx(Connection *r_Connection)
 {
 	return Connect(GraphicsInfo(r_Connection->getSourcePin()->GetPosition().x2, r_Connection->getSourcePin()->GetPosition().y2, r_Connection->getDestPin()->GetPosition().x2, r_Connection->getDestPin()->GetPosition().y2),r_Connection,false);
 }
