@@ -14,3 +14,13 @@ STATUS Pin::getStatus()
 {
 	return m_Status;
 }
+
+GraphicsInfo Pin::GetPosition()
+{
+	return Position;
+}
+
+void Pin::SetPosition(GraphicsInfo r_GfxInfo)
+{
+	Position = r_GfxInfo;
+}

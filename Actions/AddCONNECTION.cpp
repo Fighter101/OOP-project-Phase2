@@ -17,7 +17,7 @@ void AddCONNECTION::ReadActionParameters()
 	//Print Action Message
 	pOut->PrintMsg("Connection building : Click on the Source pin of the connection");
 	//Wait for user Input
-	pManager->CheckPoint(x1, y1);
+	Src=dynamic_cast<OutputPin*>(pManager->CheckPoint(x1, y1));
 
 //A lot of Validations is needed here before calling the next functions!
 	//application Manager should validate here the previous clicked point is pin of gate 
@@ -25,7 +25,7 @@ void AddCONNECTION::ReadActionParameters()
 	//Print Action Message
 	pOut->PrintMsg("Connection building : Click on the Destination pin of the connection");
 	//Wait for user Input
-	pManager->CheckPoint(x2, y2);
+	Dst=dynamic_cast<InputPin*>(pManager->CheckPoint(x2, y2));
 
 	//clear status bar
 	pOut->ClearStatusBar();
