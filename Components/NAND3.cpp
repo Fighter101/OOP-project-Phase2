@@ -1,5 +1,5 @@
 #include "NAND3.h"
-
+#include"Connection.h"
 NAND3::NAND3(const GraphicsInfo &r_GfxInfo) :Gate(3)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -12,6 +12,11 @@ NAND3::NAND3(const GraphicsInfo &r_GfxInfo) :Gate(3)
 void NAND3::Operate()
 {
 	//caclulate the output status as the NANDing of the three input pins
+	m_InputPins[1].getConnection()->Operate();
+	m_InputPins[2].getConnection()->Operate();
+	m_InputPins[3].getConnection()->Operate();
+
+
 
 	m_OutputPin.setStatus(HIGH);
 	for (int i = 1; i <= 3; i++)
@@ -19,7 +24,6 @@ void NAND3::Operate()
 		m_OutputPin.setStatus(m_OutputPin.getStatus() & m_InputPins[i].getStatus());
 	}
 	m_OutputPin.setStatus(~(m_OutputPin.getStatus()));
-
 
 }
 

@@ -8,7 +8,7 @@
 */
 
 #include "Gate.h"
-
+class Connection;
 class AND2:public Gate
 {
 public:

@@ -1,5 +1,5 @@
 #include "BUFF.h"
-
+#include"Connection.h"
 BUFF::BUFF(const GraphicsInfo &r_GfxInfo) :Gate(1)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -14,6 +14,7 @@ void BUFF::Operate()
 	//caclulate the output status as the BUFFering of the the input pin
 
 	//Add you code here
+	m_InputPins[1].getConnection()->Operate();
 	m_OutputPin.setStatus(m_InputPins[1].getStatus());
 
 }
