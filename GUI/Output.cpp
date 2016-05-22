@@ -1,5 +1,5 @@
 #include "Output.h"
-#include"..\ToolBar.h"
+#include"..\GUI\ToolBar.h"
 #include"..\Components\Button.h"
 #include"..\Components\Gate.h"
 #include"..\Components\Connection.h"
@@ -2224,7 +2224,7 @@ vector<pair<int,int> > Output::Connect(GraphicsInfo r_GfxInfo,  GridItem*ptr, bo
 	return Points;
 }
 
-vector<pair<int, int>> Output::Connectx(Connection *r_Connection)
+vector<pair<int, int>> Output::Connect(Connection *r_Connection)
 {
 	vector<pair<int,int> > vec= Connect(GraphicsInfo(r_Connection->getSourcePin()->GetPosition().x2+5, r_Connection->getSourcePin()->GetPosition().y2, r_Connection->getDestPin()->GetPosition().x1-5, r_Connection->getDestPin()->GetPosition().y1),r_Connection,false);
 	pWind->DrawLine(vec.back().first, vec.back().second, r_Connection->getDestPin()->GetPosition().x1, r_Connection->getDestPin()->GetPosition().y1);

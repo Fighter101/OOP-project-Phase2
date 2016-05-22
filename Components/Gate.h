@@ -9,8 +9,8 @@
 */
 
 
-#include "InputPin.h"
-#include "OutputPin.h"
+#include "..\Pin\InputPin.h"
+#include "..\Pin\OutputPin.h"
 #include "Component.h"
 
 class Gate:public Component

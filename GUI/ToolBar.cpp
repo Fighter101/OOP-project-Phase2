@@ -1,5 +1,5 @@
 #include "ToolBar.h"
-#include"Components\Button.h"
+#include"..\Components\Button.h"
 
 ToolBar::ToolBar()
 {

@@ -1,5 +1,5 @@
 #include "OutputPin.h"
-#include "Connection.h"
+#include "..\Components\Connection.h"
 
 ActionType OutputPin::Leftpress()
 {

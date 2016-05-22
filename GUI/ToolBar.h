@@ -1,5 +1,5 @@
 #pragma once
-#include"Defs.H"
+#include"..\Defs.H"
 #include"Essentials.h"
 class Button;
 class Output;

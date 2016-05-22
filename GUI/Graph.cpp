@@ -1,5 +1,5 @@
-#include "..\OOP-project-Phase2\Graph.h"
-#include"..\OOP-project-Phase2\Components\Pin.h"
+#include "..\GUI\Graph.h"
+#include"..\Pin\Pin.h"
 bool Graph::Valid(int x, int y)
 {
 	return (x >= 0) && (y >= 0) && (x < UI.GridWidth) && (y < UI.GridHeight) && (Grid[x][y] == NULL/*|| dynamic_cast<Pin*>(Grid[x][y]) != NULL*/) && (parent[x][y].first == -1);

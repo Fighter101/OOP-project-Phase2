@@ -2,7 +2,7 @@
 #define _PIN_H
 
 //#include "..\Defs.h"
-#include"..\GridItem.h"
+#include"..\GUI\GridItem.h"
 class Pin :public GridItem
 {
 protected:
