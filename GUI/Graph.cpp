@@ -1,28 +1,34 @@
 #include "..\GUI\Graph.h"
 #include"..\Pin\Pin.h"
-bool Graph::Valid(int x, int y)
+bool Graph::Valid(int x, int y,int flag)
 {
-	return (x >= 0) && (y >= 0) && (x < UI.GridWidth) && (y < UI.GridHeight) && (Grid[x][y] == NULL/*|| dynamic_cast<Pin*>(Grid[x][y]) != NULL*/) && (parent[x][y].first == -1);
+	if (flag >=1)
+		return (x >= 0) && (y >= 0) && (x < UI.GridWidth) && (y < UI.GridHeight) && (Grid[x][y] == NULL/*|| dynamic_cast<Pin*>(Grid[x][y]) != NULL*/) && (parent[x][y].first == -1);
+	else
+		return (x >= 0) && (y >= 0) && (x < UI.GridWidth) && (y < UI.GridHeight) && (Grid[x][y] == NULL|| dynamic_cast<Pin*>(Grid[x][y]) != NULL) && (parent[x][y].first == -1);
 }
 void Graph::BFS(GraphicsInfo r_GfxInfo)
 {
 	int dx[] = { 1,-1,0,0 };
 	int dy[] = { 0,0,1,-1 };
+	int counter = 0;
 	queue<pair<int, int> > myq;
 	myq.push(pair<int, int>(r_GfxInfo.x1, r_GfxInfo.y1));
 	parent[myq.front().first][myq.front().second] = pair<int, int>(-2, -2);
 	while (!myq.empty())
 	{
+		
 		pair<int, int> parnt = myq.front();
 		myq.pop();
 		for (int i = 0; i < 4; i++)
 		{
-			if (Valid(parnt.first + dx[i], parnt.second + dy[i]))
+			if (Valid(parnt.first + dx[i], parnt.second + dy[i],counter))
 			{
 				parent[parnt.first + dx[i]][parnt.second + dy[i]] = parnt;
 				myq.push(pair<int, int>(parnt.first + dx[i], parnt.second + dy[i]));
 			}
 		}
+		counter++;
 	}
 
 }

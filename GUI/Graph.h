@@ -6,7 +6,7 @@ class Graph
 private:
 	GridItem ***Grid;
 	pair<int, int>**parent;
-	bool Valid(int x, int y);
+	bool Valid(int x, int y,int);
 	void BFS(GraphicsInfo r_GfxInfo);
 	void GetPoints(int x, int y);
 	vector < pair<int, int> > Points;
