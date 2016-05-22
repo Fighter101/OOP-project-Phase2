@@ -100,7 +100,7 @@ void Output::CreateToolBars()
 
 	UI.AppMode = DESIGN;	//Design Mode is the startup mode
 
-	//Initilaize interface colors
+	//Initialize interface colors
 	UI.DrawColor = BLACK;
 	UI.SelectColor = BLUE;
 	UI.ConnColor = RED;
@@ -112,8 +112,8 @@ void Output::CreateToolBars()
 	ChangeTitle("Programming Techniques Project");
 
 	CreateToolBars();
-	CreateDesignToolBar();
-	CreateStatusBar();		//Create Status bar
+	/*CreateDesignToolBar();						//Removed Tool bar creation:Same7
+	CreateStatusBar();*/		//Create Status bar
 
 }
 
@@ -165,11 +165,11 @@ void Output::ClearStatusBar()const
 	int MsgX = 25;
 	int MsgY = UI.StatusBarHeight - 10;
 
-	//Overwrite using bachground color to erase the message
+	//Overwrite using background color to erase the message
 	CreateStatusBar();
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-//Clears the drawing (degin) area
+//Clears the drawing (design) area
 void Output::ClearDrawingArea() const
 {
 	pWind->SetPen(RED, 1);
@@ -178,7 +178,7 @@ void Output::ClearDrawingArea() const
 	
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-//Draws the menu (toolbar) in the Design mode
+//Draws the menu (tool bar) in the Design mode
 void Output::CreateDesignToolBar() 
 {
 	UI.AppMode = DESIGN;	//Design Mode
@@ -198,7 +198,7 @@ void Output::CreateDesignToolBar()
 	//	pWind->DrawImage(MenuItemImages[i],i*UI.ToolItemWidth,0,UI.ToolItemWidth, UI.ToolBarHeight);
 
 
-	////Draw a line under the toolbar
+	////Draw a line under the tool bar
 	//pWind->SetPen(RED,3);
 	//pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 

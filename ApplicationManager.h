@@ -23,9 +23,9 @@ private:
 	Action* ActionCreator(ActionType);
 	Clipboard clip;
 	///<summary>
-	///(0 Add) - (1 And) - (2 Or) - (3 XOR) - (4 DSGN) - (5 Sim)
+	///(0 Add) - (1 And) - (2 Or) - (3 XOR) - (4 DSGN) - (5 Sim) - (6 Gates)
 	///</summary>
-	int ToolbarsON;
+	bool Toolbars[7];
 public:	
 	GridItem* CheckPoint(int &Cx, int &Cy);
 	vector<Component*> getMetaData();
