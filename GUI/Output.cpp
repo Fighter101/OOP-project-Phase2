@@ -1188,7 +1188,7 @@ GraphicsInfo Output::XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State)
 void Output::DrawConnection(vector<pair<int, int>> Points,GridItem*ptr)
 {
 	pWind->SetPen(BLACK, 3);
-	for (int i = 0; i < (Points.size() - 1); i++)
+	for (int i = 0; i < (int)(Points.size() - 1); i++)
 	{
 		pWind->DrawLine(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second);
 		Interface->Register(GraphicsInfo(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second), ptr);
@@ -1248,7 +1248,7 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 		pWind->DrawLine(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1 + raduis - 9, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y1 + raduis - 9);
 		if (ptr != NULL)
 		{
-			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1 + raduis - 9, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y1 + raduis - 9), &(((Gate*)ptr)->GetOutputPin()));//Connection
+			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y2), &(((Gate*)ptr)->GetOutputPin()));//Connection
 			(&(((Gate*)ptr)->GetOutputPin()))->SetPosition(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1 + raduis - 9, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y1 + raduis - 9));
 		}
 		else Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1 + raduis - 9, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y1 + raduis - 9));
@@ -2226,7 +2226,10 @@ vector<pair<int,int> > Output::Connect(GraphicsInfo r_GfxInfo,  GridItem*ptr, bo
 
 vector<pair<int, int>> Output::Connectx(Connection *r_Connection)
 {
-	return Connect(GraphicsInfo(r_Connection->getSourcePin()->GetPosition().x2, r_Connection->getSourcePin()->GetPosition().y2, r_Connection->getDestPin()->GetPosition().x2, r_Connection->getDestPin()->GetPosition().y2),r_Connection,false);
+	vector<pair<int,int> > vec= Connect(GraphicsInfo(r_Connection->getSourcePin()->GetPosition().x2+5, r_Connection->getSourcePin()->GetPosition().y2, r_Connection->getDestPin()->GetPosition().x1-5, r_Connection->getDestPin()->GetPosition().y1),r_Connection,false);
+	pWind->DrawLine(vec.back().first, vec.back().second, r_Connection->getDestPin()->GetPosition().x1, r_Connection->getDestPin()->GetPosition().y1);
+	pWind->DrawLine(vec.front().first, vec.front().second, r_Connection->getSourcePin()->GetPosition().x2, r_Connection->getSourcePin()->GetPosition().y2);
+	return vec;
 }
 
 void Output::CreateTruthTable()

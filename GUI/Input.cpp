@@ -16,6 +16,13 @@ GridItem* Input::GetPointClicked(int &x, int &y,Comps Comp)
 		y = -1;
 		return NULL;
 	}
+	GridItem*tmp = Interface->getAction(GraphicsInfo(x, y));
+	if (tmp != NULL)
+	{
+		x = -2;
+		y = -2;
+		return tmp;
+	}
 	switch (Comp)
 	{
 	case _GATE_:
@@ -30,12 +37,7 @@ GridItem* Input::GetPointClicked(int &x, int &y,Comps Comp)
 		break;
 	}
 
-	GridItem*tmp=Interface->getAction(GraphicsInfo(x, y));
-	if (tmp != NULL)
-	{
-		x = -2;
-		y = -2;
-	}
+
 	return Returned;
 }
 
