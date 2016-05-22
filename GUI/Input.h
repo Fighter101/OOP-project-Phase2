@@ -1,6 +1,6 @@
 #pragma once
-#include"..\Graph.h"
-#include"..\Essentials.h"
+#include"..\GUI\Graph.h"
+#include"..\GUI\Essentials.h"
 class Output;
 class Input		//The application manager should have a pointer to this class
 {
