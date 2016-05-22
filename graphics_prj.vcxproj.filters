@@ -338,6 +338,9 @@
     <ClCompile Include="ConnectTwoPins.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\Validate.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -638,6 +641,9 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="ConnectTwoPins.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Validate.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
