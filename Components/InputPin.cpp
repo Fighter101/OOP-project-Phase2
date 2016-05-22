@@ -1,5 +1,5 @@
 #include "InputPin.h"
-
+#include "Connection.h"
 ActionType InputPin::Leftpress()
 {
 	return ADD_CONNECTION;
@@ -30,3 +30,14 @@ Component* InputPin::getComponent()
 {
 	return pComp;
 }
+
+
+void InputPin::setConnection(Connection* pCon)
+{
+	this->pConn = pCon;
+}
+Connection* InputPin::getConnection()
+{
+	return pConn;
+}
+

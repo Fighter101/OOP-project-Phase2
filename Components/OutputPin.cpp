@@ -1,6 +1,6 @@
 #include "OutputPin.h"
 #include "Connection.h"
-
+#include "Component.h"
 ActionType OutputPin::Leftpress()
 {
 	return ADD_CONNECTION;
@@ -37,4 +37,15 @@ bool OutputPin::ConnectTo(Connection *r_Conn)
 	}
 	
 	return false;	//can't connect to any more connections
+}
+
+
+void OutputPin::setComponent(Component* pComp)
+{
+	m_component = pComp;
+}
+
+Component* OutputPin::getComponent()
+{
+	return m_component;
 }

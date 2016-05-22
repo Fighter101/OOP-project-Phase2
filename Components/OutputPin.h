@@ -9,23 +9,28 @@
 
 #include "Pin.h"
 class Connection;	//Forward class declartion
-
+class Component;  //MDawod
 
 class OutputPin: public Pin	//inherited from class Pin
 {
 private:
+	//Array of connections (poniters) to be connected to that OutputPin
+	//For simplicity, we consider it a constant length
+	Connection* m_Connections[MAX_CONNS];	
+	Component* m_component;
+	int m_FanOut;	//Maximum No. of connections connected to that output pin (depends on the component)
+	int m_Conn;		//Actual No. of connections connected to that output pin
+public:
 	virtual ActionType Leftpress();
 	virtual ActionType RightPress();
 	virtual void hover();
 	virtual void released();
-	//Array of connections (poniters) to be connected to that OutputPin
-	//For simplicity, we consider it a constant length
-	Connection* m_Connections[MAX_CONNS];	
-	int m_FanOut;	//Maximum No. of connections connected to that output pin (depends on the component)
-	int m_Conn;		//Actual No. of connections connected to that output pin
-public:
+
 	OutputPin(int r_FanOut=MAX_CONNS);	
 	bool ConnectTo(Connection *r_Conn);	//connect to a new connection
+	void setComponent(Component* pComp);
+	Component* getComponent();
+
 };
 
 #endif
