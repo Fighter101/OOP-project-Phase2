@@ -3,7 +3,7 @@
 
 #include "action.h"
 #include "..\Components\Connection.h"
-#include"..\Components\Pin.h"
+#include"..\Pin\Pin.h"
 class AddCONNECTION : public Action
 {
 private:

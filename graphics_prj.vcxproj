@@ -168,6 +168,7 @@
     <ClCompile Include="Actions\SIMMODE.cpp" />
     <ClCompile Include="Actions\STATUSBAR.cpp" />
     <ClCompile Include="Actions\UNDO.cpp" />
+    <ClCompile Include="Actions\Validate.cpp" />
     <ClCompile Include="Actions\XORToolBar.cpp" />
     <ClCompile Include="Clipboard\Clipboard.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -214,7 +215,6 @@
     <ClCompile Include="Components\Connection.cpp" />
     <ClCompile Include="Components\Gate.cpp" />
     <ClCompile Include="Components\gateBAR.cpp" />
-    <ClCompile Include="Components\InputPin.cpp" />
     <ClCompile Include="Components\INV.cpp" />
     <ClCompile Include="Components\LED.cpp" />
     <ClCompile Include="Components\NAND2.cpp" />
@@ -224,8 +224,6 @@
     <ClCompile Include="Components\OR.cpp" />
     <ClCompile Include="Components\OR2.cpp" />
     <ClCompile Include="Components\OR3.cpp" />
-    <ClCompile Include="Components\OutputPin.cpp" />
-    <ClCompile Include="Components\Pin.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Components\SWITCH.cpp" />
     <ClCompile Include="Components\XNOR2.cpp" />
@@ -233,14 +231,16 @@
     <ClCompile Include="Components\XOR.cpp" />
     <ClCompile Include="Components\XOR2.cpp" />
     <ClCompile Include="Components\XOR3.cpp" />
-    <ClCompile Include="ConnectTwoPins.cpp" />
     <ClCompile Include="Defs.cpp" />
-    <ClCompile Include="Graph.cpp" />
-    <ClCompile Include="GridItem.cpp" />
+    <ClCompile Include="GUI\Graph.cpp" />
+    <ClCompile Include="GUI\GridItem.cpp" />
     <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
+    <ClCompile Include="GUI\ToolBar.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ToolBar.cpp" />
+    <ClCompile Include="Pin\InputPin.cpp" />
+    <ClCompile Include="Pin\OutputPin.cpp" />
+    <ClCompile Include="Pin\Pin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\Action.h" />
@@ -286,6 +286,7 @@
     <ClInclude Include="Actions\SIMMODE.h" />
     <ClInclude Include="Actions\STATUSBAR.h" />
     <ClInclude Include="Actions\UNDO.h" />
+    <ClInclude Include="Actions\Validate.h" />
     <ClInclude Include="Actions\XORToolBar.h" />
     <ClInclude Include="Clipboard\Clipboard.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -336,15 +337,17 @@
     <ClInclude Include="Components\XOR.h" />
     <ClInclude Include="Components\XOR2.h" />
     <ClInclude Include="Components\XOR3.h" />
-    <ClInclude Include="ConnectTwoPins.h" />
     <ClInclude Include="Defs.H" />
-    <ClInclude Include="Essentials.h" />
-    <ClInclude Include="Graph.h" />
-    <ClInclude Include="GridItem.h" />
+    <ClInclude Include="GUI\Essentials.h" />
+    <ClInclude Include="GUI\Graph.h" />
+    <ClInclude Include="GUI\GridItem.h" />
     <ClInclude Include="GUI\Input.h" />
     <ClInclude Include="GUI\Output.h" />
+    <ClInclude Include="GUI\ToolBar.h" />
     <ClInclude Include="GUI\UI_Info.h" />
-    <ClInclude Include="ToolBar.h" />
+    <ClInclude Include="Pin\InputPin.h" />
+    <ClInclude Include="Pin\OutputPin.h" />
+    <ClInclude Include="Pin\Pin.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
