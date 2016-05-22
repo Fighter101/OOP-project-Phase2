@@ -47,29 +47,25 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	{
 	case ADD:
 	{
-		OutputInterface->ClearToolbars(ToolbarsON);
-		ToolbarsON = 0;
+		
 		return new AddToolBar(this);
 	}
 		break; 
 	case ADD_AND:
 	{
-		OutputInterface->ClearToolbars(ToolbarsON);
-		ToolbarsON = 1;
+	
 		return new ANDToolBar(this);
 	}
 		break;
 	case ADD_OR:
 	{
-		OutputInterface->ClearToolbars(ToolbarsON);
-		ToolbarsON = 2;
+		
 		return new ORToolBar(this);
 	}
 		break;
 	case ADD_XOR:
 	{
-		OutputInterface->ClearToolbars(ToolbarsON);
-		ToolbarsON = 3;
+		
 		return new XORToolBar(this);
 	}
 		break;
@@ -188,12 +184,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		break;
 	case DSN_AREA:
 	{
-		OutputInterface->ClearToolbars(ToolbarsON);
-		if (ToolbarsON == 0 || ToolbarsON == 1 || ToolbarsON == 2 || ToolbarsON == 3)
-		{
-			ToolbarsON = -1;
-			OutputInterface->EraseAddToolBar();
-		}
+		
 	}
 		return nullptr;
 		break;
@@ -255,7 +246,8 @@ ApplicationManager::ApplicationManager()
 	//Creates the Input / Output Objects & Initialize the GUI
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
-
+	OutputInterface->CreateDesignToolBar();
+	OutputInterface->CreateStatusBar();
 }
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
