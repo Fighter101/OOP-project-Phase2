@@ -1,5 +1,6 @@
 #include "Gate.h"
-
+#include "LED.h"
+#include "SWITCH.h"
 //Gate Constructor
 //Parameters:
 //r_Inputs: no. of gate's input pins
@@ -14,7 +15,29 @@ Gate::Gate(int r_Inputs)
 	for(int i=0; i<m_Inputs; i++)
 		m_InputPins[i].setComponent(this);
 }
+bool Gate::CheckPins()
+{
 
+	//for leds and switches
+	SWITCH* sptr = dynamic_cast<SWITCH*>(this);
+	LED* lptr = dynamic_cast<LED*>(this);
+	if (sptr)
+
+		return m_OutputPin.CheckPin();
+	if (lptr)
+		return	m_InputPins[0].CheckPin();
+
+	//for any gate otherwise
+
+	for (int i = 0; i < m_Inputs; i++)
+	{
+
+		if (!m_InputPins[i].CheckPin/*s*/())
+			return false;
+	}
+
+	return m_OutputPin.CheckPin/*s*/();
+}
 
 
 
@@ -25,7 +48,7 @@ InputPin * Gate::GetInputPins()
 	return m_InputPins;
 }
 
-OutputPin  Gate::GetOutputPin()
+OutputPin&  Gate::GetOutputPin()
 {
 	return m_OutputPin;
 }
@@ -38,6 +61,12 @@ void Gate::SetState(bool r_selected)
 GraphicsInfo Gate::GetPosition()
 {
 	return Component::m_GfxInfo;
+
+	//	if (!m_InputPins[i].CheckPin())
+	//		return false;
+	//}
+
+	//return m_OutputPin.CheckPin();
 }
 
 bool Gate::GetState()

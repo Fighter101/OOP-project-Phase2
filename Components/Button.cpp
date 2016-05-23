@@ -73,9 +73,10 @@ void Button::released()
 {
 }
 
-void Button::Erase(Output * pOut)
+GraphicsInfo Button::Erase(Output * pOut)
 {
 	pOut->EraseButton(this);
+	return Dimensions;
 }
 
 Button::~Button()

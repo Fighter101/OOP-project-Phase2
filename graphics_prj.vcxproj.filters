@@ -29,12 +29,6 @@
     <ClCompile Include="CMUgraphicsLib\image.cpp">
       <Filter>CMUgraphics Library</Filter>
     </ClCompile>
-    <ClCompile Include="GUI\Input.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\InputPin.cpp">
-      <Filter>Pins</Filter>
-    </ClCompile>
     <ClCompile Include="CMUgraphicsLib\jpeg\jcomapi.c">
       <Filter>CMUgraphics Library</Filter>
     </ClCompile>
@@ -125,15 +119,6 @@
     <ClCompile Include="CMUgraphicsLib\keyqueue.cpp">
       <Filter>CMUgraphics Library</Filter>
     </ClCompile>
-    <ClCompile Include="GUI\Output.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\OutputPin.cpp">
-      <Filter>Pins</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\Pin.cpp">
-      <Filter>Pins</Filter>
-    </ClCompile>
     <ClCompile Include="CMUgraphicsLib\mousequeue.cpp">
       <Filter>CMUgraphics Library</Filter>
     </ClCompile>
@@ -143,11 +128,6 @@
     <ClCompile Include="Components\Button.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="ToolBar.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Graph.cpp" />
-    <ClCompile Include="GridItem.cpp" />
     <ClCompile Include="Components\AND.cpp">
       <Filter>Components</Filter>
     </ClCompile>
@@ -335,12 +315,35 @@
     <ClCompile Include="Actions\Paste.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="ConnectTwoPins.cpp">
+    <ClCompile Include="GUI\Graph.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\GridItem.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\Input.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\Output.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\ToolBar.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Pin\InputPin.cpp">
+      <Filter>Pins</Filter>
+    </ClCompile>
+    <ClCompile Include="Pin\OutputPin.cpp">
+      <Filter>Pins</Filter>
+    </ClCompile>
+    <ClCompile Include="Pin\Pin.cpp">
+      <Filter>Pins</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Validate.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Defs.H" />
     <ClInclude Include="Actions\Action.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -376,12 +379,6 @@
     </ClInclude>
     <ClInclude Include="CMUgraphicsLib\image.h">
       <Filter>CMUgraphics Library</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI\Input.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\InputPin.h">
-      <Filter>Pins</Filter>
     </ClInclude>
     <ClInclude Include="CMUgraphicsLib\jpeg\jconfig.h">
       <Filter>CMUgraphics Library</Filter>
@@ -419,17 +416,8 @@
     <ClInclude Include="CMUgraphicsLib\keyqueue.h">
       <Filter>CMUgraphics Library</Filter>
     </ClInclude>
-    <ClInclude Include="GUI\Output.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\OutputPin.h">
-      <Filter>Pins</Filter>
-    </ClInclude>
     <ClInclude Include="Components\Pin.h">
       <Filter>Pins</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI\UI_Info.h">
-      <Filter>GUI</Filter>
     </ClInclude>
     <ClInclude Include="CMUgraphicsLib\mousequeue.h">
       <Filter>CMUgraphics Library</Filter>
@@ -440,17 +428,9 @@
     <ClInclude Include="CMUgraphicsLib\windowinput.h">
       <Filter>CMUgraphics Library</Filter>
     </ClInclude>
-    <ClInclude Include="Essentials.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
     <ClInclude Include="Components\Button.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="ToolBar.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Graph.h" />
-    <ClInclude Include="GridItem.h" />
     <ClInclude Include="Components\AND.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -637,7 +617,38 @@
     <ClInclude Include="Actions\Paste.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="ConnectTwoPins.h">
+    <ClInclude Include="GUI\Essentials.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\Graph.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\GridItem.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\Input.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\Output.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\ToolBar.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\UI_Info.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Defs.H" />
+    <ClInclude Include="Pin\InputPin.h">
+      <Filter>Pins</Filter>
+    </ClInclude>
+    <ClInclude Include="Pin\OutputPin.h">
+      <Filter>Pins</Filter>
+    </ClInclude>
+    <ClInclude Include="Pin\Pin.h">
+      <Filter>Pins</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Validate.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
@@ -657,11 +668,11 @@
     <Filter Include="CMUgraphics Library">
       <UniqueIdentifier>{d63335de-3852-47e7-9b12-ce7902be525e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GUI">
-      <UniqueIdentifier>{e9b7c77c-4258-4c7f-a59e-a041dec06954}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Clipboard">
       <UniqueIdentifier>{223e3306-d1ec-4325-a1ca-0529d5e33de2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{3fc93c11-c9c0-4df7-bfd6-9b8758aac422}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

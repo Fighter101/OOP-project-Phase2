@@ -8,9 +8,11 @@ represent the switch
 */
 
 #include "Gate.h"
-
+class Connection;
 class SWITCH :public Gate
 {
+private:
+	bool ONOFF;
 public:
 	SWITCH(const GraphicsInfo &r_GfxInfo);
 	virtual void Operate();	//Calculates the output of switch

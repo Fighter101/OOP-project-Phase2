@@ -1,6 +1,6 @@
 #pragma once
 //#include"Defs.H"
-#include"GUI\UI_Info.h"
+#include"..\GUI\UI_Info.h"
 class Graph;
 class GridItem
 {

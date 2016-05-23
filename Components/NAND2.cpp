@@ -1,5 +1,5 @@
 #include "NAND2.h"
-
+#include"Connection.h"
 NAND2::NAND2(const GraphicsInfo &r_GfxInfo) :Gate(2)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -12,6 +12,10 @@ NAND2::NAND2(const GraphicsInfo &r_GfxInfo) :Gate(2)
 void NAND2::Operate()
 {
 	//caclulate the output status as the NANDing of the two input pins
+
+	m_InputPins[1].getConnection()->Operate();
+	m_InputPins[2].getConnection()->Operate();
+
 
 	m_OutputPin.setStatus(HIGH);
 	for (int i = 1; i <= 2; i++)

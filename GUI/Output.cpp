@@ -1,5 +1,5 @@
 #include "Output.h"
-#include"..\ToolBar.h"
+#include"..\GUI\ToolBar.h"
 #include"..\Components\Button.h"
 #include"..\Components\Gate.h"
 #include"..\Components\Connection.h"
@@ -18,6 +18,7 @@ void Output::CreateToolBars()
 	Toolbars[DSGN].SetDistance(UI.ToolItemWidth, UI.ToolBarHeight);
 	Toolbars[DSGN].CreateButtons(this);
 	///////////////////Simulation Tool Bar/////////////////////
+
 	Toolbars[SIMU].SetPosition(GraphicsInfo(290, 0));
 	Toolbars[SIMU].SetOrientation(Horizontal);
 	vec.clear();
@@ -46,9 +47,19 @@ void Output::CreateToolBars()
 	{
 		vec.push_back(i);
 	}
-	Toolbars[RightClick].ButtonsToDraw(vec);
-	Toolbars[RightClick].SetOrientation(Vertical);
-	Toolbars[RightClick].SetDistance(UI.RightClickItemWidth, UI.RightClickItemHeight);
+	Toolbars[GATERightClick].ButtonsToDraw(vec);
+	Toolbars[GATERightClick].SetOrientation(Vertical);
+	Toolbars[GATERightClick].SetDistance(UI.RightClickItemWidth, UI.RightClickItemHeight);
+	/////////////////////////
+	vec.push_back(44);
+	Toolbars[SWITCHRightClick].ButtonsToDraw(vec);
+	Toolbars[SWITCHRightClick].SetOrientation(Vertical);
+	Toolbars[SWITCHRightClick].SetDistance(UI.RightClickItemWidth, UI.RightClickItemHeight);
+	/////////////////////////////////
+	vec[vec.size() - 1] = 45;
+	Toolbars[LEDRightClick].ButtonsToDraw(vec);
+	Toolbars[LEDRightClick].SetOrientation(Vertical);
+	Toolbars[LEDRightClick].SetDistance(UI.RightClickItemWidth, UI.RightClickItemHeight);
 	////////////////////////////////
 	vec.clear();
 	for (int i = 25; i < 32; i++)
@@ -100,7 +111,7 @@ void Output::CreateToolBars()
 
 	UI.AppMode = DESIGN;	//Design Mode is the startup mode
 
-	//Initilaize interface colors
+	//Initialize interface colors
 	UI.DrawColor = BLACK;
 	UI.SelectColor = BLUE;
 	UI.ConnColor = RED;
@@ -112,8 +123,8 @@ void Output::CreateToolBars()
 	ChangeTitle("Programming Techniques Project");
 
 	CreateToolBars();
-	CreateDesignToolBar();
-	CreateStatusBar();		//Create Status bar
+	/*CreateDesignToolBar();						//Removed Tool bar creation:Same7
+	CreateStatusBar();*/		//Create Status bar
 
 }
 
@@ -165,11 +176,11 @@ void Output::ClearStatusBar()const
 	int MsgX = 25;
 	int MsgY = UI.StatusBarHeight - 10;
 
-	//Overwrite using bachground color to erase the message
+	//Overwrite using background color to erase the message
 	CreateStatusBar();
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-//Clears the drawing (degin) area
+//Clears the drawing (design) area
 void Output::ClearDrawingArea() const
 {
 	pWind->SetPen(RED, 1);
@@ -178,7 +189,7 @@ void Output::ClearDrawingArea() const
 	
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-//Draws the menu (toolbar) in the Design mode
+//Draws the menu (tool bar) in the Design mode
 void Output::CreateDesignToolBar() 
 {
 	UI.AppMode = DESIGN;	//Design Mode
@@ -198,7 +209,7 @@ void Output::CreateDesignToolBar()
 	//	pWind->DrawImage(MenuItemImages[i],i*UI.ToolItemWidth,0,UI.ToolItemWidth, UI.ToolBarHeight);
 
 
-	////Draw a line under the toolbar
+	////Draw a line under the tool bar
 	//pWind->SetPen(RED,3);
 	//pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 
@@ -225,13 +236,33 @@ void Output::EraseSimulationToolBar()
 }
 void Output::CreateRightClickToolBar(GraphicsInfo r_GfxInfo)
 {
-	Toolbars[RightClick].SetPosition(r_GfxInfo);
-	Toolbars[RightClick].CreateButtons(this);
-	Toolbars[RightClick].Draw(this);
+	Toolbars[GATERightClick].SetPosition(r_GfxInfo);
+	Toolbars[GATERightClick].CreateButtons(this);
+	Toolbars[GATERightClick].Draw(this);
 }
-void Output::EraseRightClickToolBar()
+set<GridItem*> Output::EraseRightClickToolBar()
 {
-	Toolbars[RightClick].Erase(this);
+	return Interface->Check(Toolbars[GATERightClick].Erase(this));
+}
+void Output::CreateLEDToolBar(GraphicsInfo r_GfxInfo)
+{
+	Toolbars[LEDRightClick].SetPosition(r_GfxInfo);
+	Toolbars[LEDRightClick].CreateButtons(this);
+	Toolbars[LEDRightClick].Draw(this);
+}
+set<GridItem*> Output::EraseLEDClickToolBar()
+{
+	return Interface->Check(Toolbars[LEDRightClick].Erase(this));
+}
+void Output::CreateSwitchToolBar(GraphicsInfo r_GfxInfo)
+{
+	Toolbars[SWITCHRightClick].SetPosition(r_GfxInfo);
+	Toolbars[SWITCHRightClick].CreateButtons(this);
+	Toolbars[SWITCHRightClick].Draw(this);
+}
+set<GridItem*> Output::EraseSwitchtClickToolBar()
+{
+	return Interface->Check(Toolbars[SWITCHRightClick].Erase(this));
 }
 void Output::CreateAndToolBar()
 {
@@ -1065,6 +1096,20 @@ GraphicsInfo Output::DeleteString(GraphicsInfo r_GfxInfo, PressType State)
 	pWind->DrawString(r_GfxInfo.x1+ UI.Margain, r_GfxInfo.y1 + 1, "Delete");
 	return tmp;
 }
+GraphicsInfo Output::ToggleString(GraphicsInfo r_GfxInfo, PressType State)
+{
+	GraphicsInfo tmp = DetermineState(r_GfxInfo, State);
+	pWind->SetFont(20, BOLD, BY_NAME, "Arial");
+	pWind->DrawString(r_GfxInfo.x1 + UI.Margain, r_GfxInfo.y1 + 1, "Toogle");
+	return tmp;
+}
+GraphicsInfo Output::TruthTableString(GraphicsInfo r_GfxInfo, PressType State)
+{
+	GraphicsInfo tmp = DetermineState(r_GfxInfo, State);
+	pWind->SetFont(20, BOLD, BY_NAME, "Arial");
+	pWind->DrawString(r_GfxInfo.x1 + UI.Margain, r_GfxInfo.y1 + 1, "TruthTable");
+	return tmp;
+}
 GraphicsInfo Output::AndIcon(GraphicsInfo r_GfxInfo, PressType State)
 {
 	pWind->SetPen(BLACK, 3);
@@ -1188,7 +1233,7 @@ GraphicsInfo Output::XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State)
 void Output::DrawConnection(vector<pair<int, int>> Points,GridItem*ptr)
 {
 	pWind->SetPen(BLACK, 3);
-	for (int i = 0; i < (Points.size() - 1); i++)
+	for (int i = 0; i < (int)(Points.size() - 1); i++)
 	{
 		pWind->DrawLine(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second);
 		Interface->Register(GraphicsInfo(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second), ptr);
@@ -1248,8 +1293,8 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 		pWind->DrawLine(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1 + raduis - 9, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y1 + raduis - 9);
 		if (ptr != NULL)
 		{
-			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());//Connection
-			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y2));
+			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y2), &(((Gate*)ptr)->GetOutputPin()));//Connection
+			(&(((Gate*)ptr)->GetOutputPin()))->SetPosition(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1 + raduis - 9, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y1 + raduis - 9));
 		}
 		else Interface->UNRegister(GraphicsInfo(r_GfxInfo.x2 + raduis - 9, r_GfxInfo.y1, r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y2));
 	}
@@ -1265,13 +1310,13 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 		pWind->DrawLine(x_Center - 1 + Raduis, y_Center, x_Center + Raduis + 9, y_Center);
 		if (ptr != NULL)
 		{
-			Interface->Register(GraphicsInfo(x_Center - 1 + Raduis, r_GfxInfo.y1, x_Center + Raduis + 9, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());//Connection
-			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(x_Center - 1 + Raduis, r_GfxInfo.y1, x_Center + Raduis + 9, r_GfxInfo.y2));
+			Interface->Register(GraphicsInfo(x_Center - 1 + Raduis, y_Center, x_Center + Raduis + 9, y_Center), &((Gate*)ptr)->GetOutputPin());//Connection
+			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(x_Center - 1 + Raduis, y_Center, x_Center + Raduis + 9, y_Center));
 			Interface->Register(GraphicsInfo(r_GfxInfo.x1 + UI.AllGateDimensions, r_GfxInfo.y1, x_Center - 1 + Raduis, r_GfxInfo.y2), ptr);//Gate
 		}
 		else
 		{
-			Interface->UNRegister(GraphicsInfo(x_Center - 1 + Raduis, r_GfxInfo.y1, x_Center + Raduis + 9, r_GfxInfo.y2));
+			Interface->UNRegister(GraphicsInfo(x_Center - 1 + Raduis, y_Center, x_Center + Raduis + 9, y_Center));
 			Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 + UI.AllGateDimensions, r_GfxInfo.y1, x_Center - 1 + Raduis, r_GfxInfo.y2));
 		}
 	}
@@ -1454,7 +1499,7 @@ void Output::DrawOr(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool in
 		if (ptr != NULL)
 		{
 			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());
-			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y2));
+			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1 + Midpoint, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y1 + Midpoint));
 		}
 
 		else
@@ -1487,7 +1532,7 @@ void Output::DrawOr(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool in
 		if (ptr != NULL)
 		{
 			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y1, x_Center + Raduis + 10, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());
-			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y1, x_Center + Raduis + 10, r_GfxInfo.y2));
+			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2 + iHeight + 2 * Raduis, y_Center, x_Center + Raduis + 10, y_Center));
 			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y2), ptr);
 		}
 	}
@@ -1689,7 +1734,7 @@ void Output::DrawXOR(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 		if (ptr != NULL)
 		{
 			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());
-			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y2));
+			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1 + Midpoint, r_GfxInfo.x2 + iHeight + 10, r_GfxInfo.y1 + Midpoint));
 		}
 
 		else
@@ -1722,7 +1767,7 @@ void Output::DrawXOR(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 		if (ptr != NULL)
 		{
 			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y1, x_Center + Raduis + 10, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());
-			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y1, x_Center + Raduis + 10, r_GfxInfo.y2));
+			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2 + iHeight + 2 * Raduis, y_Center, x_Center + Raduis + 10, y_Center));
 			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + iHeight, r_GfxInfo.y1, r_GfxInfo.x2 + iHeight + 2 * Raduis, r_GfxInfo.y2), ptr);
 		}
 		else
@@ -1937,7 +1982,7 @@ void Output::DrawBuffer(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, boo
 		{
 			Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + raduis * 2, r_GfxInfo.y2 + UI.BufferDimensions / 2), ptr);
 			Interface->Register(GraphicsInfo(r_GfxInfo.x2 + raduis * 2, r_GfxInfo.y1, r_GfxInfo.x2 + raduis * 2 + UI.ConnectionDimensions, r_GfxInfo.y2 + UI.BufferDimensions / 2), &((Gate*)ptr)->GetOutputPin());
-			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2 + raduis * 2, r_GfxInfo.y1, r_GfxInfo.x2 + raduis * 2 + UI.ConnectionDimensions, r_GfxInfo.y2 + UI.BufferDimensions / 2));
+			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2 + raduis + 1, r_GfxInfo.y2, r_GfxInfo.x2 + raduis + UI.ConnectionDimensions + 1, r_GfxInfo.y2));
 		}
 		else
 		{
@@ -1951,7 +1996,7 @@ void Output::DrawBuffer(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, boo
 		if (ptr != NULL)
 		{
 			Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + UI.ConnectionDimensions, r_GfxInfo.y1 + UI.BufferDimensions), &((Gate*)ptr)->GetOutputPin());
-			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + UI.ConnectionDimensions, r_GfxInfo.y1 + UI.BufferDimensions));
+			((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2 + -1, r_GfxInfo.y2, r_GfxInfo.x2 + UI.ConnectionDimensions - 1, r_GfxInfo.y2));
 		}
 
 		else
@@ -1965,7 +2010,7 @@ void Output::DrawBuffer(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, boo
 	{
 		Interface->Register(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2 + UI.BufferDimensions / 2), ptr);
 		Interface->Register(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2 + UI.BufferDimensions / 2), ((Gate*)ptr)->GetInputPins());
-		((Gate*)ptr)->GetInputPins()->SetPosition(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x1, r_GfxInfo.y2 + UI.BufferDimensions / 2));
+		((Gate*)ptr)->GetInputPins()->SetPosition(GraphicsInfo(r_GfxInfo.x1 - UI.ConnectionDimensions, r_GfxInfo.y2, r_GfxInfo.x1, r_GfxInfo.y2));
 	}
 	else
 	{
@@ -2045,7 +2090,7 @@ void Output::DrawSwitch(GraphicsInfo r_GfxInfo, GridItem*ptr, bool ON, bool sele
 	{
 		Interface->Register(GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2), ptr);
 		Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + UI.ConnectionDimensions, r_GfxInfo.y2), &((Gate*)ptr)->GetOutputPin());
-		((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2 + UI.ConnectionDimensions, r_GfxInfo.y2));
+		((Gate*)ptr)->GetOutputPin().SetPosition(GraphicsInfo(r_GfxInfo.x2, (r_GfxInfo.y2 + r_GfxInfo.y1) / 2, r_GfxInfo.x2 + UI.ConnectionDimensions, (r_GfxInfo.y2 + r_GfxInfo.y1) / 2));
 	}
 	else
 	{
@@ -2182,7 +2227,7 @@ void Output::DrawLED(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool O
 	{
 		Interface->Register(GraphicsInfo(r_GfxInfo.x2, r_GfxInfo.y1 - raduis, r_GfxInfo.x2 + UI.LedDimensions, r_GfxInfo.y1 + raduis), ptr);
 		Interface->Register(GraphicsInfo(r_GfxInfo.x2 - UI.ConnectionDimensions, r_GfxInfo.y1 - raduis, r_GfxInfo.x2, r_GfxInfo.y1 + raduis),((Gate*)ptr)->GetInputPins());
-		((Gate*)ptr)->GetInputPins()->SetPosition(GraphicsInfo(r_GfxInfo.x2 - UI.ConnectionDimensions, r_GfxInfo.y1 - raduis, r_GfxInfo.x2, r_GfxInfo.y1 + raduis));
+		((Gate*)ptr)->GetInputPins()->SetPosition(GraphicsInfo(r_GfxInfo.x2 - UI.ConnectionDimensions, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y1));
 	}
 	else
 	{
@@ -2226,7 +2271,13 @@ vector<pair<int,int> > Output::Connect(GraphicsInfo r_GfxInfo,  GridItem*ptr, bo
 
 vector<pair<int, int>> Output::Connect(Connection *r_Connection)
 {
-	return Connect(GraphicsInfo(r_Connection->getSourcePin()->GetPosition().x2, r_Connection->getSourcePin()->GetPosition().y2, r_Connection->getDestPin()->GetPosition().x2, r_Connection->getDestPin()->GetPosition().y2),r_Connection,false);
+	vector<pair<int,int> > vec= Connect(GraphicsInfo(r_Connection->getSourcePin()->GetPosition().x2+5, r_Connection->getSourcePin()->GetPosition().y2, r_Connection->getDestPin()->GetPosition().x1-5, r_Connection->getDestPin()->GetPosition().y1),r_Connection,false);
+	if (vec.size() != 0)
+	{
+		pWind->DrawLine(vec.back().first, vec.back().second, r_Connection->getDestPin()->GetPosition().x1, r_Connection->getDestPin()->GetPosition().y1);
+		pWind->DrawLine(vec.front().first, vec.front().second, r_Connection->getSourcePin()->GetPosition().x2, r_Connection->getSourcePin()->GetPosition().y2);
+	}
+	return vec;
 }
 
 void Output::CreateTruthTable()

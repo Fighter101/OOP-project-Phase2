@@ -8,7 +8,7 @@ represent the INV
 */
 
 #include "Gate.h"
-
+class Connection;
 class INV :public Gate
 {
 public:

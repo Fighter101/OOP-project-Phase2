@@ -1,7 +1,7 @@
 #pragma once
 #include "component.h"
-#include "InputPin.h"
-#include "OutputPin.h"
+#include "..\Pin\InputPin.h"
+#include "..\Pin\OutputPin.h"
 
 class Connection :	public Component
 {
@@ -11,6 +11,7 @@ class Connection :	public Component
 	OutputPin* SrcPin;	//The Source pin of this connection (an output pin of certain Component)
 	InputPin* DstPin;	//The Destination pin of this connection (an input pin of certain Component)
 public:
+	
 	//Connection(const GraphicsInfo &r_GfxInfo, Component *pS=NULL,Component *pD=NULL, int Pin=0);
 	Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPin *pDstPin);
 
@@ -27,8 +28,7 @@ public:
 	void setDestPin(InputPin *pDstPin);
 	OutputPin* getSourcePin();
 	InputPin* getDestPin();
-	InputPin* GetPin(int);
-
+	
 	virtual bool GetOutPinStatus();	//returns status of outputpin if LED, return -1
 	virtual bool GetInputPinStatus(int n);	//returns status of Inputpin # n if SWITCH, return -1
 

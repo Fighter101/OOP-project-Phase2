@@ -47,29 +47,25 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	{
 	case ADD:
 	{
-		OutputInterface->ClearToolbars(ToolbarsON);
-		ToolbarsON = 0;
+		
 		return new AddToolBar(this);
 	}
 		break; 
 	case ADD_AND:
 	{
-		OutputInterface->ClearToolbars(ToolbarsON);
-		ToolbarsON = 1;
+	
 		return new ANDToolBar(this);
 	}
 		break;
 	case ADD_OR:
 	{
-		OutputInterface->ClearToolbars(ToolbarsON);
-		ToolbarsON = 2;
+		
 		return new ORToolBar(this);
 	}
 		break;
 	case ADD_XOR:
 	{
-		OutputInterface->ClearToolbars(ToolbarsON);
-		ToolbarsON = 3;
+		
 		return new XORToolBar(this);
 	}
 		break;
@@ -157,7 +153,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case SAVE:
-		return nullptr;
+		return new Save(this);
 		break;
 	case LOAD:
 		return nullptr;
@@ -188,12 +184,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		break;
 	case DSN_AREA:
 	{
-		OutputInterface->ClearToolbars(ToolbarsON);
-		if (ToolbarsON == 0 || ToolbarsON == 1 || ToolbarsON == 2 || ToolbarsON == 3)
-		{
-			ToolbarsON = -1;
-			OutputInterface->EraseAddToolBar();
-		}
+		
 	}
 		return nullptr;
 		break;
@@ -204,7 +195,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	
 
 }
-
+//////////////////////////////////////////////////////////////////////////////
 GridItem* ApplicationManager::CheckPoint(int & Cx, int & Cy)
 {
 
@@ -217,11 +208,12 @@ GridItem* ApplicationManager::CheckPoint(int & Cx, int & Cy)
 			OutputInterface->PrintMsg("Out of Design Area, Please Click Inside the Drawing Area");
 		else if (Cx == -2 || Cy == -2 && (dynamic_cast<Pin*>(tmp)) == NULL)
 			OutputInterface->PrintMsg("You've Clicked on an Existing Component, Please Click Somewhere Free");
-			success = false;
+		else	
+		success = false;
 	}
 	return tmp;
 }
-
+/////////////////////////////////////////////////////////////////////////////////////
 vector<Component*> ApplicationManager::getMetaData()
 {
 	return MetaData;
@@ -229,6 +221,10 @@ vector<Component*> ApplicationManager::getMetaData()
 vector<Component*> ApplicationManager::getClipboard()
 {
 	return	clip.pull();
+}
+vector<Component*> ApplicationManager::getComponents()
+{
+	return ComponentList;
 }
 void ApplicationManager::setClipboard(vector<Component*>x)
 {
@@ -256,7 +252,8 @@ ApplicationManager::ApplicationManager()
 	//Creates the Input / Output Objects & Initialize the GUI
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
-
+	OutputInterface->CreateDesignToolBar();
+	OutputInterface->CreateStatusBar();
 }
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)

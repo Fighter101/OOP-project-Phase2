@@ -16,6 +16,13 @@ GridItem* Input::GetPointClicked(int &x, int &y,Comps Comp)
 		y = -1;
 		return NULL;
 	}
+	GridItem*tmp = Interface->getAction(GraphicsInfo(x, y));
+	if (tmp != NULL)
+	{
+		x = -2;
+		y = -2;
+		return tmp;
+	}
 	switch (Comp)
 	{
 	case _GATE_:
@@ -30,24 +37,46 @@ GridItem* Input::GetPointClicked(int &x, int &y,Comps Comp)
 		break;
 	}
 
-	GridItem*tmp=Interface->getAction(GraphicsInfo(x, y));
-	if (tmp != NULL)
-	{
-		x = -2;
-		y = -2;
-	}
+
 	return Returned;
 }
 
-string Input::GetSrting(Output *pOut)
+string Input::GetString(Output *pOut)
 {
-	///TODO: Implement this Function
-	//Read a complete string from the user until the user presses "ENTER".
-	//If the user presses "ESCAPE". This function should return an empty string.
-	//"BACKSPACE" should be also supported
-	//User should see what he is typing at the status bar
+	keytype ktInput;
 
-	return NULL;
+	char cKeyData;
+	string str = "";
+
+	pWind->FlushKeyQueue();
+	do
+	{
+		pWind->FlushKeyQueue();
+		ktInput = pWind->WaitKeyPress(cKeyData);
+
+		// Figure out what key was pressed
+		if (ktInput == ESCAPE) {
+			pOut->ClearStatusBar();
+			return "";
+		}
+		else if (ktInput == ASCII)
+		{
+			if (cKeyData == '\b'&&str.length() != 0)
+			{
+				str.erase(str.length() - 1, 1);
+				pOut->PrintMsg(str);
+				continue;
+			}
+			else
+			{
+				str += cKeyData;
+				pOut->PrintMsg(str);
+			}
+		}
+	} while ((int)cKeyData != 13);
+	pWind->SetPen(BLACK, 3);
+	pWind->DrawString(500, 500, str);
+	return str;
 }
 
 Graph * Input::GetGraph()

@@ -8,7 +8,7 @@ represent the LED
 */
 
 #include "Gate.h"
-
+class Connection;
 class LED :public Gate
 {
 public:

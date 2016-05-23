@@ -8,7 +8,7 @@ represent the 2-input XOR gate
 */
 
 #include "Gate.h"
-
+class Connection;
 class XOR2 :public Gate
 {
 public:
