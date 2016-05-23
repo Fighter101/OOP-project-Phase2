@@ -40,6 +40,11 @@ bool  INV::GetInputPinStatus(int n)
 	return (bool) m_InputPins[n - 1].getStatus();	//n starts from 1 but array index starts from 0.
 }
 
+void INV::Erase(Output * pOut)
+{
+	pOut->EraseInverter(this);
+}
+
 //Set status of an input pin to HIGH or LOW
 void INV::setInputPinStatus(int n, STATUS s)
 {

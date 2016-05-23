@@ -28,6 +28,11 @@ void BUFF::Draw(Output* pOut)
 	pOut->DrawBuffer(this);
 }
 
+void BUFF::Erase(Output * pOut)
+{
+	pOut->EraseBuffer(this);
+}
+
 //returns status of outputpin
 bool  BUFF::GetOutPinStatus()
 {

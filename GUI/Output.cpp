@@ -298,10 +298,16 @@ void Output::EraseAddToolBar()
 //								Components Drawing Functions							//
 //======================================================================================//
 
-void Output::DrawStraight(GraphicsInfo r_GfxInfo)
+vector<pair<int,int> > Output::DrawStraight(GraphicsInfo r_GfxInfo)
 {
+	vector<pair<int, int> >vec;
 		pWind->DrawLine(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y1);
+		vec.push_back(make_pair(r_GfxInfo.x1, r_GfxInfo.y1));
+		vec.push_back(make_pair(r_GfxInfo.x2, r_GfxInfo.y1));
 		pWind->DrawLine(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2);
+		vec.push_back(make_pair(r_GfxInfo.x2, r_GfxInfo.y1));
+		vec.push_back(make_pair(r_GfxInfo.x2, r_GfxInfo.y2));
+		return vec;
 }
 
 GraphicsInfo Output::DetermineState(GraphicsInfo r_GfxInfo, PressType State)
@@ -1238,11 +1244,16 @@ GraphicsInfo Output::XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State)
 }
 void Output::DrawConnection(vector<pair<int, int>> Points,GridItem*ptr)
 {
-	pWind->SetPen(BLACK, 3);
+	if (ptr==NULL)
+		pWind->SetPen(WHITE, 3);
+	else pWind->SetPen(BLACK, 3);
 	for (int i = 0; i < (int)(Points.size() - 1); i++)
 	{
 		pWind->DrawLine(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second);
-		Interface->Register(GraphicsInfo(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second), ptr);
+		if (ptr != NULL)
+			Interface->Register(GraphicsInfo(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second), ptr);
+		else
+			Interface->UNRegister(GraphicsInfo(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second));
 	}
 }
 GraphicsInfo Output::DrawButon(int index,GraphicsInfo r_GfxInfo, PressType State)
@@ -2277,13 +2288,23 @@ vector<pair<int,int> > Output::Connect(GraphicsInfo r_GfxInfo,  GridItem*ptr, bo
 
 vector<pair<int, int>> Output::Connect(Connection *r_Connection)
 {
+
 	vector<pair<int,int> > vec= Connect(GraphicsInfo(r_Connection->getSourcePin()->GetPosition().x2+5, r_Connection->getSourcePin()->GetPosition().y2, r_Connection->getDestPin()->GetPosition().x1-5, r_Connection->getDestPin()->GetPosition().y1),r_Connection,false);
+	vector<pair<int, int> > tmp1, tmp2;
 	if (vec.size() != 0)
 	{
-		DrawStraight(GraphicsInfo(vec.back().first, vec.back().second, r_Connection->getDestPin()->GetPosition().x1, r_Connection->getDestPin()->GetPosition().y1));
-		DrawStraight(GraphicsInfo(vec.front().first, vec.front().second, r_Connection->getSourcePin()->GetPosition().x2, r_Connection->getSourcePin()->GetPosition().y2));
+		tmp1=DrawStraight(GraphicsInfo(vec.back().first, vec.back().second, r_Connection->getDestPin()->GetPosition().x1, r_Connection->getDestPin()->GetPosition().y1));
+		tmp2=DrawStraight(GraphicsInfo(vec.front().first, vec.front().second, r_Connection->getSourcePin()->GetPosition().x2, r_Connection->getSourcePin()->GetPosition().y2));
+		vec.insert(tmp1.begin(), tmp1.end(), vec.begin());
+		vec.insert(tmp2.begin(), tmp2.end(), vec.begin());
 	}
 	return vec;
+
+}
+
+void Output::EraseConnection(Connection * r_Connection)
+{
+	DrawConnection(r_Connection->GetPoints(), NULL);
 }
 
 void Output::CreateTruthTable()

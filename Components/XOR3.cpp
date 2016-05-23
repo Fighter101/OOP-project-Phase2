@@ -57,3 +57,8 @@ void XOR3::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+void XOR3::Erase(Output * pOut)
+{
+	pOut->EraseXOR3(this);
+}

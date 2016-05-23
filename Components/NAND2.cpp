@@ -37,6 +37,11 @@ void NAND2::Draw(Output* pOut)
 	pOut->DrawNAND2(this);
 }
 
+InputPin * NAND2::GetPin(int)
+{
+	return nullptr;
+}
+
 //returns status of outputpin
 bool  NAND2::GetOutPinStatus()
 {
@@ -54,4 +59,9 @@ bool  NAND2::GetInputPinStatus(int n)
 void NAND2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
+}
+
+void NAND2::Erase(Output * pOut)
+{
+	pOut->EraseNAND2(this);
 }

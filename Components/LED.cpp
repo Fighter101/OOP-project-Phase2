@@ -52,3 +52,8 @@ void LED::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+void LED::Erase(Output * pOut)
+{
+	pOut->EraseLED(this);
+}

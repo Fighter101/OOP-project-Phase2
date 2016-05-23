@@ -26,6 +26,16 @@ void Connection::released()
 {
 }
 
+vector<pair<int, int>> Connection::GetPoints()
+{
+	return points;
+}
+
+void Connection::Erase(Output * pOut)
+{
+	pOut->EraseConnection(this);
+}
+
 
 
 void Connection::setSourcePin(OutputPin *pSrcPin)
@@ -56,7 +66,7 @@ void Connection::Operate()
 
 void Connection::Draw(Output* pOut)
 {
-	pOut->Connect(this);
+	points=pOut->Connect(this);
 }
 
 bool Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1
