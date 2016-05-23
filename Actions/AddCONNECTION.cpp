@@ -26,7 +26,7 @@ void AddCONNECTION::ReadActionParameters()
 	bool q=true, w=true;
 	while (!success)
 	{
-		
+		q = true, w = true;
 		while (q)
 		{
 			x = pIn->GetPointClicked(x1, y1);
@@ -85,7 +85,10 @@ void AddCONNECTION::ReadActionParameters()
 		{
 			DstPin = DstGate->GetFreeInputPins();
 			if (!DstPin)
+			{
 				pOut->PrintMsg("Connection Error... No Free Input Pins");
+				continue;
+			}
 		}
 		if (dynamic_cast<OutputPin*>(SrcPin)->getComponent() == dynamic_cast<InputPin*>(DstPin)->getComponent())
 		{

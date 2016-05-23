@@ -164,7 +164,7 @@
     <ClCompile Include="Actions\Paste.cpp" />
     <ClCompile Include="Actions\REDO.cpp" />
     <ClCompile Include="Actions\SAVE.cpp" />
-    <ClCompile Include="Actions\SELECT.cpp" />
+    <ClCompile Include="Actions\MultiSELECT.cpp" />
     <ClCompile Include="Actions\SIMMODE.cpp" />
     <ClCompile Include="Actions\STATUSBAR.cpp" />
     <ClCompile Include="Actions\UNDO.cpp" />
@@ -282,7 +282,7 @@
     <ClInclude Include="Actions\Paste.h" />
     <ClInclude Include="Actions\REDO.h" />
     <ClInclude Include="Actions\SAVE.h" />
-    <ClInclude Include="Actions\SELECT.h" />
+    <ClInclude Include="Actions\MultiSELECT.h" />
     <ClInclude Include="Actions\SIMMODE.h" />
     <ClInclude Include="Actions\STATUSBAR.h" />
     <ClInclude Include="Actions\UNDO.h" />

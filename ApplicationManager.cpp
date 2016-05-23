@@ -6,7 +6,7 @@
 #include"Actions\AddXORgate2.h"       
 #include"Actions\DEL.h"
 #include"Actions\EXIT.h"  
-#include"Actions\SELECT.h"
+#include "Actions\MultiSELECT.h"
 #include"Actions\AddANDgate2.h"  
 #include"Actions\AddGATEBAR.h"     
 #include"Actions\AddNANDgate3.h"  
@@ -47,26 +47,74 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	switch (x)
 	{
 	case ADD:
-	{
-		
+		if (Toolbars[0])
+		{
+			return nullptr;
+			break;
+		}
+		Toolbars[0] = true;
 		return new AddToolBar(this);
-	}
 		break; 
 	case ADD_AND:
 	{
-	
+		if (Toolbars[1])
+		{
+			return nullptr;
+			break;
+		}
+		if (Toolbars[2])
+		{
+			OutputInterface->EraseORToolBar();
+			Toolbars[2] = false;
+		}
+		if (Toolbars[3])
+		{
+			OutputInterface->EraseXORToolBar();
+			Toolbars[3] = false;
+		}
+		Toolbars[1] = true;
 		return new ANDToolBar(this);
 	}
 		break;
 	case ADD_OR:
 	{
-		
+		if (Toolbars[1])
+		{
+			OutputInterface->EraseAndToolBar();
+			Toolbars[1] = false;
+		}
+		if (Toolbars[2])
+		{
+			return nullptr;
+			break;
+		}
+		if (Toolbars[3])
+		{
+			OutputInterface->EraseXORToolBar();
+			Toolbars[3] = false;
+		}
+		Toolbars[2] = true;
 		return new ORToolBar(this);
 	}
 		break;
 	case ADD_XOR:
 	{
-		
+		if (Toolbars[1])
+		{
+			OutputInterface->EraseAndToolBar();
+			Toolbars[1] = false;
+		}
+		if (Toolbars[2])
+		{
+			OutputInterface->EraseORToolBar();
+			Toolbars[2] = false;
+		}
+		if (Toolbars[3])
+		{
+			return nullptr;
+			break;
+		}
+		Toolbars[3] = true;
 		return new XORToolBar(this);
 	}
 		break;
@@ -132,8 +180,8 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	case Change_Switch:
 		return nullptr;
 		break;
-	case SELECT:
-		return nullptr;
+	case MultiSELECT:
+		return new MultiSelect(this);
 		break;
 	case DEL:
 		return nullptr;
@@ -154,7 +202,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case SAVE:
-		return new Save(this);
+		return nullptr;
 		break;
 	case LOAD:
 		return nullptr;
@@ -185,7 +233,26 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		break;
 	case DSN_AREA:
 	{
-		
+		if (Toolbars[0])
+		{
+			OutputInterface->EraseAddToolBar();
+			Toolbars[0] = false;
+		}
+		if (Toolbars[1])
+		{
+			OutputInterface->EraseAndToolBar();
+			Toolbars[1] = false;
+		}
+		if (Toolbars[2])
+		{
+			OutputInterface->EraseORToolBar();
+			Toolbars[2] = false;
+		}
+		if (Toolbars[3])
+		{
+			OutputInterface->EraseXORToolBar();
+			Toolbars[3] = false;
+		}
 	}
 		return nullptr;
 		break;
@@ -219,6 +286,14 @@ vector<Component*> ApplicationManager::getMetaData()
 {
 	return MetaData;
 }
+void ApplicationManager::setMetaData(vector<Component*>x)
+{
+	MetaData = x;
+}
+void ApplicationManager::AppendMetaData(Component *x)
+{
+	MetaData.push_back(x);
+}
 vector<Component*> ApplicationManager::getClipboard()
 {
 	return	clip.pull();
@@ -248,13 +323,32 @@ void ApplicationManager::DeleteThis(vector<Component*>x)
 		}
 	}
 }
+void ApplicationManager::RemoveMetaData(Component *x)
+{
+	for (size_t i = 0; i < MetaData.size(); i++)
+	{
+		if (MetaData[i] == x)
+		{
+			MetaData.erase(MetaData.begin() + i);
+			break;
+		}
+	}
+}
+void ApplicationManager::EraseThisBitch(Component *)
+{
+}
 ApplicationManager::ApplicationManager()
 {
 	//Creates the Input / Output Objects & Initialize the GUI
+	for (size_t i = 0; i < 7; i++)
+	{
+		Toolbars[i] = false;
+	}
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
 	OutputInterface->CreateDesignToolBar();
 	OutputInterface->CreateStatusBar();
+	Toolbars[4] = true;
 }
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
