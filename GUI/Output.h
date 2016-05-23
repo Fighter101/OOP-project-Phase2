@@ -69,7 +69,7 @@ private:
 	GraphicsInfo XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
 	//////////////
 	//Drawing the connection
-	void DrawConnection(vector <pair<int,int> >Points,GridItem*ptr);
+	void DrawConnection(vector <pair<int, int> >Points, GridItem*ptr, bool x = false);
 	//Icon Array
 	GraphicsInfo(Output::*ButtonFunctions[46])(GraphicsInfo, PressType State) =
 	{

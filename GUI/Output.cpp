@@ -638,7 +638,7 @@ GraphicsInfo Output::ConnectIcon( GraphicsInfo r_GfxInfo, PressType State)
 	}
 	pWind->DrawCircle(r_GfxInfo.x1 + UI.Margain, r_GfxInfo.y1 + UI.Margain + 40, 6, FILLED);
 	pWind->DrawCircle(r_GfxInfo.x1 + 40 + UI.Margain, r_GfxInfo.y1 + UI.Margain, 6, FILLED);
-	Connect(GraphicsInfo(r_GfxInfo.x1 + UI.Margain, r_GfxInfo.y1 + UI.Margain + 40, r_GfxInfo.x1 + 40 + UI.Margain, r_GfxInfo.y1 + UI.Margain),NULL);
+	Connect(GraphicsInfo(r_GfxInfo.x1 + UI.Margain, r_GfxInfo.y1 + UI.Margain + 40, r_GfxInfo.x1 + 40 + UI.Margain, r_GfxInfo.y1 + UI.Margain), NULL, true);
 	pWind->SetFont(15, BOLD, BY_NAME, "Arial");
 	pWind->DrawString(r_GfxInfo.x1 + -2 + UI.Margain, r_GfxInfo.y1 + UI.ToolItemWidth, "Connect");
 	return (GraphicsInfo(UI.ToolItemWidth, UI.ToolBarHeight));
@@ -1242,9 +1242,9 @@ GraphicsInfo Output::XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State)
 	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
 	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
 }
-void Output::DrawConnection(vector<pair<int, int>> Points,GridItem*ptr)
+void Output::DrawConnection(vector<pair<int, int>> Points,GridItem*ptr,bool x)
 {
-	if (ptr==NULL)
+	if (ptr == NULL&&x)
 		pWind->SetPen(WHITE, 3);
 	else pWind->SetPen(BLACK, 3);
 	for (int i = 0; i < (int)(Points.size() - 1); i++)
@@ -2295,8 +2295,8 @@ vector<pair<int, int>> Output::Connect(Connection *r_Connection)
 	{
 		tmp1=DrawStraight(GraphicsInfo(vec.back().first, vec.back().second, r_Connection->getDestPin()->GetPosition().x1, r_Connection->getDestPin()->GetPosition().y1));
 		tmp2=DrawStraight(GraphicsInfo(vec.front().first, vec.front().second, r_Connection->getSourcePin()->GetPosition().x2, r_Connection->getSourcePin()->GetPosition().y2));
-		vec.insert(tmp1.begin(), tmp1.end(), vec.begin());
-		vec.insert(tmp2.begin(), tmp2.end(), vec.begin());
+		vec.insert(vec.begin(), tmp1.begin(), tmp1.end());
+		vec.insert(vec.end(), tmp2.begin(), tmp2.end());
 	}
 	return vec;
 
