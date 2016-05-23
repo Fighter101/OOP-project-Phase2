@@ -21,7 +21,6 @@ class SWITCH;
 
 class Gate:public Component
 {
-	bool Selected;
 protected:
 	InputPin* m_InputPins;	//Array of input pins of the Gate
 	OutputPin m_OutputPin;	//The Gate output pin
@@ -32,8 +31,8 @@ public:
 	InputPin*GetInputPins();
 	OutputPin & GetOutputPin();
 	virtual void SetState(bool r_selected);
-	virtual GraphicsInfo GetPosition();
 	virtual bool GetState();
+	virtual GraphicsInfo GetPosition();
 	virtual ActionType Leftpress();
 	virtual ActionType RightPress();
 	virtual void hover();

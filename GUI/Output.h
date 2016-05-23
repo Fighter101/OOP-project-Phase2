@@ -131,7 +131,7 @@ private:
 		DEL,
 		ActionType::ADD,
 		ADD_CONNECTION,
-		SELECT,
+		MultiSELECT,
 		UNDO,
 		REDO,
 		SAVE,

@@ -3,6 +3,7 @@
 Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPin *pDstPin):Component(r_GfxInfo)	
 	
 {
+	x = false;
 	SrcPin = pSrcPin;
 	DstPin = pDstPin;
 	DstPin->setConnection(this);	//MDawod
@@ -48,7 +49,6 @@ InputPin* Connection::getDestPin()
 void Connection::Operate()
 {
 	//Status of connection destination pin = status of connection source pin
-
 	SrcPin->getComponent()->Operate();
 	DstPin->setStatus((STATUS)SrcPin->getStatus());
 
@@ -56,7 +56,7 @@ void Connection::Operate()
 
 void Connection::Draw(Output* pOut)
 {
-	pOut->Connect(this);
+	x = pOut->Connect(this).size() == 0;
 }
 
 bool Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1
@@ -73,4 +73,19 @@ bool Connection::GetInputPinStatus(int n)	//returns status of Inputpin # n if SW
 void Connection::setInputPinStatus(int n, STATUS s)
 {
 	SrcPin->setStatus(s);
+}
+
+void Connection::SetState(bool r_selected)
+{
+	Selected = r_selected;
+}
+
+bool Connection::GetState()
+{
+	return Selected;
+}
+
+bool Connection::isConnected()
+{
+	return x;
 }

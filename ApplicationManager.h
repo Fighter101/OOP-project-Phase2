@@ -31,10 +31,14 @@ public:
 	GridItem* CheckPoint(int &Cx, int &Cy);
 ///////////////////////////////////////////	
 	vector<Component*> getMetaData();
+	void setMetaData(vector<Component*>);
+	void AppendMetaData(Component*);
 	vector<Component*> getClipboard();
 	vector<Component*> getComponents();
 	void setClipboard(vector<Component*>);
 	void DeleteThis(vector<Component*>);
+	void RemoveMetaData(Component*);
+	void EraseThisBitch(Component*);
 
 	ApplicationManager(); //constructor
 
