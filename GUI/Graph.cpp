@@ -3,7 +3,7 @@
 bool Graph::Valid(int x, int y,int flag)
 {
 	if (flag >=1)
-		return (x >= 0) && (y >= 0) && (x < UI.GridWidth) && (y < UI.GridHeight) && (Grid[x][y] == NULL/*|| dynamic_cast<Pin*>(Grid[x][y]) != NULL*/) && (parent[x][y].first == -1);
+		return (x >= 0) && (y >= 0) && (x < UI.GridWidth) && (y < UI.GridHeight) && (Grid[x][y] == NULL) && (parent[x][y].first == -1);
 	else
 		return (x >= 0) && (y >= 0) && (x < UI.GridWidth) && (y < UI.GridHeight) && (Grid[x][y] == NULL|| dynamic_cast<Pin*>(Grid[x][y]) != NULL) && (parent[x][y].first == -1);
 }

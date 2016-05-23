@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Actions\AddANDgate2.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="Components\AND2.cpp">
       <Filter>Components</Filter>
     </ClCompile>
@@ -185,7 +182,38 @@
     <ClCompile Include="Components\XOR3.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Defs.cpp" />
+    <ClCompile Include="Clipboard\Clipboard.cpp">
+      <Filter>Clipboard</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\Graph.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\GridItem.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\Input.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\Output.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\ToolBar.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Pin\InputPin.cpp">
+      <Filter>Pins</Filter>
+    </ClCompile>
+    <ClCompile Include="Pin\OutputPin.cpp">
+      <Filter>Pins</Filter>
+    </ClCompile>
+    <ClCompile Include="Pin\Pin.cpp">
+      <Filter>Pins</Filter>
+    </ClCompile>
     <ClCompile Include="Actions\AddAND.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\AddANDgate2.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\AddANDgate3.cpp">
@@ -233,6 +261,9 @@
     <ClCompile Include="Actions\AddSWITCH.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\AddToolBar.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
     <ClCompile Include="Actions\AddXNORgate2.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -248,10 +279,16 @@
     <ClCompile Include="Actions\AddXORgate3.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\ANDToolBar.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
     <ClCompile Include="Actions\ChangeSwitch.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\CreateTruthTable.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\CUT.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\DEL.cpp">
@@ -275,6 +312,12 @@
     <ClCompile Include="Actions\LOAD.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\ORToolBar.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Paste.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
     <ClCompile Include="Actions\REDO.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -293,63 +336,14 @@
     <ClCompile Include="Actions\UNDO.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Defs.cpp" />
-    <ClCompile Include="Actions\ANDToolBar.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions\AddToolBar.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions\ORToolBar.cpp">
+    <ClCompile Include="Actions\Validate.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\XORToolBar.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Clipboard\Clipboard.cpp">
-      <Filter>Clipboard</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions\CUT.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions\Paste.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI\Graph.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI\GridItem.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI\Input.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI\Output.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI\ToolBar.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Pin\InputPin.cpp">
-      <Filter>Pins</Filter>
-    </ClCompile>
-    <ClCompile Include="Pin\OutputPin.cpp">
-      <Filter>Pins</Filter>
-    </ClCompile>
-    <ClCompile Include="Pin\Pin.cpp">
-      <Filter>Pins</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions\Validate.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actions\Action.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\AddANDgate2.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
     <ClInclude Include="Components\AND2.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -485,7 +479,47 @@
     <ClInclude Include="Components\XOR3.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="Clipboard\Clipboard.h">
+      <Filter>Clipboard</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\Essentials.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\Graph.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\GridItem.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\Input.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\Output.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\ToolBar.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\UI_Info.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Defs.H" />
+    <ClInclude Include="Pin\InputPin.h">
+      <Filter>Pins</Filter>
+    </ClInclude>
+    <ClInclude Include="Pin\OutputPin.h">
+      <Filter>Pins</Filter>
+    </ClInclude>
+    <ClInclude Include="Pin\Pin.h">
+      <Filter>Pins</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Action.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
     <ClInclude Include="Actions\AddAND.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddANDgate2.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\AddANDgate3.h">
@@ -533,6 +567,9 @@
     <ClInclude Include="Actions\AddSWITCH.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\AddToolBar.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
     <ClInclude Include="Actions\AddXNORgate2.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -548,10 +585,16 @@
     <ClInclude Include="Actions\AddXORgate3.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\ANDToolBar.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
     <ClInclude Include="Actions\ChangeSwitch.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\CreateTruthTable.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\CUT.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\DEL.h">
@@ -575,6 +618,12 @@
     <ClInclude Include="Actions\LOAD.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\ORToolBar.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Paste.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
     <ClInclude Include="Actions\REDO.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -593,66 +642,14 @@
     <ClInclude Include="Actions\UNDO.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\ANDToolBar.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\AddToolBar.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\ORToolBar.h">
+    <ClInclude Include="Actions\Validate.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\XORToolBar.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Clipboard\Clipboard.h">
-      <Filter>Clipboard</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\CUT.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\Paste.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI\Essentials.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI\Graph.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI\GridItem.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI\Input.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI\Output.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI\ToolBar.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI\UI_Info.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Defs.H" />
-    <ClInclude Include="Pin\InputPin.h">
-      <Filter>Pins</Filter>
-    </ClInclude>
-    <ClInclude Include="Pin\OutputPin.h">
-      <Filter>Pins</Filter>
-    </ClInclude>
-    <ClInclude Include="Pin\Pin.h">
-      <Filter>Pins</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\Validate.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Actions">
-      <UniqueIdentifier>{61ecbe41-f437-4e4b-9178-88ac0a5bf06d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components">
       <UniqueIdentifier>{b97e2492-a07f-4801-bd62-8525b0447a72}</UniqueIdentifier>
     </Filter>
@@ -670,6 +667,9 @@
     </Filter>
     <Filter Include="GUI">
       <UniqueIdentifier>{3fc93c11-c9c0-4df7-bfd6-9b8758aac422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actions">
+      <UniqueIdentifier>{5364832c-8776-485d-9a04-eae8a2cd769f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

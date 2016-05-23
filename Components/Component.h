@@ -24,6 +24,10 @@ public:
 	virtual void setInputPinStatus(int n, STATUS s)=0;	//set status of Inputpin # n, to be used by connection class.
 	Component();	
 	
+	//Hassan
+	string GetLabel();
+	void SetLabel(string r_label);
+
 	//Destructor must be virtual
 	virtual ~Component();
 };

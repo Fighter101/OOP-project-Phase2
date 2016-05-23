@@ -152,6 +152,7 @@
     <ClCompile Include="Actions\ANDToolBar.cpp" />
     <ClCompile Include="Actions\ChangeSwitch.cpp" />
     <ClCompile Include="Actions\CreateTruthTable.cpp" />
+    <ClCompile Include="Actions\CUT.cpp" />
     <ClCompile Include="Actions\DEL.cpp" />
     <ClCompile Include="Actions\DrwngArea.cpp" />
     <ClCompile Include="Actions\DSNMODE.cpp" />
@@ -159,7 +160,6 @@
     <ClCompile Include="Actions\EditeLabel.cpp" />
     <ClCompile Include="Actions\EXIT.cpp" />
     <ClCompile Include="Actions\LOAD.cpp" />
-    <ClCompile Include="Actions\CUT.cpp" />
     <ClCompile Include="Actions\ORToolBar.cpp" />
     <ClCompile Include="Actions\Paste.cpp" />
     <ClCompile Include="Actions\REDO.cpp" />
@@ -270,6 +270,7 @@
     <ClInclude Include="Actions\ANDToolBar.h" />
     <ClInclude Include="Actions\ChangeSwitch.h" />
     <ClInclude Include="Actions\CreateTruthTable.h" />
+    <ClInclude Include="Actions\CUT.h" />
     <ClInclude Include="Actions\DEL.h" />
     <ClInclude Include="Actions\DrwngArea.h" />
     <ClInclude Include="Actions\DSNMODE.h" />
@@ -277,7 +278,6 @@
     <ClInclude Include="Actions\EditeLabel.h" />
     <ClInclude Include="Actions\EXIT.h" />
     <ClInclude Include="Actions\LOAD.h" />
-    <ClInclude Include="Actions\CUT.h" />
     <ClInclude Include="Actions\ORToolBar.h" />
     <ClInclude Include="Actions\Paste.h" />
     <ClInclude Include="Actions\REDO.h" />
