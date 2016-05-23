@@ -18,6 +18,7 @@ void Output::CreateToolBars()
 	Toolbars[DSGN].SetDistance(UI.ToolItemWidth, UI.ToolBarHeight);
 	Toolbars[DSGN].CreateButtons(this);
 	///////////////////Simulation Tool Bar/////////////////////
+
 	Toolbars[SIMU].SetPosition(GraphicsInfo(290, 0));
 	Toolbars[SIMU].SetOrientation(Horizontal);
 	vec.clear();
@@ -46,9 +47,19 @@ void Output::CreateToolBars()
 	{
 		vec.push_back(i);
 	}
-	Toolbars[RightClick].ButtonsToDraw(vec);
-	Toolbars[RightClick].SetOrientation(Vertical);
-	Toolbars[RightClick].SetDistance(UI.RightClickItemWidth, UI.RightClickItemHeight);
+	Toolbars[GATERightClick].ButtonsToDraw(vec);
+	Toolbars[GATERightClick].SetOrientation(Vertical);
+	Toolbars[GATERightClick].SetDistance(UI.RightClickItemWidth, UI.RightClickItemHeight);
+	/////////////////////////
+	vec.push_back(44);
+	Toolbars[SWITCHRightClick].ButtonsToDraw(vec);
+	Toolbars[SWITCHRightClick].SetOrientation(Vertical);
+	Toolbars[SWITCHRightClick].SetDistance(UI.RightClickItemWidth, UI.RightClickItemHeight);
+	/////////////////////////////////
+	vec[vec.size() - 1] = 45;
+	Toolbars[LEDRightClick].ButtonsToDraw(vec);
+	Toolbars[LEDRightClick].SetOrientation(Vertical);
+	Toolbars[LEDRightClick].SetDistance(UI.RightClickItemWidth, UI.RightClickItemHeight);
 	////////////////////////////////
 	vec.clear();
 	for (int i = 25; i < 32; i++)
@@ -225,13 +236,33 @@ void Output::EraseSimulationToolBar()
 }
 void Output::CreateRightClickToolBar(GraphicsInfo r_GfxInfo)
 {
-	Toolbars[RightClick].SetPosition(r_GfxInfo);
-	Toolbars[RightClick].CreateButtons(this);
-	Toolbars[RightClick].Draw(this);
+	Toolbars[GATERightClick].SetPosition(r_GfxInfo);
+	Toolbars[GATERightClick].CreateButtons(this);
+	Toolbars[GATERightClick].Draw(this);
 }
-void Output::EraseRightClickToolBar()
+set<GridItem*> Output::EraseRightClickToolBar()
 {
-	Toolbars[RightClick].Erase(this);
+	return Interface->Check(Toolbars[GATERightClick].Erase(this));
+}
+void Output::CreateLEDToolBar(GraphicsInfo r_GfxInfo)
+{
+	Toolbars[LEDRightClick].SetPosition(r_GfxInfo);
+	Toolbars[LEDRightClick].CreateButtons(this);
+	Toolbars[LEDRightClick].Draw(this);
+}
+set<GridItem*> Output::EraseLEDClickToolBar()
+{
+	return Interface->Check(Toolbars[LEDRightClick].Erase(this));
+}
+void Output::CreateSwitchToolBar(GraphicsInfo r_GfxInfo)
+{
+	Toolbars[SWITCHRightClick].SetPosition(r_GfxInfo);
+	Toolbars[SWITCHRightClick].CreateButtons(this);
+	Toolbars[SWITCHRightClick].Draw(this);
+}
+set<GridItem*> Output::EraseSwitchtClickToolBar()
+{
+	return Interface->Check(Toolbars[SWITCHRightClick].Erase(this));
 }
 void Output::CreateAndToolBar()
 {
@@ -1063,6 +1094,20 @@ GraphicsInfo Output::DeleteString(GraphicsInfo r_GfxInfo, PressType State)
 	GraphicsInfo tmp=DetermineState(r_GfxInfo, State);
 	pWind->SetFont(20, BOLD, BY_NAME, "Arial");
 	pWind->DrawString(r_GfxInfo.x1+ UI.Margain, r_GfxInfo.y1 + 1, "Delete");
+	return tmp;
+}
+GraphicsInfo Output::ToggleString(GraphicsInfo r_GfxInfo, PressType State)
+{
+	GraphicsInfo tmp = DetermineState(r_GfxInfo, State);
+	pWind->SetFont(20, BOLD, BY_NAME, "Arial");
+	pWind->DrawString(r_GfxInfo.x1 + UI.Margain, r_GfxInfo.y1 + 1, "Toogle");
+	return tmp;
+}
+GraphicsInfo Output::TruthTableString(GraphicsInfo r_GfxInfo, PressType State)
+{
+	GraphicsInfo tmp = DetermineState(r_GfxInfo, State);
+	pWind->SetFont(20, BOLD, BY_NAME, "Arial");
+	pWind->DrawString(r_GfxInfo.x1 + UI.Margain, r_GfxInfo.y1 + 1, "TruthTable");
 	return tmp;
 }
 GraphicsInfo Output::AndIcon(GraphicsInfo r_GfxInfo, PressType State)

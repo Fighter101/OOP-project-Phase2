@@ -55,12 +55,16 @@ void ToolBar::Draw(Output * pOut)
 	}
 }
 
-void ToolBar::Erase(Output * pOut)
+GraphicsInfo ToolBar::Erase(Output * pOut)
 {
+	GraphicsInfo tmp(0, 0, 0, 0);
 	for (int i = 0; i < Indices.size(); i++)
 	{
-		Buttons[i].Erase(pOut);
+		tmp=Buttons[i].Erase(pOut);
 	}
+	if (Direction == Vertical)
+		return GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + tmp.x1, r_GfxInfo.y1 + Indices.size()*tmp.y1);
+	else return GraphicsInfo(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + Indices.size()*tmp.x1, r_GfxInfo.y1 + tmp.y1);
 }
 
 

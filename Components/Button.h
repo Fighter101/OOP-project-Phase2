@@ -20,7 +20,7 @@ public:
 	void SetDimension(GraphicsInfo r_Dimensions);
 	GraphicsInfo GetDimensions();
 	GraphicsInfo GetPosition();
-	void Erase(Output* pOut);
+	GraphicsInfo Erase(Output* pOut);
 	void Draw(Output*pOut);
 	virtual ActionType Leftpress();
 	virtual ActionType RightPress();
