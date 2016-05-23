@@ -206,7 +206,7 @@ GridItem* ApplicationManager::CheckPoint(int & Cx, int & Cy)
 		tmp=InputInterface->GetPointClicked(Cx, Cy);
 		if (Cx == -1 || Cy == -1)
 			OutputInterface->PrintMsg("Out of Design Area, Please Click Inside the Drawing Area");
-		else if (Cx == -2 || Cy == -2 && (dynamic_cast<Pin*>(tmp)) == NULL)
+		else if ((Cx == -2 || Cy == -2) && ((dynamic_cast<Pin*>(tmp)) == NULL))
 			OutputInterface->PrintMsg("You've Clicked on an Existing Component, Please Click Somewhere Free");
 		else	
 		success = false;
