@@ -1,4 +1,5 @@
 #include "OutputPin.h"
+
 #include "..\Components\Component.h"
 #include "..\Components\Connection.h"
 
@@ -37,6 +38,10 @@ bool OutputPin::CheckPin()
 	return m_Conn;
 }
 
+
+
+
+
 bool OutputPin::ConnectTo(Connection *r_Conn)
 {
 	if(m_Conn < m_FanOut)
@@ -47,6 +52,8 @@ bool OutputPin::ConnectTo(Connection *r_Conn)
 	
 	return false;	//can't connect to any more connections
 }
+
+
 void OutputPin::setComponent(Component* pComp)
 {
 	m_component = pComp;

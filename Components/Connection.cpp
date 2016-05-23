@@ -45,16 +45,6 @@ InputPin* Connection::getDestPin()
 	return DstPin;	
 }
 
-
-
-
-
-
-
-
-
-
-
 void Connection::Operate()
 {
 	//Status of connection destination pin = status of connection source pin

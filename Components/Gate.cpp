@@ -14,6 +14,8 @@ Gate::Gate(int r_Inputs)
 	//Associate all input pins to this gate
 	for(int i=0; i<m_Inputs; i++)
 		m_InputPins[i].setComponent(this);
+	//sam7 edit
+	m_OutputPin.setComponent(this);
 }
 bool Gate::CheckPins()
 {
@@ -22,7 +24,6 @@ bool Gate::CheckPins()
 	SWITCH* sptr = dynamic_cast<SWITCH*>(this);
 	LED* lptr = dynamic_cast<LED*>(this);
 	if (sptr)
-
 		return m_OutputPin.CheckPin();
 	if (lptr)
 		return	m_InputPins[0].CheckPin();
@@ -31,12 +32,11 @@ bool Gate::CheckPins()
 
 	for (int i = 0; i < m_Inputs; i++)
 	{
-
-		if (!m_InputPins[i].CheckPin/*s*/())
+		if (!m_InputPins[i].CheckPin())
 			return false;
 	}
 
-	return m_OutputPin.CheckPin/*s*/();
+	return m_OutputPin.CheckPin();
 }
 
 
@@ -61,12 +61,6 @@ void Gate::SetState(bool r_selected)
 GraphicsInfo Gate::GetPosition()
 {
 	return Component::m_GfxInfo;
-
-	//	if (!m_InputPins[i].CheckPin())
-	//		return false;
-	//}
-
-	//return m_OutputPin.CheckPin();
 }
 
 bool Gate::GetState()
@@ -90,5 +84,16 @@ void Gate::hover()
 
 void Gate::released()
 {
+}
+
+Pin * Gate::GetFreeInputPins()
+{
+	for (size_t i = 0; i < m_Inputs; i++)
+	{
+		if (m_InputPins[i].getConnection() == nullptr)
+		return &m_InputPins[i];
+	}
+	return nullptr;
+	//sam7
 }
 

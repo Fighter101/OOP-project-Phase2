@@ -38,7 +38,8 @@ public:
 	virtual ActionType RightPress();
 	virtual void hover();
 	virtual void released();
-
+	//Same7
+	Pin* GetFreeInputPins();
 
 
 };

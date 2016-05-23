@@ -10,13 +10,13 @@ GridItem* Input::GetPointClicked(int &x, int &y,Comps Comp)
 	GridItem*Returned;
 	
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
+	GridItem*tmp = Interface->getAction(GraphicsInfo(x, y));
 	if (x<UI.GateItemWidth || x>UI.width - UI.GateItemWidth || y<UI.ToolBarHeight || y>UI.height - UI.StatusBarHeight)
 	{
 		x = -1;
 		y = -1;
-		return NULL;
+		return tmp;
 	}
-	GridItem*tmp = Interface->getAction(GraphicsInfo(x, y));
 	if (tmp != NULL)
 	{
 		x = -2;
