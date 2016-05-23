@@ -380,9 +380,6 @@
     <ClInclude Include="CMUgraphicsLib\image.h">
       <Filter>CMUgraphics Library</Filter>
     </ClInclude>
-    <ClInclude Include="Components\InputPin.h">
-      <Filter>Pins</Filter>
-    </ClInclude>
     <ClInclude Include="CMUgraphicsLib\jpeg\jconfig.h">
       <Filter>CMUgraphics Library</Filter>
     </ClInclude>
@@ -418,12 +415,6 @@
     </ClInclude>
     <ClInclude Include="CMUgraphicsLib\keyqueue.h">
       <Filter>CMUgraphics Library</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\OutputPin.h">
-      <Filter>Pins</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\Pin.h">
-      <Filter>Pins</Filter>
     </ClInclude>
     <ClInclude Include="CMUgraphicsLib\mousequeue.h">
       <Filter>CMUgraphics Library</Filter>

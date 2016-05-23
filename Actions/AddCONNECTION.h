@@ -8,8 +8,11 @@ class AddCONNECTION : public Action
 {
 private:
 	//two points are the source and the destination of the connection
-	InputPin* Dst;
-	OutputPin* Src;
+	Pin* DstPin;
+	Pin* SrcPin;
+	Gate* SrcGate;
+	Gate* DstGate;
+
 	int x1, y1, x2, y2;	//Two corners of the rectangular area
 public:
 	AddCONNECTION(ApplicationManager *pApp);

@@ -14,6 +14,8 @@ Gate::Gate(int r_Inputs)
 	//Associate all input pins to this gate
 	for(int i=0; i<m_Inputs; i++)
 		m_InputPins[i].setComponent(this);
+	//sam7 edit
+	m_OutputPin.setComponent(this);
 }
 bool Gate::CheckPins()
 {
@@ -82,5 +84,16 @@ void Gate::hover()
 
 void Gate::released()
 {
+}
+
+Pin * Gate::GetFreeInputPins()
+{
+	for (size_t i = 0; i < m_Inputs; i++)
+	{
+		if (m_InputPins[i].getConnection() == nullptr)
+		return &m_InputPins[i];
+	}
+	return nullptr;
+	//sam7
 }
 

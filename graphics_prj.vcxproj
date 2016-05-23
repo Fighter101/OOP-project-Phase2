@@ -318,7 +318,6 @@
     <ClInclude Include="Components\Connection.h" />
     <ClInclude Include="Components\Gate.h" />
     <ClInclude Include="Components\gateBAR.h" />
-    <ClInclude Include="Components\InputPin.h" />
     <ClInclude Include="Components\INV.h" />
     <ClInclude Include="Components\LED.h" />
     <ClInclude Include="Components\NAND2.h" />
@@ -328,8 +327,6 @@
     <ClInclude Include="Components\OR.h" />
     <ClInclude Include="Components\OR2.h" />
     <ClInclude Include="Components\OR3.h" />
-    <ClInclude Include="Components\OutputPin.h" />
-    <ClInclude Include="Components\Pin.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Components\SWITCH.h" />
     <ClInclude Include="Components\XNOR2.h" />
