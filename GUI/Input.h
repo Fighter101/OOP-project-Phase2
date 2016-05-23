@@ -15,6 +15,6 @@ public:
 	string GetString(Output*);		//Returns a string entered by the user
 	static Graph*GetGraph();
 	pair< ActionType,vector<GridItem*> > GetUserAction() const; //Reads the user click and maps it to an action
-
+	void GetPoint(int &x, int &y);
 	~Input();
 };

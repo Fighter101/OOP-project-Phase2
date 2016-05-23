@@ -10,7 +10,7 @@ private:
 	window* pWind;	//Pointer to the Graphics Window
 	window*TruthTable;
 	Graph *Interface;
-	
+	void DrawStraight(GraphicsInfo);
 	//ICons For Buttons
 	GraphicsInfo DetermineState(GraphicsInfo,PressType State);
 	GraphicsInfo MoveIcon(GraphicsInfo r_GfxInfo, PressType State);
@@ -311,7 +311,7 @@ public:
 	vector<pair<int, int> >Connect(Connection*r_Connection);
 	//Truth Table
 	void CreateTruthTable();
-	
+	set<GridItem*>DrawSelectionTriangle(GraphicsInfo);
 	//Same7 Functions Add by same7 for Application Manager
 	void ClearToolbars(int Toolbars);
 

@@ -298,6 +298,12 @@ void Output::EraseAddToolBar()
 //								Components Drawing Functions							//
 //======================================================================================//
 
+void Output::DrawStraight(GraphicsInfo r_GfxInfo)
+{
+		pWind->DrawLine(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y1);
+		pWind->DrawLine(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2);
+}
+
 GraphicsInfo Output::DetermineState(GraphicsInfo r_GfxInfo, PressType State)
 {
 	switch (State)
@@ -2274,8 +2280,8 @@ vector<pair<int, int>> Output::Connect(Connection *r_Connection)
 	vector<pair<int,int> > vec= Connect(GraphicsInfo(r_Connection->getSourcePin()->GetPosition().x2+5, r_Connection->getSourcePin()->GetPosition().y2, r_Connection->getDestPin()->GetPosition().x1-5, r_Connection->getDestPin()->GetPosition().y1),r_Connection,false);
 	if (vec.size() != 0)
 	{
-		pWind->DrawLine(vec.back().first, vec.back().second, r_Connection->getDestPin()->GetPosition().x1, r_Connection->getDestPin()->GetPosition().y1);
-		pWind->DrawLine(vec.front().first, vec.front().second, r_Connection->getSourcePin()->GetPosition().x2, r_Connection->getSourcePin()->GetPosition().y2);
+		DrawStraight(GraphicsInfo(vec.back().first, vec.back().second, r_Connection->getDestPin()->GetPosition().x1, r_Connection->getDestPin()->GetPosition().y1));
+		DrawStraight(GraphicsInfo(vec.front().first, vec.front().second, r_Connection->getSourcePin()->GetPosition().x2, r_Connection->getSourcePin()->GetPosition().y2));
 	}
 	return vec;
 }
@@ -2294,6 +2300,13 @@ void Output::CreateTruthTable()
 	}
 	TruthTable->WaitMouseClick(x, y);
 	TruthTable->~window();
+}
+
+set<GridItem*> Output::DrawSelectionTriangle(GraphicsInfo r_GfxInfo)
+{
+	pWind->SetPen(BLACK, 5);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2,FRAME);
+	return Interface->Check(r_GfxInfo);
 }
 
 void Output::ClearToolbars(int Toolbars)

@@ -41,6 +41,7 @@
 #include"Actions\ANDToolBar.h"
 #include"Actions\ORToolBar.h"
 #include"Actions\XORToolBar.h"
+
 Action * ApplicationManager::ActionCreator(ActionType x)
 {
 	switch (x)
@@ -171,7 +172,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case EDIT_Label:
-		return nullptr;
+		return new EditLabel(this);
 		break;
 	case Create_TruthTable:
 		return nullptr;
