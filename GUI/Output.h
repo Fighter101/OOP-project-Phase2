@@ -10,7 +10,7 @@ private:
 	window* pWind;	//Pointer to the Graphics Window
 	window*TruthTable;
 	Graph *Interface;
-	
+	vector<pair<int,int> > DrawStraight(GraphicsInfo);
 	//ICons For Buttons
 	GraphicsInfo DetermineState(GraphicsInfo,PressType State);
 	GraphicsInfo MoveIcon(GraphicsInfo r_GfxInfo, PressType State);
@@ -69,7 +69,7 @@ private:
 	GraphicsInfo XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
 	//////////////
 	//Drawing the connection
-	void DrawConnection(vector <pair<int,int> >Points,GridItem*ptr);
+	void DrawConnection(vector <pair<int, int> >Points, GridItem*ptr, bool x = false);
 	//Icon Array
 	GraphicsInfo(Output::*ButtonFunctions[46])(GraphicsInfo, PressType State) =
 	{
@@ -131,7 +131,7 @@ private:
 		DEL,
 		ActionType::ADD,
 		ADD_CONNECTION,
-		SELECT,
+		MultiSELECT,
 		UNDO,
 		REDO,
 		SAVE,
@@ -309,9 +309,10 @@ public:
 	//Connection
 	vector<pair<int, int> > Connect(GraphicsInfo r_GfxInfo, GridItem*ptr ,bool selected = false);
 	vector<pair<int, int> >Connect(Connection*r_Connection);
+	void EraseConnection(Connection *r_Connection);
 	//Truth Table
 	void CreateTruthTable();
-	
+	set<GridItem*>DrawSelectionTriangle(GraphicsInfo);
 	//Same7 Functions Add by same7 for Application Manager
 	void ClearToolbars(int Toolbars);
 

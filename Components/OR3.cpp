@@ -55,3 +55,8 @@ void OR3::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+void OR3::Erase(Output * pOut)
+{
+	pOut->EraseOR3(this);
+}

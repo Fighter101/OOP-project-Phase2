@@ -10,6 +10,8 @@ class Connection :	public Component
 	//int		DstPin;		//The Input pin to which this connection is linked
 	OutputPin* SrcPin;	//The Source pin of this connection (an output pin of certain Component)
 	InputPin* DstPin;	//The Destination pin of this connection (an input pin of certain Component)
+	vector<pair<int, int> >points;
+	bool x;
 public:
 	
 	//Connection(const GraphicsInfo &r_GfxInfo, Component *pS=NULL,Component *pD=NULL, int Pin=0);
@@ -22,8 +24,8 @@ public:
 
 	virtual void hover();
 	virtual void released();
-
-	
+	vector<pair<int, int> > GetPoints();
+	virtual void Erase(Output*pOut);
 	void setSourcePin(OutputPin *pSrcPin);
 	void setDestPin(InputPin *pDstPin);
 	OutputPin* getSourcePin();
@@ -34,5 +36,11 @@ public:
 
 	virtual void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
 
+
+
+	//sam7
+	virtual void SetState(bool r_selected);
+	virtual bool GetState();
+	bool isConnected();
 
 };

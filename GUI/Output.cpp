@@ -298,6 +298,18 @@ void Output::EraseAddToolBar()
 //								Components Drawing Functions							//
 //======================================================================================//
 
+vector<pair<int,int> > Output::DrawStraight(GraphicsInfo r_GfxInfo)
+{
+	vector<pair<int, int> >vec;
+		pWind->DrawLine(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y1);
+		vec.push_back(make_pair(r_GfxInfo.x1, r_GfxInfo.y1));
+		vec.push_back(make_pair(r_GfxInfo.x2, r_GfxInfo.y1));
+		pWind->DrawLine(r_GfxInfo.x2, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2);
+		vec.push_back(make_pair(r_GfxInfo.x2, r_GfxInfo.y1));
+		vec.push_back(make_pair(r_GfxInfo.x2, r_GfxInfo.y2));
+		return vec;
+}
+
 GraphicsInfo Output::DetermineState(GraphicsInfo r_GfxInfo, PressType State)
 {
 	switch (State)
@@ -626,7 +638,7 @@ GraphicsInfo Output::ConnectIcon( GraphicsInfo r_GfxInfo, PressType State)
 	}
 	pWind->DrawCircle(r_GfxInfo.x1 + UI.Margain, r_GfxInfo.y1 + UI.Margain + 40, 6, FILLED);
 	pWind->DrawCircle(r_GfxInfo.x1 + 40 + UI.Margain, r_GfxInfo.y1 + UI.Margain, 6, FILLED);
-	Connect(GraphicsInfo(r_GfxInfo.x1 + UI.Margain, r_GfxInfo.y1 + UI.Margain + 40, r_GfxInfo.x1 + 40 + UI.Margain, r_GfxInfo.y1 + UI.Margain),NULL);
+	Connect(GraphicsInfo(r_GfxInfo.x1 + UI.Margain, r_GfxInfo.y1 + UI.Margain + 40, r_GfxInfo.x1 + 40 + UI.Margain, r_GfxInfo.y1 + UI.Margain), NULL, true);
 	pWind->SetFont(15, BOLD, BY_NAME, "Arial");
 	pWind->DrawString(r_GfxInfo.x1 + -2 + UI.Margain, r_GfxInfo.y1 + UI.ToolItemWidth, "Connect");
 	return (GraphicsInfo(UI.ToolItemWidth, UI.ToolBarHeight));
@@ -1230,13 +1242,18 @@ GraphicsInfo Output::XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State)
 	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
 	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
 }
-void Output::DrawConnection(vector<pair<int, int>> Points,GridItem*ptr)
+void Output::DrawConnection(vector<pair<int, int>> Points,GridItem*ptr,bool x)
 {
-	pWind->SetPen(BLACK, 3);
+	if (ptr == NULL&&x)
+		pWind->SetPen(WHITE, 3);
+	else pWind->SetPen(BLACK, 3);
 	for (int i = 0; i < (int)(Points.size() - 1); i++)
 	{
 		pWind->DrawLine(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second);
-		Interface->Register(GraphicsInfo(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second), ptr);
+		if (ptr != NULL)
+			Interface->Register(GraphicsInfo(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second), ptr);
+		else
+			Interface->UNRegister(GraphicsInfo(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second));
 	}
 }
 GraphicsInfo Output::DrawButon(int index,GraphicsInfo r_GfxInfo, PressType State)
@@ -2271,13 +2288,23 @@ vector<pair<int,int> > Output::Connect(GraphicsInfo r_GfxInfo,  GridItem*ptr, bo
 
 vector<pair<int, int>> Output::Connect(Connection *r_Connection)
 {
+
 	vector<pair<int,int> > vec= Connect(GraphicsInfo(r_Connection->getSourcePin()->GetPosition().x2+5, r_Connection->getSourcePin()->GetPosition().y2, r_Connection->getDestPin()->GetPosition().x1-5, r_Connection->getDestPin()->GetPosition().y1),r_Connection,false);
+	vector<pair<int, int> > tmp1, tmp2;
 	if (vec.size() != 0)
 	{
-		pWind->DrawLine(vec.back().first, vec.back().second, r_Connection->getDestPin()->GetPosition().x1, r_Connection->getDestPin()->GetPosition().y1);
-		pWind->DrawLine(vec.front().first, vec.front().second, r_Connection->getSourcePin()->GetPosition().x2, r_Connection->getSourcePin()->GetPosition().y2);
+		tmp1=DrawStraight(GraphicsInfo(vec.back().first, vec.back().second, r_Connection->getDestPin()->GetPosition().x1, r_Connection->getDestPin()->GetPosition().y1));
+		tmp2=DrawStraight(GraphicsInfo(vec.front().first, vec.front().second, r_Connection->getSourcePin()->GetPosition().x2, r_Connection->getSourcePin()->GetPosition().y2));
+		vec.insert(vec.begin(), tmp1.begin(), tmp1.end());
+		vec.insert(vec.end(), tmp2.begin(), tmp2.end());
 	}
 	return vec;
+
+}
+
+void Output::EraseConnection(Connection * r_Connection)
+{
+	DrawConnection(r_Connection->GetPoints(), NULL);
 }
 
 void Output::CreateTruthTable()
@@ -2294,6 +2321,13 @@ void Output::CreateTruthTable()
 	}
 	TruthTable->WaitMouseClick(x, y);
 	TruthTable->~window();
+}
+
+set<GridItem*> Output::DrawSelectionTriangle(GraphicsInfo r_GfxInfo)
+{
+	pWind->SetPen(BLACK, 5);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2,FRAME);
+	return Interface->Check(r_GfxInfo);
 }
 
 void Output::ClearToolbars(int Toolbars)

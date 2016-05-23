@@ -10,13 +10,13 @@ GridItem* Input::GetPointClicked(int &x, int &y,Comps Comp)
 	GridItem*Returned;
 	
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
+	GridItem*tmp = Interface->getAction(GraphicsInfo(x, y));
 	if (x<UI.GateItemWidth || x>UI.width - UI.GateItemWidth || y<UI.ToolBarHeight || y>UI.height - UI.StatusBarHeight)
 	{
 		x = -1;
 		y = -1;
-		return NULL;
+		return tmp;
 	}
-	GridItem*tmp = Interface->getAction(GraphicsInfo(x, y));
 	if (tmp != NULL)
 	{
 		x = -2;
@@ -89,7 +89,8 @@ pair< ActionType, vector<GridItem*> > Input::GetUserAction() const
 {	
 	vector<GridItem*> ReturnedPointers;
 	int x,y;
-	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
+	clicktype Clk;
+	Clk=pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 	GridItem*tmp = NULL;
 	tmp = Interface->getAction(GraphicsInfo(x, y));
 	if (tmp == NULL)
@@ -98,9 +99,27 @@ pair< ActionType, vector<GridItem*> > Input::GetUserAction() const
 
 	{
 		ReturnedPointers.push_back(tmp);
-		return make_pair(tmp->Leftpress(), ReturnedPointers);
+		if (Clk == LEFT_CLICK)
+		{
+			
+			return make_pair(tmp->Leftpress(), ReturnedPointers);
+		}
+		else if (Clk == RIGHT_CLICK)
+		{
+			return make_pair(tmp->RightPress(), ReturnedPointers);
+		}
+		else if (Clk == NO_CLICK)
+		{
+			tmp->hover();
+			GetUserAction();
+		}
 	}
 
+}
+
+void Input::GetPoint(int & x, int & y)
+{
+	pWind->GetMouseClick(x, y);
 }
 
 

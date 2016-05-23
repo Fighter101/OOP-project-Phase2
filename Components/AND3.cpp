@@ -34,6 +34,11 @@ void AND3::Draw(Output* pOut)
 	pOut->DrawAND3(this);
 }
 
+void AND3::Erase(Output * pOut)
+{
+	pOut->EraseAND3(this);
+}
+
 //returns status of outputpin
 bool  AND3::GetOutPinStatus()
 {

@@ -55,3 +55,8 @@ void XNOR3::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+void XNOR3::Erase(Output * pOut)
+{
+	pOut->EraseXNOR3(this);
+}

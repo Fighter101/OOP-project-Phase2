@@ -281,9 +281,6 @@
     <ClCompile Include="Actions\SAVE.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\SELECT.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\SIMMODE.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -340,6 +337,9 @@
       <Filter>Pins</Filter>
     </ClCompile>
     <ClCompile Include="Actions\Validate.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\MultiSELECT.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -415,9 +415,6 @@
     </ClInclude>
     <ClInclude Include="CMUgraphicsLib\keyqueue.h">
       <Filter>CMUgraphics Library</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\Pin.h">
-      <Filter>Pins</Filter>
     </ClInclude>
     <ClInclude Include="CMUgraphicsLib\mousequeue.h">
       <Filter>CMUgraphics Library</Filter>
@@ -584,9 +581,6 @@
     <ClInclude Include="Actions\SAVE.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\SELECT.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
     <ClInclude Include="Actions\SIMMODE.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -649,6 +643,9 @@
       <Filter>Pins</Filter>
     </ClInclude>
     <ClInclude Include="Actions\Validate.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\MultiSELECT.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,13 +8,13 @@
 */
 
 #include "Pin.h"
-class Connection;	//Forward class declartion
+class Connection;	//Forward class declaration
 class Component;  //MDawod
 
 class OutputPin: public Pin	//inherited from class Pin
 {
 private:
-	//Array of connections (poniters) to be connected to that OutputPin
+	//Array of connections (pointers) to be connected to that OutputPin
 	//For simplicity, we consider it a constant length
 	Connection* m_Connections[MAX_CONNS];	
 	Component* m_component; //MDawod
