@@ -40,7 +40,6 @@ public:
 	//Same7
 	Pin* GetFreeInputPins();
 
-
 };
 
 #endif
