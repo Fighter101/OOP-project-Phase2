@@ -64,6 +64,18 @@ vector<pair<int, int>> Graph::Connect(GraphicsInfo r_GfxInfo)
 	delete[]parent;
 	return Points;
 }
+void Graph::Clear()
+{
+	Grid = new GridItem**[UI.width / 5 + 1];
+	for (int i = 0; i < UI.GridWidth; i++)
+	{
+		Grid[i] = new GridItem*[UI.height / 5];
+		for (int j = 0; j < UI.GridHeight; j++)
+		{
+			Grid[i][j] = NULL;
+		}
+	}
+}
 Graph::Graph()
 {
 	Grid = new GridItem**[UI.width/5+1];

@@ -1317,7 +1317,7 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 	}
 	if (invert)
 	{
-		pWind->SetPen(BLACK, 3);
+		pWind->SetPen(BorderColor, 3);
 		int y_Center = r_GfxInfo.y1 + raduis - 9;
 		int x_Center = r_GfxInfo.x2 + raduis - 1;
 		int Raduis = UI.InverterDimensions;
@@ -1337,7 +1337,7 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 			Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 + UI.AllGateDimensions, r_GfxInfo.y1, x_Center - 1 + Raduis, r_GfxInfo.y2));
 		}
 	}
-	pWind->SetPen(BLACK, 3);
+	pWind->SetPen(BorderColor, 3);
 	if (connections)
 	{
 		int dist = (r_GfxInfo.y2 - r_GfxInfo.y1) / 4;
@@ -2354,6 +2354,11 @@ void Output::ClearToolbars(int Toolbars)
 	default:
 		break;
 	}
+}
+
+void Output::ClearGraph()
+{
+	Interface->Clear();
 }
 
 //Destructor

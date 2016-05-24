@@ -42,6 +42,7 @@
 #include"Actions\ORToolBar.h"
 #include"Actions\XORToolBar.h"
 #include"Actions\Select.h"
+#include"Actions\Move.h"
 #include"Components\Button.h"
 Action * ApplicationManager::ActionCreator(ActionType x)
 {
@@ -188,7 +189,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case MOVE:
-		return nullptr;
+		return new Move(this);
 		break;
 	case COPY:
 		return nullptr;

@@ -27,6 +27,7 @@ public:
 	virtual void setInputPinStatus(int n, STATUS s)=0;	//set status of Inputpin # n, to be used by connection class.
 	virtual void SetState(bool x) = 0;
 	virtual bool GetState() = 0;
+	virtual void SetPosition(GraphicsInfo);
 	Component();	
 	
 	//Hassan

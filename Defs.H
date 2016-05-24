@@ -1,6 +1,5 @@
 #ifndef CONST_H
 #define CONST_H
-
 //This header file contains some defenitions to be used all over the application
 
 //All possible actions
@@ -162,6 +161,7 @@ const STATUS operator&(const STATUS a, const STATUS b);
 const STATUS operator|(const STATUS a, const STATUS b);
 const STATUS operator^(const STATUS a, const STATUS b);
 const STATUS operator~(const STATUS a);
+bool IsInDesign(GraphicsInfo r_GfxInfo);
 enum Comps
 {
 	_GATE_,

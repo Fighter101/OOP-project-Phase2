@@ -315,7 +315,7 @@ public:
 	set<GridItem*>DrawSelectionTriangle(GraphicsInfo);
 	//Same7 Functions Add by same7 for Application Manager
 	void ClearToolbars(int Toolbars);
-
+	void ClearGraph();
 	~Output();
 };
 

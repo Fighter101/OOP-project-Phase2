@@ -160,6 +160,7 @@
     <ClCompile Include="Actions\EditeLabel.cpp" />
     <ClCompile Include="Actions\EXIT.cpp" />
     <ClCompile Include="Actions\LOAD.cpp" />
+    <ClCompile Include="Actions\Move.cpp" />
     <ClCompile Include="Actions\ORToolBar.cpp" />
     <ClCompile Include="Actions\Paste.cpp" />
     <ClCompile Include="Actions\REDO.cpp" />
@@ -279,6 +280,7 @@
     <ClInclude Include="Actions\EditeLabel.h" />
     <ClInclude Include="Actions\EXIT.h" />
     <ClInclude Include="Actions\LOAD.h" />
+    <ClInclude Include="Actions\Move.h" />
     <ClInclude Include="Actions\ORToolBar.h" />
     <ClInclude Include="Actions\Paste.h" />
     <ClInclude Include="Actions\REDO.h" />

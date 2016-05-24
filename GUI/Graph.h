@@ -19,5 +19,6 @@ public:
 	void UNRegister(GraphicsInfo r_GfxInfo);
 	GridItem * getAction(GraphicsInfo Click);
 	vector< pair<int, int> > Connect(GraphicsInfo r_GfxInfo);
+	void Clear();
 	~Graph();
 };
