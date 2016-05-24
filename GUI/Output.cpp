@@ -216,7 +216,7 @@ void Output::CreateDesignToolBar()
 }
 void Output::EraseDesignToolBar()
 {
-	Toolbars[DSGN].Draw(this);
+	Toolbars[DSGN].Erase(this);
 }
 void Output::CreateGatesToolBar()
 {
@@ -611,7 +611,7 @@ GraphicsInfo Output::AddIcon( GraphicsInfo r_GfxInfo, PressType State)
 	pWind->DrawLine(UI.ToolItemWidth / 2 + r_GfxInfo.x1, r_GfxInfo.y1 + UI.Margain, r_GfxInfo.x1 + UI.ToolItemWidth / 2, r_GfxInfo.y1 + UI.Margain + 40);
 	pWind->SetFont(30, BOLD, BY_NAME, "Arial");
 	pWind->DrawString(r_GfxInfo.x1 + 8, r_GfxInfo.y1 + UI.ToolBarHeight - 30, "Add");
-	return (GraphicsInfo(UI.ToolItemWidth, UI.ToolBarHeight));
+	return (GraphicsInfo(UI.ToolItemWidth, UI.ToolBarHeight+100));
 }
 GraphicsInfo Output::ConnectIcon( GraphicsInfo r_GfxInfo, PressType State)
 {

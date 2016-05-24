@@ -42,7 +42,7 @@
 #include"Actions\ORToolBar.h"
 #include"Actions\XORToolBar.h"
 #include"Actions\Select.h"
-
+#include"Components\Button.h"
 Action * ApplicationManager::ActionCreator(ActionType x)
 {
 	switch (x)
@@ -170,7 +170,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return new AddCONNECTION(this);
 		break;
 	case ADD_Label:
-		return nullptr;
+		return new EditLabel(this);
 		break;
 	case EDIT_Label:
 		return new EditLabel(this);
@@ -394,7 +394,8 @@ ActionType ApplicationManager::GetUserAction()
 	pair<ActionType, vector<GridItem*>> x= InputInterface->GetUserAction(); 
 	for (size_t i = 0; i < x.second.size(); i++)
 	{
-		MetaData.push_back((Component*) x.second[i]);
+		if(!dynamic_cast<Button*>(x.second[i]))
+			MetaData.push_back((Component*) x.second[i]);
 	}
 	return x.first;
 

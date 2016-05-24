@@ -11,7 +11,7 @@ Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPi
 
 ActionType Connection::Leftpress()
 {
-	return CONNECT_TWO_PINS;
+	return SELECT;
 }
 
 ActionType Connection::RightPress()
