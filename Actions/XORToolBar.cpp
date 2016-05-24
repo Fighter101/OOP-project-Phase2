@@ -17,17 +17,14 @@ void XORToolBar::ReadActionParameters()
 void XORToolBar::Execute()
 {
 	ReadActionParameters();
-	pManager->GetOutput()->CreateXORToolBar();
-
-
+	pManager->DrawToolBar(TOOLBARS::ADDXORBAR);
 }
 
 void XORToolBar::Undo()
 {
-	pManager->GetOutput()->EraseXORToolBar();
+	
 }
 
 void XORToolBar::Redo()
 {
-	pManager->GetOutput()->CreateXORToolBar();
 }

@@ -38,7 +38,7 @@ void Output::CreateToolBars()
 	}
 	Toolbars[GATE].ButtonsToDraw(vec);
 	Toolbars[GATE].SetOrientation(Horizontal);
-	Toolbars[GATE].SetDistance(UI.GateItemWidth, UI.ToolBarHeight);
+	Toolbars[GATE].SetDistance(UI.ToolItemWidth, UI.ToolBarHeight);
 	Toolbars[GATE].SetPosition(GraphicsInfo(350, 0));
 	Toolbars[GATE].CreateButtons(this);
 	////////////////////////////////////
@@ -216,7 +216,7 @@ void Output::CreateDesignToolBar()
 }
 void Output::EraseDesignToolBar()
 {
-	Toolbars[DSGN].Draw(this);
+	Toolbars[DSGN].Erase(this);
 }
 void Output::CreateGatesToolBar()
 {
@@ -611,7 +611,7 @@ GraphicsInfo Output::AddIcon( GraphicsInfo r_GfxInfo, PressType State)
 	pWind->DrawLine(UI.ToolItemWidth / 2 + r_GfxInfo.x1, r_GfxInfo.y1 + UI.Margain, r_GfxInfo.x1 + UI.ToolItemWidth / 2, r_GfxInfo.y1 + UI.Margain + 40);
 	pWind->SetFont(30, BOLD, BY_NAME, "Arial");
 	pWind->DrawString(r_GfxInfo.x1 + 8, r_GfxInfo.y1 + UI.ToolBarHeight - 30, "Add");
-	return (GraphicsInfo(UI.ToolItemWidth, UI.ToolBarHeight));
+	return (GraphicsInfo(UI.ToolItemWidth, UI.ToolBarHeight+100));
 }
 GraphicsInfo Output::ConnectIcon( GraphicsInfo r_GfxInfo, PressType State)
 {
@@ -1275,8 +1275,8 @@ void Output::EraseButton(GridItem*ptr)
 	pWind->SetPen(WHITE, 3);
 	pWind->SetBrush(WHITE);
 	Button*tmp = dynamic_cast<Button*> (ptr);
-	pWind->DrawRectangle(tmp->GetPosition().x1, tmp->GetPosition().y1, tmp->GetDimensions().x1 + tmp->GetPosition().x1, tmp->GetPosition().y1 + tmp->GetDimensions().x1);
-	Interface->UNRegister(GraphicsInfo(tmp->GetPosition().x1, tmp->GetPosition().y1, tmp->GetDimensions().x1 + tmp->GetPosition().x1, tmp->GetPosition().y1 + tmp->GetDimensions().x1));
+	pWind->DrawRectangle(tmp->GetPosition().x1, tmp->GetPosition().y1, tmp->GetDimensions().x1 + tmp->GetPosition().x1, tmp->GetPosition().y1 + tmp->GetDimensions().y1);
+	Interface->UNRegister(GraphicsInfo(tmp->GetPosition().x1, tmp->GetPosition().y1, tmp->GetDimensions().x1 + tmp->GetPosition().x1, tmp->GetPosition().y1 + tmp->GetDimensions().y1));
 }
 //======================================================================================//
 //								Gate Drawing Functions									//
@@ -1317,7 +1317,7 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 	}
 	if (invert)
 	{
-		pWind->SetPen(BLACK, 3);
+		pWind->SetPen(BorderColor, 3);
 		int y_Center = r_GfxInfo.y1 + raduis - 9;
 		int x_Center = r_GfxInfo.x2 + raduis - 1;
 		int Raduis = UI.InverterDimensions;
@@ -1337,7 +1337,7 @@ void Output::DrawAND(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool i
 			Interface->UNRegister(GraphicsInfo(r_GfxInfo.x1 + UI.AllGateDimensions, r_GfxInfo.y1, x_Center - 1 + Raduis, r_GfxInfo.y2));
 		}
 	}
-	pWind->SetPen(BLACK, 3);
+	pWind->SetPen(BorderColor, 3);
 	if (connections)
 	{
 		int dist = (r_GfxInfo.y2 - r_GfxInfo.y1) / 4;
@@ -2354,6 +2354,11 @@ void Output::ClearToolbars(int Toolbars)
 	default:
 		break;
 	}
+}
+
+void Output::ClearGraph()
+{
+	Interface->Clear();
 }
 
 //Destructor

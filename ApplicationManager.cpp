@@ -41,82 +41,24 @@
 #include"Actions\ANDToolBar.h"
 #include"Actions\ORToolBar.h"
 #include"Actions\XORToolBar.h"
-
+#include"Actions\Select.h"
+#include"Actions\Move.h"
+#include"Components\Button.h"
 Action * ApplicationManager::ActionCreator(ActionType x)
 {
 	switch (x)
 	{
 	case ADD:
-		if (Toolbars[0])
-		{
-			return nullptr;
-			break;
-		}
-		Toolbars[0] = true;
 		return new AddToolBar(this);
 		break; 
 	case ADD_AND:
-	{
-		if (Toolbars[1])
-		{
-			return nullptr;
-			break;
-		}
-		if (Toolbars[2])
-		{
-			OutputInterface->EraseORToolBar();
-			Toolbars[2] = false;
-		}
-		if (Toolbars[3])
-		{
-			OutputInterface->EraseXORToolBar();
-			Toolbars[3] = false;
-		}
-		Toolbars[1] = true;
 		return new ANDToolBar(this);
-	}
 		break;
 	case ADD_OR:
-	{
-		if (Toolbars[1])
-		{
-			OutputInterface->EraseAndToolBar();
-			Toolbars[1] = false;
-		}
-		if (Toolbars[2])
-		{
-			return nullptr;
-			break;
-		}
-		if (Toolbars[3])
-		{
-			OutputInterface->EraseXORToolBar();
-			Toolbars[3] = false;
-		}
-		Toolbars[2] = true;
 		return new ORToolBar(this);
-	}
 		break;
 	case ADD_XOR:
-	{
-		if (Toolbars[1])
-		{
-			OutputInterface->EraseAndToolBar();
-			Toolbars[1] = false;
-		}
-		if (Toolbars[2])
-		{
-			OutputInterface->EraseORToolBar();
-			Toolbars[2] = false;
-		}
-		if (Toolbars[3])
-		{
-			return nullptr;
-			break;
-		}
-		Toolbars[3] = true;
 		return new XORToolBar(this);
-	}
 		break;
 	case ADD_Buff:
 		return new AddBUFF(this);
@@ -169,7 +111,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return new AddCONNECTION(this);
 		break;
 	case ADD_Label:
-		return nullptr;
+		return new EditLabel(this);
 		break;
 	case EDIT_Label:
 		return new EditLabel(this);
@@ -187,7 +129,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case MOVE:
-		return nullptr;
+		return new Move(this);
 		break;
 	case COPY:
 		return nullptr;
@@ -233,28 +175,19 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		break;
 	case DSN_AREA:
 	{
-		if (Toolbars[0])
+		if (sim)
+			DrawToolBar(TOOLBARS::SIMU);
+		else
+			DrawToolBar(TOOLBARS::DSGN);
+		for (size_t i = 0; i < ComponentList.size(); i++)
 		{
-			OutputInterface->EraseAddToolBar();
-			Toolbars[0] = false;
-		}
-		if (Toolbars[1])
-		{
-			OutputInterface->EraseAndToolBar();
-			Toolbars[1] = false;
-		}
-		if (Toolbars[2])
-		{
-			OutputInterface->EraseORToolBar();
-			Toolbars[2] = false;
-		}
-		if (Toolbars[3])
-		{
-			OutputInterface->EraseXORToolBar();
-			Toolbars[3] = false;
+			ComponentList[i]->SetState(false);
 		}
 	}
 		return nullptr;
+		break;
+	case SELECT:
+		return new Select(this);
 		break;
 	default:
 		return nullptr;
@@ -281,6 +214,67 @@ GridItem* ApplicationManager::CheckPoint(int & Cx, int & Cy)
 	}
 	return tmp;
 }
+void ApplicationManager::DrawToolBar(TOOLBARS x)
+{
+	switch (x)
+	{
+	case DSGN:
+	{
+		Toolbars[4] = true;
+		Toolbars[5] = false;
+		Toolbars[6] = false;
+	}
+		break;
+	case GATE:
+	{
+		Toolbars[4] = false;
+		Toolbars[5] = false;
+		Toolbars[6] = true;
+	}
+		break;
+	case SIMU:
+	{
+		Toolbars[4] = false;
+		Toolbars[5] = true;
+		Toolbars[6] = false;
+	}
+		break;
+	case ADDBAR:
+		Toolbars[0] = true;
+		break;
+	case ADDANDBAR:
+		{
+			Toolbars[1] = true;
+			Toolbars[2] = false;
+			Toolbars[3] = false;
+		}
+			break;
+	case ADDORBAR:
+	{
+		Toolbars[1] = false;
+		Toolbars[2] = true;
+		Toolbars[3] = false;
+	}
+		break;
+	case ADDXORBAR:
+	{
+		Toolbars[1] = false;
+		Toolbars[2] = false;
+		Toolbars[3] = true;
+	}
+		break;
+	case GATERightClick:
+		break;
+	case SWITCHRightClick:
+		break;
+	case LEDRightClick:
+		break;
+
+	default:
+		break;
+	}
+}
+
 /////////////////////////////////////////////////////////////////////////////////////
 vector<Component*> ApplicationManager::getMetaData()
 {
@@ -344,9 +338,9 @@ ApplicationManager::ApplicationManager()
 	{
 		Toolbars[i] = false;
 	}
+	sim = false;
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
-	OutputInterface->CreateDesignToolBar();
 	OutputInterface->CreateStatusBar();
 	Toolbars[4] = true;
 }
@@ -363,7 +357,8 @@ ActionType ApplicationManager::GetUserAction()
 	pair<ActionType, vector<GridItem*>> x= InputInterface->GetUserAction(); 
 	for (size_t i = 0; i < x.second.size(); i++)
 	{
-		MetaData.push_back((Component*) x.second[i]);
+		if(!dynamic_cast<Button*>(x.second[i]))
+			MetaData.push_back((Component*) x.second[i]);
 	}
 	return x.first;
 
@@ -384,7 +379,28 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
+	if (Toolbars[0])
+		OutputInterface->CreateAddToolBar();
 
+	if (Toolbars[1])
+		OutputInterface->CreateAndToolBar();
+	else if (Toolbars[2])
+		OutputInterface->CreateORToolBar();
+	else if (Toolbars[3])
+		OutputInterface->CreateXORToolBar();
+
+	if (Toolbars[4])
+		OutputInterface->CreateDesignToolBar();
+	else if (Toolbars[5])
+		OutputInterface->CreateSimulationToolBar();
+	else if (Toolbars[6])
+		OutputInterface->CreateGatesToolBar();
+
+
+	for (size_t i = 0; i < ComponentList.size(); i++)
+	{
+		ComponentList[i]->Draw(OutputInterface);
+	}
 }
 
 ////////////////////////////////////////////////////////////////////

@@ -26,10 +26,15 @@ private:
 	///(0 Add) - (1 And) - (2 Or) - (3 XOR) - (4 DSGN) - (5 Sim) - (6 Gates)
 	///</summary>
 	bool Toolbars[7];
+	bool sim;//0 if DSN - 1 if Sim
 public:	
 ///////////////////////////////////////////
 	GridItem* CheckPoint(int &Cx, int &Cy);
-///////////////////////////////////////////	
+///////////////////////////////////////////
+///<summary>
+///(0 Add) - (1 And) - (2 Or) - (3 XOR) - (4 DSGN) - (5 Sim) - (6 Gates)
+///</summary>
+	void DrawToolBar(TOOLBARS x);
 	vector<Component*> getMetaData();
 	void setMetaData(vector<Component*>);
 	void AppendMetaData(Component*);
