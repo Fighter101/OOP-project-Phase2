@@ -41,6 +41,7 @@
 #include"Actions\ANDToolBar.h"
 #include"Actions\ORToolBar.h"
 #include"Actions\XORToolBar.h"
+#include"Actions\Select.h"
 
 Action * ApplicationManager::ActionCreator(ActionType x)
 {
@@ -253,8 +254,22 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 			OutputInterface->EraseXORToolBar();
 			Toolbars[3] = false;
 		}
+		if (Toolbars[6])
+		{
+			OutputInterface->EraseGatesToolBar();
+			OutputInterface->CreateDesignToolBar();
+			Toolbars[6] = false;
+		}
+		for (size_t i = 0; i < ComponentList.size(); i++)
+		{
+			ComponentList[i]->SetState(false);
+			ComponentList[i]->Draw(OutputInterface);
+		}
 	}
 		return nullptr;
+		break;
+	case SELECT:
+		return new Select(this);
 		break;
 	default:
 		return nullptr;
@@ -280,6 +295,22 @@ GridItem* ApplicationManager::CheckPoint(int & Cx, int & Cy)
 		success = false;
 	}
 	return tmp;
+}
+void ApplicationManager::DrawToolBar(int x)
+{
+	if (x > 6 || x < 0)
+	{
+		throw exception("Toolbar Doesn't Exist"); 
+	}
+	Toolbars[x] = true;
+}
+bool ApplicationManager::getToolBar(int x)
+{
+	if (x > 6 || x < 0)
+	{
+		throw exception("Toolbar Doesn't Exist");
+	}
+	return Toolbars[x];
 }
 /////////////////////////////////////////////////////////////////////////////////////
 vector<Component*> ApplicationManager::getMetaData()
