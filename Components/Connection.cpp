@@ -86,6 +86,8 @@ void Connection::setInputPinStatus(int n, STATUS s)
 	SrcPin->setStatus(s);
 }
 
+
+
 void Connection::SetState(bool r_selected)
 {
 	Selected = r_selected;

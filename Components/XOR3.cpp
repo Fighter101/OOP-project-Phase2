@@ -62,3 +62,7 @@ void XOR3::Erase(Output * pOut)
 {
 	pOut->EraseXOR3(this);
 }
+
+XOR3::~XOR3()
+{
+}

@@ -336,9 +336,17 @@ void ApplicationManager::EraseThisBitch(Component *x)
 	if (y)
 	{
 		y->getDestPin()->setConnection(nullptr);
-		y->getSourcePin()->setConne(nullptr);
+		y->getSourcePin()->nullConnection(y);
 	}
-
+	if (z)
+	{
+		z->GetOutputPin().DeleteAllOutConnections();
+		int length=z->getInputNo();
+		for (size_t i = 0; i < length; i++)
+		{
+			z->GetInputPins()[i].DeleteConnection();
+		}
+	}
 	delete x;
 }
 ApplicationManager::ApplicationManager()

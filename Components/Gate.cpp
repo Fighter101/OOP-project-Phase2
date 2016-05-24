@@ -48,6 +48,11 @@ InputPin * Gate::GetInputPins()
 	return m_InputPins;
 }
 
+int Gate::getInputNo()
+{
+	return m_Inputs;
+}
+
 OutputPin&  Gate::GetOutputPin()
 {
 	return m_OutputPin;
@@ -96,4 +101,5 @@ Pin * Gate::GetFreeInputPins()
 	return nullptr;
 	//sam7
 }
+
 

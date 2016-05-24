@@ -15,7 +15,7 @@ public:
 	OR2(const GraphicsInfo &r_GfxInfo);
 	virtual void Operate();	//Calculates the output of the OR gate
 	virtual void Draw(Output* pOut);	//Draws 2-input gate
-	InputPin* GetPin(int);
+
 	virtual bool  GetOutPinStatus();	//returns status of outputpin if LED, return -1
 	virtual bool  GetInputPinStatus(int n);	//returns status of Inputpin # n if SWITCH, return -1
 

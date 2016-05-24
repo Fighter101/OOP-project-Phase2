@@ -49,6 +49,16 @@ Connection* InputPin::getConnection()
 	return pConn;
 }
 
+bool InputPin::DeleteConnection()
+{
+	if (pConn)
+	{
+		pConn->setSourcePin(nullptr);
+		delete pConn;
+	}
+	return true;
+}
+
 
 void InputPin::EraseConnection()
 {

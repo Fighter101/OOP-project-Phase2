@@ -20,6 +20,7 @@ public:
 	STATUS getStatus();
 	virtual GraphicsInfo GetPosition();
 	virtual void SetPosition(GraphicsInfo r_GfxInfo);
+	
 };
 
 #endif

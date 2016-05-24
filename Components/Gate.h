@@ -29,6 +29,7 @@ public:
 	bool CheckPins();
 	Gate(int r_Inputs);
 	InputPin*GetInputPins();
+	int getInputNo();
 	OutputPin & GetOutputPin();
 	virtual void SetState(bool r_selected);
 	virtual bool GetState();
@@ -39,6 +40,7 @@ public:
 	virtual void released();
 	//Same7
 	Pin* GetFreeInputPins();
+
 
 };
 

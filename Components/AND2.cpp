@@ -57,10 +57,6 @@ bool AND2::GetInputPinStatus(int n)
 	return m_InputPins[n-1].getStatus();	//n starts from 1 but array index starts from 0.
 }
 
-InputPin * AND2::GetPin(int i)
-{
-	return &m_InputPins[i-1];
-}
 
 //Set status of an input pin ot HIGH or LOW
 void AND2::setInputPinStatus(int n, STATUS s)

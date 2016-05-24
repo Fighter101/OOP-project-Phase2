@@ -21,7 +21,7 @@ public:
 	virtual void Erase(Output*pOut);
 	virtual void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
 
-	InputPin* GetPin(int);
+	
 };
 
 #endif
