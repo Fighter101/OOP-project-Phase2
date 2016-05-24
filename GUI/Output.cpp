@@ -2359,6 +2359,9 @@ void Output::ClearToolbars(int Toolbars)
 void Output::ClearGraph()
 {
 	Interface->Clear();
+	pWind->SetBrush(WHITE);
+	pWind->SetPen(WHITE,5);
+	pWind->DrawRectangle(1, 1, UI.width, UI.height, FILLED);
 }
 
 //Destructor

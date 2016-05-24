@@ -122,7 +122,7 @@ void AddCONNECTION::Execute()
 	GraphicsInfo GInfo(x1,y1,x2,y2);
 
 	Connection *pA = new Connection(GInfo, dynamic_cast<OutputPin*>(SrcPin), dynamic_cast<InputPin*>(DstPin));
-
+	pManager->AddComponent(pA);
 	pA->Draw(pManager->GetOutput());
 
 }
