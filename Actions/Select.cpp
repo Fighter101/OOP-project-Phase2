@@ -20,16 +20,12 @@ void Select::ReadActionParameters()
 void Select::Execute()
 {
 	ReadActionParameters();
-	pManager->DrawToolBar(6);
-	if(pManager->getToolBar(4))
-		pManager->GetOutput()->EraseDesignToolBar();
-	if(pManager->getToolBar(5))
-		pManager->GetOutput()->EraseSimulationToolBar();
-	pManager->GetOutput()->CreateGatesToolBar();
-	auto x=pManager->getMetaData();
+
+	pManager->DrawToolBar(TOOLBARS::GATE);
 	
+	auto x=pManager->getMetaData();
+
 	x[0]->SetState(!x[0]->GetState());
-	x[0]->Draw(pManager->GetOutput());
 }
 
 void Select::Redo()

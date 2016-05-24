@@ -17,17 +17,15 @@ void ANDToolBar::ReadActionParameters()
 void ANDToolBar::Execute()
 {
 	ReadActionParameters();
-	pManager->GetOutput()->CreateAndToolBar();
+	pManager->DrawToolBar(TOOLBARS::ADDANDBAR);
 
 
 }
 
 void ANDToolBar::Undo()
 {
-	pManager->GetOutput()->EraseAndToolBar();
 }
 
 void ANDToolBar::Redo()
 {
-	pManager->GetOutput()->CreateAndToolBar();
 }

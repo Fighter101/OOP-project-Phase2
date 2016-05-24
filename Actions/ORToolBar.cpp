@@ -17,17 +17,15 @@ void ORToolBar::ReadActionParameters()
 void ORToolBar::Execute()
 {
 	ReadActionParameters();
-	pManager->GetOutput()->CreateORToolBar();
+	pManager->DrawToolBar(TOOLBARS::ADDORBAR);
 
 
 }
 
 void ORToolBar::Undo()
 {
-	pManager->GetOutput()->EraseORToolBar();
 }
 
 void ORToolBar::Redo()
 {
-	pManager->GetOutput()->CreateORToolBar();
 }

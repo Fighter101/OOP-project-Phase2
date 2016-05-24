@@ -17,17 +17,16 @@ void AddToolBar::ReadActionParameters()
 void AddToolBar::Execute()
 {
 	ReadActionParameters();
-	pManager->GetOutput()->CreateAddToolBar();
+	pManager->DrawToolBar(TOOLBARS::ADDBAR);
 
-//	Undo();
 }
 
 void AddToolBar::Undo()
 {
-	pManager->GetOutput()->EraseAddToolBar();
+	
 }
 
 void AddToolBar::Redo()
 {
-	pManager->GetOutput()->CreateDesignToolBar();
+	
 }
