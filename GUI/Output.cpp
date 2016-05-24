@@ -38,7 +38,7 @@ void Output::CreateToolBars()
 	}
 	Toolbars[GATE].ButtonsToDraw(vec);
 	Toolbars[GATE].SetOrientation(Horizontal);
-	Toolbars[GATE].SetDistance(UI.GateItemWidth, UI.ToolBarHeight);
+	Toolbars[GATE].SetDistance(UI.ToolItemWidth, UI.ToolBarHeight);
 	Toolbars[GATE].SetPosition(GraphicsInfo(350, 0));
 	Toolbars[GATE].CreateButtons(this);
 	////////////////////////////////////
@@ -1275,8 +1275,8 @@ void Output::EraseButton(GridItem*ptr)
 	pWind->SetPen(WHITE, 3);
 	pWind->SetBrush(WHITE);
 	Button*tmp = dynamic_cast<Button*> (ptr);
-	pWind->DrawRectangle(tmp->GetPosition().x1, tmp->GetPosition().y1, tmp->GetDimensions().x1 + tmp->GetPosition().x1, tmp->GetPosition().y1 + tmp->GetDimensions().x1);
-	Interface->UNRegister(GraphicsInfo(tmp->GetPosition().x1, tmp->GetPosition().y1, tmp->GetDimensions().x1 + tmp->GetPosition().x1, tmp->GetPosition().y1 + tmp->GetDimensions().x1));
+	pWind->DrawRectangle(tmp->GetPosition().x1, tmp->GetPosition().y1, tmp->GetDimensions().x1 + tmp->GetPosition().x1, tmp->GetPosition().y1 + tmp->GetDimensions().y1);
+	Interface->UNRegister(GraphicsInfo(tmp->GetPosition().x1, tmp->GetPosition().y1, tmp->GetDimensions().x1 + tmp->GetPosition().x1, tmp->GetPosition().y1 + tmp->GetDimensions().y1));
 }
 //======================================================================================//
 //								Gate Drawing Functions									//
