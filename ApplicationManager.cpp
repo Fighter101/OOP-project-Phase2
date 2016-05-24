@@ -49,76 +49,16 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	switch (x)
 	{
 	case ADD:
-		if (Toolbars[0])
-		{
-			return nullptr;
-			break;
-		}
-		Toolbars[0] = true;
 		return new AddToolBar(this);
 		break; 
 	case ADD_AND:
-	{
-		if (Toolbars[1])
-		{
-			return nullptr;
-			break;
-		}
-		if (Toolbars[2])
-		{
-			OutputInterface->EraseORToolBar();
-			Toolbars[2] = false;
-		}
-		if (Toolbars[3])
-		{
-			OutputInterface->EraseXORToolBar();
-			Toolbars[3] = false;
-		}
-		Toolbars[1] = true;
 		return new ANDToolBar(this);
-	}
 		break;
 	case ADD_OR:
-	{
-		if (Toolbars[1])
-		{
-			OutputInterface->EraseAndToolBar();
-			Toolbars[1] = false;
-		}
-		if (Toolbars[2])
-		{
-			return nullptr;
-			break;
-		}
-		if (Toolbars[3])
-		{
-			OutputInterface->EraseXORToolBar();
-			Toolbars[3] = false;
-		}
-		Toolbars[2] = true;
 		return new ORToolBar(this);
-	}
 		break;
 	case ADD_XOR:
-	{
-		if (Toolbars[1])
-		{
-			OutputInterface->EraseAndToolBar();
-			Toolbars[1] = false;
-		}
-		if (Toolbars[2])
-		{
-			OutputInterface->EraseORToolBar();
-			Toolbars[2] = false;
-		}
-		if (Toolbars[3])
-		{
-			return nullptr;
-			break;
-		}
-		Toolbars[3] = true;
 		return new XORToolBar(this);
-	}
 		break;
 	case ADD_Buff:
 		return new AddBUFF(this);
@@ -235,36 +175,13 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		break;
 	case DSN_AREA:
 	{
-		if (Toolbars[0])
-		{
-			OutputInterface->EraseAddToolBar();
-			Toolbars[0] = false;
-		}
-		if (Toolbars[1])
-		{
-			OutputInterface->EraseAndToolBar();
-			Toolbars[1] = false;
-		}
-		if (Toolbars[2])
-		{
-			OutputInterface->EraseORToolBar();
-			Toolbars[2] = false;
-		}
-		if (Toolbars[3])
-		{
-			OutputInterface->EraseXORToolBar();
-			Toolbars[3] = false;
-		}
-		if (Toolbars[6])
-		{
-			OutputInterface->EraseGatesToolBar();
-			OutputInterface->CreateDesignToolBar();
-			Toolbars[6] = false;
-		}
+		if (sim)
+			DrawToolBar(TOOLBARS::SIMU);
+		else
+			DrawToolBar(TOOLBARS::DSGN);
 		for (size_t i = 0; i < ComponentList.size(); i++)
 		{
 			ComponentList[i]->SetState(false);
-			ComponentList[i]->Draw(OutputInterface);
 		}
 	}
 		return nullptr;
@@ -297,22 +214,67 @@ GridItem* ApplicationManager::CheckPoint(int & Cx, int & Cy)
 	}
 	return tmp;
 }
-void ApplicationManager::DrawToolBar(int x)
+void ApplicationManager::DrawToolBar(TOOLBARS x)
 {
-	if (x > 6 || x < 0)
+	switch (x)
 	{
-		throw exception("Toolbar Doesn't Exist"); 
-	}
-	Toolbars[x] = true;
-}
-bool ApplicationManager::getToolBar(int x)
-{
-	if (x > 6 || x < 0)
+	case DSGN:
 	{
-		throw exception("Toolbar Doesn't Exist");
+		Toolbars[4] = true;
+		Toolbars[5] = false;
+		Toolbars[6] = false;
 	}
-	return Toolbars[x];
+		break;
+	case GATE:
+	{
+		Toolbars[4] = false;
+		Toolbars[5] = false;
+		Toolbars[6] = true;
+	}
+		break;
+	case SIMU:
+	{
+		Toolbars[4] = false;
+		Toolbars[5] = true;
+		Toolbars[6] = false;
+	}
+		break;
+	case ADDBAR:
+		Toolbars[0] = true;
+		break;
+	case ADDANDBAR:
+		{
+			Toolbars[1] = true;
+			Toolbars[2] = false;
+			Toolbars[3] = false;
+		}
+			break;
+	case ADDORBAR:
+	{
+		Toolbars[1] = false;
+		Toolbars[2] = true;
+		Toolbars[3] = false;
+	}
+		break;
+	case ADDXORBAR:
+	{
+		Toolbars[1] = false;
+		Toolbars[2] = false;
+		Toolbars[3] = true;
+	}
+		break;
+	case GATERightClick:
+		break;
+	case SWITCHRightClick:
+		break;
+	case LEDRightClick:
+		break;
+
+	default:
+		break;
+	}
 }
+
 /////////////////////////////////////////////////////////////////////////////////////
 vector<Component*> ApplicationManager::getMetaData()
 {
@@ -376,9 +338,9 @@ ApplicationManager::ApplicationManager()
 	{
 		Toolbars[i] = false;
 	}
+	sim = false;
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
-	OutputInterface->CreateDesignToolBar();
 	OutputInterface->CreateStatusBar();
 	Toolbars[4] = true;
 }
@@ -417,7 +379,28 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
+	if (Toolbars[0])
+		OutputInterface->CreateAddToolBar();
 
+	if (Toolbars[1])
+		OutputInterface->CreateAndToolBar();
+	else if (Toolbars[2])
+		OutputInterface->CreateORToolBar();
+	else if (Toolbars[3])
+		OutputInterface->CreateXORToolBar();
+
+	if (Toolbars[4])
+		OutputInterface->CreateDesignToolBar();
+	else if (Toolbars[5])
+		OutputInterface->CreateSimulationToolBar();
+	else if (Toolbars[6])
+		OutputInterface->CreateGatesToolBar();
+
+
+	for (size_t i = 0; i < ComponentList.size(); i++)
+	{
+		ComponentList[i]->Draw(OutputInterface);
+	}
 }
 
 ////////////////////////////////////////////////////////////////////
