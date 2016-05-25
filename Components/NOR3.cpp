@@ -60,3 +60,17 @@ void NOR3::Erase(Output * pOut)
 {
 	pOut->EraseNOR3(this);
 }
+void NOR3::Save(ofstream & Out)
+{
+	Out << "NOR3" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+}
+
+void NOR3::Load(ifstream & In)
+{
+	string s;
+	int x, y;
+	In >> ID >> s >> x >> y;
+	SetPosition(GraphicsInfo(x, y));
+	SetLabel(s);
+
+}

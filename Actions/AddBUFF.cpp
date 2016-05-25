@@ -1,5 +1,5 @@
 #include "AddBUFF.h"
-#include "..\ApplicationManager.h"
+#include "..\ApplicationManager\ApplicationManager.h"
 
 AddBUFF::AddBUFF(ApplicationManager *pApp) :Action(pApp)
 {

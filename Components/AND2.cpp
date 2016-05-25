@@ -68,3 +68,18 @@ void AND2::setInputPinStatus(int n, STATUS s)
 	m_InputPins[n-1].setStatus(s);
 }
 
+void AND2::Save(ofstream & Out)
+{
+	Out << "AND2" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+}
+
+void AND2::Load(ifstream & In)
+{
+	string s;
+	int x, y;
+	In >> ID >> s >> x >> y;
+	SetPosition(GraphicsInfo(x, y));
+	SetLabel(s);
+
+}
+

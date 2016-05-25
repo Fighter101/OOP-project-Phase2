@@ -8,9 +8,6 @@
     <ClCompile Include="Components\AND2.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="ApplicationManager.cpp">
-      <Filter>Application Manager</Filter>
-    </ClCompile>
     <ClCompile Include="CMUgraphicsLib\auxil.cpp">
       <Filter>CMUgraphics Library</Filter>
     </ClCompile>
@@ -290,7 +287,6 @@
     <ClCompile Include="Actions\UNDO.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Defs.cpp" />
     <ClCompile Include="Actions\ANDToolBar.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -348,6 +344,10 @@
     <ClCompile Include="Actions\Move.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Defs.cpp" />
+    <ClCompile Include="ApplicationManager\ApplicationManager.cpp">
+      <Filter>ApplicaionManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\Action.h">
@@ -358,9 +358,6 @@
     </ClInclude>
     <ClInclude Include="Components\AND2.h">
       <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="ApplicationManager.h">
-      <Filter>Application Manager</Filter>
     </ClInclude>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
       <Filter>CMUgraphics Library</Filter>
@@ -638,7 +635,6 @@
     <ClInclude Include="GUI\UI_Info.h">
       <Filter>GUI</Filter>
     </ClInclude>
-    <ClInclude Include="Defs.H" />
     <ClInclude Include="Pin\InputPin.h">
       <Filter>Pins</Filter>
     </ClInclude>
@@ -660,6 +656,10 @@
     <ClInclude Include="Actions\Move.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Defs.H" />
+    <ClInclude Include="ApplicationManager\ApplicationManager.h">
+      <Filter>ApplicaionManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Actions">
@@ -671,9 +671,6 @@
     <Filter Include="Pins">
       <UniqueIdentifier>{3f4e358b-5ee8-4e25-8173-671a1564c67a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Application Manager">
-      <UniqueIdentifier>{65aeec57-56e6-4cab-b69a-409d5085d487}</UniqueIdentifier>
-    </Filter>
     <Filter Include="CMUgraphics Library">
       <UniqueIdentifier>{d63335de-3852-47e7-9b12-ce7902be525e}</UniqueIdentifier>
     </Filter>
@@ -682,6 +679,9 @@
     </Filter>
     <Filter Include="GUI">
       <UniqueIdentifier>{3fc93c11-c9c0-4df7-bfd6-9b8758aac422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ApplicaionManager">
+      <UniqueIdentifier>{cd81cc96-d14a-47e6-a957-59bdeb5aaaf6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

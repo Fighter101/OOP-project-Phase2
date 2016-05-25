@@ -1,6 +1,7 @@
 #include "Gate.h"
 #include "LED.h"
 #include "SWITCH.h"
+int counter = 0;
 //Gate Constructor
 //Parameters:
 //r_Inputs: no. of gate's input pins
@@ -16,6 +17,7 @@ Gate::Gate(int r_Inputs)
 		m_InputPins[i].setComponent(this);
 	//sam7 edit
 	m_OutputPin.setComponent(this);
+	ID=counter++;
 }
 bool Gate::CheckPins()
 {

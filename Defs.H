@@ -133,6 +133,11 @@ struct GraphicsInfo
 		this->x2 = x2;
 		this->y2 = y2;
 	}
+	friend ostream & operator <<(ostream& Out, GraphicsInfo r_GfxInfo)
+	{
+		Out << r_GfxInfo.x1 << " " << r_GfxInfo.y1;
+		return Out;
+	}
 };
 enum PressType {
 	Normal,

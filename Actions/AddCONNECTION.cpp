@@ -1,5 +1,5 @@
 #include "AddCONNECTION.h"
-#include "..\ApplicationManager.h"
+#include "..\ApplicationManager\ApplicationManager.h"
 #include"..\Components\Gate.h"
 #include"..\Components\Button.h"
 

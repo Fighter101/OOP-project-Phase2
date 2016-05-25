@@ -1,5 +1,5 @@
 #include "AddINV.h"
-#include "..\ApplicationManager.h"
+#include "..\ApplicationManager\ApplicationManager.h"
 
 AddINV::AddINV(ApplicationManager *pApp) :Action(pApp)
 {

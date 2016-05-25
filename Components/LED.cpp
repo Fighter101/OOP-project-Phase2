@@ -57,3 +57,17 @@ void LED::Erase(Output * pOut)
 {
 	pOut->EraseLED(this);
 }
+void LED::Save(ofstream & Out)
+{
+	Out << "LED" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+}
+
+void LED::Load(ifstream & In)
+{
+	string s;
+	int x, y;
+	In >> ID >> s >> x >> y;
+	SetPosition(GraphicsInfo(x, y));
+	SetLabel(s);
+
+}

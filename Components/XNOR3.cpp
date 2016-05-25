@@ -60,3 +60,17 @@ void XNOR3::Erase(Output * pOut)
 {
 	pOut->EraseXNOR3(this);
 }
+void XNOR3::Save(ofstream & Out)
+{
+	Out << "XNOR3" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+}
+
+void XNOR3::Load(ifstream & In)
+{
+	string s;
+	int x, y;
+	In >> ID >> s >> x >> y;
+	SetPosition(GraphicsInfo(x, y));
+	SetLabel(s);
+
+}

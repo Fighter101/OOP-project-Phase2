@@ -57,3 +57,17 @@ void AND3::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+void AND3::Save(ofstream & Out)
+{
+	Out << "AND3" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+}
+
+void AND3::Load(ifstream & In)
+{
+	string s;
+	int x, y;
+	In >> ID >> s >> x >> y;
+	SetPosition(GraphicsInfo(x, y));
+	SetLabel(s);
+
+}

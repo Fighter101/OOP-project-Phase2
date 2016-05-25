@@ -50,3 +50,17 @@ void INV::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+void INV::Save(ofstream & Out)
+{
+	Out << "INVERTER" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+}
+
+void INV::Load(ifstream & In)
+{
+	string s;
+	int x, y;
+	In >> ID >> s >> x >> y;
+	SetPosition(GraphicsInfo(x, y));
+	SetLabel(s);
+
+}

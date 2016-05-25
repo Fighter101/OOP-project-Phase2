@@ -65,3 +65,17 @@ void NAND2::Erase(Output * pOut)
 {
 	pOut->EraseNAND2(this);
 }
+void NAND2::Save(ofstream & Out)
+{
+	Out << "NAND2" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+}
+
+void NAND2::Load(ifstream & In)
+{
+	string s;
+	int x, y;
+	In >> ID >> s >> x >> y;
+	SetPosition(GraphicsInfo(x, y));
+	SetLabel(s);
+
+}

@@ -59,3 +59,17 @@ void OR2::Erase(Output * pOut)
 {
 	pOut->EraseOR2(this);
 }
+void OR2::Save(ofstream & Out)
+{
+	Out << "OR2" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+}
+
+void OR2::Load(ifstream & In)
+{
+	string s;
+	int x, y;
+	In >> ID >> s >> x >> y;
+	SetPosition(GraphicsInfo(x, y));
+	SetLabel(s);
+
+}

@@ -64,3 +64,17 @@ void NAND3::Erase(Output * pOut)
 {
 	pOut->EraseNAND3(this);
 }
+void NAND3::Save(ofstream & Out)
+{
+	Out << "NAND3" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+}
+
+void NAND3::Load(ifstream & In)
+{
+	string s;
+	int x, y;
+	In >> ID >> s >> x >> y;
+	SetPosition(GraphicsInfo(x, y));
+	SetLabel(s);
+
+}

@@ -60,3 +60,17 @@ void OR3::Erase(Output * pOut)
 {
 	pOut->EraseOR3(this);
 }
+void OR3::Save(ofstream & Out)
+{
+	Out << "OR3" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+}
+
+void OR3::Load(ifstream & In)
+{
+	string s;
+	int x, y;
+	In >> ID >> s >> x >> y;
+	SetPosition(GraphicsInfo(x, y));
+	SetLabel(s);
+
+}

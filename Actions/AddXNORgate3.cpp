@@ -1,5 +1,5 @@
 #include "AddXNORgate3.h"
-#include "..\ApplicationManager.h"
+#include "..\ApplicationManager\ApplicationManager.h"
 
 AddXNORgate3::AddXNORgate3(ApplicationManager *pApp) :Action(pApp)
 {

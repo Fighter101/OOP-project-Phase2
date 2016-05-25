@@ -1,5 +1,5 @@
 #include"CUT.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 void Cut::ReadActionParameters()
 {
 	pManager->GetOutput()->PrintMsg("Selected Gates Copied");

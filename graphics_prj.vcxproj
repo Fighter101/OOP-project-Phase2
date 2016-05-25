@@ -172,6 +172,7 @@
     <ClCompile Include="Actions\UNDO.cpp" />
     <ClCompile Include="Actions\Validate.cpp" />
     <ClCompile Include="Actions\XORToolBar.cpp" />
+    <ClCompile Include="ApplicationManager\ApplicationManager.cpp" />
     <ClCompile Include="Clipboard\Clipboard.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
@@ -226,7 +227,6 @@
     <ClCompile Include="Components\OR.cpp" />
     <ClCompile Include="Components\OR2.cpp" />
     <ClCompile Include="Components\OR3.cpp" />
-    <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Components\SWITCH.cpp" />
     <ClCompile Include="Components\XNOR2.cpp" />
     <ClCompile Include="Components\XNOR3.cpp" />
@@ -292,6 +292,7 @@
     <ClInclude Include="Actions\UNDO.h" />
     <ClInclude Include="Actions\Validate.h" />
     <ClInclude Include="Actions\XORToolBar.h" />
+    <ClInclude Include="ApplicationManager\ApplicationManager.h" />
     <ClInclude Include="Clipboard\Clipboard.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
@@ -331,7 +332,6 @@
     <ClInclude Include="Components\OR.h" />
     <ClInclude Include="Components\OR2.h" />
     <ClInclude Include="Components\OR3.h" />
-    <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Components\SWITCH.h" />
     <ClInclude Include="Components\XNOR2.h" />
     <ClInclude Include="Components\XNOR3.h" />

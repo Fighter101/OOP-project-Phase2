@@ -1,5 +1,5 @@
 #include "AddANDgate3.h"
-#include "..\ApplicationManager.h"
+#include "..\ApplicationManager\ApplicationManager.h"
 
 AddANDgate3::AddANDgate3(ApplicationManager *pApp) :Action(pApp)
 {

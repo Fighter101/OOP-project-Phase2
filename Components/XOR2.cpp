@@ -59,3 +59,17 @@ void XOR2::Erase(Output * pOut)
 {
 	pOut->EraseXOR2(this);
 }
+void XOR2::Save(ofstream & Out)
+{
+	Out << "XOR2" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+}
+
+void XOR2::Load(ifstream & In)
+{
+	string s;
+	int x, y;
+	In >> ID >> s >> x >> y;
+	SetPosition(GraphicsInfo(x, y));
+	SetLabel(s);
+
+}
