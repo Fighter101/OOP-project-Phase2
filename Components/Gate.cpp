@@ -1,7 +1,7 @@
 #include "Gate.h"
 #include "LED.h"
 #include "SWITCH.h"
-int counter = 0;
+int Gate::counter = 0;
 //Gate Constructor
 //Parameters:
 //r_Inputs: no. of gate's input pins

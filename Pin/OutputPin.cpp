@@ -6,7 +6,7 @@
 
 ActionType OutputPin::Leftpress()
 {
-	return ADD_CONNECTION;
+	return SELECT;
 }
 
 ActionType OutputPin::RightPress()
@@ -88,17 +88,17 @@ bool OutputPin::nullConnection(Connection *x)
 	return false;
 }
 
-bool OutputPin::DeleteAllOutConnections()
+vector<Component*> OutputPin::DeleteAllOutConnections()
 {
+	vector<Component*>temp;
 	for (size_t i = 0; i < MAX_CONNS; i++)
 	{
 		if (m_Connections[i])
 		{
-			m_Connections[i]->setSourcePin(nullptr);
-			m_Connections[i]->setDestPin(nullptr);
-			delete m_Connections[i];
-			m_Connections[i] = nullptr;
+			m_Connections[i]->getDestPin()->setConnection(nullptr);
+			m_Connections[i]->getSourcePin()->nullConnection(m_Connections[i]);
+			temp.push_back(m_Connections[i]);
 		}
 	}
-	return true;
+	return temp;
 }

@@ -1,9 +1,9 @@
 #include "Select.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 #include<vector>
 #include"..\Components\Connection.h"
 #include"..\Components\Gate.h"
-Select::Select(ApplicationManager * x) : Action(x)
+Select::Select(ApplicationManager * x, Component* y) : Action(x)
 {
 	
 }
@@ -14,21 +14,13 @@ Select::~Select()
 
 void Select::ReadActionParameters()
 {
-	pManager->GetOutput()->PrintMsg("Gate Selected");
+	pManager->GetOutput()->PrintMsg("Component Selected");
 }
 
 void Select::Execute()
 {
 	ReadActionParameters();
-
-	
-	auto x=pManager->getMetaData();
-	auto y = x.back();
-	y->SetState(!y->GetState());
-	if (y->GetState())
-		pManager->DrawToolBar(TOOLBARS::GATE);
-	else
-		pManager->DrawToolBar(TOOLBARS::DSGN);
+	pManager->getTemp()->SetState(!pManager->getTemp()->GetState());
 }
 
 void Select::Redo()

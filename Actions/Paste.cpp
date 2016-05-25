@@ -1,5 +1,5 @@
 #include"Paste.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 Paste::Paste(ApplicationManager *x) : Action(x)
 {
 }

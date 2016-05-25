@@ -1,5 +1,6 @@
 #ifndef CONST_H
 #define CONST_H
+#include"GUI\Essentials.h"
 //This header file contains some defenitions to be used all over the application
 
 //All possible actions
@@ -133,12 +134,8 @@ struct GraphicsInfo
 		this->x2 = x2;
 		this->y2 = y2;
 	}
-	friend ostream & operator <<(ostream& Out, GraphicsInfo r_GfxInfo)
-	{
-		Out << r_GfxInfo.x1 << " " << r_GfxInfo.y1;
-		return Out;
-	}
 };
+ostream & operator<<(ostream & Out, GraphicsInfo r_GfxInfo);
 enum PressType {
 	Normal,
 	Hovered,

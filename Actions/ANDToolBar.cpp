@@ -1,5 +1,5 @@
 #include"ANDToolBar.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 ANDToolBar::ANDToolBar(ApplicationManager *x) : Action(x)
 {
 }

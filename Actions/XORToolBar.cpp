@@ -1,5 +1,5 @@
 #include"XORToolBar.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 XORToolBar::XORToolBar(ApplicationManager *x) : Action(x)
 {
 }

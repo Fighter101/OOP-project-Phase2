@@ -1,5 +1,5 @@
 #include"ORToolBar.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 ORToolBar::ORToolBar(ApplicationManager *x) : Action(x)
 {
 }

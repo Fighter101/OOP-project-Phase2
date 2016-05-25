@@ -1,5 +1,5 @@
 #include"AddLED.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 #include"..\Components\LED.h"
 AddLED::AddLED(ApplicationManager*x) : Action(x)
 {

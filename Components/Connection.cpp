@@ -7,6 +7,8 @@ Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPi
 	SrcPin = pSrcPin;
 	DstPin = pDstPin;
 	DstPin->setConnection(this);	//MDawod
+	SrcPin->ConnectTo(this);
+	Selected = false;
 }
 
 ActionType Connection::Leftpress()

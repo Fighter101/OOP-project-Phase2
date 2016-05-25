@@ -1,5 +1,5 @@
 #include"Validate.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 
 Validate::Validate(ApplicationManager *x) : Action(x)
 {
