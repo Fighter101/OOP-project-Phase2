@@ -57,7 +57,8 @@ enum ActionType
 	DSN_TOOL,	//A click on an empty place in the design tool bar
 	DSN_AREA,
 	ADD_Right_ToolBar,
-	MultiSELECT
+	MultiSELECT,
+	SIM
 };
 
 //Possible Status for the pin

@@ -3,6 +3,7 @@
 #include"..\Components\Button.h"
 #include"..\Components\Gate.h"
 #include"..\Components\Connection.h"
+#include"..\Components\SWITCH.h"
 void Output::CreateToolBars()
 {
 	Toolbars = new ToolBar[TOOLBARCNT];
@@ -2123,7 +2124,7 @@ void Output::DrawSwitch(GraphicsInfo r_GfxInfo, GridItem*ptr, bool ON, bool sele
 }
 void Output::DrawSwitch(Gate * ptr)
 {
-	DrawSwitch(ptr->GetPosition(), ptr, ptr->GetState());
+	DrawSwitch(ptr->GetPosition(), ptr, ((SWITCH*)ptr)->getONOFF(),ptr->GetState());
 }
 void Output::EraseBuffer(Gate * ptr)
 {

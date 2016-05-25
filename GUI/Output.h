@@ -140,7 +140,7 @@ private:
 		EXIT,
 		Create_TruthTable,
 		VALIDATE,
-		Change_Switch,
+		SIM,
 		PROBE,
 		DSN_MODE,
 		MOVE,

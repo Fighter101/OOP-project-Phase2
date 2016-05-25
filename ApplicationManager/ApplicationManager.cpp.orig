@@ -45,10 +45,13 @@
 #include"..\Actions\Move.h"
 #include"..\Components\Button.h"
 #include"..\Actions\Validate.h"
-#include"..\Components\LED.h"
+<<<<<<< HEAD
 #include"..\Actions\Copy.h"
 #include"..\Actions\CUT.h"
 #include"..\Actions\Paste.h"
+=======
+#include"..\Components\LED.h"
+>>>>>>> 3e02e842dd010df71b6354321b46738cbc044958
 Action * ApplicationManager::ActionCreator(ActionType x)
 {
 	switch (x)

@@ -57,6 +57,14 @@ void SWITCH::Erase(Output * pOut)
 {
 	pOut->EraseSwitch(this);
 }
+void SWITCH::turnONOFF(bool x)
+{
+	ONOFF = x;
+}
+bool SWITCH::getONOFF()
+{
+	return ONOFF;
+}
 void SWITCH::Save(ofstream & Out)
 {
 	Out << "SWITCH" << " " << ID << " " << Component::GetLabel() << " " << Gate::GetPosition() << endl;

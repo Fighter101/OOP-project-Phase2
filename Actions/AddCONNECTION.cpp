@@ -26,8 +26,10 @@ void AddCONNECTION::ReadActionParameters()
 	if (pManager->getCompNo() < 2)
 	{
 		pOut->PrintMsg("No Gates to Connect....Please Add Gate");
+		check=true;
 		return;
 	}
+	else check = false;
 	bool success = SrcPin && DstPin;
 	bool q=true, w=true;
 	while (!success)
@@ -135,6 +137,8 @@ void AddCONNECTION::Execute()
 {
 	//Get Connection Source and destination points
 	ReadActionParameters();
+	if (check)
+		return;
 
 	GraphicsInfo GInfo(x1,y1,x2,y2);
 

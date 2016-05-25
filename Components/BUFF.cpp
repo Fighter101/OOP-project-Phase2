@@ -19,7 +19,7 @@ void BUFF::Operate()
 	//caclulate the output status as the BUFFering of the the input pin
 
 	//Add you code here
-	m_InputPins[1].getConnection()->Operate();
+	m_InputPins[0].getConnection()->Operate();
 	m_OutputPin.setStatus(m_InputPins[1].getStatus());
 
 }

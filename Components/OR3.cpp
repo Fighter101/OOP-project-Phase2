@@ -15,9 +15,9 @@ void OR3::Operate()
 
 
 
+	m_InputPins[0].getConnection()->Operate();
 	m_InputPins[1].getConnection()->Operate();
 	m_InputPins[2].getConnection()->Operate();
-	m_InputPins[3].getConnection()->Operate();
 
 
 

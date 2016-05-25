@@ -14,8 +14,8 @@ void XOR2::Operate()
 	//caclulate the output status as the XORing of the two input pins
 
 
+	m_InputPins[0].getConnection()->Operate();
 	m_InputPins[1].getConnection()->Operate();
-	m_InputPins[2].getConnection()->Operate();
 
 
 

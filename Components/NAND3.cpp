@@ -12,9 +12,9 @@ NAND3::NAND3(const GraphicsInfo &r_GfxInfo) :Gate(3)
 void NAND3::Operate()
 {
 	//caclulate the output status as the NANDing of the three input pins
+	m_InputPins[0].getConnection()->Operate();
 	m_InputPins[1].getConnection()->Operate();
 	m_InputPins[2].getConnection()->Operate();
-	m_InputPins[3].getConnection()->Operate();
 
 
 

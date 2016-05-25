@@ -22,7 +22,8 @@ public:
 	SWITCH(Gate*ptr);
 	virtual void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
 	virtual void Erase(Output*pOut);
-
+	void turnONOFF(bool x);
+	bool getONOFF();
 	virtual void Save(ofstream & Out);
 
 	virtual void Load(ifstream & In);
