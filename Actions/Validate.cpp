@@ -2,9 +2,9 @@
 #include"..\ApplicationManager\ApplicationManager.h"
 #include<vector>
 #include"..\Components\Gate.h"
-Validate::Validate(ApplicationManager *x) : Action(x)
+Validate::Validate(ApplicationManager *x,bool y) : Action(x)
 {
-
+	sim = y;
 }
 
 Validate::~Validate()
@@ -37,7 +37,11 @@ void Validate::Execute()
 		pManager->GetOutput()->PrintMsg("Circuit Not Valid...There Exits a Pin Floating for these selected gates");
 	else
 	{
-		pManager->setValid(true);
+		if (sim)
+		{
+			pManager->setValid(true);
+			pManager->DrawToolBar(TOOLBARS::SIMU);
+		}
 		pManager->GetOutput()->PrintMsg("Circuit Valid...You can Simulate");
 
 	}

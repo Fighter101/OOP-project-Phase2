@@ -145,7 +145,8 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return new Paste(this);
 		break;
 	case VALIDATE:
-		return nullptr;
+		valid = true;
+		return new Validate(this, false);
 		break;
 	case SAVE:
 		return new Save(this);
@@ -169,8 +170,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		break;
 	case SIM_MODE:
 		sim = true;
-		DrawToolBar(TOOLBARS::SIMU);
-		return new Validate(this);
+		return new Validate(this, true);
 		break;
 	case EXIT:
 		return nullptr;
@@ -179,6 +179,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case DSN_TOOL:
+		valid = false;
 		sim = false;
 		return nullptr;
 		break;
@@ -259,6 +260,14 @@ bool ApplicationManager::getValid()
 void ApplicationManager::setValid(bool x)
 {
 	valid = x;
+}
+bool ApplicationManager::getSim()
+{
+	return sim;
+}
+void ApplicationManager::setSim(bool x)
+{
+	sim = x;
 }
 void ApplicationManager::DrawToolBar(TOOLBARS x)
 {
