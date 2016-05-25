@@ -2,7 +2,7 @@
 #define CONST_H
 #include"GUI\Essentials.h"
 //This header file contains some defenitions to be used all over the application
-
+#include"GUI\Essentials.h"
 //All possible actions
 enum ActionType 
 {
@@ -126,6 +126,8 @@ struct GraphicsInfo
 	{
 		x1 = x;
 		y1 = y;
+		x2 = x;
+		y2 = y;
 	}
 	GraphicsInfo(int x1, int y1,int x2,int y2)
 	{
@@ -165,6 +167,7 @@ const STATUS operator&(const STATUS a, const STATUS b);
 const STATUS operator|(const STATUS a, const STATUS b);
 const STATUS operator^(const STATUS a, const STATUS b);
 const STATUS operator~(const STATUS a);
+ostream &operator <<(ostream & Out, GraphicsInfo r_GfxInfo);
 bool IsInDesign(GraphicsInfo r_GfxInfo);
 enum Comps
 {

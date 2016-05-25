@@ -62,7 +62,7 @@ void NOR3::Erase(Output * pOut)
 }
 void NOR3::Save(ofstream & Out)
 {
-	Out << "NOR3" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+	Out << "NOR3" << " " << ID << " " << Component::GetLabel() << " " << Gate::GetPosition() << endl;
 }
 
 void NOR3::Load(ifstream & In)

@@ -37,9 +37,12 @@ public:
 	virtual void hover();
 	virtual void released();
 	//Same7
-	Pin* GetFreeInputPins();
+	int getPinNo(InputPin*);
+	InputPin* ConnectAt(int x);
+	InputPin* GetFreeInputPins();
 	virtual void Save(ofstream& Out) = 0;
 	virtual void Load(ifstream &In) = 0;
+	virtual int GetID();
 };
 
 #endif

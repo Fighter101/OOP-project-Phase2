@@ -64,7 +64,7 @@ void NAND2::Erase(Output * pOut)
 }
 void NAND2::Save(ofstream & Out)
 {
-	Out << "NAND2" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+	Out << "NAND2" << " " << ID << " " << Component::GetLabel() << " " << Gate::GetPosition() << endl;
 }
 
 void NAND2::Load(ifstream & In)

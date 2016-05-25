@@ -54,7 +54,7 @@ void SWITCH::Erase(Output * pOut)
 }
 void SWITCH::Save(ofstream & Out)
 {
-	Out << "SWITCH" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+	Out << "SWITCH" << " " << ID << " " << Component::GetLabel() << " " << Gate::GetPosition() << endl;
 }
 
 void SWITCH::Load(ifstream & In)

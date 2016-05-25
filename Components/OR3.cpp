@@ -62,7 +62,7 @@ void OR3::Erase(Output * pOut)
 }
 void OR3::Save(ofstream & Out)
 {
-	Out << "OR3" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+	Out << "OR3" << " " << ID << " " << Component::GetLabel() << " " << Gate::GetPosition() << endl;
 }
 
 void OR3::Load(ifstream & In)

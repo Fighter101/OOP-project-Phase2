@@ -61,7 +61,7 @@ void NOR2::Erase(Output * pOut)
 }
 void NOR2::Save(ofstream & Out)
 {
-	Out << "NOR2" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+	Out << "NOR2" << " " << ID << " " << Component::GetLabel() << " " << Gate::GetPosition() << endl;
 }
 
 void NOR2::Load(ifstream & In)

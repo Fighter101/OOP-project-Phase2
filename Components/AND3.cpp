@@ -59,7 +59,7 @@ void AND3::setInputPinStatus(int n, STATUS s)
 }
 void AND3::Save(ofstream & Out)
 {
-	Out << "AND3" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+	Out << "AND3" << " " << ID << " " << Component::GetLabel() << " " << Gate::GetPosition() << endl;
 }
 
 void AND3::Load(ifstream & In)

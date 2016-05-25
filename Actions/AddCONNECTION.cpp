@@ -95,7 +95,7 @@ void AddCONNECTION::ReadActionParameters()
 
 		if (SrcGate)
 		{
-			SrcPin = &SrcGate->GetOutputPin();
+			SrcPin = &(SrcGate->GetOutputPin());
 		
 		}
 		if (DstGate)

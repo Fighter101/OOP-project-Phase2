@@ -53,7 +53,7 @@ void BUFF::setInputPinStatus(int n, STATUS s)
 }
 void BUFF::Save(ofstream & Out)
 {
-	Out << "BUFFER" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+	Out << "BUFFER" << " " << ID << " " << Component::GetLabel() << " " << Gate::GetPosition() << endl;
 }
 
 void BUFF::Load(ifstream & In)

@@ -23,6 +23,7 @@ void Save::Execute()
 	{
 		vec[i]->Save(Out);
 	}
+	Out << "-1";
 }
 
 void Save::Undo()

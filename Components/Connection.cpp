@@ -1,5 +1,5 @@
 #include "Connection.h"
-
+#include"Gate.h"
 Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPin *pDstPin):Component(r_GfxInfo)	
 	
 {
@@ -88,6 +88,21 @@ void Connection::setInputPinStatus(int n, STATUS s)
 	SrcPin->setStatus(s);
 }
 
+int Connection::GetSrcID()
+{
+	return SrcID;
+}
+
+int Connection::GetTrgtID()
+{
+	return TrgtID;
+}
+
+int Connection::GetPinID()
+{
+	return PinID;
+}
+
 
 
 void Connection::SetState(bool r_selected)
@@ -103,4 +118,14 @@ bool Connection::GetState()
 bool Connection::isConnected()
 {
 	return x;
+}
+
+void Connection::Save(ofstream & Out)
+{
+	Out << ((Gate*)SrcPin->getComponent())->GetID() << " " << ((Gate*)DstPin->getComponent())->GetID() << " " << ((Gate*)DstPin->getComponent())->getPinNo(DstPin) << endl;
+}
+
+void Connection::Load(ifstream & In)
+{
+	In >> SrcID >> TrgtID >> PinID;
 }

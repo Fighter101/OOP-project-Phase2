@@ -3,6 +3,7 @@
 Component::Component(const GraphicsInfo &r_GfxInfo)
 {
 	m_GfxInfo = r_GfxInfo;	
+	m_Label = "No_Label";
 }
 
 void Component::SetPosition(GraphicsInfo r_GfxInfo)
@@ -11,14 +12,8 @@ void Component::SetPosition(GraphicsInfo r_GfxInfo)
 }
 
 Component::Component()
-{}
-
-void Component::Save(ofstream & Out)
 {
-}
-
-void Component::Load(ifstream & In)
-{
+	m_Label = "No_Label";
 }
 
 string Component::GetLabel()
@@ -33,4 +28,3 @@ void Component::SetLabel(string r_label)
 
 Component::~Component()
 {}
-

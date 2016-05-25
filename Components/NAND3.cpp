@@ -62,7 +62,7 @@ void NAND3::Erase(Output * pOut)
 }
 void NAND3::Save(ofstream & Out)
 {
-	Out << "NAND3" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+	Out << "NAND3" << " " << ID << " " << Component::GetLabel() << " " << Gate::GetPosition() << endl;
 }
 
 void NAND3::Load(ifstream & In)
