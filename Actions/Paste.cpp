@@ -10,7 +10,7 @@ Paste::~Paste()
 
 void Paste::ReadActionParameters()
 {
-	pManager->GetOutput()->PrintMsg("Pasting Items in Clipboard");
+	pManager->GetOutput()->PrintMsg("Pasting Items From Clipboard");
 }
 
 void Paste::Execute()
@@ -20,7 +20,6 @@ void Paste::Execute()
 	for (size_t i = 0; i < x.size(); i++)
 	{
 		pManager->AddComponent(x[i]);
-		x[i]->Draw(pManager->GetOutput());
 	}
 }
 
@@ -31,10 +30,4 @@ void Paste::Undo()
 
 void Paste::Redo()
 {
-	auto x = pManager->getClipboard();
-	for (size_t i = 0; i < x.size(); i++)
-	{
-		pManager->AddComponent(x[i]);
-		x[i]->Draw(pManager->GetOutput());
-	}
 }

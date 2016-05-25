@@ -22,6 +22,12 @@ void AddCONNECTION::ReadActionParameters()
 
 	pOut->PrintMsg("Connection building : Click on a Gate/Pin to Connect(1)");
 	//Print Action Message
+
+	if (pManager->getCompNo() < 2)
+	{
+		pOut->PrintMsg("No Gates to Connect....Please Add Gate");
+		return;
+	}
 	bool success = SrcPin && DstPin;
 	bool q=true, w=true;
 	while (!success)
@@ -32,10 +38,15 @@ void AddCONNECTION::ReadActionParameters()
 			x = pIn->GetPointClicked(x1, y1);
 			SrcPin = dynamic_cast<OutputPin*>(x);
 			SrcGate = dynamic_cast<Gate*>(x);
-			if (x1 == -1 || y1 == -1)
+			if (!x)
 			{
 				pOut->PrintMsg("Cannot Connect to Empty Space... Please Try Again");
 				continue;
+			}
+			if (x1 == -1 || y1 == -1)
+			{
+				pOut->PrintMsg("Cannot Connect Out... Please Try Again");
+				return;
 			}
 			if (dynamic_cast<Button*> (x))
 			{
@@ -50,22 +61,28 @@ void AddCONNECTION::ReadActionParameters()
 		pOut->PrintMsg("Connection building : Click on a Gate/Pin to Connect(2)");
 
 		while (w)
+		
 		{
-		y = pIn->GetPointClicked(x2, y2);
-		DstPin = dynamic_cast<InputPin*>(y);
-		DstGate = dynamic_cast<Gate*>(y);
-		if (x2 == -1 || y2 == -1)
-		{
-			pOut->PrintMsg("Cannot Connect to Empty Space... Please Try Again");
-			continue;
-		}
-		if (dynamic_cast<Button*> (x))
-		{
-			pOut->PrintMsg("Cannot Connect on a ToolBar Button");
-			continue;
-		}
-		w = false;
-		}
+			y = pIn->GetPointClicked(x2, y2);
+			DstPin = dynamic_cast<InputPin*>(y);
+			DstGate = dynamic_cast<Gate*>(y);
+			if (!x)
+			{
+				pOut->PrintMsg("Cannot Connect to Empty Space... Please Try Again");
+				continue;
+			}
+			if (x2 == -1 || y2 == -1)
+			{
+				pOut->PrintMsg("Cannot Connect to Empty Space... Please Try Again");
+				return;
+			}
+			if (dynamic_cast<Button*> (x))
+			{
+				pOut->PrintMsg("Cannot Connect on a ToolBar Button");
+				continue;
+			}
+			w = false;
+			}
 
 
 
