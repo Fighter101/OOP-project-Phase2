@@ -24,9 +24,13 @@ void OutputPin::released()
 
 OutputPin::OutputPin(int r_FanOut)
 {
-	
+	for (size_t i = 0; i < MAX_CONNS; i++)
+	{
+		m_Connections[i] = nullptr;
+	}
 	m_Conn = 0;		//initially Pin is not connected to anything.
 	m_FanOut = r_FanOut > MAX_CONNS ? MAX_CONNS: r_FanOut;	//set the fan out of the pin.
+
 }
 
 //Functionn ConnectTo:
@@ -62,4 +66,39 @@ void OutputPin::setComponent(Component* pComp)
 Component* OutputPin::getComponent()
 {
 	return m_component;
+}
+
+Connection ** OutputPin::getConnection(int& x)
+{
+	x = MAX_CONNS;
+	return m_Connections;
+
+}
+
+bool OutputPin::nullConnection(Connection *x)
+{
+	for (size_t i = 0; i < MAX_CONNS; i++)
+	{
+		if (x == m_Connections[i])
+		{
+			m_Connections[i] = nullptr;
+			return true;
+		}
+	}
+	return false;
+}
+
+bool OutputPin::DeleteAllOutConnections()
+{
+	for (size_t i = 0; i < MAX_CONNS; i++)
+	{
+		if (m_Connections[i])
+		{
+			m_Connections[i]->setSourcePin(nullptr);
+			m_Connections[i]->setDestPin(nullptr);
+			delete m_Connections[i];
+			m_Connections[i] = nullptr;
+		}
+	}
+	return true;
 }

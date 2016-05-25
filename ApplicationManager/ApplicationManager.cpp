@@ -126,7 +126,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return new MultiSelect(this);
 		break;
 	case DEL:
-		return nullptr;
+		return new Delete(this);
 		break;
 	case MOVE:
 		return new Move(this);
@@ -175,6 +175,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		break;
 	case DSN_AREA:
 	{
+		MetaData.clear();
 		if (sim)
 			DrawToolBar(TOOLBARS::SIMU);
 		else
@@ -308,7 +309,7 @@ void ApplicationManager::DeleteThis(vector<Component*>x)
 		{
 			if (x[i] == ComponentList[j])
 			{
-				delete x[i];
+				EraseThisBitch(x[i]);
 				x.erase(x.begin() + j);
 				ComponentList.erase(ComponentList.begin() + j);
 				//Erase Interface
@@ -328,8 +329,25 @@ void ApplicationManager::RemoveMetaData(Component *x)
 		}
 	}
 }
-void ApplicationManager::EraseThisBitch(Component *)
+void ApplicationManager::EraseThisBitch(Component *x)
 {
+	Connection* y = dynamic_cast<Connection*>(x);
+	Gate* z = dynamic_cast<Gate*>(x);
+	if (y)
+	{
+		y->getDestPin()->setConnection(nullptr);
+		y->getSourcePin()->nullConnection(y);
+	}
+	if (z)
+	{
+		z->GetOutputPin().DeleteAllOutConnections();
+		int length=z->getInputNo();
+		for (size_t i = 0; i < length; i++)
+		{
+			z->GetInputPins()[i].DeleteConnection();
+		}
+	}
+	delete x;
 }
 ApplicationManager::ApplicationManager()
 {
@@ -341,6 +359,7 @@ ApplicationManager::ApplicationManager()
 	sim = false;
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
+	OutputInterface->CreateDesignToolBar();
 	OutputInterface->CreateStatusBar();
 	Toolbars[4] = true;
 }
@@ -379,6 +398,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
+	OutputInterface->ClearGraph();
 	if (Toolbars[0])
 		OutputInterface->CreateAddToolBar();
 

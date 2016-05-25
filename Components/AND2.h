@@ -18,7 +18,6 @@ public:
 	virtual void Erase(Output*pOut);
 	virtual bool GetOutPinStatus();	//returns status of outputpin if LED, return -1
 	virtual bool GetInputPinStatus(int n);	//returns status of Inputpin # n if SWITCH, return -1
-	virtual InputPin* GetPin(int);
 	virtual void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
 	virtual void Save(ofstream &Out);
 	virtual void Load(ifstream &In);

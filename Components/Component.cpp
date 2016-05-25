@@ -13,6 +13,14 @@ void Component::SetPosition(GraphicsInfo r_GfxInfo)
 Component::Component()
 {}
 
+void Component::Save(ofstream & Out)
+{
+}
+
+void Component::Load(ifstream & In)
+{
+}
+
 string Component::GetLabel()
 {
 	return m_Label;

@@ -27,6 +27,7 @@ public:
 	bool CheckPins();
 	Gate(int r_Inputs);
 	InputPin*GetInputPins();
+	int getInputNo();
 	OutputPin & GetOutputPin();
 	virtual void SetState(bool r_selected);
 	virtual bool GetState();

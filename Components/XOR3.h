@@ -27,6 +27,7 @@ public:
 
 	virtual void Load(ifstream & In);
 
+	virtual ~XOR3();
 };
 
 #endif

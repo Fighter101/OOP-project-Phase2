@@ -29,8 +29,8 @@ public:
 	virtual bool GetState() = 0;
 	virtual void SetPosition(GraphicsInfo);
 	Component();	
-	virtual void Save(ofstream& Out) = 0;
-	virtual void Load(ifstream & In) = 0;
+	virtual void Save(ofstream& Out);
+	virtual void Load(ifstream & In);
 	
 	//Hassan
 	string GetLabel();

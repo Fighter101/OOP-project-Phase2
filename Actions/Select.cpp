@@ -21,11 +21,14 @@ void Select::Execute()
 {
 	ReadActionParameters();
 
-	pManager->DrawToolBar(TOOLBARS::GATE);
 	
 	auto x=pManager->getMetaData();
-
-	x[0]->SetState(!x[0]->GetState());
+	auto y = x.back();
+	y->SetState(!y->GetState());
+	if (y->GetState())
+		pManager->DrawToolBar(TOOLBARS::GATE);
+	else
+		pManager->DrawToolBar(TOOLBARS::DSGN);
 }
 
 void Select::Redo()

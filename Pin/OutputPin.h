@@ -34,6 +34,10 @@ public:
 	void setComponent(Component* pComp);
 	Component* getComponent();
 
+
+	Connection** getConnection(int&);
+	bool nullConnection(Connection*);
+	bool DeleteAllOutConnections();
 };
 
 #endif
