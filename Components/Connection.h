@@ -15,6 +15,7 @@ class Connection :	public Component
 	int TrgtID;
 	int PinID;
 	bool x;
+	bool ON;
 public:
 	
 	//Connection(const GraphicsInfo &r_GfxInfo, Component *pS=NULL,Component *pD=NULL, int Pin=0);
@@ -38,7 +39,8 @@ public:
 	virtual bool GetInputPinStatus(int n);	//returns status of Inputpin # n if SWITCH, return -1
 
 	virtual void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
-
+	bool GetOn();
+	void SetOn(bool r_ON);
 	int GetSrcID();
 	int GetTrgtID();
 	int GetPinID();

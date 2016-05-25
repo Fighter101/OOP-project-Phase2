@@ -69,7 +69,7 @@ private:
 	GraphicsInfo XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State = Pressed);
 	//////////////
 	//Drawing the connection
-	void DrawConnection(vector <pair<int, int> >Points, GridItem*ptr, bool x = false);
+	void DrawConnection(vector <pair<int, int> >Points, GridItem*ptr, bool x = false,bool ON=false);
 	//Icon Array
 	GraphicsInfo(Output::*ButtonFunctions[46])(GraphicsInfo, PressType State) =
 	{
@@ -307,7 +307,7 @@ public:
 	void EraseLED(Gate*ptr);
 	set<GridItem*>CheckLED(GraphicsInfo r_GfxInfo);
 	//Connection
-	vector<pair<int, int> > Connect(GraphicsInfo r_GfxInfo, GridItem*ptr ,bool selected = false);
+	vector<pair<int, int> > Connect(GraphicsInfo r_GfxInfo, GridItem*ptr ,bool selected = false,bool On=false);
 	vector<pair<int, int> >Connect(Connection*r_Connection);
 	void EraseConnection(Connection *r_Connection);
 	//Truth Table
