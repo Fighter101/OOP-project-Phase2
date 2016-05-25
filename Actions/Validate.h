@@ -4,10 +4,10 @@
 class Validate :public Action
 {
 
-
+	bool sim;
 
 public:
-	Validate(ApplicationManager*);
+	Validate(ApplicationManager*,bool);
 	virtual ~Validate();
 
 	//Reads parameters required for action to execute

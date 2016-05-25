@@ -36,6 +36,8 @@ public:
 	GridItem* CheckPoint(int &Cx, int &Cy);
 	bool getValid();
 	void setValid(bool x);
+	bool getSim();
+	void setSim(bool x);
 ///////////////////////////////////////////
 ///<summary>
 ///(0 Add) - (1 And) - (2 Or) - (3 XOR) - (4 DSGN) - (5 Sim) - (6 Gates)
