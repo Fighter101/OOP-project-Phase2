@@ -22,11 +22,11 @@ void Output::CreateToolBars()
 	Toolbars[SIMU].SetPosition(GraphicsInfo(290, 0));
 	Toolbars[SIMU].SetOrientation(Horizontal);
 	vec.clear();
-	for (int i = 12; i < 18; i++)
+	for (int i = 15; i < 20; i++)
 	{
 		vec.push_back(i);
 	}
-	vec.push_back(11);
+	vec.push_back(14);
 	Toolbars[SIMU].ButtonsToDraw(vec);
 	Toolbars[SIMU].SetDistance(UI.ToolItemWidth, UI.ToolBarHeight);
 	Toolbars[SIMU].CreateButtons(this);
@@ -1242,11 +1242,15 @@ GraphicsInfo Output::XNOR3Icon(GraphicsInfo r_GfxInfo, PressType State)
 	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x1 + UI.GateItemWidth, r_GfxInfo.y1 + UI.GateBarHeight, FRAME);
 	return (GraphicsInfo(UI.GateItemWidth, UI.GateBarHeight));
 }
-void Output::DrawConnection(vector<pair<int, int>> Points,GridItem*ptr,bool x)
+void Output::DrawConnection(vector<pair<int, int>> Points,GridItem*ptr,bool x,bool ON)
 {
 	if (ptr == NULL&&x)
 		pWind->SetPen(WHITE, 3);
 	else pWind->SetPen(BLACK, 3);
+	if (ON)
+	{
+		pWind->SetPen(GREEN, 3);
+	}
 	for (int i = 0; i < (int)(Points.size() - 1); i++)
 	{
 		pWind->DrawLine(Points[i].first, Points[i].second, Points[i + 1].first, Points[i + 1].second);
@@ -2279,17 +2283,17 @@ set<GridItem*> Output::CheckLED(GraphicsInfo r_GfxInfo)
 	return Returned;
 }
 
-vector<pair<int,int> > Output::Connect(GraphicsInfo r_GfxInfo,  GridItem*ptr, bool selected)
+vector<pair<int,int> > Output::Connect(GraphicsInfo r_GfxInfo,  GridItem*ptr, bool selected,bool ON)
 {
 	vector<pair<int, int> >Points = Interface->Connect(r_GfxInfo);
-	DrawConnection(Points,ptr);
+	DrawConnection(Points,ptr,false,ON);
 	return Points;
 }
 
 vector<pair<int, int>> Output::Connect(Connection *r_Connection)
 {
 
-	vector<pair<int,int> > vec= Connect(GraphicsInfo(r_Connection->getSourcePin()->GetPosition().x2+5, r_Connection->getSourcePin()->GetPosition().y2, r_Connection->getDestPin()->GetPosition().x1-5, r_Connection->getDestPin()->GetPosition().y1),r_Connection,false);
+	vector<pair<int,int> > vec= Connect(GraphicsInfo(r_Connection->getSourcePin()->GetPosition().x2+5, r_Connection->getSourcePin()->GetPosition().y2, r_Connection->getDestPin()->GetPosition().x1-5, r_Connection->getDestPin()->GetPosition().y1),r_Connection,false,r_Connection->GetOn());
 	vector<pair<int, int> > tmp1, tmp2;
 	if (vec.size() != 0)
 	{

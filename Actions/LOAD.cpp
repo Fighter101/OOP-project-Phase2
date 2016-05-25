@@ -129,7 +129,6 @@ void Load::Execute()
 		if (ptr != NULL)
 			pManager->AddComponent(ptr);
 	} while (s != "Connections");
-	int x, y, z;
 	auto vec = pManager->getComponents();
 	int l = vec.size();
 	Connection*tmp = NULL;

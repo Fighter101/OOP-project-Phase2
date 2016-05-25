@@ -8,10 +8,13 @@ Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPi
 	DstPin->setConnection(this);	//MDawod
 	SrcPin->ConnectTo(this);
 	Selected = false;
+	ON = false;
 }
 
 Connection::Connection()
 {
+	Selected = false;
+	ON = false;
 }
 
 ActionType Connection::Leftpress()
@@ -89,6 +92,16 @@ bool Connection::GetInputPinStatus(int n)	//returns status of Inputpin # n if SW
 void Connection::setInputPinStatus(int n, STATUS s)
 {
 	SrcPin->setStatus(s);
+}
+
+bool Connection::GetOn()
+{
+	return ON;
+}
+
+void Connection::SetOn(bool r_ON)
+{
+	ON = r_ON;
 }
 
 int Connection::GetSrcID()
