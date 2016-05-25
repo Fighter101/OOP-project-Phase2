@@ -13,9 +13,9 @@ void XNOR3::Operate()
 {
 	//caclulate the output status as the XNORing of the three input pins
 
+	m_InputPins[0].getConnection()->Operate();
 	m_InputPins[1].getConnection()->Operate();
 	m_InputPins[2].getConnection()->Operate();
-	m_InputPins[3].getConnection()->Operate();
 
 
 

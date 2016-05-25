@@ -22,7 +22,7 @@
 #include"..\Actions\AddXOR.h"
 #include"..\Actions\DSNMODE.h"     
 #include"..\Actions\CUT.h"  
-#include"..\Actions\STATUSBAR.h"
+#include"..\Actions\Simulate.h"
 #include"..\Actions\AddAND.h"
 #include"..\Actions\AddLabel.h"
 #include"..\Actions\AddNORgate3.h"
@@ -45,6 +45,7 @@
 #include"..\Actions\Move.h"
 #include"..\Components\Button.h"
 #include"..\Actions\Validate.h"
+#include"..\Components\LED.h"
 Action * ApplicationManager::ActionCreator(ActionType x)
 {
 	switch (x)
@@ -180,6 +181,9 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		sim = false;
 		return nullptr;
 		break;
+	case SIM:
+		return new Simulate(this);
+		break;
 	case DSN_AREA:
 	{
 		if (sim)
@@ -265,6 +269,16 @@ bool ApplicationManager::getSim()
 void ApplicationManager::setSim(bool x)
 {
 	sim = x;
+}
+vector<Component*> ApplicationManager::getLeds()
+{
+	vector<Component*> temp;
+	for (size_t i = 0; i < ComponentList.size(); i++)
+	{
+		if (dynamic_cast<LED*> (ComponentList[i]))
+			temp.push_back(ComponentList[i]);
+	}
+	return temp;
 }
 void ApplicationManager::DrawToolBar(TOOLBARS x)
 {

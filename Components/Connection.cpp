@@ -68,7 +68,9 @@ void Connection::Operate()
 {
 	//Status of connection destination pin = status of connection source pin
 	SrcPin->getComponent()->Operate();
-	DstPin->setStatus((STATUS)SrcPin->getStatus());
+
+	DstPin->setStatus(SrcPin->getStatus());
+	SrcPin->getStatus() == HIGH ? ON = true : ON = false;
 
 }
 

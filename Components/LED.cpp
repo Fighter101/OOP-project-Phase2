@@ -16,8 +16,8 @@ void LED::Operate()
 	//Add you code here
 	
 
-	m_InputPins[1].getConnection()->Operate();
-
+	m_InputPins[0].getConnection()->Operate();
+	this->setInputPinStatus(1,m_InputPins[0].getStatus());
 
 
 	//DRAW IT HIGH IF NEEDED ! MDawod

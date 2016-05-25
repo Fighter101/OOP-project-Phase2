@@ -15,8 +15,8 @@ void AND2::Operate()
 
 	//Add you code here
 
+	m_InputPins[0].getConnection()->Operate();
 	m_InputPins[1].getConnection()->Operate();
-	m_InputPins[2].getConnection()->Operate();
 
 
 

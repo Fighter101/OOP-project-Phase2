@@ -170,7 +170,7 @@
     <ClCompile Include="Actions\MultiSELECT.cpp" />
     <ClCompile Include="Actions\Select.cpp" />
     <ClCompile Include="Actions\SIMMODE.cpp" />
-    <ClCompile Include="Actions\STATUSBAR.cpp" />
+    <ClCompile Include="Actions\Simulate.cpp" />
     <ClCompile Include="Actions\UNDO.cpp" />
     <ClCompile Include="Actions\Validate.cpp" />
     <ClCompile Include="Actions\XORToolBar.cpp" />
@@ -291,7 +291,7 @@
     <ClInclude Include="Actions\MultiSELECT.h" />
     <ClInclude Include="Actions\Select.h" />
     <ClInclude Include="Actions\SIMMODE.h" />
-    <ClInclude Include="Actions\STATUSBAR.h" />
+    <ClInclude Include="Actions\Simulate.h" />
     <ClInclude Include="Actions\UNDO.h" />
     <ClInclude Include="Actions\Validate.h" />
     <ClInclude Include="Actions\XORToolBar.h" />

@@ -7,6 +7,7 @@
 class AddCONNECTION : public Action
 {
 private:
+	bool check;
 	//two points are the source and the destination of the connection
 	Pin* DstPin;
 	Pin* SrcPin;

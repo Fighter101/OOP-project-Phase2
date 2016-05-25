@@ -14,7 +14,9 @@ void AND3::Operate()
 	//caclulate the output status as the ANDing of the three input pins
 
 	//Add you code here
+	m_InputPins[0].getConnection()->Operate();
 	m_InputPins[1].getConnection()->Operate();
+	m_InputPins[2].getConnection()->Operate();
 
 	m_OutputPin = HIGH;
 	for (int i = 1; i <= 3; i++)

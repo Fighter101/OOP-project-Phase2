@@ -281,9 +281,6 @@
     <ClCompile Include="Actions\SIMMODE.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\STATUSBAR.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\UNDO.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -349,6 +346,9 @@
       <Filter>ApplicaionManager</Filter>
     </ClCompile>
     <ClCompile Include="Actions\Copy.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Simulate.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -590,9 +590,6 @@
     <ClInclude Include="Actions\SIMMODE.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\STATUSBAR.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
     <ClInclude Include="Actions\UNDO.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -664,6 +661,9 @@
       <Filter>ApplicaionManager</Filter>
     </ClInclude>
     <ClInclude Include="Actions\Copy.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Simulate.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
