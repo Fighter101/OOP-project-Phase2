@@ -1,4 +1,0 @@
-﻿  Connection.cpp
-g:\oop\project\oop-project-phase2\components\connection.cpp(77): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
-g:\oop\project\oop-project-phase2\components\connection.cpp(83): warning C4800: 'STATUS': forcing value to bool 'true' or 'false' (performance warning)
-  graphics_prj.vcxproj -> G:\OOP\Project\OOP-project-Phase2\.\Debug\graphics_prj.exe
