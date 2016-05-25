@@ -19,7 +19,7 @@ void NAND3::Operate()
 
 
 	m_OutputPin.setStatus(HIGH);
-	for (int i = 1; i <= 3; i++)
+	for (int i = 0; i <= 2; i++)
 	{
 		m_OutputPin.setStatus(m_OutputPin.getStatus() & m_InputPins[i].getStatus());
 	}

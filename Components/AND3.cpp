@@ -29,7 +29,7 @@ void AND3::Operate()
 	m_InputPins[2].getConnection()->Operate();
 
 	m_OutputPin = HIGH;
-	for (int i = 1; i <= 3; i++)
+	for (int i = 0; i <= 2; i++)
 	{
 		m_OutputPin = m_OutputPin.getStatus() & m_InputPins[i].getStatus();
 	}

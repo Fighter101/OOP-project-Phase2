@@ -27,7 +27,7 @@ void AND2::Operate()
 
 
 	m_OutputPin.setStatus(HIGH);
-	for (int i = 1; i <= 2; i++)
+	for (int i = 0; i <= 1; i++)
 	{
 		m_OutputPin.setStatus((STATUS)m_OutputPin.getStatus() & (STATUS)m_InputPins[i].getStatus());
 	}

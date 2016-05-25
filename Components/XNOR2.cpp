@@ -19,7 +19,7 @@ void XNOR2::Operate()
 
 
 	m_OutputPin.setStatus(LOW);
-	for (int i = 1; i <= 2; i++)
+	for (int i = 0; i <= 1; i++)
 	{
 		m_OutputPin.setStatus(m_OutputPin.getStatus() ^ m_InputPins[i].getStatus());
 	}
