@@ -8,8 +8,8 @@ void Cut::ReadActionParameters()
 void Cut::Execute()
 {
 	ReadActionParameters();
-	pManager->setClipboard(pManager->getMetaData());
-	pManager->DeleteThis(pManager->getMetaData());
+	pManager->setClipboard(pManager->getSelected());
+	pManager->DeleteThis(pManager->getSelected());
 	
 }
 

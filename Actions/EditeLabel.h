@@ -4,7 +4,7 @@
 class EditLabel :public Action
 {
 private:
-	Component*ptr;
+	vector<Component*>ptr;
 	string NewLabel;
 public:
 	EditLabel(ApplicationManager*pApp);

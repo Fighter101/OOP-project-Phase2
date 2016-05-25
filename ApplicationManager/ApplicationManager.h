@@ -19,7 +19,6 @@ private:
 
 
 private:
-	vector<Component*>MetaData;
 	Action* ActionCreator(ActionType);
 	Clipboard clip;
 	///<summary>
@@ -27,6 +26,9 @@ private:
 	///</summary>
 	bool Toolbars[7];
 	bool sim;//0 if DSN - 1 if Sim
+	Component* ptrTemp;
+	void nullify(vector<Component*> x);
+	void nullify(Component*x);
 public:	
 ///////////////////////////////////////////
 	GridItem* CheckPoint(int &Cx, int &Cy);
@@ -35,15 +37,13 @@ public:
 ///(0 Add) - (1 And) - (2 Or) - (3 XOR) - (4 DSGN) - (5 Sim) - (6 Gates)
 ///</summary>
 	void DrawToolBar(TOOLBARS x);
-	vector<Component*> getMetaData();
-	void setMetaData(vector<Component*>);
-	void AppendMetaData(Component*);
 	vector<Component*> getClipboard();
 	vector<Component*> getComponents();
 	void setClipboard(vector<Component*>);
 	void DeleteThis(vector<Component*>);
-	void RemoveMetaData(Component*);
 	void EraseThisBitch(Component*);
+	vector<Component*> getSelected();
+	Component* getTemp();
 
 	ApplicationManager(); //constructor
 

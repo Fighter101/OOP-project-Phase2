@@ -22,11 +22,9 @@ public:
 
 	virtual void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
 	virtual void Erase(Output*pOut);
-
-	virtual void Save(ofstream & Out);
-
+	
 	virtual void Load(ifstream & In);
-
+	virtual void Save(ofstream & Out);
 };
 
 #endif

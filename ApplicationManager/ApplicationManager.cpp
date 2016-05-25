@@ -1,4 +1,4 @@
-#include "ApplicationManager.h"
+#include"ApplicationManager.h"
 #include"..\Actions\AddToolBar.h"
 #include"..\Actions\AddCONNECTION.h" 
 #include"..\Actions\AddNANDgate2.h"
@@ -175,7 +175,6 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		break;
 	case DSN_AREA:
 	{
-		MetaData.clear();
 		if (sim)
 			DrawToolBar(TOOLBARS::SIMU);
 		else
@@ -188,7 +187,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case SELECT:
-		return new Select(this);
+		return new Select(this,ptrTemp);
 		break;
 	default:
 		return nullptr;
@@ -196,6 +195,31 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 	}
 	
 
+}
+void ApplicationManager::nullify(vector<Component*> x)
+{
+	for (size_t i = 0; i < x.size(); i++)
+	{
+		for (size_t j = 0; j < ComponentList.size(); j++)
+		{
+			if (x[i] == ComponentList[j] || ComponentList[j]==nullptr)
+			{
+				ComponentList.erase(ComponentList.begin() + j);
+				delete x[i];
+			}
+		}
+	}
+}
+void ApplicationManager::nullify(Component * x)
+{
+	for (size_t j = 0; j < ComponentList.size(); j++)
+	{
+		if (x == ComponentList[j])
+		{
+			ComponentList.erase(ComponentList.begin() + j);
+			delete x;
+		}
+	}
 }
 //////////////////////////////////////////////////////////////////////////////
 GridItem* ApplicationManager::CheckPoint(int & Cx, int & Cy)
@@ -277,18 +301,6 @@ void ApplicationManager::DrawToolBar(TOOLBARS x)
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
-vector<Component*> ApplicationManager::getMetaData()
-{
-	return MetaData;
-}
-void ApplicationManager::setMetaData(vector<Component*>x)
-{
-	MetaData = x;
-}
-void ApplicationManager::AppendMetaData(Component *x)
-{
-	MetaData.push_back(x);
-}
 vector<Component*> ApplicationManager::getClipboard()
 {
 	return	clip.pull();
@@ -310,22 +322,12 @@ void ApplicationManager::DeleteThis(vector<Component*>x)
 			if (x[i] == ComponentList[j])
 			{
 				EraseThisBitch(x[i]);
-				x.erase(x.begin() + j);
+				//x.erase(x.begin() + i);
+
 				ComponentList.erase(ComponentList.begin() + j);
-				//Erase Interface
+						//Erase Interface
 				break;
 			}
-		}
-	}
-}
-void ApplicationManager::RemoveMetaData(Component *x)
-{
-	for (size_t i = 0; i < MetaData.size(); i++)
-	{
-		if (MetaData[i] == x)
-		{
-			MetaData.erase(MetaData.begin() + i);
-			break;
 		}
 	}
 }
@@ -340,14 +342,32 @@ void ApplicationManager::EraseThisBitch(Component *x)
 	}
 	if (z)
 	{
-		z->GetOutputPin().DeleteAllOutConnections();
+		nullify(z->GetOutputPin().DeleteAllOutConnections());
 		int length=z->getInputNo();
 		for (size_t i = 0; i < length; i++)
 		{
-			z->GetInputPins()[i].DeleteConnection();
+			nullify(z->GetInputPins()[i].DeleteConnection());
 		}
 	}
 	delete x;
+	
+
+		
+	
+}
+vector<Component*> ApplicationManager::getSelected()
+{
+	vector<Component*> temp;
+	for (size_t i = 0; i < ComponentList.size(); i++)
+	{
+		if (ComponentList[i]->GetState())
+			temp.push_back(ComponentList[i]);
+	}
+	return temp;
+}
+Component * ApplicationManager::getTemp()
+{
+	return ptrTemp;
 }
 ApplicationManager::ApplicationManager()
 {
@@ -373,11 +393,14 @@ void ApplicationManager::AddComponent(Component* pComp)
 ActionType ApplicationManager::GetUserAction()
 {
 	//Call input to get what action is required from the user
-	pair<ActionType, vector<GridItem*>> x= InputInterface->GetUserAction(); 
+	auto x = InputInterface->GetUserAction();
 	for (size_t i = 0; i < x.second.size(); i++)
 	{
-		if(!dynamic_cast<Button*>(x.second[i]))
-			MetaData.push_back((Component*) x.second[i]);
+		if (dynamic_cast<Component*>(x.second[i]))
+		{
+			ptrTemp = dynamic_cast<Component*>(x.second[i]);
+			break;
+		}
 	}
 	return x.first;
 
@@ -399,6 +422,25 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 void ApplicationManager::UpdateInterface()
 {
 	OutputInterface->ClearGraph();
+	
+	for (size_t i = 0; i < ComponentList.size(); i++)
+	{
+		ComponentList[i]->Draw(OutputInterface);
+	}
+	for (size_t i = 0; i <  ComponentList.size(); i++)
+	{
+		if (ComponentList[i]->GetState())
+		{
+			DrawToolBar(TOOLBARS::GATE);
+			break;
+		}
+		else if (sim)
+			DrawToolBar(TOOLBARS::SIMU);
+		else
+			DrawToolBar(TOOLBARS::DSGN);
+	}
+
+
 	if (Toolbars[0])
 		OutputInterface->CreateAddToolBar();
 
@@ -417,10 +459,6 @@ void ApplicationManager::UpdateInterface()
 		OutputInterface->CreateGatesToolBar();
 
 
-	for (size_t i = 0; i < ComponentList.size(); i++)
-	{
-		ComponentList[i]->Draw(OutputInterface);
-	}
 }
 
 ////////////////////////////////////////////////////////////////////

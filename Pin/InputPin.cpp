@@ -2,7 +2,7 @@
 #include "..\Components\Connection.h"
 ActionType InputPin::Leftpress()
 {
-	return ADD_CONNECTION;
+	return SELECT;
 }
 
 ActionType InputPin::RightPress()
@@ -49,14 +49,16 @@ Connection* InputPin::getConnection()
 	return pConn;
 }
 
-bool InputPin::DeleteConnection()
+Component* InputPin::DeleteConnection()
 {
+	Component* temp = pConn;
 	if (pConn)
 	{
-		pConn->setSourcePin(nullptr);
-		delete pConn;
+	
+		pConn->getSourcePin()->nullConnection(pConn);
+		pConn = nullptr;
 	}
-	return true;
+	return temp;
 }
 
 

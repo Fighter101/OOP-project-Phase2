@@ -16,7 +16,7 @@ void Delete::ReadActionParameters()
 
 void Delete::Execute()
 {
-	pManager->DeleteThis(pManager->getMetaData());
+	pManager->DeleteThis(pManager->getSelected());
 }
 
 void Delete::Undo()

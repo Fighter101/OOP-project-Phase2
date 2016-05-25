@@ -5,9 +5,7 @@ class Move :
 	public Action
 {
 private:
-	Component*ptr;
-	GraphicsInfo Old;
-	GraphicsInfo New;
+	
 	
 public:
 	Move(ApplicationManager *pApp);

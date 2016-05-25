@@ -37,7 +37,7 @@ public:
 
 	Connection** getConnection(int&);
 	bool nullConnection(Connection*);
-	bool DeleteAllOutConnections();
+	vector<Component*>  DeleteAllOutConnections();
 };
 
 #endif
