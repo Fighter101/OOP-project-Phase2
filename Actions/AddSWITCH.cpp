@@ -1,5 +1,5 @@
 #include"AddSWITCH.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 #include"..\Components\SWITCH.h"
 AddSwitch::AddSwitch(ApplicationManager *x):Action(x)
 {

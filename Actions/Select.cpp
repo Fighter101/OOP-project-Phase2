@@ -1,5 +1,5 @@
 #include "Select.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 #include<vector>
 #include"..\Components\Connection.h"
 #include"..\Components\Gate.h"

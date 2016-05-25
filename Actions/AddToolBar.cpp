@@ -1,5 +1,5 @@
 #include"AddToolBar.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 AddToolBar::AddToolBar(ApplicationManager *x) : Action(x)
 {
 }

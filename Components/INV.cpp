@@ -52,7 +52,7 @@ void INV::setInputPinStatus(int n, STATUS s)
 }
 void INV::Save(ofstream & Out)
 {
-	Out << "INVERTER" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+	Out << "INVERTER" << " " << ID << " " << Component::GetLabel() << " " << Gate::GetPosition() << endl;
 }
 
 void INV::Load(ifstream & In)

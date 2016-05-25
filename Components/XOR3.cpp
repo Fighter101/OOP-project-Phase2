@@ -64,7 +64,7 @@ void XOR3::Erase(Output * pOut)
 }
 void XOR3::Save(ofstream & Out)
 {
-	Out << "XOR3" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+	Out << "XOR3" << " " << ID << " " << Component::GetLabel() << " " << Gate::GetPosition() << endl;
 }
 
 void XOR3::Load(ifstream & In)

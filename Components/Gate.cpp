@@ -1,7 +1,7 @@
 #include "Gate.h"
 #include "LED.h"
 #include "SWITCH.h"
-int counter = 0;
+int Gate::counter = 0;
 //Gate Constructor
 //Parameters:
 //r_Inputs: no. of gate's input pins
@@ -93,7 +93,23 @@ void Gate::released()
 {
 }
 
-Pin * Gate::GetFreeInputPins()
+int Gate::getPinNo(InputPin *x)
+{
+	for (size_t i = 0; i < m_Inputs; i++)
+	{
+		if (&m_InputPins[i] == x)
+			return i;
+
+	}
+	return -1;
+}
+
+InputPin * Gate::ConnectAt(int x)
+{
+	return &m_InputPins[x];
+}
+
+InputPin * Gate::GetFreeInputPins()
 {
 	for (size_t i = 0; i < m_Inputs; i++)
 	{
@@ -102,6 +118,11 @@ Pin * Gate::GetFreeInputPins()
 	}
 	return nullptr;
 	//sam7
+}
+
+int Gate::GetID()
+{
+	return ID;
 }
 
 

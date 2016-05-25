@@ -63,7 +63,7 @@ void XNOR2::Erase(Output * pOut)
 }
 void XNOR2::Save(ofstream & Out)
 {
-	Out << "XNOR2" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+	Out << "XNOR2" << " " << ID << " " << Component::GetLabel() << " " << Gate::GetPosition() << endl;
 }
 
 void XNOR2::Load(ifstream & In)

@@ -32,8 +32,7 @@ void AddANDgate2::Execute()
 	ReadActionParameters();
 	
 	//Calculate the rectangle Corners
-	int Len =  UI.AllGateDimensions;
-	int Wdth = UI.AllGateDimensions;
+
 
 	//int Len =  UI.AND2_Width;
 	//int Wdth = UI.AND2_Height;

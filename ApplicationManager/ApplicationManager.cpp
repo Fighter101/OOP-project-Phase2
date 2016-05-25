@@ -144,10 +144,10 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case SAVE:
-		return nullptr;
+		return new Save(this);
 		break;
 	case LOAD:
-		return nullptr;
+		return new Load (this);
 		break;
 	case PROBE:
 		return nullptr;

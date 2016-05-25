@@ -1,13 +1,13 @@
 #pragma once
 #include"Action.h"
 #include<string>
-class Save : public Action
+class Load : public Action
 {
 
 public:
 
-	Save(ApplicationManager*);
-	~Save();
+	Load(ApplicationManager*);
+	~Load();
 	//Reads parameters required for action to execute
 	virtual void ReadActionParameters();
 	//Execute action (code depends on action type)

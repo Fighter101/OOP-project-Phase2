@@ -59,7 +59,7 @@ void LED::Erase(Output * pOut)
 }
 void LED::Save(ofstream & Out)
 {
-	Out << "LED" << " " << ID << " " << Component::GetLabel() << Gate::GetPosition() << endl;
+	Out << "LED" << " " << ID << " " << Component::GetLabel() << " " << Gate::GetPosition() << endl;
 }
 
 void LED::Load(ifstream & In)

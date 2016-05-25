@@ -1,5 +1,5 @@
 #include "DEL.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 #include<vector>
 Delete::Delete(ApplicationManager *x) : Action(x)
 {

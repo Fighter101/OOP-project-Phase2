@@ -1,5 +1,5 @@
 #include "MultiSELECT.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 #include"..\Components\Gate.h"
 MultiSelect::MultiSelect(ApplicationManager *x) : Action(x)
 {

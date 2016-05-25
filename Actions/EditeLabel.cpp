@@ -1,5 +1,5 @@
 #include "EditeLabel.h"
-#include"..\ApplicationManager.h"
+#include"..\ApplicationManager\ApplicationManager.h"
 EditLabel::EditLabel(ApplicationManager * pApp):Action(pApp)
 {
 
