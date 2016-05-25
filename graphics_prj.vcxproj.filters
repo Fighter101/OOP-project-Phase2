@@ -348,6 +348,9 @@
     <ClCompile Include="ApplicationManager\ApplicationManager.cpp">
       <Filter>ApplicaionManager</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\Copy.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\Action.h">
@@ -659,6 +662,9 @@
     <ClInclude Include="Defs.H" />
     <ClInclude Include="ApplicationManager\ApplicationManager.h">
       <Filter>ApplicaionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Copy.h">
+      <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -44,6 +44,7 @@
 #include"..\Actions\Select.h"
 #include"..\Actions\Move.h"
 #include"..\Components\Button.h"
+#include"..\Actions\Validate.h"
 Action * ApplicationManager::ActionCreator(ActionType x)
 {
 	switch (x)
@@ -159,10 +160,14 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case DSN_MODE:
+		valid = false;
+		sim = false;
 		return nullptr;
 		break;
 	case SIM_MODE:
-		return nullptr;
+		sim = true;
+		DrawToolBar(TOOLBARS::SIMU);
+		return new Validate(this);
 		break;
 	case EXIT:
 		return nullptr;
@@ -171,6 +176,7 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return nullptr;
 		break;
 	case DSN_TOOL:
+		sim = false;
 		return nullptr;
 		break;
 	case DSN_AREA:
@@ -221,6 +227,10 @@ void ApplicationManager::nullify(Component * x)
 		}
 	}
 }
+int ApplicationManager::getCompNo()
+{
+	return ComponentList.size();
+}
 //////////////////////////////////////////////////////////////////////////////
 GridItem* ApplicationManager::CheckPoint(int & Cx, int & Cy)
 {
@@ -238,6 +248,14 @@ GridItem* ApplicationManager::CheckPoint(int & Cx, int & Cy)
 		success = false;
 	}
 	return tmp;
+}
+bool ApplicationManager::getValid()
+{
+	return valid;
+}
+void ApplicationManager::setValid(bool x)
+{
+	valid = x;
 }
 void ApplicationManager::DrawToolBar(TOOLBARS x)
 {

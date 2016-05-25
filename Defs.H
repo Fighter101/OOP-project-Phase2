@@ -134,6 +134,8 @@ struct GraphicsInfo
 		this->x2 = x2;
 		this->y2 = y2;
 	}
+	GraphicsInfo operator +(GraphicsInfo);
+	GraphicsInfo operator -(GraphicsInfo);
 };
 ostream & operator<<(ostream & Out, GraphicsInfo r_GfxInfo);
 enum PressType {

@@ -152,6 +152,7 @@
     <ClCompile Include="Actions\AddXORgate3.cpp" />
     <ClCompile Include="Actions\ANDToolBar.cpp" />
     <ClCompile Include="Actions\ChangeSwitch.cpp" />
+    <ClCompile Include="Actions\Copy.cpp" />
     <ClCompile Include="Actions\CreateTruthTable.cpp" />
     <ClCompile Include="Actions\CUT.cpp" />
     <ClCompile Include="Actions\DEL.cpp" />
@@ -272,6 +273,7 @@
     <ClInclude Include="Actions\AddXORgate3.h" />
     <ClInclude Include="Actions\ANDToolBar.h" />
     <ClInclude Include="Actions\ChangeSwitch.h" />
+    <ClInclude Include="Actions\Copy.h" />
     <ClInclude Include="Actions\CreateTruthTable.h" />
     <ClInclude Include="Actions\CUT.h" />
     <ClInclude Include="Actions\DEL.h" />

@@ -95,9 +95,9 @@ vector<Component*> OutputPin::DeleteAllOutConnections()
 	{
 		if (m_Connections[i])
 		{
+			temp.push_back(m_Connections[i]);
 			m_Connections[i]->getDestPin()->setConnection(nullptr);
 			m_Connections[i]->getSourcePin()->nullConnection(m_Connections[i]);
-			temp.push_back(m_Connections[i]);
 		}
 	}
 	return temp;

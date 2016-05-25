@@ -25,13 +25,17 @@ private:
 	///(0 Add) - (1 And) - (2 Or) - (3 XOR) - (4 DSGN) - (5 Sim) - (6 Gates)
 	///</summary>
 	bool Toolbars[7];
+	bool valid; //0 invalid - 1 Valid
 	bool sim;//0 if DSN - 1 if Sim
 	Component* ptrTemp;
 	void nullify(vector<Component*> x);
 	void nullify(Component*x);
 public:	
 ///////////////////////////////////////////
+	int getCompNo();
 	GridItem* CheckPoint(int &Cx, int &Cy);
+	bool getValid();
+	void setValid(bool x);
 ///////////////////////////////////////////
 ///<summary>
 ///(0 Add) - (1 And) - (2 Or) - (3 XOR) - (4 DSGN) - (5 Sim) - (6 Gates)
