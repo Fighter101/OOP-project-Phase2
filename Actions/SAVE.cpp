@@ -1,5 +1,7 @@
 #include"SAVE.h"
 #include"..\ApplicationManager\ApplicationManager.h"
+#include"..\Components\Gate.h"
+#include"..\Components\Connection.h"
 Save::Save(ApplicationManager *x) : Action (x)
 {
 
@@ -21,7 +23,18 @@ void Save::Execute()
 	vector<Component*> vec = pManager->getComponents();
 	for (int i = 0; i < vec.size(); i++)
 	{
-		vec[i]->Save(Out);
+		if (dynamic_cast<Gate*>(vec[i]))
+		{
+			vec[i]->Save(Out);
+		}
+	}
+	Out << "Connections" << endl;
+	for (int i = 0; i < vec.size(); i++)
+	{
+		if (dynamic_cast<Connection*>(vec[i]))
+		{
+			vec[i]->Save(Out);
+		}
 	}
 	Out << "-1";
 }

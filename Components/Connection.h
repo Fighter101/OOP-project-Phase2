@@ -19,7 +19,7 @@ public:
 	
 	//Connection(const GraphicsInfo &r_GfxInfo, Component *pS=NULL,Component *pD=NULL, int Pin=0);
 	Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPin *pDstPin);
-
+	Connection();
 	virtual void Operate() ;	//Calculates the output according to the inputs
 	virtual void Draw(Output* pOut);	//for each component to Draw itself
 	virtual ActionType Leftpress();

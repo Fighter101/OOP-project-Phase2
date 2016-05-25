@@ -1,7 +1,6 @@
 #include "Connection.h"
 #include"Gate.h"
 Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPin *pDstPin):Component(r_GfxInfo)	
-	
 {
 	x = false;
 	SrcPin = pSrcPin;
@@ -9,6 +8,10 @@ Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPi
 	DstPin->setConnection(this);	//MDawod
 	SrcPin->ConnectTo(this);
 	Selected = false;
+}
+
+Connection::Connection()
+{
 }
 
 ActionType Connection::Leftpress()

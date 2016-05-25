@@ -1,10 +1,4 @@
-
 #include"GUI\UI_Info.h"
-ostream & operator<<(ostream & Out, GraphicsInfo r_GfxInfo)
-{
-		Out << r_GfxInfo.x1 << " " << r_GfxInfo.y1;
-		return Out;
-}
 const STATUS operator&(const STATUS a, const STATUS b)
 {
 	return (a == HIGH && b == HIGH) ? HIGH : LOW;

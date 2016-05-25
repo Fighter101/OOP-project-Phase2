@@ -137,7 +137,6 @@ struct GraphicsInfo
 		this->y2 = y2;
 	}
 };
-ostream & operator<<(ostream & Out, GraphicsInfo r_GfxInfo);
 enum PressType {
 	Normal,
 	Hovered,
