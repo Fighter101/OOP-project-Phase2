@@ -24,6 +24,8 @@ public:
 	virtual void Erase(Output*pOut);
 	virtual void Save(ofstream & Out);
 	virtual void Load(ifstream & In);
+	NOR2(Gate*ptr);
+	virtual Component* Copy(Gate* ptr);
 };
 
 #endif

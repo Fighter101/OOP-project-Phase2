@@ -26,6 +26,10 @@ public:
 
 	virtual	void Load(ifstream & In);
 
+	XOR2(Gate * ptr);
+
+	Component * Copy(Gate * ptr);
+
 };
 
 #endif

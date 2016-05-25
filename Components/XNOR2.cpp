@@ -38,6 +38,7 @@ void XNOR2::Draw(Output* pOut)
 	pOut->DrawXNOR2(this);
 }
 
+
 //returns status of outputpin
 bool  XNOR2::GetOutPinStatus()
 {
@@ -74,4 +75,14 @@ void XNOR2::Load(ifstream & In)
 	SetPosition(GraphicsInfo(x, y));
 	SetLabel(s);
 
+}
+
+XNOR2::XNOR2(Gate * ptr)
+	:Gate(ptr)
+{
+}
+
+Component * XNOR2::Copy(Gate * ptr)
+{
+	return new XNOR2(ptr);
 }

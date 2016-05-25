@@ -34,6 +34,11 @@ void LED::Draw(Output* pOut)
 	pOut->DrawLED(this);
 }
 
+LED::LED(Gate * ptr)
+	:Gate(ptr)
+{
+}
+
 //returns status of outputpin
 bool  LED::GetOutPinStatus()
 {
@@ -70,4 +75,9 @@ void LED::Load(ifstream & In)
 	SetPosition(GraphicsInfo(x, y));
 	SetLabel(s);
 
+}
+
+Component * LED::Copy(Gate * ptr)
+{
+	return new LED(ptr);
 }

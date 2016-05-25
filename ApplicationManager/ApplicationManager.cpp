@@ -45,6 +45,9 @@
 #include"..\Actions\Move.h"
 #include"..\Components\Button.h"
 #include"..\Actions\Validate.h"
+#include"..\Actions\Copy.h"
+#include"..\Actions\CUT.h"
+#include"..\Actions\Paste.h"
 Action * ApplicationManager::ActionCreator(ActionType x)
 {
 	switch (x)
@@ -133,13 +136,13 @@ Action * ApplicationManager::ActionCreator(ActionType x)
 		return new Move(this);
 		break;
 	case COPY:
-		return nullptr;
+		return new Copy(this);
 		break;
 	case CUT:
-		return nullptr;
+		return new Cut(this);
 		break;
 	case PASTE:
-		return nullptr;
+		return new Paste(this);
 		break;
 	case VALIDATE:
 		return nullptr;

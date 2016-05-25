@@ -36,6 +36,11 @@ void NAND3::Draw(Output* pOut)
 	pOut->DrawNAND3(this);
 }
 
+NAND3::NAND3(Gate * ptr)
+	:Gate(ptr)
+{
+}
+
 
 //returns status of outputpin
 bool  NAND3::GetOutPinStatus()
@@ -73,4 +78,9 @@ void NAND3::Load(ifstream & In)
 	SetPosition(GraphicsInfo(x, y));
 	SetLabel(s);
 
+}
+
+Component * NAND3::Copy(Gate * ptr)
+{
+	return new NAND3(ptr);
 }

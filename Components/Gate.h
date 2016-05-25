@@ -26,6 +26,7 @@ protected:
 public:
 	bool CheckPins();
 	Gate(int r_Inputs);
+	Gate(Gate * ptr);
 	InputPin*GetInputPins();
 	int getInputNo();
 	OutputPin & GetOutputPin();
@@ -43,6 +44,7 @@ public:
 	virtual void Save(ofstream& Out) = 0;
 	virtual void Load(ifstream &In) = 0;
 	virtual int GetID();
+	virtual Component* Copy(Gate* ptr) = 0;
 };
 
 #endif

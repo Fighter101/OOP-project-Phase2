@@ -15,7 +15,7 @@ public:
 	NOR3(const GraphicsInfo &r_GfxInfo);
 	virtual void Operate();	//Calculates the output of the NOR gate
 	virtual void Draw(Output* pOut);	//Draws 3-input gate
-
+	NOR3(Gate*ptr);
 	virtual bool  GetOutPinStatus();	//returns status of outputpin if LED, return -1
 	virtual bool  GetInputPinStatus(int n);	//returns status of Inputpin # n if SWITCH, return -1
 
@@ -25,6 +25,7 @@ public:
 	virtual void Save(ofstream & Out);
 
 	virtual void Load(ifstream & In);
+	virtual Component* Copy(Gate* ptr);
 
 };
 

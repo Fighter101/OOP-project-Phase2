@@ -8,6 +8,12 @@ AND2::AND2(const GraphicsInfo &r_GfxInfo):Gate(2)
 	m_GfxInfo.y2 = r_GfxInfo.y2;
 }
 
+AND2::AND2(Gate * ptr)
+	:Gate(ptr)
+{
+
+}
+
 
 void AND2::Operate()
 {
@@ -77,5 +83,10 @@ void AND2::Load(ifstream & In)
 	SetPosition(GraphicsInfo(x, y));
 	SetLabel(s);
 
+}
+
+Component* AND2::Copy(Gate * ptr)
+{
+	return  new AND2(ptr);
 }
 

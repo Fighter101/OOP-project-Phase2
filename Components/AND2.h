@@ -13,6 +13,7 @@ class AND2:public Gate
 {
 public:
 	AND2(const GraphicsInfo &r_GfxInfo);
+	AND2(Gate*ptr);
 	virtual void Operate();	//Calculates the output of the AND gate
 	virtual void Draw(Output* pOut);	//Draws 2-input gate
 	virtual void Erase(Output*pOut);
@@ -21,7 +22,7 @@ public:
 	virtual void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
 	virtual void Save(ofstream &Out);
 	virtual void Load(ifstream &In);
-
+	virtual Component* Copy(Gate* ptr);
 };
 
 #endif

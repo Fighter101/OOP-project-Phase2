@@ -76,3 +76,12 @@ void XOR3::Load(ifstream & In)
 	SetLabel(s);
 
 }
+XOR3::XOR3(Gate * ptr)
+	:Gate(ptr)
+{
+}
+
+Component * XOR3::Copy(Gate * ptr)
+{
+	return new XOR3(ptr);
+}

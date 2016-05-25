@@ -73,3 +73,13 @@ void NOR2::Load(ifstream & In)
 	SetLabel(s);
 
 }
+
+NOR2::NOR2(Gate * ptr)
+	:Gate (ptr)
+{
+}
+
+Component * NOR2::Copy(Gate * ptr)
+{
+	return new NOR2(ptr);
+}

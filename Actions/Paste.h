@@ -3,7 +3,7 @@
 
 class Paste:public Action
 {
-	
+	int x, y;
 public:
 	Paste(ApplicationManager*);
 	virtual ~Paste();

@@ -11,6 +11,7 @@ void Output::CreateToolBars()
 	vector<int>vec;
 	for (int i = 6; i < 15; i++)
 	{
+		if(i!=8)
 		vec.push_back(i);
 	}
 	Toolbars[DSGN].ButtonsToDraw(vec);
@@ -36,6 +37,7 @@ void Output::CreateToolBars()
 	{
 		vec.push_back(i);
 	}
+	vec.push_back(8);
 	Toolbars[GATE].ButtonsToDraw(vec);
 	Toolbars[GATE].SetOrientation(Horizontal);
 	Toolbars[GATE].SetDistance(UI.ToolItemWidth, UI.ToolBarHeight);
@@ -816,7 +818,7 @@ GraphicsInfo Output::SelectIcon( GraphicsInfo r_GfxInfo,PressType State)
 	pWind->DrawRectangle(r_GfxInfo.x1 + UI.Margain + 5, r_GfxInfo.y1 + UI.Margain + 5, r_GfxInfo.x1 + UI.Margain + 25, r_GfxInfo.y1 + UI.Margain + 25);
 	pWind->DrawRectangle(r_GfxInfo.x1 + UI.Margain + 35, r_GfxInfo.y1 + UI.Margain + 35, r_GfxInfo.x1 + UI.Margain + 15, r_GfxInfo.y1 + UI.Margain + 15);
 	pWind->SetFont(20, BOLD, BY_NAME, "Arial");
-	pWind->DrawString(r_GfxInfo.x1 - 4 + UI.Margain, r_GfxInfo.y1 + UI.ToolItemWidth - 1, "Select");
+	pWind->DrawString(r_GfxInfo.x1 - 4 + UI.Margain, r_GfxInfo.y1 + UI.ToolItemWidth - 1, "CUT");
 	return (GraphicsInfo(UI.ToolItemWidth, UI.ToolBarHeight));
 }
 GraphicsInfo Output::ExitIcon( GraphicsInfo r_GfxInfo, PressType State)
@@ -2259,7 +2261,7 @@ void Output::DrawLED(GraphicsInfo r_GfxInfo, GridItem*ptr, bool selected, bool O
 
 void Output::DrawLED(Gate * ptr)
 {
-	DrawLED(ptr->GetPosition(), ptr, ptr->GetState());
+	DrawLED(ptr->GetPosition(), ptr, ptr->GetState(),ptr->GetInputPinStatus(1));
 }
 
 void Output::EraseLED(Gate * ptr)

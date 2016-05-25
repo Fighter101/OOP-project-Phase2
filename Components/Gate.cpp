@@ -19,6 +19,18 @@ Gate::Gate(int r_Inputs)
 	m_OutputPin.setComponent(this);
 	ID=counter++;
 }
+Gate::Gate(Gate * ptr)
+{
+	this->Selected = false;
+	this->ID = counter++;
+	this->SetLabel(ptr->GetLabel());
+	this->m_Inputs = ptr->m_Inputs;
+	m_InputPins = new InputPin[m_Inputs];
+	for (int i = 0; i<m_Inputs; i++)
+		m_InputPins[i].setComponent(this);
+	m_OutputPin.setComponent(this);
+
+}
 bool Gate::CheckPins()
 {
 

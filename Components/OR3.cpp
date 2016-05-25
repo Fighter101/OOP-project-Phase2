@@ -37,6 +37,16 @@ void OR3::Draw(Output* pOut)
 	pOut->DrawOR3(this);
 }
 
+OR3::OR3(Gate * ptr)
+	:Gate(ptr)
+{
+}
+
+Component * OR3::Copy(Gate * ptr)
+{
+	return new OR3(ptr);
+}
+
 //returns status of outputpin
 bool  OR3::GetOutPinStatus()
 {

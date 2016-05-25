@@ -27,6 +27,11 @@ void INV::Draw(Output* pOut)
 	pOut->DrawInverter(this);
 }
 
+INV::INV(Gate * ptr)
+	:Gate(ptr)
+{
+}
+
 //returns status of output-pin
 bool  INV::GetOutPinStatus()
 {
@@ -63,4 +68,9 @@ void INV::Load(ifstream & In)
 	SetPosition(GraphicsInfo(x, y));
 	SetLabel(s);
 
+}
+
+Component * INV::Copy(Gate * ptr)
+{
+	return new INV(ptr);
 }

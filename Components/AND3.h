@@ -13,6 +13,8 @@ class AND3 :public Gate
 {
 public:
 	AND3(const GraphicsInfo &r_GfxInfo);
+	AND3(Gate*ptr);
+	virtual Component* Copy(Gate* ptr);
 	virtual void Operate();	//Calculates the output of the AND gate
 	virtual void Draw(Output* pOut);	//Draws 3-input gate
 	virtual void Erase(Output*pOut);

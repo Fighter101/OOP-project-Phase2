@@ -36,6 +36,11 @@ void OR2::Draw(Output* pOut)
 	pOut->DrawOR2(this);
 }
 
+OR2::OR2(Gate * ptr)
+	:Gate(ptr)
+{
+}
+
 //returns status of outputpin
 bool  OR2::GetOutPinStatus()
 {
@@ -72,4 +77,9 @@ void OR2::Load(ifstream & In)
 	SetPosition(GraphicsInfo(x, y));
 	SetLabel(s);
 
+}
+
+Component * OR2::Copy(Gate * ptr)
+{
+	return new OR2(ptr);
 }

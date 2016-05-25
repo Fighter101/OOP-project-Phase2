@@ -26,6 +26,10 @@ public:
 
 	virtual  void Load(ifstream & In);
 
+	XNOR3(Gate * ptr);
+
+	Component * Copy(Gate * ptr);
+
 };
 
 #endif

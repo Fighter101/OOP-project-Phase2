@@ -42,6 +42,11 @@ bool  SWITCH::GetInputPinStatus(int n)
 	return m_InputPins[n - 1].getStatus();	//n starts from 1 but array index starts from 0.
 }
 
+SWITCH::SWITCH(Gate * ptr)
+	:Gate(ptr)
+{
+}
+
 //Set status of an input pin ot HIGH or LOW
 void SWITCH::setInputPinStatus(int n, STATUS s)
 {
@@ -65,4 +70,9 @@ void SWITCH::Load(ifstream & In)
 	SetPosition(GraphicsInfo(x, y));
 	SetLabel(s);
 
+}
+
+Component * SWITCH::Copy(Gate * ptr)
+{
+	return new SWITCH(ptr);
 }

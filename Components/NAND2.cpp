@@ -37,6 +37,11 @@ void NAND2::Draw(Output* pOut)
 	pOut->DrawNAND2(this);
 }
 
+NAND2::NAND2(Gate * ptr)
+	:Gate(ptr)
+{
+}
+
 
 
 //returns status of outputpin
@@ -75,4 +80,9 @@ void NAND2::Load(ifstream & In)
 	SetPosition(GraphicsInfo(x, y));
 	SetLabel(s);
 
+}
+
+Component * NAND2::Copy(Gate * ptr)
+{
+	return new NAND2(ptr);
 }

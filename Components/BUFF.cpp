@@ -8,6 +8,11 @@ BUFF::BUFF(const GraphicsInfo &r_GfxInfo) :Gate(1)
 	m_GfxInfo.y2 = r_GfxInfo.y2;
 }
 
+BUFF::BUFF(Gate * ptr)
+	:Gate(ptr)
+{
+}
+
 
 void BUFF::Operate()
 {
@@ -64,4 +69,9 @@ void BUFF::Load(ifstream & In)
 	SetPosition(GraphicsInfo(x, y));
 	SetLabel(s);
 
+}
+
+Component * BUFF::Copy(Gate * ptr)
+{
+	return new BUFF(ptr);
 }

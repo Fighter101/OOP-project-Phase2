@@ -8,6 +8,16 @@ AND3::AND3(const GraphicsInfo &r_GfxInfo) :Gate(3)
 	m_GfxInfo.y2 = r_GfxInfo.y2;
 }
 
+AND3::AND3(Gate * ptr)
+	:Gate(ptr)
+{
+}
+
+Component * AND3::Copy(Gate * ptr)
+{
+	return new AND3(ptr);
+}
+
 
 void AND3::Operate()
 {

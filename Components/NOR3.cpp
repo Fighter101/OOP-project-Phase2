@@ -37,6 +37,11 @@ void NOR3::Draw(Output* pOut)
 	pOut->DrawNOR3(this);
 }
 
+NOR3::NOR3(Gate * ptr)
+	:Gate(ptr)
+{
+}
+
 //returns status of outputpin
 bool  NOR3::GetOutPinStatus()
 {
@@ -73,4 +78,9 @@ void NOR3::Load(ifstream & In)
 	SetPosition(GraphicsInfo(x, y));
 	SetLabel(s);
 
+}
+
+Component * NOR3::Copy(Gate * ptr)
+{
+	return new NOR3(ptr);
 }

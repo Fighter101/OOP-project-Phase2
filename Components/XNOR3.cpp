@@ -74,3 +74,12 @@ void XNOR3::Load(ifstream & In)
 	SetLabel(s);
 
 }
+XNOR3::XNOR3(Gate * ptr)
+	:Gate(ptr)
+{
+}
+
+Component * XNOR3::Copy(Gate * ptr)
+{
+	return new XNOR3(ptr);
+}
